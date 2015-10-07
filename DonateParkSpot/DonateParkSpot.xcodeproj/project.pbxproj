@@ -481,6 +481,7 @@
 				101677B01BC48D78008C174B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		101677B11BC48D78008C174B /* Build configuration list for PBXNativeTarget "DonateParkSpotTests" */ = {
 			isa = XCConfigurationList;
@@ -489,6 +490,7 @@
 				101677B31BC48D78008C174B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		101677B41BC48D78008C174B /* Build configuration list for PBXNativeTarget "DonateParkSpotUITests" */ = {
 			isa = XCConfigurationList;
@@ -497,6 +499,7 @@
 				101677B61BC48D78008C174B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
