@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class Register: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,6 +21,17 @@ class ViewController: UIViewController {
         //TEST PUSH BY PRAVANGSU
     }
 
+    @IBAction func login(sender: AnyObject) {
+        if true {
+            performSegueWithIdentifier("logged", sender: nil)
+        }
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "logged" {
+            
+        }
+    }
 
 }
 
