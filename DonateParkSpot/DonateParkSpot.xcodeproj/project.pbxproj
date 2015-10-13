@@ -14,6 +14,7 @@
 		101677941BC48D78008C174B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 101677921BC48D78008C174B /* LaunchScreen.storyboard */; };
 		1016779F1BC48D78008C174B /* DonateParkSpotTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1016779E1BC48D78008C174B /* DonateParkSpotTests.swift */; };
 		101677AA1BC48D78008C174B /* DonateParkSpotUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 101677A91BC48D78008C174B /* DonateParkSpotUITests.swift */; };
+		10EBFDB01BCDCDFE00CF09DC /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10EBFDAF1BCDCDFE00CF09DC /* Location.swift */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +48,7 @@
 		101677A51BC48D78008C174B /* DonateParkSpotUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DonateParkSpotUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		101677A91BC48D78008C174B /* DonateParkSpotUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DonateParkSpotUITests.swift; sourceTree = "<group>"; };
 		101677AB1BC48D78008C174B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		10EBFDAF1BCDCDFE00CF09DC /* Location.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,12 +99,10 @@
 		101677881BC48D78008C174B /* DonateParkSpot */ = {
 			isa = PBXGroup;
 			children = (
-				101677891BC48D78008C174B /* AppDelegate.swift */,
-				1016778B1BC48D78008C174B /* ViewController.swift */,
+				10EBFDAC1BCDCDA000CF09DC /* Model */,
+				10EBFDAE1BCDCDD100CF09DC /* Controller */,
+				10EBFDAD1BCDCDBC00CF09DC /* Support */,
 				1016778D1BC48D78008C174B /* Main.storyboard */,
-				101677901BC48D78008C174B /* Assets.xcassets */,
-				101677921BC48D78008C174B /* LaunchScreen.storyboard */,
-				101677951BC48D78008C174B /* Info.plist */,
 			);
 			path = DonateParkSpot;
 			sourceTree = "<group>";
@@ -123,6 +123,33 @@
 				101677AB1BC48D78008C174B /* Info.plist */,
 			);
 			path = DonateParkSpotUITests;
+			sourceTree = "<group>";
+		};
+		10EBFDAC1BCDCDA000CF09DC /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				10EBFDAF1BCDCDFE00CF09DC /* Location.swift */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		10EBFDAD1BCDCDBC00CF09DC /* Support */ = {
+			isa = PBXGroup;
+			children = (
+				101677901BC48D78008C174B /* Assets.xcassets */,
+				101677921BC48D78008C174B /* LaunchScreen.storyboard */,
+				101677891BC48D78008C174B /* AppDelegate.swift */,
+				101677951BC48D78008C174B /* Info.plist */,
+			);
+			name = Support;
+			sourceTree = "<group>";
+		};
+		10EBFDAE1BCDCDD100CF09DC /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				1016778B1BC48D78008C174B /* ViewController.swift */,
+			);
+			name = Controller;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -256,6 +283,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1016778C1BC48D78008C174B /* ViewController.swift in Sources */,
+				10EBFDB01BCDCDFE00CF09DC /* Location.swift in Sources */,
 				1016778A1BC48D78008C174B /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
