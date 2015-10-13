@@ -14,6 +14,7 @@
 		101677941BC48D78008C174B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 101677921BC48D78008C174B /* LaunchScreen.storyboard */; };
 		1016779F1BC48D78008C174B /* DonateParkSpotTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1016779E1BC48D78008C174B /* DonateParkSpotTests.swift */; };
 		101677AA1BC48D78008C174B /* DonateParkSpotUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 101677A91BC48D78008C174B /* DonateParkSpotUITests.swift */; };
+		BF90D4DE1BCC8DAF006290ED /* MapController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF90D4DD1BCC8DAF006290ED /* MapController.swift */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +48,7 @@
 		101677A51BC48D78008C174B /* DonateParkSpotUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DonateParkSpotUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		101677A91BC48D78008C174B /* DonateParkSpotUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DonateParkSpotUITests.swift; sourceTree = "<group>"; };
 		101677AB1BC48D78008C174B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BF90D4DD1BCC8DAF006290ED /* MapController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,6 +105,7 @@
 				101677901BC48D78008C174B /* Assets.xcassets */,
 				101677921BC48D78008C174B /* LaunchScreen.storyboard */,
 				101677951BC48D78008C174B /* Info.plist */,
+				BF90D4DD1BCC8DAF006290ED /* MapController.swift */,
 			);
 			path = DonateParkSpot;
 			sourceTree = "<group>";
@@ -256,6 +259,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1016778C1BC48D78008C174B /* ViewController.swift in Sources */,
+				BF90D4DE1BCC8DAF006290ED /* MapController.swift in Sources */,
 				1016778A1BC48D78008C174B /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
