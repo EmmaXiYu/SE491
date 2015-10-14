@@ -15,6 +15,7 @@
 		1016779F1BC48D78008C174B /* DonateParkSpotTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1016779E1BC48D78008C174B /* DonateParkSpotTests.swift */; };
 		101677AA1BC48D78008C174B /* DonateParkSpotUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 101677A91BC48D78008C174B /* DonateParkSpotUITests.swift */; };
 		10EBFDB01BCDCDFE00CF09DC /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10EBFDAF1BCDCDFE00CF09DC /* Location.swift */; settings = {ASSET_TAGS = (); }; };
+		10EBFDB21BCDD7EA00CF09DC /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10EBFDB11BCDD7E900CF09DC /* User.swift */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +50,7 @@
 		101677A91BC48D78008C174B /* DonateParkSpotUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DonateParkSpotUITests.swift; sourceTree = "<group>"; };
 		101677AB1BC48D78008C174B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		10EBFDAF1BCDCDFE00CF09DC /* Location.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
+		10EBFDB11BCDD7E900CF09DC /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -129,6 +131,7 @@
 			isa = PBXGroup;
 			children = (
 				10EBFDAF1BCDCDFE00CF09DC /* Location.swift */,
+				10EBFDB11BCDD7E900CF09DC /* User.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -282,6 +285,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				10EBFDB21BCDD7EA00CF09DC /* User.swift in Sources */,
 				1016778C1BC48D78008C174B /* ViewController.swift in Sources */,
 				10EBFDB01BCDCDFE00CF09DC /* Location.swift in Sources */,
 				1016778A1BC48D78008C174B /* AppDelegate.swift in Sources */,
