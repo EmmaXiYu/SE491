@@ -2,9 +2,10 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8191" systemVersion="15A284" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
-        <!--Register-->
+        <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="DonateParkSpot" customModuleProvider="target" sceneMemberID="viewController">
@@ -15,6 +16,18 @@
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GJP-MY-byE">
+                                <rect key="frame" x="231" y="259" width="86" height="30"/>
+                                <animations/>
+                                <state key="normal" title="Go to Map">
+                                    <color key="titleShadowColor" cocoaTouchSystemColor="darkTextColor"/>
+                                </state>
+                                <connections>
+                                    <segue destination="o7C-ha-psM" kind="modal" modalTransitionStyle="flipHorizontal" id="3M5-ls-DlP"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
@@ -38,17 +51,45 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="z39-vC-uwN">
-                                <rect key="frame" x="534" y="550" width="46" height="30"/>
-                                <state key="normal" title="Button"/>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="B4h-9I-evG">
+                                <rect key="frame" x="-92" y="-5" width="692" height="605"/>
+                                <animations/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="692" id="OWH-0z-ySV"/>
+                                </constraints>
+                            </mapView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="z39-vC-uwN">
+                                <rect key="frame" x="516" y="525" width="76" height="30"/>
+                                <animations/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="76" id="w3Z-fY-yPs"/>
+                                </constraints>
+                                <state key="normal" title="Add Spot"/>
+                                <connections>
+                                    <action selector="AddSpot:" destination="o7C-ha-psM" eventType="touchUpInside" id="jP4-at-ltf"/>
+                                </connections>
                             </button>
                         </subviews>
+                        <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="B4h-9I-evG" secondAttribute="trailing" id="4xx-m0-mr3"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="z39-vC-uwN" secondAttribute="trailing" constant="-12" id="9tp-LM-n3Q"/>
+                            <constraint firstItem="wQ6-Yg-BEV" firstAttribute="top" secondItem="z39-vC-uwN" secondAttribute="bottom" constant="45" id="F9k-Pw-Uad"/>
+                            <constraint firstItem="B4h-9I-evG" firstAttribute="bottom" secondItem="wQ6-Yg-BEV" secondAttribute="top" id="eN6-nw-JQo"/>
+                            <constraint firstItem="B4h-9I-evG" firstAttribute="top" secondItem="YjL-bB-YKY" secondAttribute="topMargin" constant="-5" id="hsq-SY-dGE"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="mapView" destination="B4h-9I-evG" id="bdu-o5-OVV"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mDv-SN-bJf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2888" y="161"/>
+            <point key="canvasLocation" x="2728" y="143"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="3M5-ls-DlP"/>
+    </inferredMetricsTieBreakers>
 </document>
