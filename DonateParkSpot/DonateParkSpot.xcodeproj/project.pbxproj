@@ -103,13 +103,11 @@
 		101677881BC48D78008C174B /* DonateParkSpot */ = {
 			isa = PBXGroup;
 			children = (
-				101677891BC48D78008C174B /* AppDelegate.swift */,
-				1016778B1BC48D78008C174B /* ViewController.swift */,
+				18C3635A1BCF3BC800A9E6A7 /* View */,
+				10EBFDAC1BCDCDA000CF09DC /* Model */,
+				10EBFDAE1BCDCDD100CF09DC /* Controller */,
+				10EBFDAD1BCDCDBC00CF09DC /* Support */,
 				1016778D1BC48D78008C174B /* Main.storyboard */,
-				101677901BC48D78008C174B /* Assets.xcassets */,
-				101677921BC48D78008C174B /* LaunchScreen.storyboard */,
-				101677951BC48D78008C174B /* Info.plist */,
-				BF90D4DD1BCC8DAF006290ED /* MapController.swift */,
 			);
 			path = DonateParkSpot;
 			sourceTree = "<group>";
@@ -130,6 +128,43 @@
 				101677AB1BC48D78008C174B /* Info.plist */,
 			);
 			path = DonateParkSpotUITests;
+			sourceTree = "<group>";
+		};
+		10EBFDAC1BCDCDA000CF09DC /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				10EBFDAF1BCDCDFE00CF09DC /* Location.swift */,
+				10EBFDB11BCDD7E900CF09DC /* User.swift */,
+				10EBFDB31BCEF4E500CF09DC /* Spot.swift */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		10EBFDAD1BCDCDBC00CF09DC /* Support */ = {
+			isa = PBXGroup;
+			children = (
+				101677901BC48D78008C174B /* Assets.xcassets */,
+				101677921BC48D78008C174B /* LaunchScreen.storyboard */,
+				101677891BC48D78008C174B /* AppDelegate.swift */,
+				101677951BC48D78008C174B /* Info.plist */,
+			);
+			name = Support;
+			sourceTree = "<group>";
+		};
+		10EBFDAE1BCDCDD100CF09DC /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				1016778B1BC48D78008C174B /* ViewController.swift */,
+			);
+			name = Controller;
+			sourceTree = "<group>";
+		};
+		18C3635A1BCF3BC800A9E6A7 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				18C3635B1BCF3BEA00A9E6A7 /* File.swift */,
+			);
+			name = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -262,9 +297,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				10EBFDB21BCDD7EA00CF09DC /* User.swift in Sources */,
+				18C3635C1BCF3BEA00A9E6A7 /* File.swift in Sources */,
 				1016778C1BC48D78008C174B /* ViewController.swift in Sources */,
-				BF90D4DE1BCC8DAF006290ED /* MapController.swift in Sources */,
+				10EBFDB01BCDCDFE00CF09DC /* Location.swift in Sources */,
 				1016778A1BC48D78008C174B /* AppDelegate.swift in Sources */,
+				10EBFDB41BCEF4E500CF09DC /* Spot.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
