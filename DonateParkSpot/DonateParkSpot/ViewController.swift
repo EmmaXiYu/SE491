@@ -8,8 +8,11 @@
 
 import UIKit
 
-class Register: UIViewController {
+class Register: UIViewController,UITextFieldDelegate {
 
+    @IBOutlet weak var username: UITextField!
+    @IBOutlet var password: UIView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -20,17 +23,27 @@ class Register: UIViewController {
         // Dispose of any resources that can be recreated.
     }
 
-    @IBAction func login(sender: AnyObject) {
-        if true {
-            performSegueWithIdentifier("logged", sender: nil)
-        }
-    }
+    
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "logged" {
             
         }
     }
+    
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
+    
+    func textFieldDidEndEditing(textField: UITextField) {
+        
+    }
 
+    @IBAction func signIn(sender: AnyObject) {
+        if true {
+            performSegueWithIdentifier("logged", sender: nil)
+        }
+    }
 }
 
