@@ -18,6 +18,9 @@
 		187394501BD578ED00998B0D /* RegisterPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1873944F1BD578ED00998B0D /* RegisterPageViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		187394521BD58EC200998B0D /* SpotDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187394511BD58EC200998B0D /* SpotDetailViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		187394551BD59D8700998B0D /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187394541BD59D8700998B0D /* MapViewController.swift */; settings = {ASSET_TAGS = (); }; };
+		1873945B1BD5B26600998B0D /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187394581BD5B26600998B0D /* Location.swift */; settings = {ASSET_TAGS = (); }; };
+		1873945C1BD5B26600998B0D /* Spot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187394591BD5B26600998B0D /* Spot.swift */; settings = {ASSET_TAGS = (); }; };
+		1873945D1BD5B26600998B0D /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1873945A1BD5B26600998B0D /* User.swift */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +58,9 @@
 		1873944F1BD578ED00998B0D /* RegisterPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterPageViewController.swift; sourceTree = "<group>"; };
 		187394511BD58EC200998B0D /* SpotDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpotDetailViewController.swift; sourceTree = "<group>"; };
 		187394541BD59D8700998B0D /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
+		187394581BD5B26600998B0D /* Location.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Location.swift; path = ../../DonateParkSpot/DonateParkSpot/Location.swift; sourceTree = "<group>"; };
+		187394591BD5B26600998B0D /* Spot.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Spot.swift; path = ../../DonateParkSpot/DonateParkSpot/Spot.swift; sourceTree = "<group>"; };
+		1873945A1BD5B26600998B0D /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = User.swift; path = ../../DonateParkSpot/DonateParkSpot/User.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -105,16 +111,14 @@
 		1873941D1BD5733700998B0D /* DonatingParkingSpotE */ = {
 			isa = PBXGroup;
 			children = (
+				187394571BD5B20600998B0D /* Model */,
+				187394561BD5B1DE00998B0D /* Controller */,
 				1873941E1BD5733700998B0D /* AppDelegate.swift */,
-				187394201BD5733700998B0D /* ViewController.swift */,
 				187394221BD5733700998B0D /* Main.storyboard */,
 				187394281BD5733700998B0D /* Assets.xcassets */,
 				1873942A1BD5733700998B0D /* LaunchScreen.storyboard */,
 				1873942D1BD5733700998B0D /* Info.plist */,
 				187394251BD5733700998B0D /* DonatingParkingSpotE.xcdatamodeld */,
-				1873944F1BD578ED00998B0D /* RegisterPageViewController.swift */,
-				187394511BD58EC200998B0D /* SpotDetailViewController.swift */,
-				187394541BD59D8700998B0D /* MapViewController.swift */,
 			);
 			path = DonatingParkingSpotE;
 			sourceTree = "<group>";
@@ -135,6 +139,27 @@
 				187394431BD5733700998B0D /* Info.plist */,
 			);
 			path = DonatingParkingSpotEUITests;
+			sourceTree = "<group>";
+		};
+		187394561BD5B1DE00998B0D /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				187394201BD5733700998B0D /* ViewController.swift */,
+				187394541BD59D8700998B0D /* MapViewController.swift */,
+				187394511BD58EC200998B0D /* SpotDetailViewController.swift */,
+				1873944F1BD578ED00998B0D /* RegisterPageViewController.swift */,
+			);
+			name = Controller;
+			sourceTree = "<group>";
+		};
+		187394571BD5B20600998B0D /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				187394581BD5B26600998B0D /* Location.swift */,
+				187394591BD5B26600998B0D /* Spot.swift */,
+				1873945A1BD5B26600998B0D /* User.swift */,
+			);
+			name = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -270,9 +295,12 @@
 				187394521BD58EC200998B0D /* SpotDetailViewController.swift in Sources */,
 				187394551BD59D8700998B0D /* MapViewController.swift in Sources */,
 				187394501BD578ED00998B0D /* RegisterPageViewController.swift in Sources */,
+				1873945C1BD5B26600998B0D /* Spot.swift in Sources */,
 				187394271BD5733700998B0D /* DonatingParkingSpotE.xcdatamodeld in Sources */,
+				1873945D1BD5B26600998B0D /* User.swift in Sources */,
 				187394211BD5733700998B0D /* ViewController.swift in Sources */,
 				1873941F1BD5733700998B0D /* AppDelegate.swift in Sources */,
+				1873945B1BD5B26600998B0D /* Location.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
