@@ -10,8 +10,8 @@ import UIKit
 
 class Register: UIViewController,UITextFieldDelegate {
 
-    @IBOutlet weak var username: UITextField!
-    @IBOutlet var password: UIView!
+    //@IBOutlet weak var username: UITextField!
+    //@IBOutlet var password: UIView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
