@@ -32,12 +32,14 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <connections>
+                        <outlet property="password" destination="8bC-Xf-vdC" id="ArT-RO-QKd"/>
+                        <outlet property="username" destination="wR8-xY-Ewv" id="liJ-TM-21j"/>
                         <segue destination="o7C-ha-psM" kind="show" identifier="logged" id="9zw-Nt-hs5"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1870" y="161"/>
+            <point key="canvasLocation" x="1610" y="-233"/>
         </scene>
         <!--Map Controller-->
         <scene sceneID="w9N-2K-sUa">
