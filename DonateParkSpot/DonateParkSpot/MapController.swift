@@ -14,6 +14,9 @@ import CoreLocation
 class MapController : UIViewController, CLLocationManagerDelegate, MKMapViewDelegate {
     
    let locationManager = CLLocationManager()
+    var latitude: Double=0
+    var longitude: Double=0
+    
    @IBOutlet weak var mapView: MKMapView!
        override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,13 +32,11 @@ class MapController : UIViewController, CLLocationManagerDelegate, MKMapViewDele
 
     
     @IBAction func AddSpot(sender: AnyObject) {
-
-        
-       
-        
-        let location = self.locationManager.location
-        
-        var f=1
+   
+       // let location = self.locationManager.location
+        var locLongitude=longitude   //TODO: Use it to populate the model
+        var loc_latitude=latitude    //TODO: Use it to populate the model
+        var test=loc_latitude
           }
 
     
@@ -60,8 +61,10 @@ class MapController : UIViewController, CLLocationManagerDelegate, MKMapViewDele
         point.subtitle = "sub title"
         
         self.mapView.addAnnotation(point)
-          var latitude: Double = location!!.coordinate.latitude
-          var longitude: Double = location!!.coordinate.longitude
+           
+            
+        latitude = location!!.coordinate.latitude
+        longitude = location!!.coordinate.longitude
 
         //stop updating location to save battery life
         locationManager.stopUpdatingLocation()
