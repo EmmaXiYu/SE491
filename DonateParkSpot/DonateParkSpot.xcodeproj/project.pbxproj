@@ -17,6 +17,7 @@
 		10EBFDB01BCDCDFE00CF09DC /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10EBFDAF1BCDCDFE00CF09DC /* Location.swift */; settings = {ASSET_TAGS = (); }; };
 		10EBFDB21BCDD7EA00CF09DC /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10EBFDB11BCDD7E900CF09DC /* User.swift */; settings = {ASSET_TAGS = (); }; };
 		10EBFDB41BCEF4E500CF09DC /* Spot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10EBFDB31BCEF4E500CF09DC /* Spot.swift */; settings = {ASSET_TAGS = (); }; };
+		BF90D4DE1BCC8DAF006290ED /* MapController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF90D4DD1BCC8DAF006290ED /* MapController.swift */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +54,7 @@
 		10EBFDAF1BCDCDFE00CF09DC /* Location.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
 		10EBFDB11BCDD7E900CF09DC /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		10EBFDB31BCEF4E500CF09DC /* Spot.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Spot.swift; sourceTree = "<group>"; };
+		BF90D4DD1BCC8DAF006290ED /* MapController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -107,6 +109,10 @@
 				10EBFDAE1BCDCDD100CF09DC /* Controller */,
 				10EBFDAD1BCDCDBC00CF09DC /* Support */,
 				1016778D1BC48D78008C174B /* Main.storyboard */,
+				101677901BC48D78008C174B /* Assets.xcassets */,
+				101677921BC48D78008C174B /* LaunchScreen.storyboard */,
+				101677951BC48D78008C174B /* Info.plist */,
+				BF90D4DD1BCC8DAF006290ED /* MapController.swift */,
 			);
 			path = DonateParkSpot;
 			sourceTree = "<group>";
@@ -291,6 +297,7 @@
 				10EBFDB21BCDD7EA00CF09DC /* User.swift in Sources */,
 				1016778C1BC48D78008C174B /* ViewController.swift in Sources */,
 				10EBFDB01BCDCDFE00CF09DC /* Location.swift in Sources */,
+				BF90D4DE1BCC8DAF006290ED /* MapController.swift in Sources */,
 				1016778A1BC48D78008C174B /* AppDelegate.swift in Sources */,
 				10EBFDB41BCEF4E500CF09DC /* Spot.swift in Sources */,
 			);
