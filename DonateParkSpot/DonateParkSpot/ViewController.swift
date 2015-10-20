@@ -21,6 +21,7 @@ class Register: UIViewController{
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+        //TEST PUSH BY PRAVANGSU
     }
 
     
