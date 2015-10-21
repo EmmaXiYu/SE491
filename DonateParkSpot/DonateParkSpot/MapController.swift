@@ -20,8 +20,8 @@ class MapController : UIViewController, CLLocationManagerDelegate, MKMapViewDele
    @IBOutlet weak var mapView: MKMapView!
        override func viewDidLoad() {
         super.viewDidLoad()
-        let initialLocation = CLLocation(latitude: 41.7958333, longitude: -87.9755556)
-       //let initialLocation = CLLocation(latitude: 21.282778, longitude: -157.829444)
+        //let initialLocation = CLLocation(latitude: 41.7958333, longitude: -87.9755556)
+       let initialLocation = CLLocation(latitude: 21.282778, longitude: -157.829444)
         centerMapOnLocation(initialLocation)
         
         locationManager.delegate = self
