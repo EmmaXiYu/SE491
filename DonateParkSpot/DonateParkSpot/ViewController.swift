@@ -8,11 +8,11 @@
 
 import UIKit
 
-class Register: UIViewController,UITextFieldDelegate {
+class Register: UIViewController{
 
-    //@IBOutlet weak var username: UITextField!
-    //@IBOutlet var password: UIView!
+    @IBOutlet weak var username: UITextField!
     
+    @IBOutlet weak var passowrd: UITextField!
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -32,17 +32,8 @@ class Register: UIViewController,UITextFieldDelegate {
         }
     }
     
-    func textFieldShouldReturn(textField: UITextField) -> Bool {
-        textField.resignFirstResponder()
-        return true
-    }
-    
-    func textFieldDidEndEditing(textField: UITextField) {
-        
-    }
-
     @IBAction func signIn(sender: AnyObject) {
-        if true {
+        if username.text != "" && passowrd.text != ""{
             performSegueWithIdentifier("logged", sender: nil)
         }
     }

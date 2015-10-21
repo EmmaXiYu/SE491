@@ -17,6 +17,13 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yjf-YB-LkW">
+                                <rect key="frame" x="105" y="354" width="151" height="65"/>
+                                <state key="normal" title="sign in"/>
+                                <connections>
+                                    <action selector="signIn:" destination="BYZ-38-t0r" eventType="touchUpInside" id="mta-lP-M6J"/>
+                                </connections>
+                            </button>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="wR8-xY-Ewv">
                                 <rect key="frame" x="147" y="199" width="301" height="30"/>
                                 <animations/>
@@ -45,14 +52,19 @@
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1mv-Ds-pt7">
                                 <rect key="frame" x="297" y="354" width="151" height="65"/>
-                                <animations/>
-                                <state key="normal" title="sign out"/>
+                                <state key="normal" title="sign up"/>
+                                <connections>
+                                    <action selector="login:" destination="BYZ-38-t0r" eventType="touchUpInside" id="dax-pg-jkz"/>
+                                </connections>
                             </button>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <connections>
+                        <outlet property="passowrd" destination="ooj-f3-nee" id="TFZ-aY-Yns"/>
+                        <outlet property="password" destination="8bC-Xf-vdC" id="ArT-RO-QKd"/>
+                        <outlet property="username" destination="wR8-xY-Ewv" id="liJ-TM-21j"/>
                         <segue destination="o7C-ha-psM" kind="show" identifier="logged" id="9zw-Nt-hs5"/>
                     </connections>
                 </viewController>
