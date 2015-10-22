@@ -1,9 +1,9 @@
 //
 //  ViewController.swift
-//  DonateParkSpot
+//  DonatingParkingSpotE
 //
-//  Created by Rafael Guerra on 10/6/15.
-//  Copyright © 2015 SE491. All rights reserved.
+//  Created by Apple on 10/19/15.
+//  Copyright © 2015 Apple. All rights reserved.
 //
 
 import UIKit

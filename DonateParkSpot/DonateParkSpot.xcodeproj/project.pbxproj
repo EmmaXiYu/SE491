@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		1016778A1BC48D78008C174B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 101677891BC48D78008C174B /* AppDelegate.swift */; };
-		1016778C1BC48D78008C174B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1016778B1BC48D78008C174B /* ViewController.swift */; };
 		1016778F1BC48D78008C174B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1016778D1BC48D78008C174B /* Main.storyboard */; };
 		101677911BC48D78008C174B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 101677901BC48D78008C174B /* Assets.xcassets */; };
 		101677941BC48D78008C174B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 101677921BC48D78008C174B /* LaunchScreen.storyboard */; };
@@ -41,7 +40,6 @@
 /* Begin PBXFileReference section */
 		101677861BC48D78008C174B /* DonateParkSpot.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DonateParkSpot.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		101677891BC48D78008C174B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		1016778B1BC48D78008C174B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		1016778E1BC48D78008C174B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		101677901BC48D78008C174B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		101677931BC48D78008C174B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -109,7 +107,6 @@
 		101677881BC48D78008C174B /* DonateParkSpot */ = {
 			isa = PBXGroup;
 			children = (
-				18C3635A1BCF3BC800A9E6A7 /* View */,
 				10EBFDAC1BCDCDA000CF09DC /* Model */,
 				10EBFDAE1BCDCDD100CF09DC /* Controller */,
 				10EBFDAD1BCDCDBC00CF09DC /* Support */,
