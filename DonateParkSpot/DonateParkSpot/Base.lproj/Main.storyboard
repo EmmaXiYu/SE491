@@ -19,6 +19,7 @@
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yjf-YB-LkW">
                                 <rect key="frame" x="105" y="354" width="151" height="65"/>
+                                <animations/>
                                 <state key="normal" title="sign in"/>
                                 <connections>
                                     <action selector="signIn:" destination="BYZ-38-t0r" eventType="touchUpInside" id="mta-lP-M6J"/>
@@ -52,6 +53,7 @@
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1mv-Ds-pt7">
                                 <rect key="frame" x="297" y="354" width="151" height="65"/>
+                                <animations/>
                                 <state key="normal" title="sign up"/>
                                 <connections>
                                     <action selector="login:" destination="BYZ-38-t0r" eventType="touchUpInside" id="dax-pg-jkz"/>
