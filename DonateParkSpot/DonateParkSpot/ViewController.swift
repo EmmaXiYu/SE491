@@ -8,7 +8,7 @@
 
 import UIKit
 
-class Register: UIViewController{
+class ViewController: UIViewController {
 
     @IBOutlet weak var username: UITextField!
     
@@ -24,12 +24,9 @@ class Register: UIViewController{
         //TEST PUSH BY PRAVANGSU
     }
 
-    
-    
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if segue.identifier == "logged" {
-            
-        }
+
+    override func viewDidAppear(animated: Bool) {
+        self.performSegueWithIdentifier("LoginView", sender: self)
     }
     
     @IBAction func signIn(sender: AnyObject) {
