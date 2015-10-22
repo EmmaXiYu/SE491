@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8191" systemVersion="15A284" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="1Vk-YP-Yww">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8191" systemVersion="15A284" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="hle-aT-zw9">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
@@ -17,8 +17,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Protected" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="w7N-Yn-9kg">
-                                <rect key="frame" x="143" y="111" width="132" height="21"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yjf-YB-LkW">
+                                <rect key="frame" x="105" y="354" width="151" height="65"/>
                                 <animations/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -287,7 +287,13 @@
                             <constraint firstItem="J6H-sg-teT" firstAttribute="width" secondItem="gAk-mi-dFS" secondAttribute="width" id="wFJ-0r-EU4"/>
                         </constraints>
                     </view>
-                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                    <navigationItem key="navigationItem" id="YOw-ax-rda">
+                        <barButtonItem key="rightBarButtonItem" systemItem="search" id="4p2-Yo-Ej7">
+                            <connections>
+                                <action selector="showSearchBar:" destination="o7C-ha-psM" id="BwM-gR-o9R"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="mapView" destination="Ex4-Jm-sLg" id="owM-ff-tus"/>
                         <outlet property="searchDisplayController" destination="Vv5-Se-PvQ" id="Odc-ik-kXl"/>
@@ -304,7 +310,26 @@
                     </connections>
                 </searchDisplayController>
             </objects>
-            <point key="canvasLocation" x="1888.5" y="1102.5"/>
+            <point key="canvasLocation" x="3540" y="143"/>
+        </scene>
+        <!--Map Places-->
+        <scene sceneID="ZmF-ca-mKu">
+            <objects>
+                <navigationController title="Map Places" automaticallyAdjustsScrollViewInsets="NO" id="hle-aT-zw9" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="8L6-ed-qm3">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <animations/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="o7C-ha-psM" kind="relationship" relationship="rootViewController" id="m1z-Lz-0gM"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="qtI-rS-PZL" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2728" y="143"/>
         </scene>
         <!--Spot Detail View Controller-->
         <scene sceneID="3Fz-Ja-qPw">
