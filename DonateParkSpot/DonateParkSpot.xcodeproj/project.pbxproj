@@ -13,15 +13,12 @@
 		101677941BC48D78008C174B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 101677921BC48D78008C174B /* LaunchScreen.storyboard */; };
 		1016779F1BC48D78008C174B /* DonateParkSpotTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1016779E1BC48D78008C174B /* DonateParkSpotTests.swift */; };
 		101677AA1BC48D78008C174B /* DonateParkSpotUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 101677A91BC48D78008C174B /* DonateParkSpotUITests.swift */; };
-		1058FEF41BD882B900E163FE /* MapController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1058FEEF1BD882B900E163FE /* MapController.swift */; settings = {ASSET_TAGS = (); }; };
-		1058FEF51BD882B900E163FE /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1058FEF01BD882B900E163FE /* MapViewController.swift */; settings = {ASSET_TAGS = (); }; };
-		1058FEF61BD882B900E163FE /* RegisterPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1058FEF11BD882B900E163FE /* RegisterPageViewController.swift */; settings = {ASSET_TAGS = (); }; };
-		1058FEF71BD882B900E163FE /* SpotDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1058FEF21BD882B900E163FE /* SpotDetailViewController.swift */; settings = {ASSET_TAGS = (); }; };
-		1058FEF81BD882B900E163FE /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1058FEF31BD882B900E163FE /* ViewController.swift */; settings = {ASSET_TAGS = (); }; };
-		10EBFDB01BCDCDFE00CF09DC /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10EBFDAF1BCDCDFE00CF09DC /* Location.swift */; settings = {ASSET_TAGS = (); }; };
-		10EBFDB21BCDD7EA00CF09DC /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10EBFDB11BCDD7E900CF09DC /* User.swift */; settings = {ASSET_TAGS = (); }; };
-		10EBFDB41BCEF4E500CF09DC /* Spot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10EBFDB31BCEF4E500CF09DC /* Spot.swift */; settings = {ASSET_TAGS = (); }; };
-		BF90D4DE1BCC8DAF006290ED /* MapController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF90D4DD1BCC8DAF006290ED /* MapController.swift */; settings = {ASSET_TAGS = (); }; };
+		1058FEF51BD882B900E163FE /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1058FEF01BD882B900E163FE /* MapViewController.swift */; };
+		1058FEF61BD882B900E163FE /* RegisterPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1058FEF11BD882B900E163FE /* RegisterPageViewController.swift */; };
+		1058FEF71BD882B900E163FE /* SpotDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1058FEF21BD882B900E163FE /* SpotDetailViewController.swift */; };
+		1058FEF81BD882B900E163FE /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1058FEF31BD882B900E163FE /* ViewController.swift */; };
+		1076B42D1BD9C454001065CA /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1076B42C1BD9C454001065CA /* Location.swift */; };
+		BF90D4DE1BCC8DAF006290ED /* MapController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF90D4DD1BCC8DAF006290ED /* MapController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,9 +56,7 @@
 		1058FEF11BD882B900E163FE /* RegisterPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterPageViewController.swift; sourceTree = "<group>"; };
 		1058FEF21BD882B900E163FE /* SpotDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpotDetailViewController.swift; sourceTree = "<group>"; };
 		1058FEF31BD882B900E163FE /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		10EBFDAF1BCDCDFE00CF09DC /* Location.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
-		10EBFDB11BCDD7E900CF09DC /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
-		10EBFDB31BCEF4E500CF09DC /* Spot.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Spot.swift; sourceTree = "<group>"; };
+		1076B42C1BD9C454001065CA /* Location.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
 		BF90D4DD1BCC8DAF006290ED /* MapController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -70,7 +65,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				18C3635E1BCF41F200A9E6A7 /* MapKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -94,7 +88,6 @@
 		1016777D1BC48D78008C174B = {
 			isa = PBXGroup;
 			children = (
-				18C3635D1BCF41F200A9E6A7 /* MapKit.framework */,
 				101677881BC48D78008C174B /* DonateParkSpot */,
 				1016779D1BC48D78008C174B /* DonateParkSpotTests */,
 				101677A81BC48D78008C174B /* DonateParkSpotUITests */,
@@ -148,9 +141,7 @@
 		10EBFDAC1BCDCDA000CF09DC /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				B899B9161BD5B16E0076506E /* Location.swift */,
-				B899B9181BD5B16E0076506E /* Spot.swift */,
-				B899B9191BD5B16E0076506E /* User.swift */,
+				1076B42C1BD9C454001065CA /* Location.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -158,10 +149,7 @@
 		10EBFDAD1BCDCDBC00CF09DC /* Support */ = {
 			isa = PBXGroup;
 			children = (
-				101677901BC48D78008C174B /* Assets.xcassets */,
-				101677921BC48D78008C174B /* LaunchScreen.storyboard */,
 				101677891BC48D78008C174B /* AppDelegate.swift */,
-				101677951BC48D78008C174B /* Info.plist */,
 			);
 			name = Support;
 			sourceTree = "<group>";
@@ -176,13 +164,6 @@
 				1058FEF31BD882B900E163FE /* ViewController.swift */,
 			);
 			name = Controller;
-			sourceTree = "<group>";
-		};
-		18C3635A1BCF3BC800A9E6A7 /* View */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -247,7 +228,7 @@
 		1016777E1BC48D78008C174B /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0700;
+				LastUpgradeCheck = 0710;
 				ORGANIZATIONNAME = SE491;
 				TargetAttributes = {
 					101677851BC48D78008C174B = {
@@ -315,16 +296,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				10EBFDB21BCDD7EA00CF09DC /* User.swift in Sources */,
 				1058FEF71BD882B900E163FE /* SpotDetailViewController.swift in Sources */,
+				1076B42D1BD9C454001065CA /* Location.swift in Sources */,
 				1058FEF61BD882B900E163FE /* RegisterPageViewController.swift in Sources */,
 				1058FEF81BD882B900E163FE /* ViewController.swift in Sources */,
 				1058FEF51BD882B900E163FE /* MapViewController.swift in Sources */,
-				10EBFDB01BCDCDFE00CF09DC /* Location.swift in Sources */,
 				BF90D4DE1BCC8DAF006290ED /* MapController.swift in Sources */,
 				1016778A1BC48D78008C174B /* AppDelegate.swift in Sources */,
-				1058FEF41BD882B900E163FE /* MapController.swift in Sources */,
-				10EBFDB41BCEF4E500CF09DC /* Spot.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
