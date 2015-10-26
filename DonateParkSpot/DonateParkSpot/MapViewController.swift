@@ -59,12 +59,11 @@ class MapViewController: UIViewController,MKMapViewDelegate,CLLocationManagerDel
         let region=MKCoordinateRegion(center: center, span: MKCoordinateSpan(latitudeDelta: 0.004, longitudeDelta: 0.004))
         self.mapView.setRegion(region, animated: true)
         self.locationManager.stopUpdatingLocation()
-        latitude = locationManager.location!.coordinate.latitude;
-        longitude = locationManager.location!.coordinate.longitude;
-       
-        
-        
-        
+        if locationManager.location != nil {
+            latitude = locationManager.location!.coordinate.latitude
+            longitude = locationManager.location!.coordinate.longitude
+            //mapView.camera.centerCoordinate = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
+        }
     }
     
     override func didReceiveMemoryWarning() {
