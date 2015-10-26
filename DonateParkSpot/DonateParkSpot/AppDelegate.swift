@@ -1,13 +1,14 @@
 //
 //  AppDelegate.swift
-//  DonatingParkingSpotE
+//  DonateParkSpot
 //
-//  Created by Apple on 10/19/15.
+//  Created by Apple on 10/22/15.
 //  Copyright © 2015 Apple. All rights reserved.
 //
 
 import UIKit
 import CoreData
+import Parse
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -16,7 +17,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-        // Override point for customization after application launch.
+        
+        Parse.setApplicationId("hPo2gnbpxAgyw5lYj8SNkf8agA9dOKNAt1nUemV7", clientKey: "JM35O65HxaBwRgRKmypTc9rZn3NUfGXs9irZw2aq")
+        PFAnalytics.trackAppOpenedWithLaunchOptions(launchOptions)
+   
         return true
     }
 
@@ -47,14 +51,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     // MARK: - Core Data stack
 
     lazy var applicationDocumentsDirectory: NSURL = {
-        // The directory the application uses to store the Core Data store file. This code uses a directory named "com.depaul.Emma.DonatingParkingSpotE" in the application's documents Application Support directory.
+        // The directory the application uses to store the Core Data store file. This code uses a directory named "com.depaul.Emma.DonateParkSpot" in the application's documents Application Support directory.
         let urls = NSFileManager.defaultManager().URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask)
         return urls[urls.count-1]
     }()
 
     lazy var managedObjectModel: NSManagedObjectModel = {
         // The managed object model for the application. This property is not optional. It is a fatal error for the application not to be able to find and load its model.
-        let modelURL = NSBundle.mainBundle().URLForResource("DonatingParkingSpotE", withExtension: "momd")!
+        let modelURL = NSBundle.mainBundle().URLForResource("DonateParkSpot", withExtension: "momd")!
         return NSManagedObjectModel(contentsOfURL: modelURL)!
     }()
 

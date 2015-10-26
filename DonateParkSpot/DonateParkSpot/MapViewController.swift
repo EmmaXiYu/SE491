@@ -1,37 +1,54 @@
 //
 //  MapViewController.swift
-//  DonatingParkingSpotE
+//  DonateParkSpot
 //
-//  Created by Apple on 10/19/15.
+//  Created by Apple on 10/23/15.
 //  Copyright © 2015 Apple. All rights reserved.
 //
 
-import MapKit
 import UIKit
+import MapKit
 import CoreLocation
+import Parse
 
+class MapViewController: UIViewController,MKMapViewDelegate,CLLocationManagerDelegate,UISearchBarDelegate{
+    
 
-class MapViewController: UIViewController, MKMapViewDelegate,CLLocationManagerDelegate{
+    
 
-    @IBOutlet weak var mapView: MKMapView!
-    let locationManager=CLLocationManager()
+    @IBOutlet weak var searchBar: UISearchBar!
+    
+    @IBOutlet weak var
+    mapView: MKMapView!
+    
+    
+    
+  var address = ""
+    var latitude = Double ()
+    var longitude = Double ()
+    var ojId =  String()
+    var searchingLatitude = Double()
+    var searchingLongitude = Double()
+
+   let locationManager=CLLocationManager()
     
     override func viewDidLoad() {
+        
         super.viewDidLoad();
+        
         self.locationManager.delegate=self
         self.locationManager.desiredAccuracy=kCLLocationAccuracyBest
         self.locationManager.requestWhenInUseAuthorization()
         self.locationManager.startUpdatingLocation()
-
+        self.mapView.showsUserLocation=true
+        
         
         
         
         
     }
+  
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning();
-    }
     
     //location delegate methods
     func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
@@ -39,14 +56,128 @@ class MapViewController: UIViewController, MKMapViewDelegate,CLLocationManagerDe
         
         let location = locations.last
         let center=CLLocationCoordinate2D(latitude: location!.coordinate.latitude, longitude:location!.coordinate.longitude)
-        let region=MKCoordinateRegion(center: center, span: MKCoordinateSpan(latitudeDelta: 1, longitudeDelta: 1))
+        let region=MKCoordinateRegion(center: center, span: MKCoordinateSpan(latitudeDelta: 0.004, longitudeDelta: 0.004))
         self.mapView.setRegion(region, animated: true)
         self.locationManager.stopUpdatingLocation()
+        latitude = locationManager.location!.coordinate.latitude;
+        longitude = locationManager.location!.coordinate.longitude;
+       
         
         
         
     }
+    
+    override func didReceiveMemoryWarning() {
+        
+        
+        super.didReceiveMemoryWarning()
+    }
+    
+    @IBAction func SpotDetailButtonTapped(sender: AnyObject) {
+        
+        
+        
+        
+        
+      self.performSegueWithIdentifier("SpotView", sender: self)
 
+    }
+
+    override func prepareForSegue(segue:(UIStoryboardSegue!), sender:AnyObject!)
+    {
+        if (segue.identifier == "SpotView")
+        {
+            
+            let spotView = segue!.destinationViewController as! SpotDetailViewController
+            
+            
+            spotView.latitudeD = latitude
+            spotView.longitudeD = longitude
+            
+
+            }
+            
+    
+    }
+ 
+    @IBAction func logoutButtonTapped(sender: AnyObject) {
+        
+        NSUserDefaults.standardUserDefaults().setBool(false, forKey: "isUserLoggedIn")
+        
+        NSUserDefaults.standardUserDefaults().synchronize();
+        self.dismissViewControllerAnimated(true, completion: nil);
+        
+
+    }
     
     
-}
+     func searchBarSearchButtonClicked(searchBar: UISearchBar) {
+        
+           searchBar.resignFirstResponder()
+           address = searchBar.text!;
+    
+        
+        let geocoder = CLGeocoder()
+        geocoder.geocodeAddressString(address, completionHandler: { (placemarks, error) -> Void in
+            if placemarks!.count > 0 {
+                
+                let placemark = placemarks!.first as CLPlacemark!
+                let location = placemark.location
+                let coordinate = location!.coordinate
+                self.searchingLatitude = coordinate.latitude
+                self.searchingLongitude = coordinate.longitude
+                
+                
+                let geoPoint = PFGeoPoint(latitude: coordinate.latitude ,longitude: coordinate.longitude  );
+                //let spot = PFObject(className: "Spot")
+                var query: PFQuery = PFQuery()
+                query = PFQuery(className: "Spot")
+                query.whereKey("SpotGeoPoint", nearGeoPoint: geoPoint, withinMiles: 20)
+                query.findObjectsInBackgroundWithBlock {
+                    (objects:[PFObject]?, error:NSError?) -> Void in
+                    if error == nil {
+                        for object in objects! {
+                          
+                            let pin = object["SpotGeoPoint"] as! PFGeoPoint
+                            let pinLatitude: CLLocationDegrees = pin.latitude
+                            let pinLongtitude: CLLocationDegrees = pin.longitude
+                            
+                            let pinLocation: CLLocationCoordinate2D = CLLocationCoordinate2D(latitude: pinLatitude, longitude: pinLongtitude)
+                            
+                             let annotation = CustomerAnnotation(coordinate: pinLocation)
+                            self.mapView.addAnnotation(annotation)
+                            
+                            
+                        
+                        }
+                    }
+                    
+                }
+    }
+            
+            
+            
+        })
+        
+        
+      
+        
+    
+    }
+    
+    
+    func searchBarCancelButtonClicked(searchBar: UISearchBar) {
+        
+        searchBar.resignFirstResponder()
+        searchBar.text=""
+        
+    
+    }
+    
+    
+    
+    
+    
+   }
+    
+   

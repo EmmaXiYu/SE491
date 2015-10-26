@@ -2,13 +2,27 @@
 //  User.swift
 //  DonateParkSpot
 //
-//  Created by Rafael Guerra on 10/13/15.
-//  Copyright © 2015 SE491. All rights reserved.
+//  Created by Apple on 10/24/15.
+//  Copyright © 2015 Apple. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
-class User {
-    var email : String = ""
-    var password : String = ""
+class User: NSObject {
+    
+    
+    var username = String()
+    
+    func getUserName() -> String {
+       
+        return username
+    }
+
+
+    
+    func setUserName(personName: String){
+        
+        
+        username = personName
+    }
 }
