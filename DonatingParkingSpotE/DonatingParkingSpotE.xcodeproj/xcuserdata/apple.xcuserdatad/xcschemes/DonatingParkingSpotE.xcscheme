@@ -14,10 +14,10 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "101677851BC48D78008C174B"
-               BuildableName = "DonateParkSpot.app"
-               BlueprintName = "DonateParkSpot"
-               ReferencedContainer = "container:DonateParkSpot.xcodeproj">
+               BlueprintIdentifier = "1873941A1BD5733700998B0D"
+               BuildableName = "DonatingParkingSpotE.app"
+               BlueprintName = "DonatingParkingSpotE"
+               ReferencedContainer = "container:DonatingParkingSpotE.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -32,30 +32,30 @@
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "101677991BC48D78008C174B"
-               BuildableName = "DonateParkSpotTests.xctest"
-               BlueprintName = "DonateParkSpotTests"
-               ReferencedContainer = "container:DonateParkSpot.xcodeproj">
+               BlueprintIdentifier = "187394311BD5733700998B0D"
+               BuildableName = "DonatingParkingSpotETests.xctest"
+               BlueprintName = "DonatingParkingSpotETests"
+               ReferencedContainer = "container:DonatingParkingSpotE.xcodeproj">
             </BuildableReference>
          </TestableReference>
          <TestableReference
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "101677A41BC48D78008C174B"
-               BuildableName = "DonateParkSpotUITests.xctest"
-               BlueprintName = "DonateParkSpotUITests"
-               ReferencedContainer = "container:DonateParkSpot.xcodeproj">
+               BlueprintIdentifier = "1873943C1BD5733700998B0D"
+               BuildableName = "DonatingParkingSpotEUITests.xctest"
+               BlueprintName = "DonatingParkingSpotEUITests"
+               ReferencedContainer = "container:DonatingParkingSpotE.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "101677851BC48D78008C174B"
-            BuildableName = "DonateParkSpot.app"
-            BlueprintName = "DonateParkSpot"
-            ReferencedContainer = "container:DonateParkSpot.xcodeproj">
+            BlueprintIdentifier = "1873941A1BD5733700998B0D"
+            BuildableName = "DonatingParkingSpotE.app"
+            BlueprintName = "DonatingParkingSpotE"
+            ReferencedContainer = "container:DonatingParkingSpotE.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -75,10 +75,10 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "101677851BC48D78008C174B"
-            BuildableName = "DonateParkSpot.app"
-            BlueprintName = "DonateParkSpot"
-            ReferencedContainer = "container:DonateParkSpot.xcodeproj">
+            BlueprintIdentifier = "1873941A1BD5733700998B0D"
+            BuildableName = "DonatingParkingSpotE.app"
+            BlueprintName = "DonatingParkingSpotE"
+            ReferencedContainer = "container:DonatingParkingSpotE.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -94,10 +94,10 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "101677851BC48D78008C174B"
-            BuildableName = "DonateParkSpot.app"
-            BlueprintName = "DonateParkSpot"
-            ReferencedContainer = "container:DonateParkSpot.xcodeproj">
+            BlueprintIdentifier = "1873941A1BD5733700998B0D"
+            BuildableName = "DonatingParkingSpotE.app"
+            BlueprintName = "DonatingParkingSpotE"
+            ReferencedContainer = "container:DonatingParkingSpotE.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

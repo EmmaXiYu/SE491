@@ -1,15 +1,15 @@
 //
-//  DonateParkSpotTests.swift
-//  DonateParkSpotTests
+//  DonatingParkingSpotETests.swift
+//  DonatingParkingSpotETests
 //
-//  Created by Apple on 10/22/15.
+//  Created by Apple on 10/19/15.
 //  Copyright © 2015 Apple. All rights reserved.
 //
 
 import XCTest
-@testable import DonateParkSpot
+@testable import DonatingParkingSpotE
 
-class DonateParkSpotTests: XCTestCase {
+class DonatingParkingSpotETests: XCTestCase {
     
     override func setUp() {
         super.setUp()

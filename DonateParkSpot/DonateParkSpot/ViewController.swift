@@ -2,17 +2,14 @@
 //  ViewController.swift
 //  DonateParkSpot
 //
-//  Created by Rafael Guerra on 10/6/15.
-//  Copyright © 2015 SE491. All rights reserved.
+//  Created by Apple on 10/22/15.
+//  Copyright © 2015 Apple. All rights reserved.
 //
 
 import UIKit
 
-class Register: UIViewController,UITextFieldDelegate {
+class ViewController: UIViewController {
 
-    @IBOutlet weak var username: UITextField!
-    @IBOutlet var password: UIView!
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -21,30 +18,27 @@ class Register: UIViewController,UITextFieldDelegate {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
-        //TEST PUSH BY PRAVANGSU
     }
 
+
     
-    
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if segue.identifier == "logged" {
-            
-        }
-    }
-    
-    func textFieldShouldReturn(textField: UITextField) -> Bool {
-        textField.resignFirstResponder()
-        return true
-    }
-    
-    func textFieldDidEndEditing(textField: UITextField) {
+    override func viewDidAppear(animated: Bool) {
+       
+       
         
-    }
-
-    @IBAction func signIn(sender: AnyObject) {
-        if true {
-            performSegueWithIdentifier("logged", sender: nil)
+       let isUserLoggedIn = NSUserDefaults.standardUserDefaults().boolForKey("isUserLoggedIn");
+        
+        
+        if(!isUserLoggedIn)
+        { self.performSegueWithIdentifier("loginView", sender: self)}
+        
+            
+       if(isUserLoggedIn)
+        {
+            self.performSegueWithIdentifier("mapView", sender: self)
         }
+        
+        
     }
 }
 
