@@ -26,23 +26,24 @@ class MySpotBiddingTableViewController: UITableViewController {
     }
 
     // MARK: - Table view data source
-
+    var data = ["312 wabash, chicago, IL", "200 W monrow , Chicago,IL", "200 Willis tower , Chicago,IL", "324 W madison  , Chicago,IL", "Unoin Staion  , Chicago,IL"]
+    
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 3
+        return 1
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 5
+        return data.count
     }
 
     /**/
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("MyBidLabelCell", forIndexPath: indexPath)
+        //let cell = tableView.dequeueReusableCellWithIdentifier("MyBidLabelCell", forIndexPath: indexPath)
+        let cell = tableView.dequeueReusableCellWithIdentifier("MySpotLabelCell", forIndexPath: indexPath)
 
-        cell.textLabel?.text = "Section \(indexPath.section) Row \(indexPath.row)"
-
+        cell.textLabel?.text = data[indexPath.row]
         return cell
     }
 
