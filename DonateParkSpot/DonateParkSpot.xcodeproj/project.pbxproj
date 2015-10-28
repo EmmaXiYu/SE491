@@ -42,6 +42,7 @@
 		180C3B261BDA923900E7E5F5 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 180C3B251BDA923900E7E5F5 /* LoginViewController.swift */; };
 		180C3B281BDA932C00E7E5F5 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 180C3B271BDA932C00E7E5F5 /* RegisterViewController.swift */; };
 		180C3B2A1BDAA0B400E7E5F5 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 180C3B291BDAA0B400E7E5F5 /* MapViewController.swift */; };
+		B8179AFA1BE0628B00F218F1 /* MySpotTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8179AF91BE0628B00F218F1 /* MySpotTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -103,6 +104,7 @@
 		180C3B251BDA923900E7E5F5 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		180C3B271BDA932C00E7E5F5 /* RegisterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		180C3B291BDAA0B400E7E5F5 /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
+		B8179AF91BE0628B00F218F1 /* MySpotTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MySpotTableViewController.swift; path = ../MySpotTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -199,6 +201,7 @@
 		180C3AF31BD9F0F400E7E5F5 /* DonateParkSpot */ = {
 			isa = PBXGroup;
 			children = (
+				B8179AF91BE0628B00F218F1 /* MySpotTableViewController.swift */,
 				10B75D681BE0509D009B88DC /* Location.swift */,
 				10B75D691BE0509D009B88DC /* Spot.swift */,
 				180A147A1BDB0A37005F4221 /* Main.storyboard */,
@@ -367,6 +370,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				180C3B261BDA923900E7E5F5 /* LoginViewController.swift in Sources */,
+				B8179AFA1BE0628B00F218F1 /* MySpotTableViewController.swift in Sources */,
 				180C3B2A1BDAA0B400E7E5F5 /* MapViewController.swift in Sources */,
 				10B75D6A1BE0509D009B88DC /* Location.swift in Sources */,
 				180A14A51BDC1554005F4221 /* CustomerAnnotation.swift in Sources */,
