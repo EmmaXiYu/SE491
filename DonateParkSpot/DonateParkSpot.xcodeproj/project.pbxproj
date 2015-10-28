@@ -7,14 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		180A147C1BDB0A37005F4221 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 180A147A1BDB0A37005F4221 /* Main.storyboard */; settings = {ASSET_TAGS = (); }; };
-		180A14841BDBF883005F4221 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 180A147D1BDBF883005F4221 /* Bolts.framework */; settings = {ASSET_TAGS = (); }; };
-		180A14851BDBF883005F4221 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 180A147E1BDBF883005F4221 /* Parse.framework */; settings = {ASSET_TAGS = (); }; };
-		180A14861BDBF883005F4221 /* ParseCrashReporting.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 180A147F1BDBF883005F4221 /* ParseCrashReporting.framework */; settings = {ASSET_TAGS = (); }; };
-		180A14871BDBF883005F4221 /* ParseFacebookUtils.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 180A14801BDBF883005F4221 /* ParseFacebookUtils.framework */; settings = {ASSET_TAGS = (); }; };
-		180A14881BDBF883005F4221 /* ParseFacebookUtilsV4.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 180A14811BDBF883005F4221 /* ParseFacebookUtilsV4.framework */; settings = {ASSET_TAGS = (); }; };
-		180A14891BDBF883005F4221 /* ParseTwitterUtils.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 180A14821BDBF883005F4221 /* ParseTwitterUtils.framework */; settings = {ASSET_TAGS = (); }; };
-		180A148A1BDBF883005F4221 /* ParseUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 180A14831BDBF883005F4221 /* ParseUI.framework */; settings = {ASSET_TAGS = (); }; };
+		10B75D6A1BE0509D009B88DC /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10B75D681BE0509D009B88DC /* Location.swift */; };
+		10B75D6B1BE0509D009B88DC /* Spot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10B75D691BE0509D009B88DC /* Spot.swift */; };
+		180A147C1BDB0A37005F4221 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 180A147A1BDB0A37005F4221 /* Main.storyboard */; };
+		180A14841BDBF883005F4221 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 180A147D1BDBF883005F4221 /* Bolts.framework */; };
+		180A14851BDBF883005F4221 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 180A147E1BDBF883005F4221 /* Parse.framework */; };
+		180A14861BDBF883005F4221 /* ParseCrashReporting.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 180A147F1BDBF883005F4221 /* ParseCrashReporting.framework */; };
+		180A14871BDBF883005F4221 /* ParseFacebookUtils.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 180A14801BDBF883005F4221 /* ParseFacebookUtils.framework */; };
+		180A14881BDBF883005F4221 /* ParseFacebookUtilsV4.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 180A14811BDBF883005F4221 /* ParseFacebookUtilsV4.framework */; };
+		180A14891BDBF883005F4221 /* ParseTwitterUtils.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 180A14821BDBF883005F4221 /* ParseTwitterUtils.framework */; };
+		180A148A1BDBF883005F4221 /* ParseUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 180A14831BDBF883005F4221 /* ParseUI.framework */; };
 		180A148D1BDBF8C5005F4221 /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 180A148C1BDBF8C5005F4221 /* Accounts.framework */; };
 		180A148F1BDBF8D0005F4221 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 180A148E1BDBF8D0005F4221 /* AudioToolbox.framework */; };
 		180A14911BDBF8DB005F4221 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 180A14901BDBF8DB005F4221 /* CFNetwork.framework */; };
@@ -27,9 +29,9 @@
 		180A149F1BDBF928005F4221 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 180A149E1BDBF928005F4221 /* SystemConfiguration.framework */; };
 		180A14A11BDBF937005F4221 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 180A14A01BDBF937005F4221 /* libz.tbd */; };
 		180A14A31BDBF941005F4221 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 180A14A21BDBF941005F4221 /* libsqlite3.tbd */; };
-		180A14A51BDC1554005F4221 /* CustomerAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 180A14A41BDC1554005F4221 /* CustomerAnnotation.swift */; settings = {ASSET_TAGS = (); }; };
-		180A14A71BDC16E9005F4221 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 180A14A61BDC16E9005F4221 /* User.swift */; settings = {ASSET_TAGS = (); }; };
-		180A14AD1BDC5074005F4221 /* SpotDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 180A14AC1BDC5074005F4221 /* SpotDetailViewController.swift */; settings = {ASSET_TAGS = (); }; };
+		180A14A51BDC1554005F4221 /* CustomerAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 180A14A41BDC1554005F4221 /* CustomerAnnotation.swift */; };
+		180A14A71BDC16E9005F4221 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 180A14A61BDC16E9005F4221 /* User.swift */; };
+		180A14AD1BDC5074005F4221 /* SpotDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 180A14AC1BDC5074005F4221 /* SpotDetailViewController.swift */; };
 		180C3AF51BD9F0F400E7E5F5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 180C3AF41BD9F0F400E7E5F5 /* AppDelegate.swift */; };
 		180C3AF71BD9F0F400E7E5F5 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 180C3AF61BD9F0F400E7E5F5 /* ViewController.swift */; };
 		180C3AFD1BD9F0F400E7E5F5 /* DonateParkSpot.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 180C3AFB1BD9F0F400E7E5F5 /* DonateParkSpot.xcdatamodeld */; };
@@ -37,9 +39,9 @@
 		180C3B021BD9F0F400E7E5F5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 180C3B001BD9F0F400E7E5F5 /* LaunchScreen.storyboard */; };
 		180C3B0D1BD9F0F400E7E5F5 /* DonateParkSpotTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 180C3B0C1BD9F0F400E7E5F5 /* DonateParkSpotTests.swift */; };
 		180C3B181BD9F0F400E7E5F5 /* DonateParkSpotUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 180C3B171BD9F0F400E7E5F5 /* DonateParkSpotUITests.swift */; };
-		180C3B261BDA923900E7E5F5 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 180C3B251BDA923900E7E5F5 /* LoginViewController.swift */; settings = {ASSET_TAGS = (); }; };
-		180C3B281BDA932C00E7E5F5 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 180C3B271BDA932C00E7E5F5 /* RegisterViewController.swift */; settings = {ASSET_TAGS = (); }; };
-		180C3B2A1BDAA0B400E7E5F5 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 180C3B291BDAA0B400E7E5F5 /* MapViewController.swift */; settings = {ASSET_TAGS = (); }; };
+		180C3B261BDA923900E7E5F5 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 180C3B251BDA923900E7E5F5 /* LoginViewController.swift */; };
+		180C3B281BDA932C00E7E5F5 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 180C3B271BDA932C00E7E5F5 /* RegisterViewController.swift */; };
+		180C3B2A1BDAA0B400E7E5F5 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 180C3B291BDAA0B400E7E5F5 /* MapViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -60,6 +62,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		10B75D681BE0509D009B88DC /* Location.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
+		10B75D691BE0509D009B88DC /* Spot.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Spot.swift; sourceTree = "<group>"; };
 		180A147B1BDB0A37005F4221 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		180A147D1BDBF883005F4221 /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Bolts.framework; path = DonateParkSpot/Bolts.framework; sourceTree = "<group>"; };
 		180A147E1BDBF883005F4221 /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Parse.framework; path = DonateParkSpot/Parse.framework; sourceTree = "<group>"; };
@@ -195,6 +199,8 @@
 		180C3AF31BD9F0F400E7E5F5 /* DonateParkSpot */ = {
 			isa = PBXGroup;
 			children = (
+				10B75D681BE0509D009B88DC /* Location.swift */,
+				10B75D691BE0509D009B88DC /* Spot.swift */,
 				180A147A1BDB0A37005F4221 /* Main.storyboard */,
 				180C3AF41BD9F0F400E7E5F5 /* AppDelegate.swift */,
 				180C3AF61BD9F0F400E7E5F5 /* ViewController.swift */,
@@ -362,11 +368,13 @@
 			files = (
 				180C3B261BDA923900E7E5F5 /* LoginViewController.swift in Sources */,
 				180C3B2A1BDAA0B400E7E5F5 /* MapViewController.swift in Sources */,
+				10B75D6A1BE0509D009B88DC /* Location.swift in Sources */,
 				180A14A51BDC1554005F4221 /* CustomerAnnotation.swift in Sources */,
 				180C3B281BDA932C00E7E5F5 /* RegisterViewController.swift in Sources */,
 				180A14A71BDC16E9005F4221 /* User.swift in Sources */,
 				180C3AFD1BD9F0F400E7E5F5 /* DonateParkSpot.xcdatamodeld in Sources */,
 				180A14AD1BDC5074005F4221 /* SpotDetailViewController.swift in Sources */,
+				10B75D6B1BE0509D009B88DC /* Spot.swift in Sources */,
 				180C3AF71BD9F0F400E7E5F5 /* ViewController.swift in Sources */,
 				180C3AF51BD9F0F400E7E5F5 /* AppDelegate.swift in Sources */,
 			);

@@ -41,11 +41,7 @@ class MapViewController: UIViewController,MKMapViewDelegate,CLLocationManagerDel
         self.locationManager.requestWhenInUseAuthorization()
         self.locationManager.startUpdatingLocation()
         self.mapView.showsUserLocation=true
-        
-        
-        
-        
-        
+        self.mapView.setUserTrackingMode(MKUserTrackingMode.FollowWithHeading, animated: true)
     }
   
     
@@ -55,16 +51,17 @@ class MapViewController: UIViewController,MKMapViewDelegate,CLLocationManagerDel
         
         
         let location = locations.last
-        let center=CLLocationCoordinate2D(latitude: location!.coordinate.latitude, longitude:location!.coordinate.longitude)
-        let region=MKCoordinateRegion(center: center, span: MKCoordinateSpan(latitudeDelta: 0.004, longitudeDelta: 0.004))
-        self.mapView.setRegion(region, animated: true)
-        self.locationManager.stopUpdatingLocation()
+        //let center=CLLocationCoordinate2D(latitude: location!.coordinate.latitude, longitude:location!.coordinate.longitude)
+        //let region=MKCoordinateRegion(center: center, span: MKCoordinateSpan(latitudeDelta: 0.004, longitudeDelta: 0.004))
+        //self.mapView.setRegion(region, animated: true)
+        //self.locationManager.stopUpdatingLocation()
         if locationManager.location != nil {
             latitude = locationManager.location!.coordinate.latitude
             longitude = locationManager.location!.coordinate.longitude
             //mapView.camera.centerCoordinate = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
         }
     }
+    
     
     override func didReceiveMemoryWarning() {
         
