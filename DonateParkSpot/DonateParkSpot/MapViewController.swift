@@ -13,18 +13,13 @@ import CoreLocation
 import Parse
 
 class MapViewController: UIViewController,MKMapViewDelegate,CLLocationManagerDelegate,UISearchBarDelegate{
-    
-
-    
-
     @IBOutlet weak var searchBar: UISearchBar!
-    
-    @IBOutlet weak var
-    mapView: MKMapView!
-    
+    @IBOutlet weak var menu: UIView!
+    @IBOutlet weak var mapView: MKMapView!
     
     
-  var address = ""
+    
+    var address = ""
     var latitude = Double ()
     var longitude = Double ()
     var ojId =  String()
@@ -45,13 +40,16 @@ class MapViewController: UIViewController,MKMapViewDelegate,CLLocationManagerDel
         self.mapView.setUserTrackingMode(MKUserTrackingMode.FollowWithHeading, animated: true)
     }
   
+    @IBAction func showMenu() {
+        menu.hidden = !menu.hidden
+    }
     
     
     //location delegate methods
     func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         
         
-        let location = locations.last
+        //let location = locations.last
         //let center=CLLocationCoordinate2D(latitude: location!.coordinate.latitude, longitude:location!.coordinate.longitude)
         //let region=MKCoordinateRegion(center: center, span: MKCoordinateSpan(latitudeDelta: 0.004, longitudeDelta: 0.004))
         //self.mapView.setRegion(region, animated: true)
@@ -70,15 +68,6 @@ class MapViewController: UIViewController,MKMapViewDelegate,CLLocationManagerDel
         super.didReceiveMemoryWarning()
     }
     
-    @IBAction func SpotDetailButtonTapped(sender: AnyObject) {
-        
-        
-        
-        
-        
-      self.performSegueWithIdentifier("SpotView", sender: self)
-
-    }
 
     override func prepareForSegue(segue:(UIStoryboardSegue!), sender:AnyObject!)
     {
