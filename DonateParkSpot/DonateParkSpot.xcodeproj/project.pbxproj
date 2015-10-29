@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		10A79C951BE2D04900D26027 /* BuyDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10A79C941BE2D04900D26027 /* BuyDetailController.swift */; };
 		10B75D6A1BE0509D009B88DC /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10B75D681BE0509D009B88DC /* Location.swift */; };
 		10B75D6B1BE0509D009B88DC /* Spot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10B75D691BE0509D009B88DC /* Spot.swift */; };
 		10B75D6D1BE06949009B88DC /* Bid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10B75D6C1BE06949009B88DC /* Bid.swift */; };
@@ -66,6 +67,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		10A79C941BE2D04900D26027 /* BuyDetailController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BuyDetailController.swift; sourceTree = "<group>"; };
 		10B75D681BE0509D009B88DC /* Location.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
 		10B75D691BE0509D009B88DC /* Spot.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Spot.swift; sourceTree = "<group>"; };
 		10B75D6C1BE06949009B88DC /* Bid.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Bid.swift; sourceTree = "<group>"; };
@@ -226,6 +228,7 @@
 				10B75D6C1BE06949009B88DC /* Bid.swift */,
 				10B75D6E1BE1932D009B88DC /* SearchHistory.swift */,
 				10B75D701BE1B087009B88DC /* CurrentUser.swift */,
+				10A79C941BE2D04900D26027 /* BuyDetailController.swift */,
 			);
 			path = DonateParkSpot;
 			sourceTree = "<group>";
@@ -389,6 +392,7 @@
 				10B75D6D1BE06949009B88DC /* Bid.swift in Sources */,
 				180A14AD1BDC5074005F4221 /* SpotDetailViewController.swift in Sources */,
 				10B75D711BE1B087009B88DC /* CurrentUser.swift in Sources */,
+				10A79C951BE2D04900D26027 /* BuyDetailController.swift in Sources */,
 				10B75D6F1BE1932D009B88DC /* SearchHistory.swift in Sources */,
 				10B75D6B1BE0509D009B88DC /* Spot.swift in Sources */,
 				180C3AF71BD9F0F400E7E5F5 /* ViewController.swift in Sources */,

@@ -15,4 +15,5 @@ class Spot {
     var timeLeft : Int = 0
     var minDonation = 0
     var legalTime = ""
+    var timeToLeave : NSDate?
 }
