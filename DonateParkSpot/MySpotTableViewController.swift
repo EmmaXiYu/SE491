@@ -7,12 +7,40 @@
 //
 
 import UIKit
-
+import Parse
 class MySpotBiddingTableViewController: UITableViewController {
-
+ var datas = [Spot] ()
+    var mySpotArray:NSMutableArray = []
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        var query: PFQuery = PFQuery()
+        query = PFQuery(className: "Spot")
+        //query.whereKey("userAccount", equalTo: PFObject(withoutDataWithClassName:"User", objectId:"SomeUserId"))
+        query.findObjectsInBackgroundWithBlock {
+            (objects:[PFObject]?, error:NSError?) -> Void in
+            if error == nil {
+                for object in objects! {
+                    
+                    var s: Spot = Spot()
+                    let sgp = object["SpotGeoPoint"] as! PFGeoPoint
+                    let Latitude: CLLocationDegrees = sgp.latitude
+                    let Longtitude: CLLocationDegrees = sgp.longitude
+                    let ttl = object["leavingTime"] as! String
+                    s.legalTime = ttl
+                    self.datas.insert(s, atIndex: 0)
+                    
+                    // self.mySpotArray.addObject(object)
+                    //let spot = object as! Spot
+                  //  self.datas.insert(object, atIndex: 0)
+                    // let pin = object["SpotGeoPoint"] as! PFGeoPoint
+                   // let pinLatitude: CLLocationDegrees = pin.latitude
+                    //let pinLongtitude: CLLocationDegrees = pin.longitude
+                }
+                self.tableView.reloadData()
+            }
+        }
+        
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -28,6 +56,8 @@ class MySpotBiddingTableViewController: UITableViewController {
     // MARK: - Table view data source
     var data = ["312 wabash, chicago, IL", "200 W monrow , Chicago,IL", "200 Willis tower , Chicago,IL", "324 W madison  , Chicago,IL", "Unoin Staion  , Chicago,IL"]
     
+   
+    
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
         return 1
@@ -35,7 +65,7 @@ class MySpotBiddingTableViewController: UITableViewController {
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return data.count
+        return datas.count
     }
 
     /**/
@@ -43,7 +73,18 @@ class MySpotBiddingTableViewController: UITableViewController {
         //let cell = tableView.dequeueReusableCellWithIdentifier("MyBidLabelCell", forIndexPath: indexPath)
         let cell = tableView.dequeueReusableCellWithIdentifier("MySpotLabelCell", forIndexPath: indexPath)
 
-        cell.textLabel?.text = data[indexPath.row]
+        //cell.textLabel?.text = data[indexPath.row]
+        let S: Spot = datas[indexPath.row]
+        //let pin = object["SpotGeoPoint"] as! PFGeoPoint
+        //let pinLatitude: CLLocationDegrees = pin.latitude
+        //let pinLongtitude: CLLocationDegrees = pin.longitude
+        
+        
+        //let s = NSString(format: "%.2f", pinLatitude)
+        
+        cell.textLabel?.text = S.legalTime
+        //cell.usernameLabel.text = username
+        
         return cell
     }
 

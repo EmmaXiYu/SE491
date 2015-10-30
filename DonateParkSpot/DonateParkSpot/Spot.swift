@@ -16,4 +16,5 @@ class Spot {
     var minDonation = 0
     var legalTime = ""
     var timeToLeave : NSDate?
+    var Owner: User = User()
 }
