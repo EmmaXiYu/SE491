@@ -7,17 +7,42 @@
 //
 
 import UIKit
-
+import Parse
 class MySpotBiddingTableViewController: UITableViewController {
-
+ var datas = [Spot] ()
+    var mySpotArray:NSMutableArray = []
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
+        var query: PFQuery = PFQuery()
+        query = PFQuery(className: "Spot")
+        //query.whereKey("userAccount", equalTo: PFObject(withoutDataWithClassName:"User", objectId:"SomeUserId"))
+        query.findObjectsInBackgroundWithBlock {
+            (objects:[PFObject]?, error:NSError?) -> Void in
+            if error == nil {
+                for object in objects! {
+                    
+                    let s: Spot = Spot()
+                    let sgp = object["SpotGeoPoint"] as! PFGeoPoint
+                    let mPrice = object["minimumPrice"] as! Int
+                    let Latitude: CLLocationDegrees = sgp.latitude
+                    let Longtitude: CLLocationDegrees = sgp.longitude
+                    let ttl = object["leavingTime"] as! String
+                    let location : Location = Location()
+                    location.latitude = Latitude
+                    location.longitude = Longtitude
+                    
+                    s.legalTime = ttl
+                    s.location = location
+                    s.minDonation=mPrice
+                    self.datas.insert(s, atIndex: 0)
 
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+                }
+                self.tableView.reloadData()
+            }
+        }
+        
+   
     }
 
     override func didReceiveMemoryWarning() {
@@ -26,74 +51,45 @@ class MySpotBiddingTableViewController: UITableViewController {
     }
 
     // MARK: - Table view data source
-    var data = ["312 wabash, chicago, IL", "200 W monrow , Chicago,IL", "200 Willis tower , Chicago,IL", "324 W madison  , Chicago,IL", "Unoin Staion  , Chicago,IL"]
+   
     
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
         return 1
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return data.count
+        return datas.count
     }
 
     /**/
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         //let cell = tableView.dequeueReusableCellWithIdentifier("MyBidLabelCell", forIndexPath: indexPath)
         let cell = tableView.dequeueReusableCellWithIdentifier("MySpotLabelCell", forIndexPath: indexPath)
-
-        cell.textLabel?.text = data[indexPath.row]
+        //cell.textLabel?.text = data[indexPath.row]
+        let S: Spot = datas[indexPath.row]
+        //cell.textLabel?.text = S.legalTime + "  " +  String(format:"%f", S.location.altitude)
+        cell.textLabel?.text = String(format:"%f", S.location.longitude) + "  " +  String(format:"%f", S.location.longitude)
+        
+        //var b:String = String(format:"%f", S.location.altitude)
         return cell
+        
     }
 
     override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         return "Section \(section)"
     }
     
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
-    }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-        if editingStyle == .Delete {
-            // Delete the row from the data source
-            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
-        } else if editingStyle == .Insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(tableView: UITableView, moveRowAtIndexPath fromIndexPath: NSIndexPath, toIndexPath: NSIndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(tableView: UITableView, canMoveRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+        if segue.identifier == "ToMySpotDetail"
+        {
+            if let destinationVC = segue.destinationViewController as? MySpotDetail{
+                
+                if let blogIndex = tableView.indexPathForSelectedRow?.row {
+                    destinationVC.DetailSpot = datas[blogIndex]
+                }
+                
+            }
+        }
+        //
     }
-    */
-
 }
