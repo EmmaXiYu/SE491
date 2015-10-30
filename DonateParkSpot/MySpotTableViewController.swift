@@ -22,25 +22,21 @@ class MySpotBiddingTableViewController: UITableViewController {
             if error == nil {
                 for object in objects! {
                     
-                    var s: Spot = Spot()
+                    let s: Spot = Spot()
                     let sgp = object["SpotGeoPoint"] as! PFGeoPoint
+                    let mPrice = object["minimumPrice"] as! Int
                     let Latitude: CLLocationDegrees = sgp.latitude
                     let Longtitude: CLLocationDegrees = sgp.longitude
                     let ttl = object["leavingTime"] as! String
-                    var location : Location = Location()
+                    let location : Location = Location()
                     location.latitude = Latitude
                     location.longitude = Longtitude
                     
                     s.legalTime = ttl
                     s.location = location
+                    s.minDonation=mPrice
                     self.datas.insert(s, atIndex: 0)
-                    
-                    // self.mySpotArray.addObject(object)
-                    //let spot = object as! Spot
-                  //  self.datas.insert(object, atIndex: 0)
-                    // let pin = object["SpotGeoPoint"] as! PFGeoPoint
-                   // let pinLatitude: CLLocationDegrees = pin.latitude
-                    //let pinLongtitude: CLLocationDegrees = pin.longitude
+
                 }
                 self.tableView.reloadData()
             }
