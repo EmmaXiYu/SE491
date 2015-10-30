@@ -81,6 +81,6 @@ class MySpotBiddingTableViewController: UITableViewController {
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        //
+        ////
     }
 }
