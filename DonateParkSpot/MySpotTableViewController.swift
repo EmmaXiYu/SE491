@@ -86,6 +86,7 @@ class MySpotBiddingTableViewController: UITableViewController {
         //cell.usernameLabel.text = username
         
         return cell
+        
     }
 
     override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
