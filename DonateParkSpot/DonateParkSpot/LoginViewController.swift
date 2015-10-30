@@ -38,15 +38,20 @@ class LoginViewController: UIViewController {
     
     func Login()
     {
-        var user = PFUser()
+        let user = PFUser()
         user.username = userEmailTextField.text!
         user.password = userPasswordTextField.text!
         PFUser.logInWithUsernameInBackground(userEmailTextField.text!, password: userPasswordTextField.text!, block:  {
-            (User : PFUser?, Error : NSError?) -> Void in
+            (username : PFUser?, Error : NSError?) -> Void in
         
             
             if Error == nil{
-            
+                
+                let userLogged = User()
+                userLogged.username = user.username!
+                
+                CurrentUser.currentUser = userLogged
+                
                 
                 NSUserDefaults.standardUserDefaults().setBool(true, forKey: "isUserLoggedIn")
                 

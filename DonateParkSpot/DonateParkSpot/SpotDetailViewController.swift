@@ -32,7 +32,7 @@ class SpotDetailViewController: UIViewController {
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-            }
+    }
 
     
     
@@ -50,6 +50,7 @@ class SpotDetailViewController: UIViewController {
         testObject["SpotGeoPoint"] = geoPoint
         testObject["leavingTime"] = timeToLeaveTextField.text
         testObject["minimumPrice"] = Float(minimumDonatePrice.text!)
+        
         
         
         

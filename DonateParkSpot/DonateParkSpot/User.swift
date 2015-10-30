@@ -10,19 +10,6 @@ import UIKit
 
 class User: NSObject {
     
+    var username = ""
     
-    var username = String()
-    
-    func getUserName() -> String {
-       
-        return username
-    }
-
-
-    
-    func setUserName(personName: String){
-        
-        
-        username = personName
-    }
 }
