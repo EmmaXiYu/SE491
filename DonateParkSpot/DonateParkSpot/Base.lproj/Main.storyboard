@@ -658,6 +658,9 @@
                                     <animations/>
                                 </tableViewCellContentView>
                                 <animations/>
+                                <connections>
+                                    <segue destination="b6N-PW-Qac" kind="show" identifier="ToMySpotDetail" id="YM2-8y-EG0"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <sections/>
@@ -666,30 +669,73 @@
                             <outlet property="delegate" destination="nSo-A0-BZU" id="yxi-GV-2jD"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="4nQ-5l-LN2"/>
+                    <navigationItem key="navigationItem" id="4nQ-5l-LN2">
+                        <barButtonItem key="backBarButtonItem" title="Back" id="Iko-hw-p0B"/>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HOC-pV-iH7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1726" y="-1158"/>
+            <point key="canvasLocation" x="2538" y="-1158"/>
+        </scene>
+        <!--MySpotDetail-->
+        <scene sceneID="qPe-Yv-4tI">
+            <objects>
+                <viewController title="MySpotDetail" id="b6N-PW-Qac" customClass="MySpotDetail" customModule="DonateParkSpot" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="wg0-r1-saC"/>
+                        <viewControllerLayoutGuide type="bottom" id="6Rh-kz-xz1"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="57r-LD-YHS">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="B20-wJ-cDj">
+                                <rect key="frame" x="447" y="138" width="81" height="30"/>
+                                <animations/>
+                                <state key="normal" title="Accept"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="57K-bB-1xE">
+                                <rect key="frame" x="220" y="138" width="46" height="30"/>
+                                <animations/>
+                                <state key="normal" title="Reject"/>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kxW-LD-iRa">
+                                <rect key="frame" x="21" y="85" width="129" height="47"/>
+                                <animations/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <animations/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Show My All Spot" id="rBO-8g-kWJ">
+                        <barButtonItem key="backBarButtonItem" title="Back" id="Rqm-X7-yLm"/>
+                    </navigationItem>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="BHh-KF-Kc1" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3173" y="-1167"/>
         </scene>
         <!--Navigation Controller-->
-        <scene sceneID="aa5-cB-Rpp">
+        <scene sceneID="MOE-Eg-yRR">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="XLY-ul-tWs" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="jiq-FG-Q5K" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="IYJ-jM-Sg7">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="8t4-YK-9u5">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <animations/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="nSo-A0-BZU" kind="relationship" relationship="rootViewController" id="bFj-VQ-Gxz"/>
+                        <segue destination="nSo-A0-BZU" kind="relationship" relationship="rootViewController" id="2Rz-0S-orZ"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Gyg-AB-Lup" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="RVe-mo-86Q" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2427" y="-1140"/>
+            <point key="canvasLocation" x="1726" y="-1158"/>
         </scene>
     </scenes>
 </document>

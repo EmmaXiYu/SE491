@@ -46,6 +46,7 @@
 		180C3B261BDA923900E7E5F5 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 180C3B251BDA923900E7E5F5 /* LoginViewController.swift */; };
 		180C3B281BDA932C00E7E5F5 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 180C3B271BDA932C00E7E5F5 /* RegisterViewController.swift */; };
 		180C3B2A1BDAA0B400E7E5F5 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 180C3B291BDAA0B400E7E5F5 /* MapViewController.swift */; };
+		B80CB65A1BE30A9600746CEB /* MySpotDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = B80CB6591BE30A9600746CEB /* MySpotDetail.swift */; };
 		B8179AFA1BE0628B00F218F1 /* MySpotTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8179AF91BE0628B00F218F1 /* MySpotTableViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -112,6 +113,7 @@
 		180C3B251BDA923900E7E5F5 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		180C3B271BDA932C00E7E5F5 /* RegisterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		180C3B291BDAA0B400E7E5F5 /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
+		B80CB6591BE30A9600746CEB /* MySpotDetail.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MySpotDetail.swift; sourceTree = "<group>"; };
 		B8179AF91BE0628B00F218F1 /* MySpotTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MySpotTableViewController.swift; path = ../MySpotTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -213,6 +215,7 @@
 				10B75D681BE0509D009B88DC /* Location.swift */,
 				10B75D691BE0509D009B88DC /* Spot.swift */,
 				180A147A1BDB0A37005F4221 /* Main.storyboard */,
+				B80CB6591BE30A9600746CEB /* MySpotDetail.swift */,
 				180C3AF41BD9F0F400E7E5F5 /* AppDelegate.swift */,
 				180C3AF61BD9F0F400E7E5F5 /* ViewController.swift */,
 				180C3B291BDAA0B400E7E5F5 /* MapViewController.swift */,
@@ -392,6 +395,7 @@
 				10B75D6D1BE06949009B88DC /* Bid.swift in Sources */,
 				180A14AD1BDC5074005F4221 /* SpotDetailViewController.swift in Sources */,
 				10B75D711BE1B087009B88DC /* CurrentUser.swift in Sources */,
+				B80CB65A1BE30A9600746CEB /* MySpotDetail.swift in Sources */,
 				10A79C951BE2D04900D26027 /* BuyDetailController.swift in Sources */,
 				10B75D6F1BE1932D009B88DC /* SearchHistory.swift in Sources */,
 				10B75D6B1BE0509D009B88DC /* Spot.swift in Sources */,

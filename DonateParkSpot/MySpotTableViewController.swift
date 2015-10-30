@@ -71,7 +71,10 @@ class MySpotBiddingTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCellWithIdentifier("MySpotLabelCell", forIndexPath: indexPath)
         //cell.textLabel?.text = data[indexPath.row]
         let S: Spot = datas[indexPath.row]
-        cell.textLabel?.text = S.legalTime
+        //cell.textLabel?.text = S.legalTime + "  " +  String(format:"%f", S.location.altitude)
+        cell.textLabel?.text = String(format:"%f", S.location.longitude) + "  " +  String(format:"%f", S.location.longitude)
+        
+        //var b:String = String(format:"%f", S.location.altitude)
         return cell
         
     }
@@ -81,6 +84,16 @@ class MySpotBiddingTableViewController: UITableViewController {
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        ////
+        if segue.identifier == "ToMySpotDetail"
+        {
+            if let destinationVC = segue.destinationViewController as? MySpotDetail{
+                
+                if let blogIndex = tableView.indexPathForSelectedRow?.row {
+                    destinationVC.DetailSpot = datas[blogIndex]
+                }
+                
+            }
+        }
+        //
     }
 }
