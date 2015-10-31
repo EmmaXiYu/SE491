@@ -21,11 +21,7 @@ class LoginViewController: UIViewController {
     }
     
     
-    override func didReceiveMemoryWarning() {
-        
-        
-        super.didReceiveMemoryWarning()
-    }
+
 
 
     @IBAction func LoginButtonTapped(sender: AnyObject) {
@@ -54,7 +50,7 @@ class LoginViewController: UIViewController {
                 
                 
                 NSUserDefaults.standardUserDefaults().setBool(true, forKey: "isUserLoggedIn")
-                
+                NSUserDefaults.standardUserDefaults().setObject(user.username, forKey: "username")
                 NSUserDefaults.standardUserDefaults().synchronize();
                 self.dismissViewControllerAnimated(true, completion: nil);
 
@@ -66,7 +62,6 @@ class LoginViewController: UIViewController {
                 
                 
                 NSUserDefaults.standardUserDefaults().setBool(false, forKey: "isUserLoggedIn")
-                
                 NSUserDefaults.standardUserDefaults().synchronize();
                 
                 self.displayMyAlertMessage("Email or password is not valid");

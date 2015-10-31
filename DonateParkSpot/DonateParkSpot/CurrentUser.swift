@@ -9,5 +9,5 @@
 import Foundation
 
 class CurrentUser {
-    static var currentUser : User?
+    static var currentUser : User = User()
 }

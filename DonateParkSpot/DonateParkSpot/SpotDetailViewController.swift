@@ -50,9 +50,7 @@ class SpotDetailViewController: UIViewController {
         testObject["SpotGeoPoint"] = geoPoint
         testObject["leavingTime"] = timeToLeaveTextField.text
         testObject["minimumPrice"] = Float(minimumDonatePrice.text!)
-        
-        
-        
+        testObject["owner"] = CurrentUser.currentUser.username
         
         testObject.saveInBackgroundWithBlock { (success, error) -> Void in
             
