@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreLocation
 
 class MySpotDetail: UIViewController {
     @IBOutlet weak var lblAddress: UILabel!
@@ -16,10 +17,28 @@ class MySpotDetail: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.lblAddress.text =  String(format:"%f", DetailSpot.location.longitude) + "  " +  String(format:"%f", DetailSpot.location.longitude)
+        self.lblAddress.text =  String(format:"%f", DetailSpot.location.latitude) + "  " +  String(format:"%f", DetailSpot.location.longitude)
         self.lblMinPrice.text = String(DetailSpot.minDonation)
         // Do any additional setup after loading the view.
+        
+        
+        
+        let geoCoder = CLGeocoder()
+        let location = CLLocation(latitude: DetailSpot.location.latitude, longitude: DetailSpot.location.longitude)
+        
+        geoCoder.reverseGeocodeLocation(location, completionHandler: { (placemarks, error) -> Void in
+            let placeArray = placemarks! as? [CLPlacemark]
+            
+            // Place details
+            var placeMark: CLPlacemark!
+            placeMark = placeArray?[0]
+            if let locationName = placeMark.addressDictionary!["Name"] as? NSString {
+                 self.lblAddress.text = String(locationName)
+            }
+        
+        })
     }
+
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
