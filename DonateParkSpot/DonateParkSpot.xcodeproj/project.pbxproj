@@ -30,6 +30,8 @@
 		180A14A51BDC1554005F4221 /* CustomerAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 180A14A41BDC1554005F4221 /* CustomerAnnotation.swift */; settings = {ASSET_TAGS = (); }; };
 		180A14A71BDC16E9005F4221 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 180A14A61BDC16E9005F4221 /* User.swift */; settings = {ASSET_TAGS = (); }; };
 		180A14AD1BDC5074005F4221 /* SpotDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 180A14AC1BDC5074005F4221 /* SpotDetailViewController.swift */; settings = {ASSET_TAGS = (); }; };
+		180A14B11BE48765005F4221 /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 180A14B01BE48765005F4221 /* SWRevealViewController.m */; settings = {ASSET_TAGS = (); }; };
+		180A14B51BE5C013005F4221 /* BackTableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 180A14B41BE5C013005F4221 /* BackTableVC.swift */; settings = {ASSET_TAGS = (); }; };
 		180C3AF51BD9F0F400E7E5F5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 180C3AF41BD9F0F400E7E5F5 /* AppDelegate.swift */; };
 		180C3AF71BD9F0F400E7E5F5 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 180C3AF61BD9F0F400E7E5F5 /* ViewController.swift */; };
 		180C3AFD1BD9F0F400E7E5F5 /* DonateParkSpot.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 180C3AFB1BD9F0F400E7E5F5 /* DonateParkSpot.xcdatamodeld */; };
@@ -83,6 +85,10 @@
 		180A14A41BDC1554005F4221 /* CustomerAnnotation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomerAnnotation.swift; sourceTree = "<group>"; };
 		180A14A61BDC16E9005F4221 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		180A14AC1BDC5074005F4221 /* SpotDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpotDetailViewController.swift; sourceTree = "<group>"; };
+		180A14AE1BE48763005F4221 /* DonateParkSpot-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "DonateParkSpot-Bridging-Header.h"; sourceTree = "<group>"; };
+		180A14AF1BE48765005F4221 /* SWRevealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWRevealViewController.h; sourceTree = "<group>"; };
+		180A14B01BE48765005F4221 /* SWRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWRevealViewController.m; sourceTree = "<group>"; };
+		180A14B41BE5C013005F4221 /* BackTableVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BackTableVC.swift; path = ../BackTableVC.swift; sourceTree = "<group>"; };
 		180C3AF11BD9F0F400E7E5F5 /* DonateParkSpot.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DonateParkSpot.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		180C3AF41BD9F0F400E7E5F5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		180C3AF61BD9F0F400E7E5F5 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -195,6 +201,9 @@
 		180C3AF31BD9F0F400E7E5F5 /* DonateParkSpot */ = {
 			isa = PBXGroup;
 			children = (
+				180A14B41BE5C013005F4221 /* BackTableVC.swift */,
+				180A14AF1BE48765005F4221 /* SWRevealViewController.h */,
+				180A14B01BE48765005F4221 /* SWRevealViewController.m */,
 				180A147A1BDB0A37005F4221 /* Main.storyboard */,
 				180C3AF41BD9F0F400E7E5F5 /* AppDelegate.swift */,
 				180C3AF61BD9F0F400E7E5F5 /* ViewController.swift */,
@@ -208,6 +217,7 @@
 				180A14A41BDC1554005F4221 /* CustomerAnnotation.swift */,
 				180A14A61BDC16E9005F4221 /* User.swift */,
 				180A14AC1BDC5074005F4221 /* SpotDetailViewController.swift */,
+				180A14AE1BE48763005F4221 /* DonateParkSpot-Bridging-Header.h */,
 			);
 			path = DonateParkSpot;
 			sourceTree = "<group>";
@@ -292,6 +302,7 @@
 		180C3AE91BD9F0F400E7E5F5 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastSwiftUpdateCheck = 0700;
 				LastUpgradeCheck = 0700;
 				ORGANIZATIONNAME = Apple;
 				TargetAttributes = {
@@ -365,8 +376,10 @@
 				180A14A51BDC1554005F4221 /* CustomerAnnotation.swift in Sources */,
 				180C3B281BDA932C00E7E5F5 /* RegisterViewController.swift in Sources */,
 				180A14A71BDC16E9005F4221 /* User.swift in Sources */,
+				180A14B51BE5C013005F4221 /* BackTableVC.swift in Sources */,
 				180C3AFD1BD9F0F400E7E5F5 /* DonateParkSpot.xcdatamodeld in Sources */,
 				180A14AD1BDC5074005F4221 /* SpotDetailViewController.swift in Sources */,
+				180A14B11BE48765005F4221 /* SWRevealViewController.m in Sources */,
 				180C3AF71BD9F0F400E7E5F5 /* ViewController.swift in Sources */,
 				180C3AF51BD9F0F400E7E5F5 /* AppDelegate.swift in Sources */,
 			);
@@ -510,6 +523,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/DonateParkSpot",
@@ -518,6 +532,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.depaul.Emma.DonateParkSpot;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "DonateParkSpot/DonateParkSpot-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
@@ -525,6 +541,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/DonateParkSpot",
@@ -533,6 +550,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.depaul.Emma.DonateParkSpot;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "DonateParkSpot/DonateParkSpot-Bridging-Header.h";
 			};
 			name = Release;
 		};

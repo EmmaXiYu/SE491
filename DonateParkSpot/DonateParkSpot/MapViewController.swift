@@ -12,18 +12,26 @@ import CoreLocation
 import Parse
 
 class MapViewController: UIViewController,MKMapViewDelegate,CLLocationManagerDelegate,UISearchBarDelegate{
-    
-
-    
 
     @IBOutlet weak var searchBar: UISearchBar!
+    @IBOutlet weak var Menu: UIBarButtonItem!
+ 
+
+       /* @IBAction func logoutButtonTapped(sender: AnyObject) {
+        
+        
+        NSUserDefaults.standardUserDefaults().setBool(false, forKey: "isUserLoggedIn")
+        
+        NSUserDefaults.standardUserDefaults().synchronize();
+        self.dismissViewControllerAnimated(true, completion: nil);
+    }*/
+    @IBOutlet weak var mapView: MKMapView!
+ 
+    @IBAction func DetailButtonTapped(sender: AnyObject) {
+           self.performSegueWithIdentifier("SpotView", sender: self)}
     
-    @IBOutlet weak var
-    mapView: MKMapView!
-    
-    
-    
-  var address = ""
+   
+      var address = ""
     var latitude = Double ()
     var longitude = Double ()
     var ojId =  String()
@@ -42,6 +50,11 @@ class MapViewController: UIViewController,MKMapViewDelegate,CLLocationManagerDel
         self.locationManager.startUpdatingLocation()
         self.mapView.showsUserLocation=true
         self.mapView.setUserTrackingMode(MKUserTrackingMode.FollowWithHeading, animated: true)
+        Menu.target = self.revealViewController()
+        Menu.action = Selector("revealToggle:")
+        
+        self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
+             searchBar.delegate = self
     }
   
     
@@ -69,15 +82,7 @@ class MapViewController: UIViewController,MKMapViewDelegate,CLLocationManagerDel
         super.didReceiveMemoryWarning()
     }
     
-    @IBAction func SpotDetailButtonTapped(sender: AnyObject) {
-        
-        
-        
-        
-        
-      self.performSegueWithIdentifier("SpotView", sender: self)
 
-    }
 
     override func prepareForSegue(segue:(UIStoryboardSegue!), sender:AnyObject!)
     {
@@ -95,24 +100,11 @@ class MapViewController: UIViewController,MKMapViewDelegate,CLLocationManagerDel
             
     
     }
- 
-    @IBAction func logoutButtonTapped(sender: AnyObject) {
-        
-        NSUserDefaults.standardUserDefaults().setBool(false, forKey: "isUserLoggedIn")
-        
-        NSUserDefaults.standardUserDefaults().synchronize();
-        self.dismissViewControllerAnimated(true, completion: nil);
-        
 
-    }
+    func searchBarSearchButtonClicked(searchBar: UISearchBar) {
     
-    
-     func searchBarSearchButtonClicked(searchBar: UISearchBar) {
-        
-           searchBar.resignFirstResponder()
-           address = searchBar.text!;
-    
-        
+    searchBar.resignFirstResponder()
+        address = searchBar.text!;
         let geocoder = CLGeocoder()
         geocoder.geocodeAddressString(address, completionHandler: { (placemarks, error) -> Void in
             if placemarks!.count > 0 {
@@ -133,45 +125,38 @@ class MapViewController: UIViewController,MKMapViewDelegate,CLLocationManagerDel
                     (objects:[PFObject]?, error:NSError?) -> Void in
                     if error == nil {
                         for object in objects! {
-                          
+                            
                             let pin = object["SpotGeoPoint"] as! PFGeoPoint
                             let pinLatitude: CLLocationDegrees = pin.latitude
                             let pinLongtitude: CLLocationDegrees = pin.longitude
                             
                             let pinLocation: CLLocationCoordinate2D = CLLocationCoordinate2D(latitude: pinLatitude, longitude: pinLongtitude)
                             
-                             let annotation = CustomerAnnotation(coordinate: pinLocation)
+                            let annotation = CustomerAnnotation(coordinate: pinLocation)
                             self.mapView.addAnnotation(annotation)
                             
                             
-                        
+                            
                         }
                     }
                     
                 }
-    }
+            }
             
             
             
         })
         
         
-      
-        
-    
+
     }
     
-    
-    func searchBarCancelButtonClicked(searchBar: UISearchBar) {
-        
-        searchBar.resignFirstResponder()
-        searchBar.text=""
-        
+    func searchBarCancelButtonClicked(searchBar: UISearchBar)
+    {
+            searchBar.resignFirstResponder()
+            searchBar.text = ""
     
     }
-    
-    
-    
     
     
    }

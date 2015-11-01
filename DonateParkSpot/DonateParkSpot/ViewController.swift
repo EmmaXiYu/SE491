@@ -35,7 +35,9 @@ class ViewController: UIViewController {
             
        if(isUserLoggedIn)
         {
-            self.performSegueWithIdentifier("mapView", sender: self)
+            //self.performSegueWithIdentifier("mapView", sender: self)
+            
+            self.performSegueWithIdentifier("revealView", sender: self)
         }
         
         
