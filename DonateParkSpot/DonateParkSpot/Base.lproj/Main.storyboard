@@ -734,6 +734,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="Address" prompt="All Address" id="rBO-8g-kWJ">
                         <barButtonItem key="backBarButtonItem" title="Back" id="Rqm-X7-yLm"/>
+                        <barButtonItem key="leftBarButtonItem" title="Back to Address" id="GeV-dx-uzq"/>
                     </navigationItem>
                     <connections>
                         <outlet property="lblAddress" destination="kxW-LD-iRa" id="8Uv-bd-Xuv"/>
