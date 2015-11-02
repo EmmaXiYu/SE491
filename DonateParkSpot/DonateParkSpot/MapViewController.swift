@@ -55,6 +55,9 @@ class MapViewController: UIViewController,MKMapViewDelegate,CLLocationManagerDel
         
         self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
              searchBar.delegate = self
+        mapView.delegate = self
+        
+        
     }
   
     
@@ -133,7 +136,27 @@ class MapViewController: UIViewController,MKMapViewDelegate,CLLocationManagerDel
                             let pinLocation: CLLocationCoordinate2D = CLLocationCoordinate2D(latitude: pinLatitude, longitude: pinLongtitude)
                             
                             let annotation = CustomerAnnotation(coordinate: pinLocation)
+                            var userName = String()
+                          // let userId =  object["UserID"].objectId as String!
+                            var query: PFQuery = PFQuery()
+                            query = PFQuery(className: "User")
+                            query.whereKey("objectId", equalTo: object["UserID"] )
+                            query.findObjectsInBackgroundWithBlock {
+                                (objects:[PFObject]?, error:NSError?) -> Void in
+                                if error == nil {
+                                    for object in objects! {
+                                    userName = object["username"] as! String
+                                    
+                                    }
+                                
+                                }}
+
+                            
+                            
+                                 annotation.title = "User Name"
+                             annotation.subtitle = "Rating bar here"
                             self.mapView.addAnnotation(annotation)
+                        
                             
                             
                             
@@ -158,6 +181,44 @@ class MapViewController: UIViewController,MKMapViewDelegate,CLLocationManagerDel
     
     }
     
+    
+    
+    
+    
+    
+    func mapView(mapView: MKMapView, viewForAnnotation annotation: MKAnnotation
+      ) -> MKAnnotationView!{
+        
+        
+        if annotation is CustomerAnnotation {
+            let pinAnnotationView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: "myPin")
+             pinAnnotationView.canShowCallout = true
+            pinAnnotationView.draggable = true
+            pinAnnotationView.canShowCallout = true
+            pinAnnotationView.animatesDrop = true
+            pinAnnotationView.pinColor = MKPinAnnotationColor.Purple
+            
+          let btn = UIButton(type: .DetailDisclosure)
+             pinAnnotationView.rightCalloutAccessoryView = btn
+            let pic = UIImageView (image: UIImage(named: "test.png"))
+             pinAnnotationView.leftCalloutAccessoryView = pic
+                       return pinAnnotationView
+         
+        }
+        
+      return nil
+    }
+    
+    func mapView(mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
+        /*if let annotation = view.annotation as? CustomerAnnotation {
+            mapView.removeAnnotation(annotation)
+        }*/
+        if control == view.rightCalloutAccessoryView {
+            print("Disclosure Pressed!")
+            performSegueWithIdentifier("SpotDetailClientClicked", sender: self)
+        }
+        
+    }
     
    }
     

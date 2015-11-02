@@ -32,6 +32,8 @@
 		180A14AD1BDC5074005F4221 /* SpotDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 180A14AC1BDC5074005F4221 /* SpotDetailViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		180A14B11BE48765005F4221 /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 180A14B01BE48765005F4221 /* SWRevealViewController.m */; settings = {ASSET_TAGS = (); }; };
 		180A14B51BE5C013005F4221 /* BackTableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 180A14B41BE5C013005F4221 /* BackTableVC.swift */; settings = {ASSET_TAGS = (); }; };
+		180A14B71BE80B01005F4221 /* ClientViewSpotDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 180A14B61BE80B01005F4221 /* ClientViewSpotDetailController.swift */; settings = {ASSET_TAGS = (); }; };
+		180A14BB1BE816BF005F4221 /* test.png in Resources */ = {isa = PBXBuildFile; fileRef = 180A14BA1BE816BF005F4221 /* test.png */; settings = {ASSET_TAGS = (); }; };
 		180C3AF51BD9F0F400E7E5F5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 180C3AF41BD9F0F400E7E5F5 /* AppDelegate.swift */; };
 		180C3AF71BD9F0F400E7E5F5 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 180C3AF61BD9F0F400E7E5F5 /* ViewController.swift */; };
 		180C3AFD1BD9F0F400E7E5F5 /* DonateParkSpot.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 180C3AFB1BD9F0F400E7E5F5 /* DonateParkSpot.xcdatamodeld */; };
@@ -89,6 +91,8 @@
 		180A14AF1BE48765005F4221 /* SWRevealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWRevealViewController.h; sourceTree = "<group>"; };
 		180A14B01BE48765005F4221 /* SWRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWRevealViewController.m; sourceTree = "<group>"; };
 		180A14B41BE5C013005F4221 /* BackTableVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BackTableVC.swift; path = ../BackTableVC.swift; sourceTree = "<group>"; };
+		180A14B61BE80B01005F4221 /* ClientViewSpotDetailController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClientViewSpotDetailController.swift; sourceTree = "<group>"; };
+		180A14BA1BE816BF005F4221 /* test.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = test.png; sourceTree = "<group>"; };
 		180C3AF11BD9F0F400E7E5F5 /* DonateParkSpot.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DonateParkSpot.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		180C3AF41BD9F0F400E7E5F5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		180C3AF61BD9F0F400E7E5F5 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -201,6 +205,7 @@
 		180C3AF31BD9F0F400E7E5F5 /* DonateParkSpot */ = {
 			isa = PBXGroup;
 			children = (
+				180A14BA1BE816BF005F4221 /* test.png */,
 				180A14B41BE5C013005F4221 /* BackTableVC.swift */,
 				180A14AF1BE48765005F4221 /* SWRevealViewController.h */,
 				180A14B01BE48765005F4221 /* SWRevealViewController.m */,
@@ -218,6 +223,7 @@
 				180A14A61BDC16E9005F4221 /* User.swift */,
 				180A14AC1BDC5074005F4221 /* SpotDetailViewController.swift */,
 				180A14AE1BE48763005F4221 /* DonateParkSpot-Bridging-Header.h */,
+				180A14B61BE80B01005F4221 /* ClientViewSpotDetailController.swift */,
 			);
 			path = DonateParkSpot;
 			sourceTree = "<group>";
@@ -347,6 +353,7 @@
 				180A147C1BDB0A37005F4221 /* Main.storyboard in Resources */,
 				180C3B021BD9F0F400E7E5F5 /* LaunchScreen.storyboard in Resources */,
 				180C3AFF1BD9F0F400E7E5F5 /* Assets.xcassets in Resources */,
+				180A14BB1BE816BF005F4221 /* test.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -377,6 +384,7 @@
 				180C3B281BDA932C00E7E5F5 /* RegisterViewController.swift in Sources */,
 				180A14A71BDC16E9005F4221 /* User.swift in Sources */,
 				180A14B51BE5C013005F4221 /* BackTableVC.swift in Sources */,
+				180A14B71BE80B01005F4221 /* ClientViewSpotDetailController.swift in Sources */,
 				180C3AFD1BD9F0F400E7E5F5 /* DonateParkSpot.xcdatamodeld in Sources */,
 				180A14AD1BDC5074005F4221 /* SpotDetailViewController.swift in Sources */,
 				180A14B11BE48765005F4221 /* SWRevealViewController.m in Sources */,

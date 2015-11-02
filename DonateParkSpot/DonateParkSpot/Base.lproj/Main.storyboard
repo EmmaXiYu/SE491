@@ -73,6 +73,7 @@
                         <outlet property="Menu" destination="TbI-ov-z46" id="Psy-Zt-0Ln"/>
                         <outlet property="mapView" destination="av9-bi-9Dw" id="a4r-v9-qEl"/>
                         <outlet property="searchBar" destination="OXg-Qt-pbH" id="Rn2-eE-ZO0"/>
+                        <segue destination="hK2-Qd-rjV" kind="presentation" identifier="SpotDetailClientClicked" id="1M7-Aw-lf1"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bQb-nk-tEk" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -433,6 +434,35 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ucc-pu-SvH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2008.5" y="236.5"/>
+        </scene>
+        <!--Client View Spot Detail Controller-->
+        <scene sceneID="dhJ-2u-iUg">
+            <objects>
+                <viewController id="hK2-Qd-rjV" customClass="ClientViewSpotDetailController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="IZ6-xp-tRv"/>
+                        <viewControllerLayoutGuide type="bottom" id="IDr-lg-6ie"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Ton-0V-gpq">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Client View Spot Detail select" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="orq-4A-HJc">
+                                <rect key="frame" x="80" y="199" width="225" height="21"/>
+                                <animations/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <animations/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="whO-Nf-m7G" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2111.5" y="3610.5"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="3IX-Kz-Vp3">
