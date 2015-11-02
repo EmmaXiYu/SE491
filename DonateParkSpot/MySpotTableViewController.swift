@@ -17,8 +17,8 @@ class MySpotBiddingTableViewController: UITableViewController {
         var query: PFQuery = PFQuery()
         query = PFQuery(className: "Spot")
         //query.whereKey("owner", equalTo: PFObject(withoutDataWithClassName:"User", objectId:CurrentUser.currentUser.username))
-        query.whereKey("owner", equalTo:"pravangsu@gmail.com")
-        //query.whereKey("owner", equalTo:CurrentUser.currentUser.username)
+        //query.whereKey("owner", equalTo:"pravangsu@gmail.com")
+        query.whereKey("owner", equalTo:CurrentUser.currentUser.username)
         
         query.findObjectsInBackgroundWithBlock {
             (objects:[PFObject]?, error:NSError?) -> Void in
