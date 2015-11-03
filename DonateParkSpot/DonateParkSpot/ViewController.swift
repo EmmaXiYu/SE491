@@ -27,8 +27,8 @@ class ViewController: UIViewController {
         {
             self.performSegueWithIdentifier("loginView", sender: self)
         }else{
-            self.performSegueWithIdentifier("mapView", sender: self)
-            CurrentUser.currentUser.username = NSUserDefaults.standardUserDefaults().stringForKey("username")!
+            self.performSegueWithIdentifier("revealView", sender: self)
+           // CurrentUser.currentUser.username = NSUserDefaults.standardUserDefaults().stringForKey("username")!
         }
         
         

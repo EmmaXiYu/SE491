@@ -46,6 +46,8 @@
 		180C3B261BDA923900E7E5F5 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 180C3B251BDA923900E7E5F5 /* LoginViewController.swift */; };
 		180C3B281BDA932C00E7E5F5 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 180C3B271BDA932C00E7E5F5 /* RegisterViewController.swift */; };
 		180C3B2A1BDAA0B400E7E5F5 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 180C3B291BDAA0B400E7E5F5 /* MapViewController.swift */; };
+		18AE41611BE84EB000A4A62B /* BackTableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18AE41601BE84EB000A4A62B /* BackTableVC.swift */; settings = {ASSET_TAGS = (); }; };
+		18AE41671BE84FEB00A4A62B /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18AE41661BE84FEB00A4A62B /* SWRevealViewController.m */; settings = {ASSET_TAGS = (); }; };
 		B80CB65A1BE30A9600746CEB /* MySpotDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = B80CB6591BE30A9600746CEB /* MySpotDetail.swift */; };
 		B8179AFA1BE0628B00F218F1 /* MySpotTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8179AF91BE0628B00F218F1 /* MySpotTableViewController.swift */; };
 /* End PBXBuildFile section */
@@ -113,6 +115,10 @@
 		180C3B251BDA923900E7E5F5 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		180C3B271BDA932C00E7E5F5 /* RegisterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		180C3B291BDAA0B400E7E5F5 /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
+		18AE41601BE84EB000A4A62B /* BackTableVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BackTableVC.swift; sourceTree = "<group>"; };
+		18AE41641BE84FE400A4A62B /* SWRevealViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SWRevealViewController.h; sourceTree = "<group>"; };
+		18AE41661BE84FEB00A4A62B /* SWRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWRevealViewController.m; sourceTree = "<group>"; };
+		18AE41681BE8500E00A4A62B /* DonateParkSpot-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "DonateParkSpot-Bridging-Header.h"; sourceTree = "<group>"; };
 		B80CB6591BE30A9600746CEB /* MySpotDetail.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MySpotDetail.swift; sourceTree = "<group>"; };
 		B8179AF91BE0628B00F218F1 /* MySpotTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MySpotTableViewController.swift; path = ../MySpotTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -211,6 +217,9 @@
 		180C3AF31BD9F0F400E7E5F5 /* DonateParkSpot */ = {
 			isa = PBXGroup;
 			children = (
+				18AE41661BE84FEB00A4A62B /* SWRevealViewController.m */,
+				18AE41641BE84FE400A4A62B /* SWRevealViewController.h */,
+				18AE41601BE84EB000A4A62B /* BackTableVC.swift */,
 				B8179AF91BE0628B00F218F1 /* MySpotTableViewController.swift */,
 				10B75D681BE0509D009B88DC /* Location.swift */,
 				10B75D691BE0509D009B88DC /* Spot.swift */,
@@ -219,6 +228,7 @@
 				180C3AF41BD9F0F400E7E5F5 /* AppDelegate.swift */,
 				180C3AF61BD9F0F400E7E5F5 /* ViewController.swift */,
 				180C3B291BDAA0B400E7E5F5 /* MapViewController.swift */,
+				18AE41681BE8500E00A4A62B /* DonateParkSpot-Bridging-Header.h */,
 				180C3AFE1BD9F0F400E7E5F5 /* Assets.xcassets */,
 				180C3B001BD9F0F400E7E5F5 /* LaunchScreen.storyboard */,
 				180C3B031BD9F0F400E7E5F5 /* Info.plist */,
@@ -316,6 +326,7 @@
 		180C3AE91BD9F0F400E7E5F5 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastSwiftUpdateCheck = 0700;
 				LastUpgradeCheck = 0700;
 				ORGANIZATIONNAME = Apple;
 				TargetAttributes = {
@@ -385,7 +396,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				180C3B261BDA923900E7E5F5 /* LoginViewController.swift in Sources */,
+				18AE41671BE84FEB00A4A62B /* SWRevealViewController.m in Sources */,
 				B8179AFA1BE0628B00F218F1 /* MySpotTableViewController.swift in Sources */,
+				18AE41611BE84EB000A4A62B /* BackTableVC.swift in Sources */,
 				180C3B2A1BDAA0B400E7E5F5 /* MapViewController.swift in Sources */,
 				10B75D6A1BE0509D009B88DC /* Location.swift in Sources */,
 				180A14A51BDC1554005F4221 /* CustomerAnnotation.swift in Sources */,
@@ -542,6 +555,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/DonateParkSpot",
@@ -550,6 +564,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.depaul.Emma.DonateParkSpot;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "DonateParkSpot/DonateParkSpot-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
@@ -557,6 +573,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/DonateParkSpot",
@@ -565,6 +582,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.depaul.Emma.DonateParkSpot;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "DonateParkSpot/DonateParkSpot-Bridging-Header.h";
 			};
 			name = Release;
 		};
