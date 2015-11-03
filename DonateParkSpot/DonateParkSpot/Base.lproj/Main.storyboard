@@ -639,15 +639,15 @@
                         <animations/>
                         <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="MySpotLabelCell" textLabel="y79-rk-NXH" style="IBUITableViewCellStyleDefault" id="Jcc-xT-htv">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="MySpotLabelCell" textLabel="y79-rk-NXH" style="IBUITableViewCellStyleDefault" id="Jcc-xT-htv">
                                 <rect key="frame" x="0.0" y="114" width="600" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Jcc-xT-htv" id="LRC-gH-AIG">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="567" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Dynamic COntents" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="y79-rk-NXH">
-                                            <rect key="frame" x="15" y="0.0" width="570" height="43"/>
+                                            <rect key="frame" x="15" y="0.0" width="550" height="43"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <animations/>
                                             <fontDescription key="fontDescription" type="system" pointSize="16"/>
@@ -732,10 +732,7 @@
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Address" prompt="All Address" id="rBO-8g-kWJ">
-                        <barButtonItem key="backBarButtonItem" title="Back" id="Rqm-X7-yLm"/>
-                        <barButtonItem key="leftBarButtonItem" title="Back to Address" id="GeV-dx-uzq"/>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" title="Address" id="1P0-Hx-AC1"/>
                     <connections>
                         <outlet property="lblAddress" destination="kxW-LD-iRa" id="8Uv-bd-Xuv"/>
                         <outlet property="lblMinPrice" destination="D8e-xN-rj9" id="bNF-4Q-vaT"/>
