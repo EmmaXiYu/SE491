@@ -136,24 +136,12 @@ class MapViewController: UIViewController,MKMapViewDelegate,CLLocationManagerDel
                             let pinLocation: CLLocationCoordinate2D = CLLocationCoordinate2D(latitude: pinLatitude, longitude: pinLongtitude)
                             
                             let annotation = CustomerAnnotation(coordinate: pinLocation)
-                            var userName = String()
-                          // let userId =  object["UserID"].objectId as String!
-                            var query: PFQuery = PFQuery()
-                            query = PFQuery(className: "User")
-                            query.whereKey("objectId", equalTo: object["UserID"] )
-                            query.findObjectsInBackgroundWithBlock {
-                                (objects:[PFObject]?, error:NSError?) -> Void in
-                                if error == nil {
-                                    for object in objects! {
-                                    userName = object["username"] as! String
-                                    
-                                    }
-                                
-                                }}
-
+                            let userName = object["owner"] as! String
+                           
+                         
                             
                             
-                                 annotation.title = "User Name"
+                                 annotation.title = userName
                              annotation.subtitle = "Rating bar here"
                             self.mapView.addAnnotation(annotation)
                         
