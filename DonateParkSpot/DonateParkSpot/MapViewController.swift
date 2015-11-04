@@ -104,7 +104,6 @@ class MapViewController: UIViewController,MKMapViewDelegate,CLLocationManagerDel
         address = searchBar.text!;
         
         let user = PFUser.currentUser()
-        print(user!.username)
         
         let search = PFObject(className: "SearchHistory")
         search["user"] = user!

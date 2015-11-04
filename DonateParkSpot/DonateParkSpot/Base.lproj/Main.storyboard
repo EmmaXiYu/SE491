@@ -942,6 +942,9 @@
                                 <rect key="frame" x="16" y="323" width="343" height="30"/>
                                 <animations/>
                                 <state key="normal" title="BUY"/>
+                                <connections>
+                                    <action selector="buy" destination="ABi-bC-pIg" eventType="touchUpInside" id="gNb-ya-nJ6"/>
+                                </connections>
                             </button>
                         </subviews>
                         <animations/>

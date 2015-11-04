@@ -8,6 +8,7 @@
 
 import UIKit
 import MapKit
+import Parse
 
 class BuyDetailController : UIViewController {
     var spot : Spot?
@@ -29,7 +30,24 @@ class BuyDetailController : UIViewController {
             donation.stepValue = 1
         }
     }
+    
     @IBAction func upDown(sender: UIStepper) {
         minDonation.text = "$ " + sender.value.description + ".00"
+    }
+    
+    @IBAction func buy() {
+        let user = PFUser.currentUser()
+        
+        let bid = PFObject(className: "Bids")
+        bid["user"] = user!
+        bid["value"] = donation.value
+        bid["spot"] = spot!.toPFObject()
+        
+        bid.saveInBackgroundWithBlock { (success, error) -> Void in
+            print(success)
+            print(error)
+            
+        }
+
     }
 }
