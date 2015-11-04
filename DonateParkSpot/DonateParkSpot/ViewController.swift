@@ -28,7 +28,7 @@ class ViewController: UIViewController {
             self.performSegueWithIdentifier("loginView", sender: self)
         }else{
             self.performSegueWithIdentifier("revealView", sender: self)
-           // CurrentUser.currentUser.username = NSUserDefaults.standardUserDefaults().stringForKey("username")!
+           
         }
         
         

@@ -38,6 +38,7 @@ class MapViewController: UIViewController,MKMapViewDelegate,CLLocationManagerDel
         self.locationManager.startUpdatingLocation()
         self.mapView.showsUserLocation=true
         self.mapView.setUserTrackingMode(MKUserTrackingMode.FollowWithHeading, animated: true)
+        
     }
   
     @IBAction func showMenu() {
@@ -99,9 +100,21 @@ class MapViewController: UIViewController,MKMapViewDelegate,CLLocationManagerDel
     
      func searchBarSearchButtonClicked(searchBar: UISearchBar) {
         
-           searchBar.resignFirstResponder()
-           address = searchBar.text!;
-    
+        searchBar.resignFirstResponder()
+        address = searchBar.text!;
+        
+        let user = PFUser.currentUser()
+        print(user!.username)
+        
+        let search = PFObject(className: "SearchHistory")
+        search["user"] = user!
+        search["address"] = address
+        
+        search.saveInBackgroundWithBlock { (success, error) -> Void in
+            print(success)
+            print(error)
+            
+        }
         
         let geocoder = CLGeocoder()
         geocoder.geocodeAddressString(address, completionHandler: { (placemarks, error) -> Void in

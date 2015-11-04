@@ -52,6 +52,9 @@
                                 <rect key="frame" x="75" y="64" width="300" height="44"/>
                                 <animations/>
                                 <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="Huc-SV-9rF" id="TeZ-3y-Vma"/>
+                                </connections>
                             </searchBar>
                             <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Yqb-T7-awF">
                                 <rect key="frame" x="325" y="617" width="30" height="30"/>

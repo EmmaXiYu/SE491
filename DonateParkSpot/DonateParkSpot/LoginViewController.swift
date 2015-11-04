@@ -42,11 +42,7 @@ class LoginViewController: UIViewController {
         
             
             if Error == nil{
-                
-                let userLogged = User()
-                userLogged.username = user.username!
-                
-                CurrentUser.currentUser = userLogged
+                                 
                 
                 
                 NSUserDefaults.standardUserDefaults().setBool(true, forKey: "isUserLoggedIn")
