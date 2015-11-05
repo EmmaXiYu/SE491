@@ -18,6 +18,8 @@ class Spot {
     var legalTime = ""
     var timeToLeave : NSDate?
     var owner : PFUser = PFUser()
+    var AddressText: String = ""
+    var Bids : [Bid] = [Bid]()
     
     func toPFObject() -> PFObject {
         let result = PFObject(className: "Spot")
