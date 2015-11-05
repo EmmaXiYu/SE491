@@ -93,7 +93,7 @@ class MySpotBiddingTableViewController: UITableViewController {
         //cell.textLabel?.text = S.legalTime + "  " +  String(format:"%f", S.location.altitude)
         //cell.textLabel?.text = String(format:"%f", S.location.longitude) + "  " +  String(format:"%f", S.location.longitude)
         cell.textLabel?.text = S.AddressText
-        cell.detailTextLabel!.text = S.legalTime + "[" + String(S.Bids.count) + "]"
+        cell.detailTextLabel!.text = S.legalTime + "        [" + String(S.Bids.count) + "]"
         //var b:String = String(format:"%f", S.location.altitude)
         return cell
         
