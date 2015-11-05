@@ -9,7 +9,9 @@
 import UIKit
 
 class MySpotMultiBidTableViewController: UITableViewController {
-
+ //var datas = [Bid] ()
+ var DetailSpot : Spot = Spot()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -29,23 +31,31 @@ class MySpotMultiBidTableViewController: UITableViewController {
 
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 0
+        return 1
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 0
+        return DetailSpot.Bids.count
     }
 
-    /*
+    
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("reuseIdentifier", forIndexPath: indexPath)
+        let cell = tableView.dequeueReusableCellWithIdentifier("MyBidLabelCell", forIndexPath: indexPath)
 
-        // Configure the cell...
-
+        let bid: Bid = DetailSpot.Bids[indexPath.row]
+        (cell.contentView.viewWithTag(11) as! UILabel).text = String(bid.value!)
+        (cell.contentView.viewWithTag(12) as! UILabel).text = String(bid.timestamp!)
+        
+        //cell.textLabel?.text = S.legalTime + "  " +  String(format:"%f", S.location.altitude)
+        //cell.textLabel?.text = String(format:"%f", S.location.longitude) + "  " +  String(format:"%f", S.location.longitude)
+        //cell.textLabel?.text = S.AddressText
+        //cell.detailTextLabel!.text = S.legalTime + "        [" + String(S.Bids.count) + "]"
+        //var b:String = String(format:"%f", S.location.altitude)
         return cell
+        
     }
-    */
+    /**/
 
     /*
     // Override to support conditional editing of the table view.

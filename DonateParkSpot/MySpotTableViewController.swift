@@ -62,7 +62,7 @@ class MySpotBiddingTableViewController: UITableViewController {
         var bidList = [Bid]()
         for index in 0...i-1 {
              let bi: Bid = Bid()
-            bi.value = 3
+            bi.value = 3 + Double(i)
             bi.timestamp = NSDate()
             bidList.insert(bi, atIndex: index)
         }
@@ -104,9 +104,9 @@ class MySpotBiddingTableViewController: UITableViewController {
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if segue.identifier == "ToMySpotDetail"
+        if segue.identifier == "ToMySpotBidMulti"
         {
-            if let destinationVC = segue.destinationViewController as? MySpotDetail{
+            if let destinationVC = segue.destinationViewController as? MySpotMultiBidTableViewController{
                 
                 if let blogIndex = tableView.indexPathForSelectedRow?.row {
                     destinationVC.DetailSpot = datas[blogIndex]
