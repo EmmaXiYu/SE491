@@ -49,6 +49,7 @@
 		18AE41671BE84FEB00A4A62B /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18AE41661BE84FEB00A4A62B /* SWRevealViewController.m */; };
 		B80CB65A1BE30A9600746CEB /* MySpotDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = B80CB6591BE30A9600746CEB /* MySpotDetail.swift */; };
 		B8179AFA1BE0628B00F218F1 /* MySpotTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8179AF91BE0628B00F218F1 /* MySpotTableViewController.swift */; };
+		B8A33A921BEAFE5F0007E77E /* MySpotMultiBidTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8A33A911BEAFE5F0007E77E /* MySpotMultiBidTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -119,6 +120,7 @@
 		18AE41681BE8500E00A4A62B /* DonateParkSpot-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "DonateParkSpot-Bridging-Header.h"; sourceTree = "<group>"; };
 		B80CB6591BE30A9600746CEB /* MySpotDetail.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MySpotDetail.swift; sourceTree = "<group>"; };
 		B8179AF91BE0628B00F218F1 /* MySpotTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MySpotTableViewController.swift; path = ../MySpotTableViewController.swift; sourceTree = "<group>"; };
+		B8A33A911BEAFE5F0007E77E /* MySpotMultiBidTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MySpotMultiBidTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -219,6 +221,7 @@
 				18AE41641BE84FE400A4A62B /* SWRevealViewController.h */,
 				18AE41601BE84EB000A4A62B /* BackTableVC.swift */,
 				B8179AF91BE0628B00F218F1 /* MySpotTableViewController.swift */,
+				B8A33A911BEAFE5F0007E77E /* MySpotMultiBidTableViewController.swift */,
 				10B75D681BE0509D009B88DC /* Location.swift */,
 				10B75D691BE0509D009B88DC /* Spot.swift */,
 				180A147A1BDB0A37005F4221 /* Main.storyboard */,
@@ -395,6 +398,7 @@
 				180C3B261BDA923900E7E5F5 /* LoginViewController.swift in Sources */,
 				18AE41671BE84FEB00A4A62B /* SWRevealViewController.m in Sources */,
 				B8179AFA1BE0628B00F218F1 /* MySpotTableViewController.swift in Sources */,
+				B8A33A921BEAFE5F0007E77E /* MySpotMultiBidTableViewController.swift in Sources */,
 				18AE41611BE84EB000A4A62B /* BackTableVC.swift in Sources */,
 				180C3B2A1BDAA0B400E7E5F5 /* MapViewController.swift in Sources */,
 				10B75D6A1BE0509D009B88DC /* Location.swift in Sources */,
