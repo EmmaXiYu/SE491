@@ -9,6 +9,7 @@
 import Foundation
 
 class Bid {
+    
     var spot : Spot?
     var timestamp : NSDate?
     var value : Double?

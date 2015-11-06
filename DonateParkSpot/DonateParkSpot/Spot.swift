@@ -20,6 +20,7 @@ class Spot {
     var owner : PFUser = PFUser()
     var AddressText: String = ""
     var Bids : [Bid] = [Bid]()
+    var spotId : String = "" //need to get bid from server
     
     func toPFObject() -> PFObject {
         let result = PFObject(className: "Spot")

@@ -18,6 +18,10 @@ class MySpotBiddingTableViewController: UITableViewController {
         query = PFQuery(className: "Spot")
         //query.whereKey("owner", equalTo: PFObject(withoutDataWithClassName:"User", objectId:CurrentUser.currentUser.username))
         query.whereKey("owner", equalTo:"pravangsu@gmail.com")
+        //query.whereKey("parent", equalTo:"pravangsu@gmail.com")
+
+       // query.includeKey("Bid")
+        
         //query.includeKey("UserID") //Use this as example to get bid
         //query.whereKey("owner", equalTo: CurrentUser.currentUser.username)
         //var test = PFUser.currentUser()!.username
@@ -33,6 +37,9 @@ class MySpotBiddingTableViewController: UITableViewController {
                     let Longtitude: CLLocationDegrees = sgp.longitude
                     let ttl = object["leavingTime"] as! String
                     let AddressText  = object["AddressText"] as! String
+                    //let BidList  = object["Bid"] as! [PFObject]?
+                    
+                     //let spotId  = object.objectId
                     //let user = object["UserID"] as! PFObject
                     //let email = user["email"] as! String
                     //if(user != nil)
@@ -46,10 +53,14 @@ class MySpotBiddingTableViewController: UITableViewController {
                     s.location = location
                     s.minDonation=mPrice
                     s.AddressText = AddressText
-                    s.Bids = self.tempGetBid(2)
+                    s.spotId = object.objectId!
+                    //s.Bids = self.tempGetBid(2)
+                    //s.Bids = self.GetBidList(spotId!)
+                    //s.Bids = self.GetBidEgar(BidList!)
                     self.datas.insert(s, atIndex: 0)
 
                 }
+                
                 self.tableView.reloadData()
             }
         }
@@ -57,7 +68,23 @@ class MySpotBiddingTableViewController: UITableViewController {
    
     }
 
-    func tempGetBid(i: Int) -> [Bid] {
+    func GetBidEgar(spots: [PFObject]?) -> [Bid] {
+        var index = 0
+        var bidList = [Bid]()
+        for object in spots! {
+            
+            let bi: Bid = Bid()
+            let timestamp = object["Timestamp"] as! NSDate
+            let value = object["Value"] as! Double
+            bi.value = value
+            bi.timestamp = timestamp
+            bidList.insert(bi, atIndex: index)
+            index = index + 1
+        }
+        return bidList
+    }
+    
+    func GetBid(i: Int) -> [Bid] {
        
         var bidList = [Bid]()
         for index in 0...i-1 {
@@ -68,6 +95,32 @@ class MySpotBiddingTableViewController: UITableViewController {
         }
         return bidList
     }
+    
+    func GetBidList(spotid: String) -> [Bid] {
+        var index = 0
+         var bidList = [Bid]()
+        var query: PFQuery = PFQuery()
+        query = PFQuery(className: "Bid")
+        query.whereKey("SpotId", equalTo:spotid)
+        query.findObjectsInBackgroundWithBlock {
+            (objects:[PFObject]?, error:NSError?) -> Void in
+            if error == nil {
+                for object in objects! {
+                    
+                    let bi: Bid = Bid()
+                    let timestamp = object["Timestamp"] as! NSDate
+                    let value = object["Value"] as! Double
+                    bi.value = value
+                    bi.timestamp = timestamp
+                    bidList.insert(bi, atIndex: index)
+                    index = index + 1
+                    }
+              
+                }
+            }
+          return bidList
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -93,7 +146,8 @@ class MySpotBiddingTableViewController: UITableViewController {
         //cell.textLabel?.text = S.legalTime + "  " +  String(format:"%f", S.location.altitude)
         //cell.textLabel?.text = String(format:"%f", S.location.longitude) + "  " +  String(format:"%f", S.location.longitude)
         cell.textLabel?.text = S.AddressText
-        cell.detailTextLabel!.text = S.legalTime + "        [" + String(S.Bids.count) + "]"
+        //cell.detailTextLabel!.text = S.legalTime + "        [" + String(S.Bids.count) + "]"
+        cell.detailTextLabel!.text = S.legalTime + "        [..More..]"
         //var b:String = String(format:"%f", S.location.altitude)
         return cell
         

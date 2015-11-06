@@ -7,9 +7,9 @@
 //
 
 import UIKit
-
+import Parse
 class MySpotMultiBidTableViewController: UITableViewController {
- //var datas = [Bid] ()
+ var datas = [Bid] ()
  var DetailSpot : Spot = Spot()
     
     override func viewDidLoad() {
@@ -20,8 +20,45 @@ class MySpotMultiBidTableViewController: UITableViewController {
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+        GetBidList(DetailSpot.spotId)
+        
     }
 
+    func GetBidList(spotid: String)  {
+        var index = 0
+        //var bidList = [Bid]()
+        var query: PFQuery = PFQuery()
+        query = PFQuery(className: "Bid")
+        query.whereKey("SpotId", equalTo:spotid)
+        query.findObjectsInBackgroundWithBlock {
+            (objects:[PFObject]?, error:NSError?) -> Void in
+            if error == nil {
+                for object in objects! {
+                    
+                    let bi: Bid = Bid()
+                    let timestamp = object["Timestamp"] as! NSDate
+                    let value = object["Value"] as! Double
+                    bi.value = value
+                    bi.timestamp = timestamp
+                    self.datas.insert(bi, atIndex: index)
+                    index = index + 1
+                }
+                if(self.datas.count == 0)
+                {
+                    self.datas.insert(self.GetEmptyBid(), atIndex: 0)
+                }
+                self.tableView.reloadData()
+            }
+        }
+        
+    }
+    func GetEmptyBid() -> Bid {
+        
+        let bid = Bid()
+       bid.value = Double(0)
+       bid.timestamp = NSDate()
+       return bid
+    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -36,16 +73,25 @@ class MySpotMultiBidTableViewController: UITableViewController {
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return DetailSpot.Bids.count
+        //return DetailSpot.Bids.count
+        return datas.count
     }
 
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("MyBidLabelCell", forIndexPath: indexPath)
 
-        let bid: Bid = DetailSpot.Bids[indexPath.row]
+        //let bid: Bid = DetailSpot.Bids[indexPath.row]
+         let bid: Bid = datas[indexPath.row]
         (cell.contentView.viewWithTag(11) as! UILabel).text = String(bid.value!)
         (cell.contentView.viewWithTag(12) as! UILabel).text = String(bid.timestamp!)
+        if(bid.value < 0.01)
+        {
+            let lbl : UILabel = (cell.contentView.viewWithTag(12) as! UILabel)
+            lbl.text = "No Bid yet"
+            lbl.textColor = UIColor.redColor()
+        }
+        
         
         //cell.textLabel?.text = S.legalTime + "  " +  String(format:"%f", S.location.altitude)
         //cell.textLabel?.text = String(format:"%f", S.location.longitude) + "  " +  String(format:"%f", S.location.longitude)
