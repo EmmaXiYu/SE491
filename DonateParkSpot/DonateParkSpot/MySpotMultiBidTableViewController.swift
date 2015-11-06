@@ -11,16 +11,17 @@ import Parse
 class MySpotMultiBidTableViewController: UITableViewController {
  var datas = [Bid] ()
  var DetailSpot : Spot = Spot()
-    
+ var currentIndex : Int =  -1
     override func viewDidLoad() {
         super.viewDidLoad()
-
+       
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
         GetBidList(DetailSpot.spotId)
+        // self.tableView.userInteractionEnabled = false
         
     }
 
@@ -83,6 +84,7 @@ class MySpotMultiBidTableViewController: UITableViewController {
 
         //let bid: Bid = DetailSpot.Bids[indexPath.row]
          let bid: Bid = datas[indexPath.row]
+        currentIndex = indexPath.row
         (cell.contentView.viewWithTag(11) as! UILabel).text = String(bid.value!)
         (cell.contentView.viewWithTag(12) as! UILabel).text = String(bid.timestamp!)
         if(bid.value < 0.01)
@@ -98,8 +100,16 @@ class MySpotMultiBidTableViewController: UITableViewController {
         //cell.textLabel?.text = S.AddressText
         //cell.detailTextLabel!.text = S.legalTime + "        [" + String(S.Bids.count) + "]"
         //var b:String = String(format:"%f", S.location.altitude)
+        //cell.contentView.userInteractionEnabled = false
         return cell
         
+    }
+    
+    
+    @IBAction func AcceptButton_Clicked(sender: UIButton) {
+    
+    let bid: Bid = datas[self.currentIndex]
+    var currentIndex : Double =  bid.value!
     }
     /**/
 
