@@ -4,7 +4,6 @@
 //
 //  Created by Apple on 10/23/15.
 //  Copyright © 2015 Apple. All rights reserved.
-//Just TEst
 //
 
 import UIKit
@@ -13,10 +12,23 @@ import CoreLocation
 import Parse
 
 class MapViewController: UIViewController,MKMapViewDelegate,CLLocationManagerDelegate,UISearchBarDelegate{
+    
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var Menu: UIBarButtonItem!
+    
+    
+    /* @IBAction func logoutButtonTapped(sender: AnyObject) {
+    
+    
+    NSUserDefaults.standardUserDefaults().setBool(false, forKey: "isUserLoggedIn")
+    
+    NSUserDefaults.standardUserDefaults().synchronize();
+    self.dismissViewControllerAnimated(true, completion: nil);
+    }*/
     @IBOutlet weak var mapView: MKMapView!
     
+    @IBAction func DetailButtonTapped(sender: AnyObject) {
+        self.performSegueWithIdentifier("SpotView", sender: self)}
     
     
     var address = ""
@@ -25,8 +37,10 @@ class MapViewController: UIViewController,MKMapViewDelegate,CLLocationManagerDel
     var ojId =  String()
     var searchingLatitude = Double()
     var searchingLongitude = Double()
-
-   let locationManager=CLLocationManager()
+    var spotO = Spot()
+    
+    
+    let locationManager=CLLocationManager()
     
     override func viewDidLoad() {
         
@@ -38,23 +52,23 @@ class MapViewController: UIViewController,MKMapViewDelegate,CLLocationManagerDel
         self.locationManager.startUpdatingLocation()
         self.mapView.showsUserLocation=true
         self.mapView.setUserTrackingMode(MKUserTrackingMode.FollowWithHeading, animated: true)
-        Menu.target = revealViewController()
+        Menu.target = self.revealViewController()
         Menu.action = Selector("revealToggle:")
         
         self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
         searchBar.delegate = self
         mapView.delegate = self
         
-
+        
     }
-
+    
     
     
     //location delegate methods
     func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         
         
-        //let location = locations.last
+        let location = locations.last
         //let center=CLLocationCoordinate2D(latitude: location!.coordinate.latitude, longitude:location!.coordinate.longitude)
         //let region=MKCoordinateRegion(center: center, span: MKCoordinateSpan(latitudeDelta: 0.004, longitudeDelta: 0.004))
         //self.mapView.setRegion(region, animated: true)
@@ -73,7 +87,8 @@ class MapViewController: UIViewController,MKMapViewDelegate,CLLocationManagerDel
         super.didReceiveMemoryWarning()
     }
     
-
+    
+    
     override func prepareForSegue(segue:(UIStoryboardSegue!), sender:AnyObject!)
     {
         if (segue.identifier == "SpotView")
@@ -85,40 +100,31 @@ class MapViewController: UIViewController,MKMapViewDelegate,CLLocationManagerDel
             spotView.latitudeD = latitude
             spotView.longitudeD = longitude
             
-
-            }
-            
-    
-    }
- 
-    @IBAction func logoutButtonTapped(sender: AnyObject) {
-        
-        NSUserDefaults.standardUserDefaults().setBool(false, forKey: "isUserLoggedIn")
-        
-        NSUserDefaults.standardUserDefaults().synchronize();
-        self.dismissViewControllerAnimated(true, completion: nil);
-        
-
-    }
-    
-    
-     func searchBarSearchButtonClicked(searchBar: UISearchBar) {
-        
-        searchBar.resignFirstResponder()
-        address = searchBar.text!;
-        
-        let user = PFUser.currentUser()
-        
-        let search = PFObject(className: "SearchHistory")
-        search["user"] = user!
-        search["address"] = address
-        
-        search.saveInBackgroundWithBlock { (success, error) -> Void in
-            print(success)
-            print(error)
             
         }
         
+        if segue.identifier == "SpotDetailClientClicked"
+            
+        {
+            
+            let seeDetailToBuy = segue!.destinationViewController as!  BuyDetailController
+            
+            
+            
+            
+            
+            
+            
+            
+        }
+        
+        
+    }
+    
+    func searchBarSearchButtonClicked(searchBar: UISearchBar) {
+        
+        searchBar.resignFirstResponder()
+        address = searchBar.text!;
         let geocoder = CLGeocoder()
         geocoder.geocodeAddressString(address, completionHandler: { (placemarks, error) -> Void in
             if placemarks!.count > 0 {
@@ -135,51 +141,114 @@ class MapViewController: UIViewController,MKMapViewDelegate,CLLocationManagerDel
                 var query: PFQuery = PFQuery()
                 query = PFQuery(className: "Spot")
                 query.whereKey("SpotGeoPoint", nearGeoPoint: geoPoint, withinMiles: 20)
-                query.findObjectsInBackgroundWithBlock {
-                    (objects:[PFObject]?, error:NSError?) -> Void in
+                query.findObjectsInBackgroundWithBlock {(objects:[PFObject]?, error:NSError?) -> Void in
                     if error == nil {
                         for object in objects! {
-                          
+                            let spotObject = Spot()
                             let pin = object["SpotGeoPoint"] as! PFGeoPoint
                             let pinLatitude: CLLocationDegrees = pin.latitude
                             let pinLongtitude: CLLocationDegrees = pin.longitude
+                            let userName = object["owner"] as! String
                             
                             let pinLocation: CLLocationCoordinate2D = CLLocationCoordinate2D(latitude: pinLatitude, longitude: pinLongtitude)
+                            spotObject.owner.username = userName
+                            spotObject.location.latitude = pinLatitude
+                            spotObject.location.longitude = pinLongtitude
+                            let annotation = CustomerAnnotation(coordinate: pinLocation,spotObject: spotObject)
                             
-                             let annotation = CustomerAnnotation(coordinate: pinLocation)
+                            annotation.spot = spotObject
+                            
+                            annotation.title = userName
+                            annotation.subtitle = "Rating bar here"
                             self.mapView.addAnnotation(annotation)
                             
                             
-                        
+                            
+                            
                         }
                     }
                     
                 }
-    }
+            }
             
             
             
         })
         
         
-      
         
-    
     }
     
-    
-    func searchBarCancelButtonClicked(searchBar: UISearchBar) {
-        
+    func searchBarCancelButtonClicked(searchBar: UISearchBar)
+    {
         searchBar.resignFirstResponder()
-        searchBar.text=""
+        searchBar.text = ""
         
-    
     }
     
     
     
     
     
-   }
     
+    func mapView(mapView: MKMapView, viewForAnnotation annotation: MKAnnotation
+        ) -> MKAnnotationView!{
+            
+            
+            if annotation is CustomerAnnotation {
+                let pinAnnotationView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: "myPin")
+                pinAnnotationView.canShowCallout = true
+                pinAnnotationView.draggable = true
+                pinAnnotationView.canShowCallout = true
+                pinAnnotationView.animatesDrop = true
+                pinAnnotationView.pinColor = MKPinAnnotationColor.Purple
+                
+                let btn = UIButton(type: .DetailDisclosure)
+                pinAnnotationView.rightCalloutAccessoryView = btn
+                let pic = UIImageView (image: UIImage(named: "test.png"))
+                pinAnnotationView.leftCalloutAccessoryView = pic
+                
+                
+                return pinAnnotationView
+                
+            }
+            
+            return nil
+    }
+    
+    func mapView(mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
+        /*if let annotation = view.annotation as? CustomerAnnotation {
+        mapView.removeAnnotation(annotation)
+        }*/
+        let name = "Emma@gmail.com"
+        
+        
+        
+        let query = PFQuery(className: "Spot")
+        
+        query.whereKey("owner", equalTo : name)
+        query.findObjectsInBackgroundWithBlock {(objects:[PFObject]?, error:NSError?) -> Void in
+            if error == nil {
+                for object in objects! {
+                    
+                    let pin = object["SpotGeoPoint"] as! PFGeoPoint
+                    let pinLatitude: CLLocationDegrees = pin.latitude
+                    let pinLongtitude: CLLocationDegrees = pin.longitude
+                    
+                    self.spotO.location.latitude = pinLatitude
+                    self.spotO.location.longitude = pinLongtitude
+                    
+                }
+            }
+            
+        }
+        if control == view.rightCalloutAccessoryView {
+            print("Disclosure Pressed!")
+            performSegueWithIdentifier("SpotDetailClientClicked", sender: self)
+        }
+        
+    }
+    
+}
+
    
