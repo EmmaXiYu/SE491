@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import Parse
 
 class Spot {
     var location : Location = Location()
@@ -16,5 +17,22 @@ class Spot {
     var minDonation = 0
     var legalTime = ""
     var timeToLeave : NSDate?
-    var Owner: User = User()
+    var owner : PFUser = PFUser()
+    var AddressText: String = ""
+    var Bids : [Bid] = [Bid]()
+    var spotId : String = "" //need to get bid from server
+    
+    func toPFObject() -> PFObject {
+        let result = PFObject(className: "Spot")
+        result["Location"] = PFGeoPoint(latitude: location.latitude, longitude: location.longitude)
+        result["Type"] = type
+        result["Rate"] = rate
+        result["TimeLeft"] = timeLeft
+        result["MinDonation"] = minDonation
+        result["LegalTime"] = legalTime
+        result["TimeToLeave"] = timeToLeave
+        result["Owner"] = owner
+        
+        return result
+    }
 }

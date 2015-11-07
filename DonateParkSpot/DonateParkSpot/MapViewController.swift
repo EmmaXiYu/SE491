@@ -104,9 +104,20 @@ class MapViewController: UIViewController,MKMapViewDelegate,CLLocationManagerDel
     
      func searchBarSearchButtonClicked(searchBar: UISearchBar) {
         
-           searchBar.resignFirstResponder()
-           address = searchBar.text!;
-    
+        searchBar.resignFirstResponder()
+        address = searchBar.text!;
+        
+        let user = PFUser.currentUser()
+        
+        let search = PFObject(className: "SearchHistory")
+        search["user"] = user!
+        search["address"] = address
+        
+        search.saveInBackgroundWithBlock { (success, error) -> Void in
+            print(success)
+            print(error)
+            
+        }
         
         let geocoder = CLGeocoder()
         geocoder.geocodeAddressString(address, completionHandler: { (placemarks, error) -> Void in
