@@ -24,18 +24,28 @@ class MySpotMultiBidTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
 
-    @IBAction func Accept_Clicked(sender: AnyObject) {
-        
-        
+   /*
+    
+    func btnAccept_click(sender: UIButton!) {
+        print("tapped button 1")
+        var s = bid.value
+         s = s! + 2
     }
+    
     @IBAction func Reject_Clicked(sender: AnyObject) {
-        
-       var s = bid.value
+        print("tapped button 12")
+      var s = bid.value
+        s = s! + 2
         
     }
+    */
     @IBOutlet weak var lblTimr: UILabel!
     
     @IBOutlet weak var lblDonetion: UILabel!
     
+    
+    @IBOutlet weak var btnAccept: UIButton!
+    
+    @IBOutlet weak var btnReject: UIButton!
     
 }

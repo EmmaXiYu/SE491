@@ -11,7 +11,7 @@ import Parse
 class MySpotMultiBidTableViewController: UITableViewController {
  var datas = [Bid] ()
  var DetailSpot : Spot = Spot()
- var currentIndex : Int =  -1
+ //var currentIndex : Int =  -1
     override func viewDidLoad() {
         super.viewDidLoad()
        
@@ -86,7 +86,7 @@ MySpotMultiBidTableViewCell
         cell.bid =  datas[indexPath.row]
         //let bid: Bid = DetailSpot.Bids[indexPath.row]
          let bid: Bid = datas[indexPath.row]
-        currentIndex = indexPath.row
+        //currentIndex = indexPath.row
         cell.lblDonetion.text = String(bid.value!)
         cell.lblTimr.text = String(bid.timestamp!)
          
@@ -105,18 +105,41 @@ MySpotMultiBidTableViewCell
         //cell.textLabel?.text = S.AddressText
         //cell.detailTextLabel!.text = S.legalTime + "        [" + String(S.Bids.count) + "]"
         //var b:String = String(format:"%f", S.location.altitude)
-        cell.contentView.userInteractionEnabled = true
+        //cell.contentView.userInteractionEnabled = false
+        cell.btnAccept.addTarget(self, action: "btnAccept_click:", forControlEvents: .TouchUpInside)
+        cell.btnReject.addTarget(self, action: "btnReject_click:", forControlEvents: .TouchUpInside)
+        cell.btnAccept.tag = indexPath.row
+         cell.btnReject.tag = indexPath.row
         return cell
         
     }
     
+    func btnAccept_click(sender: UIButton!) {
+       
+        let currentbid : Bid = datas[sender.tag]
+        print("btnAccept_click from main  at " + String(sender.tag) + "  value: " + String(currentbid.value))
+    }
+    func btnReject_click(sender: UIButton!) {
+        let currentbid : Bid = datas[sender.tag]
+        print("btnReject_click  from main at  " + String(sender.tag) + "  value: " + String(currentbid.value))
+        
+
+    }
     
+    /*
     @IBAction func AcceptButton_Clicked(sender: UIButton) {
     
     let bid: Bid = datas[self.currentIndex]
     var currentIndex : Double =  bid.value!
+        print("tapped button xxxx")
     }
-    /**/
+    
+    func btnAccept_click(sender: UIButton!) {
+        
+       var d = 99
+        
+    }
+   */
 
     /*
     // Override to support conditional editing of the table view.

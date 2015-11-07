@@ -821,7 +821,7 @@
                             <rect key="frame" x="0.0" y="64" width="600" height="30"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <animations/>
-                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
                             <textInputTraits key="textInputTraits"/>
                         </textField>
                         <prototypes>
@@ -838,10 +838,6 @@
                                             <accessibility key="accessibilityConfiguration" identifier="btnAccept"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                             <state key="normal" title="Accept"/>
-                                            <connections>
-                                                <action selector="AcceptButton_Clicked:" destination="Wrm-3K-Ou0" eventType="touchUpInside" id="1Qp-rM-SFM"/>
-                                                <action selector="Accept_Clicked:" destination="0Dh-UM-aqm" eventType="touchUpInside" id="lwY-rz-0NG"/>
-                                            </connections>
                                         </button>
                                         <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ItS-kc-6M2">
                                             <rect key="frame" x="336" y="16" width="72" height="30"/>
@@ -849,9 +845,6 @@
                                             <accessibility key="accessibilityConfiguration" identifier="btnReject"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <state key="normal" title="Reject"/>
-                                            <connections>
-                                                <action selector="Reject_Clicked:" destination="0Dh-UM-aqm" eventType="touchUpInside" id="p58-AI-k99"/>
-                                            </connections>
                                         </button>
                                         <label opaque="NO" userInteractionEnabled="NO" tag="12" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="lblTime" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dgu-V5-7t3">
                                             <rect key="frame" x="73" y="17" width="144" height="24"/>
@@ -888,6 +881,8 @@
                                 </tableViewCellContentView>
                                 <animations/>
                                 <connections>
+                                    <outlet property="btnAccept" destination="aNl-2r-kfe" id="2jb-sn-YVE"/>
+                                    <outlet property="btnReject" destination="ItS-kc-6M2" id="YEd-gy-8aQ"/>
                                     <outlet property="lblDonetion" destination="iJK-xa-B5N" id="BAj-pE-PCC"/>
                                     <outlet property="lblTimr" destination="dgu-V5-7t3" id="afd-ar-nid"/>
                                 </connections>
