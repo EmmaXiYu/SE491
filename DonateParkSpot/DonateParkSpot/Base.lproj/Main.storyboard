@@ -76,7 +76,7 @@
                     <navigationItem key="navigationItem" id="eAI-OZ-snL"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
-                        <outlet property="Menu" destination="TbI-ov-z46" id="Psy-Zt-0Ln"/>
+                        <outlet property="Menu" destination="TbI-ov-z46" id="dI4-XS-GKR"/>
                         <outlet property="mapView" destination="av9-bi-9Dw" id="a4r-v9-qEl"/>
                         <outlet property="searchBar" destination="OXg-Qt-pbH" id="Rn2-eE-ZO0"/>
                         <segue destination="ABi-bC-pIg" kind="show" id="uBR-i7-h3R"/>
@@ -84,7 +84,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bQb-nk-tEk" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1428.5" y="-23.5"/>
+            <point key="canvasLocation" x="1444.5" y="-127.5"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">

@@ -14,7 +14,7 @@ import Parse
 
 class MapViewController: UIViewController,MKMapViewDelegate,CLLocationManagerDelegate,UISearchBarDelegate{
     @IBOutlet weak var searchBar: UISearchBar!
-    @IBOutlet weak var menu: UIView!
+    @IBOutlet weak var Menu: UIBarButtonItem!
     @IBOutlet weak var mapView: MKMapView!
     
     
@@ -38,11 +38,16 @@ class MapViewController: UIViewController,MKMapViewDelegate,CLLocationManagerDel
         self.locationManager.startUpdatingLocation()
         self.mapView.showsUserLocation=true
         self.mapView.setUserTrackingMode(MKUserTrackingMode.FollowWithHeading, animated: true)
+        Menu.target = revealViewController()
+        Menu.action = Selector("revealToggle:")
+        
+        self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
+        searchBar.delegate = self
+        mapView.delegate = self
+        
+
     }
-  
-    @IBAction func showMenu() {
-        menu.hidden = !menu.hidden
-    }
+
     
     
     //location delegate methods
@@ -112,7 +117,7 @@ class MapViewController: UIViewController,MKMapViewDelegate,CLLocationManagerDel
                 let coordinate = location!.coordinate
                 self.searchingLatitude = coordinate.latitude
                 self.searchingLongitude = coordinate.longitude
-                
+                self.mapView.centerCoordinate = CLLocationCoordinate2D(latitude: coordinate.latitude, longitude: coordinate.longitude)
                 
                 let geoPoint = PFGeoPoint(latitude: coordinate.latitude ,longitude: coordinate.longitude  );
                 //let spot = PFObject(className: "Spot")

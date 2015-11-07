@@ -217,6 +217,7 @@
 		180C3AF31BD9F0F400E7E5F5 /* DonateParkSpot */ = {
 			isa = PBXGroup;
 			children = (
+				18AE416B1BE8781A00A4A62B /* Model */,
 				18AE41661BE84FEB00A4A62B /* SWRevealViewController.m */,
 				18AE41641BE84FE400A4A62B /* SWRevealViewController.h */,
 				18AE41601BE84EB000A4A62B /* BackTableVC.swift */,
@@ -237,8 +238,8 @@
 				180C3B271BDA932C00E7E5F5 /* RegisterViewController.swift */,
 				180A14A41BDC1554005F4221 /* CustomerAnnotation.swift */,
 				180A14A61BDC16E9005F4221 /* User.swift */,
-				180A14AC1BDC5074005F4221 /* SpotDetailViewController.swift */,
 				10B75D6C1BE06949009B88DC /* Bid.swift */,
+				180A14AC1BDC5074005F4221 /* SpotDetailViewController.swift */,
 				10B75D6E1BE1932D009B88DC /* SearchHistory.swift */,
 				10B75D701BE1B087009B88DC /* CurrentUser.swift */,
 				10A79C941BE2D04900D26027 /* BuyDetailController.swift */,
@@ -262,6 +263,13 @@
 				180C3B191BD9F0F400E7E5F5 /* Info.plist */,
 			);
 			path = DonateParkSpotUITests;
+			sourceTree = "<group>";
+		};
+		18AE416B1BE8781A00A4A62B /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
