@@ -817,9 +817,16 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <textField key="tableHeaderView" opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="All Bids" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" id="Zki-ww-M1X">
+                            <rect key="frame" x="0.0" y="64" width="600" height="30"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <animations/>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <textInputTraits key="textInputTraits"/>
+                        </textField>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" verticalCompressionResistancePriority="740" selectionStyle="default" indentationWidth="10" reuseIdentifier="MyBidLabelCell" rowHeight="52" id="0Dh-UM-aqm">
-                                <rect key="frame" x="0.0" y="82" width="600" height="52"/>
+                            <tableViewCell clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" verticalCompressionResistancePriority="740" selectionStyle="default" indentationWidth="10" reuseIdentifier="MyBidLabelCell" rowHeight="52" id="0Dh-UM-aqm" customClass="MySpotMultiBidTableViewCell" customModule="DonateParkSpot" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="112" width="600" height="52"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="0Dh-UM-aqm" id="cAC-K7-qP6">
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="51"/>
@@ -833,6 +840,7 @@
                                             <state key="normal" title="Accept"/>
                                             <connections>
                                                 <action selector="AcceptButton_Clicked:" destination="Wrm-3K-Ou0" eventType="touchUpInside" id="1Qp-rM-SFM"/>
+                                                <action selector="Accept_Clicked:" destination="0Dh-UM-aqm" eventType="touchUpInside" id="lwY-rz-0NG"/>
                                             </connections>
                                         </button>
                                         <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ItS-kc-6M2">
@@ -841,6 +849,9 @@
                                             <accessibility key="accessibilityConfiguration" identifier="btnReject"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <state key="normal" title="Reject"/>
+                                            <connections>
+                                                <action selector="Reject_Clicked:" destination="0Dh-UM-aqm" eventType="touchUpInside" id="p58-AI-k99"/>
+                                            </connections>
                                         </button>
                                         <label opaque="NO" userInteractionEnabled="NO" tag="12" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="lblTime" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dgu-V5-7t3">
                                             <rect key="frame" x="73" y="17" width="144" height="24"/>
@@ -876,6 +887,10 @@
                                     <animations/>
                                 </tableViewCellContentView>
                                 <animations/>
+                                <connections>
+                                    <outlet property="lblDonetion" destination="iJK-xa-B5N" id="BAj-pE-PCC"/>
+                                    <outlet property="lblTimr" destination="dgu-V5-7t3" id="afd-ar-nid"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>

@@ -79,19 +79,24 @@ class MySpotMultiBidTableViewController: UITableViewController {
     }
 
     
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("MyBidLabelCell", forIndexPath: indexPath)
-
+    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> MySpotMultiBidTableViewCell {
+        let cell = tableView.dequeueReusableCellWithIdentifier("MyBidLabelCell", forIndexPath: indexPath) as!
+MySpotMultiBidTableViewCell
+        
+        cell.bid =  datas[indexPath.row]
         //let bid: Bid = DetailSpot.Bids[indexPath.row]
          let bid: Bid = datas[indexPath.row]
         currentIndex = indexPath.row
-        (cell.contentView.viewWithTag(11) as! UILabel).text = String(bid.value!)
-        (cell.contentView.viewWithTag(12) as! UILabel).text = String(bid.timestamp!)
+        cell.lblDonetion.text = String(bid.value!)
+        cell.lblTimr.text = String(bid.timestamp!)
+         
+       // (cell.contentView.viewWithTag(11) as! UILabel).text = String(bid.value!)
+        //(cell.contentView.viewWithTag(12) as! UILabel).text = String(bid.timestamp!)
         if(bid.value < 0.01)
         {
-            let lbl : UILabel = (cell.contentView.viewWithTag(12) as! UILabel)
-            lbl.text = "No Bid yet"
-            lbl.textColor = UIColor.redColor()
+            //let lbl : UILabel = (cell.contentView.viewWithTag(12) as! UILabel)
+            cell.lblTimr.text = "No Bid yet"
+            cell.lblTimr.textColor = UIColor.redColor()
         }
         
         
@@ -100,7 +105,7 @@ class MySpotMultiBidTableViewController: UITableViewController {
         //cell.textLabel?.text = S.AddressText
         //cell.detailTextLabel!.text = S.legalTime + "        [" + String(S.Bids.count) + "]"
         //var b:String = String(format:"%f", S.location.altitude)
-        //cell.contentView.userInteractionEnabled = false
+        cell.contentView.userInteractionEnabled = true
         return cell
         
     }
