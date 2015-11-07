@@ -35,7 +35,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fjt-z2-pE8">
+                            <navigationBar contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fjt-z2-pE8">
                                 <rect key="frame" x="0.0" y="64" width="75" height="44"/>
                                 <animations/>
                                 <items>
@@ -44,13 +44,16 @@
                                     </navigationItem>
                                 </items>
                             </navigationBar>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="av9-bi-9Dw">
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="av9-bi-9Dw">
                                 <rect key="frame" x="0.0" y="108" width="375" height="559"/>
                                 <animations/>
                             </mapView>
-                            <searchBar contentMode="redraw" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="OXg-Qt-pbH">
+                            <searchBar contentMode="redraw" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="OXg-Qt-pbH">
                                 <rect key="frame" x="75" y="64" width="300" height="44"/>
                                 <animations/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="300" id="GhU-Jw-Gtp"/>
+                                </constraints>
                                 <textInputTraits key="textInputTraits"/>
                                 <connections>
                                     <outlet property="delegate" destination="Huc-SV-9rF" id="TeZ-3y-Vma"/>
@@ -71,9 +74,17 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="trailingMargin" secondItem="Yqb-T7-awF" secondAttribute="trailing" id="K0a-Xw-MGD"/>
+                            <constraint firstItem="fjt-z2-pE8" firstAttribute="leading" secondItem="av9-bi-9Dw" secondAttribute="leading" id="K6X-mO-bhM"/>
+                            <constraint firstItem="fjt-z2-pE8" firstAttribute="leading" secondItem="vKv-SU-09B" secondAttribute="leading" id="LV9-8L-ZiE"/>
                             <constraint firstItem="JHR-tT-z8M" firstAttribute="top" secondItem="Yqb-T7-awF" secondAttribute="bottom" constant="20" id="M06-yI-9ni"/>
+                            <constraint firstItem="OXg-Qt-pbH" firstAttribute="leading" secondItem="fjt-z2-pE8" secondAttribute="trailing" id="MAO-A4-XjM"/>
+                            <constraint firstItem="av9-bi-9Dw" firstAttribute="bottom" secondItem="JHR-tT-z8M" secondAttribute="top" id="PC3-52-qSA"/>
+                            <constraint firstItem="OXg-Qt-pbH" firstAttribute="trailing" secondItem="av9-bi-9Dw" secondAttribute="trailing" id="Sat-HE-r46"/>
+                            <constraint firstItem="OXg-Qt-pbH" firstAttribute="top" secondItem="fjt-z2-pE8" secondAttribute="top" id="Wzt-zH-lJx"/>
+                            <constraint firstItem="OXg-Qt-pbH" firstAttribute="leading" secondItem="fjt-z2-pE8" secondAttribute="trailing" id="Zbc-qD-rA2"/>
                             <constraint firstItem="OXg-Qt-pbH" firstAttribute="top" secondItem="9QI-CV-67p" secondAttribute="bottom" id="cX1-xy-meh"/>
                             <constraint firstAttribute="trailingMargin" secondItem="OXg-Qt-pbH" secondAttribute="trailing" constant="-20" id="kWq-CV-4WP"/>
+                            <constraint firstItem="OXg-Qt-pbH" firstAttribute="bottom" secondItem="av9-bi-9Dw" secondAttribute="top" id="u1p-1j-HfC"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="eAI-OZ-snL"/>
