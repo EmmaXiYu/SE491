@@ -93,7 +93,7 @@
                         <outlet property="Menu" destination="TbI-ov-z46" id="dI4-XS-GKR"/>
                         <outlet property="mapView" destination="av9-bi-9Dw" id="a4r-v9-qEl"/>
                         <outlet property="searchBar" destination="OXg-Qt-pbH" id="Rn2-eE-ZO0"/>
-                        <segue destination="ABi-bC-pIg" kind="show" id="uBR-i7-h3R"/>
+                        <segue destination="ABi-bC-pIg" kind="show" identifier="SpotDetailClientClicked" id="jMP-3k-2u4"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bQb-nk-tEk" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -972,7 +972,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cJG-8F-uiN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5044" y="-2036"/>
+            <point key="canvasLocation" x="3992" y="-1128"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="K3N-S1-fM3">
@@ -1005,13 +1005,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="nmf-Jd-ri3">
-                                <rect key="frame" x="-4" y="64" width="383" height="128"/>
-                                <animations/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="128" id="owx-vq-XdM"/>
-                                </constraints>
-                            </mapView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Type" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jcl-Un-s6c">
                                 <rect key="frame" x="16" y="200" width="343" height="21"/>
                                 <animations/>
@@ -1055,6 +1048,13 @@
                                     <action selector="buy" destination="ABi-bC-pIg" eventType="touchUpInside" id="gNb-ya-nJ6"/>
                                 </connections>
                             </button>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="nmf-Jd-ri3">
+                                <rect key="frame" x="-4" y="64" width="383" height="128"/>
+                                <animations/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="128" id="owx-vq-XdM"/>
+                                </constraints>
+                            </mapView>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -1081,6 +1081,7 @@
                             <constraint firstAttribute="leadingMargin" secondItem="p1a-4O-vNf" secondAttribute="leading" id="zZ0-D2-D6i"/>
                         </constraints>
                     </view>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
                         <outlet property="donation" destination="vQF-qx-SW6" id="B6j-0i-KOR"/>
                         <outlet property="map" destination="nmf-Jd-ri3" id="VJ5-jV-mHP"/>
@@ -1092,7 +1093,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HGU-Bn-DlN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1707" y="946"/>
+            <point key="canvasLocation" x="1674.5" y="746.5"/>
         </scene>
     </scenes>
 </document>

@@ -14,12 +14,13 @@ class Spot {
     var type : String = ""
     var rate : Double = 0.0
     var timeLeft : Int = 0
-    var minDonation = 0
+    var minDonation : Int = 0
     var legalTime = ""
     var timeToLeave : NSDate?
     var owner : PFUser = PFUser()
     var AddressText: String = ""
-    var Bids : [Bid] = [Bid]()
+    var Bids : [Bid] = [Bid]()//Emma think spots should not have bids, each bid should has a spot. Each bid 
+    //in database should have a pointer, points to a perticular spot. What do u guys think?
     var spotId : String = "" //need to get bid from server
     
     func toPFObject() -> PFObject {

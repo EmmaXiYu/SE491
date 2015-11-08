@@ -51,7 +51,7 @@ class MySpotBiddingTableViewController: UITableViewController {
                     
                     s.legalTime = ttl
                     s.location = location
-                    s.minDonation=mPrice
+                    s.minDonation = mPrice
                     s.AddressText = AddressText
                     s.spotId = object.objectId!
                     //s.Bids = self.tempGetBid(2)

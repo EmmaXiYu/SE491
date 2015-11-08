@@ -14,23 +14,27 @@ import Parse
 
 class CustomerAnnotation: NSObject, MKAnnotation {
     
+    
     var title : String!
     var subtitle : String!
-    var spot = Spot()
+    var spot : Spot!
     
     let  coordinate : CLLocationCoordinate2D
     
     
     
-    
-    init(coordinate : CLLocationCoordinate2D, spotObject : Spot) {
+
+    init(coordinate : CLLocationCoordinate2D, spotObject : Spot, title: String, subtitle : String) {
         self.coordinate = coordinate
-        spot = spotObject
+        self.spot = spotObject
+        self.title = title
+        self.subtitle = subtitle
         
         
         
         
     }
+ 
     
     
     
