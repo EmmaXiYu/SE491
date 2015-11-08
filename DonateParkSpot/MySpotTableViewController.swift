@@ -35,7 +35,7 @@ class MySpotBiddingTableViewController: UITableViewController {
                     let mPrice = object["minimumPrice"] as! Int
                     let Latitude: CLLocationDegrees = sgp.latitude
                     let Longtitude: CLLocationDegrees = sgp.longitude
-                    let ttl = object["leavingTime"] as! String
+                    let ttl = object["leavingTime"] as! NSDate
                     let AddressText  = object["AddressText"] as! String
                     //let BidList  = object["Bid"] as! [PFObject]?
                     
@@ -49,7 +49,12 @@ class MySpotBiddingTableViewController: UITableViewController {
                     location.latitude = Latitude
                     location.longitude = Longtitude
                     
-                    s.legalTime = ttl
+                    let formatter = NSDateFormatter()
+                    formatter.dateStyle = NSDateFormatterStyle.LongStyle
+                    formatter.timeStyle = .MediumStyle
+                    
+                    let dateString = formatter.stringFromDate(ttl)
+                    s.legalTime = dateString
                     s.location = location
                     s.minDonation = mPrice
                     s.AddressText = AddressText

@@ -39,8 +39,10 @@ class MySpotMultiBidTableViewController: UITableViewController {
                     let bi: Bid = Bid()
                     let timestamp = object["Timestamp"] as! NSDate
                     let value = object["Value"] as! Double
+                    let userId = object["UserId"] as! String
                     bi.value = value
                     bi.timestamp = timestamp
+                    bi.UserId = userId
                     self.datas.insert(bi, atIndex: index)
                     index = index + 1
                 }
@@ -88,7 +90,12 @@ MySpotMultiBidTableViewCell
          let bid: Bid = datas[indexPath.row]
         //currentIndex = indexPath.row
         cell.lblDonetion.text = String(bid.value!)
-        cell.lblTimr.text = String(bid.timestamp!)
+        cell.lblBidder.text = bid.UserId
+        let formatter = NSDateFormatter()
+        formatter.dateStyle = NSDateFormatterStyle.LongStyle
+        formatter.timeStyle = .MediumStyle
+        let dateString = formatter.stringFromDate(bid.timestamp!)
+        cell.lblTimr.text = dateString  //String(bid.timestamp!)
          
        // (cell.contentView.viewWithTag(11) as! UILabel).text = String(bid.value!)
         //(cell.contentView.viewWithTag(12) as! UILabel).text = String(bid.timestamp!)
@@ -122,8 +129,19 @@ MySpotMultiBidTableViewCell
     func btnReject_click(sender: UIButton!) {
         let currentbid : Bid = datas[sender.tag]
         print("btnReject_click  from main at  " + String(sender.tag) + "  value: " + String(currentbid.value))
-        
-
+        /*
+        var query = query.getObjectInBackgroundWithId(self.threadImageIds[currentbid.bidId]) {
+            (object, error) -> Void in
+            if error != nil {
+                println(error)
+            } else {
+                if let object = object {
+                    object["viewed"] = true as Bool
+                }
+                object!.saveInBackground()
+            }
+        }
+*/
     }
     
     /*

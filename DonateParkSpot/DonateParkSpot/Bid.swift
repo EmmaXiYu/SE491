@@ -13,4 +13,5 @@ class Bid {
     var spot : Spot?
     var timestamp : NSDate?
     var value : Double?
+    var UserId : String = ""
 }

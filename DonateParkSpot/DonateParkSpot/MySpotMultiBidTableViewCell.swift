@@ -43,6 +43,7 @@ class MySpotMultiBidTableViewCell: UITableViewCell {
     
     @IBOutlet weak var lblDonetion: UILabel!
     
+    @IBOutlet weak var lblBidder: UILabel!
     
     @IBOutlet weak var btnAccept: UIButton!
     

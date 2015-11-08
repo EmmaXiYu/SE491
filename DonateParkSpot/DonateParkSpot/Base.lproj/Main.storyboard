@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8191" systemVersion="15A284" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9059" systemVersion="15B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9049"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
@@ -823,7 +823,7 @@
         <scene sceneID="ElQ-RT-rO7">
             <objects>
                 <tableViewController title="MySpotMultiBid" id="Wrm-3K-Ou0" customClass="MySpotMultiBidTableViewController" customModule="DonateParkSpot" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="52" sectionHeaderHeight="18" sectionFooterHeight="18" id="ClJ-GY-q3Z">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="60" sectionHeaderHeight="18" sectionFooterHeight="18" id="ClJ-GY-q3Z">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <animations/>
@@ -836,29 +836,22 @@
                             <textInputTraits key="textInputTraits"/>
                         </textField>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" verticalCompressionResistancePriority="740" selectionStyle="default" indentationWidth="10" reuseIdentifier="MyBidLabelCell" rowHeight="52" id="0Dh-UM-aqm" customClass="MySpotMultiBidTableViewCell" customModule="DonateParkSpot" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="112" width="600" height="52"/>
+                            <tableViewCell clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" verticalCompressionResistancePriority="740" selectionStyle="default" indentationWidth="10" reuseIdentifier="MyBidLabelCell" rowHeight="60" id="0Dh-UM-aqm" customClass="MySpotMultiBidTableViewCell" customModule="DonateParkSpot" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="112" width="600" height="60"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="0Dh-UM-aqm" id="cAC-K7-qP6">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="51"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="59"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aNl-2r-kfe">
-                                            <rect key="frame" x="336" y="-8" width="72" height="30"/>
+                                            <rect key="frame" x="333" y="-8" width="72" height="30"/>
                                             <animations/>
                                             <accessibility key="accessibilityConfiguration" identifier="btnAccept"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                             <state key="normal" title="Accept"/>
                                         </button>
-                                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ItS-kc-6M2">
-                                            <rect key="frame" x="336" y="16" width="72" height="30"/>
-                                            <animations/>
-                                            <accessibility key="accessibilityConfiguration" identifier="btnReject"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <state key="normal" title="Reject"/>
-                                        </button>
                                         <label opaque="NO" userInteractionEnabled="NO" tag="12" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="lblTime" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dgu-V5-7t3">
-                                            <rect key="frame" x="73" y="17" width="144" height="24"/>
+                                            <rect key="frame" x="73" y="17" width="327" height="24"/>
                                             <animations/>
                                             <accessibility key="accessibilityConfiguration" identifier="txtMinBid"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="20"/>
@@ -887,6 +880,27 @@
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Bidder:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="R6i-Wo-Mg5">
+                                            <rect key="frame" x="7" y="36" width="63" height="21"/>
+                                            <animations/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="lblBidder" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vf4-kZ-ug3">
+                                            <rect key="frame" x="73" y="38" width="270" height="21"/>
+                                            <animations/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ItS-kc-6M2">
+                                            <rect key="frame" x="221" y="-4" width="65" height="30"/>
+                                            <animations/>
+                                            <accessibility key="accessibilityConfiguration" identifier="btnReject"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <state key="normal" title="Reject"/>
+                                        </button>
                                     </subviews>
                                     <animations/>
                                 </tableViewCellContentView>
@@ -894,6 +908,7 @@
                                 <connections>
                                     <outlet property="btnAccept" destination="aNl-2r-kfe" id="2jb-sn-YVE"/>
                                     <outlet property="btnReject" destination="ItS-kc-6M2" id="YEd-gy-8aQ"/>
+                                    <outlet property="lblBidder" destination="Vf4-kZ-ug3" id="Xdi-ej-lbm"/>
                                     <outlet property="lblDonetion" destination="iJK-xa-B5N" id="BAj-pE-PCC"/>
                                     <outlet property="lblTimr" destination="dgu-V5-7t3" id="afd-ar-nid"/>
                                 </connections>
