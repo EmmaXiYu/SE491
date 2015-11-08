@@ -106,17 +106,11 @@ class MapViewController: UIViewController,MKMapViewDelegate,CLLocationManagerDel
         if segue.identifier == "SpotDetailClientClicked"
             
         {
-            
+            var selectedAnnotation: MKAnnotation = self.mapView.selectedAnnotations[0] as MKAnnotation
+            let cAnnotation: CustomerAnnotation = selectedAnnotation as! CustomerAnnotation
             let seeDetailToBuy = segue!.destinationViewController as!  BuyDetailController
-            
-            seeDetailToBuy.spot = spotO
-            
-            
-            
-            
-            
-            
-            
+            seeDetailToBuy.spot = cAnnotation.spot
+          
             
         }
         
