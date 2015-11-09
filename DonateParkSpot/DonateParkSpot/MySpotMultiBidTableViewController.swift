@@ -43,6 +43,7 @@ class MySpotMultiBidTableViewController: UITableViewController {
                     bi.value = value
                     bi.timestamp = timestamp
                     bi.UserId = userId
+                    bi.bidId = object.objectId!
                     self.datas.insert(bi, atIndex: index)
                     index = index + 1
                 }
@@ -129,20 +130,36 @@ MySpotMultiBidTableViewCell
     func btnReject_click(sender: UIButton!) {
         let currentbid : Bid = datas[sender.tag]
         print("btnReject_click  from main at  " + String(sender.tag) + "  value: " + String(currentbid.value))
-        /*
-        var query = query.getObjectInBackgroundWithId(self.threadImageIds[currentbid.bidId]) {
-            (object, error) -> Void in
+        
+        var prefQuery = PFQuery(className: "Spot")
+        prefQuery.getObjectInBackgroundWithId(DetailSpot.spotId){
+            (prefObj: PFObject?, error: NSError?) -> Void in
             if error != nil {
-                println(error)
-            } else {
-                if let object = object {
-                    object["viewed"] = true as Bool
-                }
-                object!.saveInBackground()
-            }
+               self.showmessage("Error on Reject")
+                print(error)
+              
+            } else if let prefObj = prefObj {
+                prefObj["StatusId"] = 4
+                prefObj["AcctepedBidId"] = currentbid.bidId
+              
+                self.showmessage("Successfully Rejected")
+                //prefObj.saveInBackgroundWithBlock({ (Bool, error: NSError!) -> Void in })
+                //prefObj.saveInBackgroundWithBlock(<#T##block: PFBooleanResultBlock?##PFBooleanResultBlock?##(Bool, NSError?) -> Void#>)(false)
+            
+           }
         }
-*/
     }
+    
+        func showmessage ( msg : String) -> Void
+        {
+        
+            let refreshAlert = UIAlertView()
+            refreshAlert.title = "Donate parkspot"
+            refreshAlert.message = msg
+            //refreshAlert.addButtonWithTitle("Cancel")
+            refreshAlert.addButtonWithTitle("OK")
+            refreshAlert.show()
+        }
     
     /*
     @IBAction func AcceptButton_Clicked(sender: UIButton) {

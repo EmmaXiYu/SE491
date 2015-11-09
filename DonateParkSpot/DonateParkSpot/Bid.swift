@@ -14,4 +14,5 @@ class Bid {
     var timestamp : NSDate?
     var value : Double?
     var UserId : String = ""
+    var bidId  :String = "" //Will use for updating (Accept/  reject bid)
 }
