@@ -231,49 +231,7 @@ class MapViewController: UIViewController,MKMapViewDelegate,CLLocationManagerDel
         
         if control == view.rightCalloutAccessoryView {
             print("Disclosure Pressed!")
-         let idhere = view.annotation!.subtitle!!
-            
-            do{
-            let query = PFQuery(className: "Spot")
-                let object =  try query.getObjectWithId(idhere)
-              
-                
-              
-                    let pin = object["SpotGeoPoint"] as! PFGeoPoint
-                    let pinLatitude: CLLocationDegrees = pin.latitude
-                    let pinLongtitude: CLLocationDegrees = pin.longitude
-                    let userName = object["owner"] as! String
-                    let address = object["AddressText"] as! String
-                    let id = object.objectId
-                    let type = object["Type"] as! String
-                    let rate = object["Rate"] as! Double
-                    let timeLeft = object["LeftTime"] as! Int
-                    let miniDonation = object["minimumPrice"] as! Int
-                    let legalTime = object["LegalTime"] as! String
-                    let timeToLeave = object["leavingTime"] as! NSDate?
-                   let ownerName = object["owner"] as! String
-                    
-                    
-                
-                    self.spotO.owner.username = ownerName
-                    self.spotO.location.latitude = pinLatitude
-                    self.spotO.location.longitude = pinLongtitude
-                    self.spotO.AddressText = address
-                    self.spotO.spotId = id!
-                    self.spotO.type = type
-                    self.spotO.rate = rate
-                    self.spotO.timeLeft = timeLeft
-                    self.spotO.minDonation = miniDonation
-                    self.spotO.legalTime = legalTime
-                    self.spotO.timeToLeave = timeToLeave
-                 
-                
-}
-            catch{
-            
-            print("error")}
-            
-                      self.performSegueWithIdentifier("SpotDetailClientClicked", sender: self)
+            self.performSegueWithIdentifier("SpotDetailClientClicked", sender: self)
             
         }
         
