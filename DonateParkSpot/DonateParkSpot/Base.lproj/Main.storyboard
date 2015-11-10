@@ -68,7 +68,6 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="28"/>
                                 <state key="normal" title="+"/>
                                 <connections>
-                                    <action selector="DetailButtonTapped:" destination="Huc-SV-9rF" eventType="touchUpInside" id="izb-fy-3nB"/>
                                     <segue destination="Zk7-hc-Dzg" kind="show" identifier="SpotView" id="A0w-pX-5oW"/>
                                 </connections>
                             </button>
