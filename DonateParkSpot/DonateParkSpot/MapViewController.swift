@@ -42,7 +42,6 @@ class MapViewController: UIViewController,MKMapViewDelegate,CLLocationManagerDel
     var filtered:[String] = []
     var history:[String] = [" "]
     var searchActive: Bool = false
-    var temp:String = ""
     
     let locationManager=CLLocationManager()
     
@@ -66,7 +65,18 @@ class MapViewController: UIViewController,MKMapViewDelegate,CLLocationManagerDel
         historyView.dataSource = self
         searchBar.delegate = self
         historyView.hidden = true
-        
+        var query: PFQuery = PFQuery()
+        query = PFQuery(className: "SearchHistory")
+        query.whereKey("user", equalTo: PFUser.currentUser()!)
+        query.findObjectsInBackgroundWithBlock {(objects:[PFObject]?, error:NSError?) -> Void in
+            if error == nil {
+                for object in objects! {
+                    let historyResult = object["address"] as! String
+                    self.history.append(historyResult)
+                }
+            }
+        }
+
     }
     
     
@@ -79,7 +89,7 @@ class MapViewController: UIViewController,MKMapViewDelegate,CLLocationManagerDel
     func searchBarTextDidEndEditing(searchBar: UISearchBar) {
         
         searchActive = false
-        historyView.hidden = false
+        historyView.hidden = true
     }
     
     
@@ -139,12 +149,12 @@ class MapViewController: UIViewController,MKMapViewDelegate,CLLocationManagerDel
     func searchBarSearchButtonClicked(searchBar: UISearchBar) {
         
         searchActive = true
-        history.append(searchBar.text!)
+//        history.append(searchBar.text!)
         searchBar.resignFirstResponder()
         address = searchBar.text!;
         let geocoder = CLGeocoder()
         geocoder.geocodeAddressString(address, completionHandler: { (placemarks, error) -> Void in
-            if placemarks!.count > 0 {
+            if placemarks?.count > 0 {
                 
                 let placemark = placemarks!.first as CLPlacemark!
                 let location = placemark.location
