@@ -11,7 +11,7 @@ import MapKit
 import CoreLocation
 import Parse
 
-class MapViewController: UIViewController,MKMapViewDelegate,CLLocationManagerDelegate,UISearchBarDelegate{
+class MapViewController: UIViewController,MKMapViewDelegate,CLLocationManagerDelegate,UITableViewDataSource,UITableViewDelegate,UISearchBarDelegate{
     
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var Menu: UIBarButtonItem!
@@ -30,6 +30,7 @@ class MapViewController: UIViewController,MKMapViewDelegate,CLLocationManagerDel
     @IBAction func DetailButtonTapped(sender: AnyObject) {
         self.performSegueWithIdentifier("SpotView", sender: self)}
     
+    @IBOutlet weak var historyView: UITableView!
     
     var address = ""
     var latitude = Double ()
@@ -38,7 +39,10 @@ class MapViewController: UIViewController,MKMapViewDelegate,CLLocationManagerDel
     var searchingLatitude = Double()
     var searchingLongitude = Double()
     var spotO = Spot()
-  
+    var filtered:[String] = []
+    var history:[String] = [" "]
+    var searchActive: Bool = false
+    var temp:String = ""
     
     let locationManager=CLLocationManager()
     
@@ -58,10 +62,25 @@ class MapViewController: UIViewController,MKMapViewDelegate,CLLocationManagerDel
         self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
         searchBar.delegate = self
         mapView.delegate = self
-        
+        historyView.delegate = self
+        historyView.dataSource = self
+        searchBar.delegate = self
+        historyView.hidden = true
         
     }
     
+    
+    func searchBarTextDidBeginEditing(searchBar: UISearchBar) {
+        searchActive = true
+        historyView.hidden = false
+        
+    }
+    
+    func searchBarTextDidEndEditing(searchBar: UISearchBar) {
+        
+        searchActive = false
+        historyView.hidden = false
+    }
     
     
     //location delegate methods
@@ -119,6 +138,8 @@ class MapViewController: UIViewController,MKMapViewDelegate,CLLocationManagerDel
     
     func searchBarSearchButtonClicked(searchBar: UISearchBar) {
         
+        searchActive = true
+        history.append(searchBar.text!)
         searchBar.resignFirstResponder()
         address = searchBar.text!;
         let geocoder = CLGeocoder()
@@ -186,7 +207,7 @@ class MapViewController: UIViewController,MKMapViewDelegate,CLLocationManagerDel
             
             
         })
-        
+                historyView.hidden = true
         
         
     }
@@ -195,7 +216,8 @@ class MapViewController: UIViewController,MKMapViewDelegate,CLLocationManagerDel
     {
         searchBar.resignFirstResponder()
         searchBar.text = ""
-        
+        searchActive = false
+        historyView.hidden = true
     }
     
     
@@ -278,6 +300,54 @@ class MapViewController: UIViewController,MKMapViewDelegate,CLLocationManagerDel
         }
         
     }
+    
+    func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
+        filtered = history.filter({ (text) -> Bool in
+            let tmp:NSString = text
+            let range = tmp.rangeOfString(searchText, options: NSStringCompareOptions.CaseInsensitiveSearch)
+            return range.location != NSNotFound
+            
+        })
+        if(filtered.count == 0){
+            searchActive = false;
+        }
+        else{
+            searchActive = true;
+        }
+        self.historyView.reloadData()
+    }
+    
+    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+        return 1
+    }
+    
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if(searchActive){
+            print("Count:" + filtered.count.description)
+            return filtered.count
+        }
+        return (filtered.count - filtered.count)
+    }
+    
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        print(indexPath.row)
+        let cell = self.historyView.dequeueReusableCellWithIdentifier("Cell")! as UITableViewCell;
+        
+        if(searchActive){
+            cell.textLabel!.text = filtered[indexPath.row]
+        }
+        else{
+            cell.textLabel!.text = history[indexPath.row]
+        }
+        return cell
+    }
+    
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        let indexPath = tableView.indexPathForSelectedRow
+        let currentCell  = tableView.cellForRowAtIndexPath(indexPath!) as UITableViewCell?
+        searchBar.text = (currentCell?.textLabel?.text!)!
+    }
+    
     
 }
 
