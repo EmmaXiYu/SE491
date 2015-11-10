@@ -156,6 +156,10 @@ class MapViewController: UIViewController,MKMapViewDelegate,CLLocationManagerDel
         geocoder.geocodeAddressString(address, completionHandler: { (placemarks, error) -> Void in
             if placemarks?.count > 0 {
                 
+                let search = PFObject(className: "SearchHistory")
+                search["address"] = self.address
+                search["user"] = PFUser.currentUser()
+                search.saveInBackground()
                 let placemark = placemarks!.first as CLPlacemark!
                 let location = placemark.location
                 let coordinate = location!.coordinate
