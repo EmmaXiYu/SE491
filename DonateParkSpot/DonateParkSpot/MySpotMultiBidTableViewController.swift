@@ -117,9 +117,13 @@ MySpotMultiBidTableViewCell
         //cell.detailTextLabel!.text = S.legalTime + "        [" + String(S.Bids.count) + "]"
         //var b:String = String(format:"%f", S.location.altitude)
         //cell.contentView.userInteractionEnabled = false
-        if(bid.bidId ==  DetailSpot.AcctepedBidId)
+        
+        
+        if(DetailSpot.StatusId == 2)
         {
-            cell.backgroundColor = UIColor.greenColor()
+            //If any bid Accepted than Spot staus also 2
+            cell.btnAccept.enabled = false
+            cell.btnReject.enabled = false
         }
         if (bid.StatusId == 4 ||  bid.StatusId == 2)
         {
@@ -147,7 +151,7 @@ MySpotMultiBidTableViewCell
        
         let currentbid : Bid = datas[sender.tag]
         print("btnAccept_click from main  at " + String(sender.tag) + "  value: " + String(currentbid.value))
-        var prefQuery = PFQuery(className: "Spot")
+        let prefQuery = PFQuery(className: "Spot")
         prefQuery.getObjectInBackgroundWithId(DetailSpot.spotId){
             (prefObj: PFObject?, error: NSError?) -> Void in
             if error != nil {
