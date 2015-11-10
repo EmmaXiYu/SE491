@@ -10,6 +10,7 @@ import Foundation
 import Parse
 
 class Spot {
+    
     var location : Location = Location()
     var type : String = ""
     var rate : Double = 0.0
@@ -37,7 +38,7 @@ class Spot {
         result["LegalTime"] = legalTime
         result["TimeToLeave"] = timeToLeave
         result["Owner"] = owner
-        
+        result.objectId = spotId
         
         return result
     }

@@ -32,22 +32,18 @@ class BuyDetailController : UIViewController {
     }
     
     @IBAction func upDown(sender: UIStepper) {
-        minDonation.text = "$ " + sender.value.description + ".00"
+        minDonation.text = "$ " + sender.value.description
     }
     
     @IBAction func buy() {
         let user = PFUser.currentUser()
         
-        let bid = PFObject(className: "Bids")
-        bid["user"] = user!
+        let bid = PFObject(className: "Bid")
+        bid["user"] = user
         bid["value"] = donation.value
-        bid["spot"] = spot!.toPFObject()
+        bid["spot"] = PFObject(withoutDataWithClassName: "Spot", objectId: spot?.spotId)
         
-        bid.saveInBackgroundWithBlock { (success, error) -> Void in
-            print(success)
-            print(error)
-            
-        }
+        bid.saveInBackground()
 
     }
 }
