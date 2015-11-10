@@ -130,14 +130,14 @@ MySpotMultiBidTableViewCell
         prefQuery.getObjectInBackgroundWithId(DetailSpot.spotId){
             (prefObj: PFObject?, error: NSError?) -> Void in
             if error != nil {
-                self.showmessage("Error on Acceped")
+                self.showmessage("Error on Acceped bid")
                 print(error)
                 
             } else if let prefObj = prefObj {
                 prefObj["StatusId"] = 2
                 prefObj["AcctepedBidId"] = currentbid.bidId
                 prefObj.saveInBackgroundWithTarget(sender, selector: nil)
-                self.showmessage("Successfully Acceped")
+                self.showmessage("Successfully Acceped bid")
                 
             }
         }
@@ -150,14 +150,14 @@ MySpotMultiBidTableViewCell
         prefQuery.getObjectInBackgroundWithId(DetailSpot.spotId){
             (prefObj: PFObject?, error: NSError?) -> Void in
             if error != nil {
-               self.showmessage("Error on Reject")
+               self.showmessage("Error on Reject bid")
                 print(error)
               
             } else if let prefObj = prefObj {
                 prefObj["StatusId"] = 4
                 prefObj["AcctepedBidId"] = currentbid.bidId
                 prefObj.saveInBackgroundWithTarget(sender, selector: nil)
-                self.showmessage("Successfully Rejected")
+                self.showmessage("Successfully Rejected bid")
                
            }
         }
