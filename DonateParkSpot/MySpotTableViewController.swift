@@ -59,6 +59,7 @@ class MySpotBiddingTableViewController: UITableViewController {
                     s.minDonation = mPrice
                     s.AddressText = AddressText
                     s.spotId = object.objectId!
+                    s.StatusId = object["StatusId"] as! Int
                     //s.Bids = self.tempGetBid(2)
                     //s.Bids = self.GetBidList(spotId!)
                     //s.Bids = self.GetBidEgar(BidList!)

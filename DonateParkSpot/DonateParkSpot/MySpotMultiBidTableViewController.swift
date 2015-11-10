@@ -46,6 +46,7 @@ class MySpotMultiBidTableViewController: UITableViewController {
                     bi.timestamp = timestamp
                     bi.UserId = userId
                     bi.bidId = object.objectId!
+                    bi.StatusId = object["StatusId"] as! Int
                     self.datas.insert(bi, atIndex: index)
                     index = index + 1
                 }
@@ -116,10 +117,28 @@ MySpotMultiBidTableViewCell
         //cell.detailTextLabel!.text = S.legalTime + "        [" + String(S.Bids.count) + "]"
         //var b:String = String(format:"%f", S.location.altitude)
         //cell.contentView.userInteractionEnabled = false
+        if(bid.bidId ==  DetailSpot.AcctepedBidId)
+        {
+            cell.backgroundColor = UIColor.greenColor()
+        }
+        if (bid.StatusId == 4 ||  bid.StatusId == 2)
+        {
+         cell.btnAccept.enabled = false
+         cell.btnReject.enabled = false
+            if (bid.StatusId == 4 )
+            {
+            cell.backgroundColor = UIColor.greenColor()
+            }
+            
+            if ( bid.StatusId == 2)
+            {
+                cell.backgroundColor = UIColor.redColor()
+            }
+        }
         cell.btnAccept.addTarget(self, action: "btnAccept_click:", forControlEvents: .TouchUpInside)
         cell.btnReject.addTarget(self, action: "btnReject_click:", forControlEvents: .TouchUpInside)
         cell.btnAccept.tag = indexPath.row
-         cell.btnReject.tag = indexPath.row
+        cell.btnReject.tag = indexPath.row
         return cell
         
     }
