@@ -126,11 +126,26 @@ MySpotMultiBidTableViewCell
        
         let currentbid : Bid = datas[sender.tag]
         print("btnAccept_click from main  at " + String(sender.tag) + "  value: " + String(currentbid.value))
+        var prefQuery = PFQuery(className: "Spot")
+        prefQuery.getObjectInBackgroundWithId(DetailSpot.spotId){
+            (prefObj: PFObject?, error: NSError?) -> Void in
+            if error != nil {
+                self.showmessage("Error on Acceped")
+                print(error)
+                
+            } else if let prefObj = prefObj {
+                prefObj["StatusId"] = 2
+                prefObj["AcctepedBidId"] = currentbid.bidId
+                prefObj.saveInBackgroundWithTarget(sender, selector: nil)
+                self.showmessage("Successfully Acceped")
+                
+            }
+        }
+
     }
     func btnReject_click(sender: UIButton!) {
         let currentbid : Bid = datas[sender.tag]
         print("btnReject_click  from main at  " + String(sender.tag) + "  value: " + String(currentbid.value))
-        
         var prefQuery = PFQuery(className: "Spot")
         prefQuery.getObjectInBackgroundWithId(DetailSpot.spotId){
             (prefObj: PFObject?, error: NSError?) -> Void in
@@ -141,11 +156,9 @@ MySpotMultiBidTableViewCell
             } else if let prefObj = prefObj {
                 prefObj["StatusId"] = 4
                 prefObj["AcctepedBidId"] = currentbid.bidId
-              
+                prefObj.saveInBackgroundWithTarget(sender, selector: nil)
                 self.showmessage("Successfully Rejected")
-                //prefObj.saveInBackgroundWithBlock({ (Bool, error: NSError!) -> Void in })
-                //prefObj.saveInBackgroundWithBlock(<#T##block: PFBooleanResultBlock?##PFBooleanResultBlock?##(Bool, NSError?) -> Void#>)(false)
-            
+               
            }
         }
     }
