@@ -123,7 +123,12 @@ class MapViewController: UIViewController,MKMapViewDelegate,CLLocationManagerDel
         address = searchBar.text!;
         let geocoder = CLGeocoder()
         geocoder.geocodeAddressString(address, completionHandler: { (placemarks, error) -> Void in
-            if placemarks!.count > 0 {
+            if placemarks?.count > 0 {
+                
+                let search = PFObject(className: "SearchHistory")
+                search["address"] = self.address
+                search["user"] = PFUser.currentUser()
+                search.saveInBackground()
                 
                 let placemark = placemarks!.first as CLPlacemark!
                 let location = placemark.location
@@ -171,12 +176,6 @@ class MapViewController: UIViewController,MKMapViewDelegate,CLLocationManagerDel
                             annotation.spot = spotObject
                             //annotation.subtitle = "Rating bar here"
                             self.mapView.addAnnotation(annotation)
-                            
-                           
-                            
-                            
-                            
-
                         }
                     }
                     
