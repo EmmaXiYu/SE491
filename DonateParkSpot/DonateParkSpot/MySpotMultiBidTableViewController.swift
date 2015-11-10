@@ -30,7 +30,9 @@ class MySpotMultiBidTableViewController: UITableViewController {
         //var bidList = [Bid]()
         var query: PFQuery = PFQuery()
         query = PFQuery(className: "Bid")
-        query.whereKey("SpotId", equalTo:spotid)
+      //  query.whereKey("Spot", equalTo:spotid)
+        query.whereKey("Spot", equalTo: PFObject(withoutDataWithClassName:"Spot", objectId:spotid))
+        
         query.findObjectsInBackgroundWithBlock {
             (objects:[PFObject]?, error:NSError?) -> Void in
             if error == nil {
