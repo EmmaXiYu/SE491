@@ -121,24 +121,26 @@ MySpotMultiBidTableViewCell
         
         if(DetailSpot.StatusId == 2)
         {
-            //If any bid Accepted than Spot staus also 2
+            //If any bid Accepted than Spot staus also , than disable all Accept button in table
             cell.btnAccept.enabled = false
-            cell.btnReject.enabled = false
+            //cell.btnReject.enabled = false
         }
-        if (bid.StatusId == 4 ||  bid.StatusId == 2)
-        {
-         cell.btnAccept.enabled = false
-         cell.btnReject.enabled = false
-            if (bid.StatusId == 4 )
+        //if (bid.StatusId == 4 ||  bid.StatusId == 2)
+        //{
+        
+        
+            if (bid.StatusId == 2 ) //Accepted
             {
-            cell.backgroundColor = UIColor.greenColor()
+                cell.btnAccept.enabled = false
+                cell.backgroundColor = UIColor.greenColor().colorWithAlphaComponent(0.10)
             }
             
-            if ( bid.StatusId == 2)
+            if ( bid.StatusId == 4)  //Rejected
             {
-                cell.backgroundColor = UIColor.redColor()
+                cell.backgroundColor = UIColor.redColor().colorWithAlphaComponent(0.10)
+                cell.btnReject.enabled = false
             }
-        }
+        //}
         cell.btnAccept.addTarget(self, action: "btnAccept_click:", forControlEvents: .TouchUpInside)
         cell.btnReject.addTarget(self, action: "btnReject_click:", forControlEvents: .TouchUpInside)
         cell.btnAccept.tag = indexPath.row
@@ -151,6 +153,10 @@ MySpotMultiBidTableViewCell
        
         let currentbid : Bid = datas[sender.tag]
         print("btnAccept_click from main  at " + String(sender.tag) + "  value: " + String(currentbid.value))
+         self.updateBid(currentbid, status :2,  sender: sender!)
+         self.updateSpot(currentbid, status :2,  sender: sender!)
+        self.tableView.reloadData()
+       /*
         let prefQuery = PFQuery(className: "Spot")
         prefQuery.getObjectInBackgroundWithId(DetailSpot.spotId){
             (prefObj: PFObject?, error: NSError?) -> Void in
@@ -166,12 +172,17 @@ MySpotMultiBidTableViewCell
                 
             }
         }
+*/
 
     }
+ 
     func btnReject_click(sender: UIButton!) {
         let currentbid : Bid = datas[sender.tag]
         print("btnReject_click  from main at  " + String(sender.tag) + "  value: " + String(currentbid.value))
-        var prefQuery = PFQuery(className: "Spot")
+        self.updateBid(currentbid, status :4,  sender: sender!) //rejected
+         self.tableView.reloadData()
+       /*
+        let prefQuery = PFQuery(className: "Spot")
         prefQuery.getObjectInBackgroundWithId(DetailSpot.spotId){
             (prefObj: PFObject?, error: NSError?) -> Void in
             if error != nil {
@@ -185,6 +196,44 @@ MySpotMultiBidTableViewCell
                 self.showmessage("Successfully Rejected bid")
                
            }
+        }
+        */
+    }
+    func updateSpot(currentbid : Bid, status :Int,  sender: UIButton!)-> Void
+    {
+        let prefQuery = PFQuery(className: "Spot")
+        prefQuery.getObjectInBackgroundWithId(DetailSpot.spotId){
+            (prefObj: PFObject?, error: NSError?) -> Void in
+            if error != nil {
+                self.showmessage("Error on Acceped bid")
+                print(error)
+                
+            } else if let prefObj = prefObj {
+                prefObj["StatusId"] = status
+                if(status == 2) //Accepted
+                {
+                    prefObj["AcctepedBidId"] = currentbid.bidId
+                }
+                prefObj.saveInBackgroundWithTarget(sender, selector: nil)
+                self.showmessage("Successfully Acceped bid")
+                
+            }
+        }
+    }
+    func updateBid(currentbid : Bid, status :Int,  sender: UIButton!)-> Void
+    {
+        let prefQuery = PFQuery(className: "Bid")
+        prefQuery.getObjectInBackgroundWithId(currentbid.bidId){
+            (prefObj: PFObject?, error: NSError?) -> Void in
+            if error != nil {
+                //self.showmessage("Error on Acceped bid")
+                print(error)
+            } else if let prefObj = prefObj {
+                prefObj["StatusId"] = status
+                prefObj.saveInBackgroundWithTarget(sender, selector: nil)
+                //self.showmessage("Successfully Acceped bid")
+                
+            }
         }
     }
     
