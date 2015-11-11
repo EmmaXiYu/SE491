@@ -30,7 +30,9 @@ class MySpotMultiBidTableViewController: UITableViewController {
         //var bidList = [Bid]()
         var query: PFQuery = PFQuery()
         query = PFQuery(className: "Bid")
-        query.whereKey("SpotId", equalTo:spotid)
+      //  query.whereKey("Spot", equalTo:spotid)
+        query.whereKey("Spot", equalTo: PFObject(withoutDataWithClassName:"Spot", objectId:spotid))
+        
         query.findObjectsInBackgroundWithBlock {
             (objects:[PFObject]?, error:NSError?) -> Void in
             if error == nil {
@@ -44,6 +46,7 @@ class MySpotMultiBidTableViewController: UITableViewController {
                     bi.timestamp = timestamp
                     bi.UserId = userId
                     bi.bidId = object.objectId!
+                    bi.StatusId = object["StatusId"] as! Int
                     self.datas.insert(bi, atIndex: index)
                     index = index + 1
                 }
@@ -114,10 +117,32 @@ MySpotMultiBidTableViewCell
         //cell.detailTextLabel!.text = S.legalTime + "        [" + String(S.Bids.count) + "]"
         //var b:String = String(format:"%f", S.location.altitude)
         //cell.contentView.userInteractionEnabled = false
+        
+        
+        if(DetailSpot.StatusId == 2)
+        {
+            //If any bid Accepted than Spot staus also 2
+            cell.btnAccept.enabled = false
+            cell.btnReject.enabled = false
+        }
+        if (bid.StatusId == 4 ||  bid.StatusId == 2)
+        {
+         cell.btnAccept.enabled = false
+         cell.btnReject.enabled = false
+            if (bid.StatusId == 4 )
+            {
+            cell.backgroundColor = UIColor.greenColor()
+            }
+            
+            if ( bid.StatusId == 2)
+            {
+                cell.backgroundColor = UIColor.redColor()
+            }
+        }
         cell.btnAccept.addTarget(self, action: "btnAccept_click:", forControlEvents: .TouchUpInside)
         cell.btnReject.addTarget(self, action: "btnReject_click:", forControlEvents: .TouchUpInside)
         cell.btnAccept.tag = indexPath.row
-         cell.btnReject.tag = indexPath.row
+        cell.btnReject.tag = indexPath.row
         return cell
         
     }
@@ -126,7 +151,7 @@ MySpotMultiBidTableViewCell
        
         let currentbid : Bid = datas[sender.tag]
         print("btnAccept_click from main  at " + String(sender.tag) + "  value: " + String(currentbid.value))
-        var prefQuery = PFQuery(className: "Spot")
+        let prefQuery = PFQuery(className: "Spot")
         prefQuery.getObjectInBackgroundWithId(DetailSpot.spotId){
             (prefObj: PFObject?, error: NSError?) -> Void in
             if error != nil {
