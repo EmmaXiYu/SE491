@@ -21,7 +21,7 @@ class BuyDetailController : UIViewController {
     
     override func viewDidLoad() {
         if spot != nil {
-            map.centerCoordinate = CLLocationCoordinate2D(latitude: spot!.location.latitude, longitude: spot!.location.longitude)
+                        
             type.text = spot!.type
             rate.text = spot!.rate.description
             timeToLeave.text = "15:30"

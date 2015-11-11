@@ -165,7 +165,12 @@ class MapViewController: UIViewController,MKMapViewDelegate,CLLocationManagerDel
                 let coordinate = location!.coordinate
                 self.searchingLatitude = coordinate.latitude
                 self.searchingLongitude = coordinate.longitude
-                self.mapView.centerCoordinate = CLLocationCoordinate2D(latitude: coordinate.latitude, longitude: coordinate.longitude)
+                let center = CLLocationCoordinate2D(latitude: coordinate.latitude, longitude: coordinate.longitude)
+                
+                self.mapView.centerCoordinate = center
+                let region = MKCoordinateRegion(center: center, span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01))
+                self.mapView.setRegion(region, animated: true)
+
                 
                 let geoPoint = PFGeoPoint(latitude: coordinate.latitude ,longitude: coordinate.longitude  );
                 //let spot = PFObject(className: "Spot")
