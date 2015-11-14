@@ -7,19 +7,60 @@
 //
 
 import UIKit
-
+import Parse
 class MyBidTableViewController: UITableViewController {
-
+var datas = [Bid] ()
+    
+    @IBOutlet weak var lblAddress: UILabel!
+    
+    @IBOutlet weak var lblAmount: UILabel!
+    
+    @IBOutlet weak var lblSeller: UILabel!
+    
+    @IBAction func btnCancel(sender: AnyObject) {
+    
+    
+    
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        self.GetBidList()
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
     }
-
+    func GetBidList()  {
+        var index = 0
+        //var bidList = [Bid]()
+        var query: PFQuery = PFQuery()
+        query = PFQuery(className: "Bid")
+        query.whereKey("User", equalTo:"pravangsu@gmail.com")
+        
+        query.findObjectsInBackgroundWithBlock {
+            (objects:[PFObject]?, error:NSError?) -> Void in
+            if error == nil {
+                for object in objects! {
+                    
+                    let bi: Bid = Bid()
+                    let timestamp = object["Timestamp"] as! NSDate
+                    let value = object["Value"] as! Double
+                    let userId = object["UserId"] as! String
+                    bi.value = value
+                    bi.timestamp = timestamp
+                    bi.UserId = userId
+                    bi.bidId = object.objectId!
+                    bi.StatusId = object["StatusId"] as! Int
+                    self.datas.insert(bi, atIndex: index)
+                    index = index + 1
+                }
+           
+                self.tableView.reloadData()
+            }
+        }
+        
+    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
