@@ -9,8 +9,12 @@
 import UIKit
 
 class MyBidTableViewCell: UITableViewCell {
-
+   var bid : Bid = Bid()
+    
     @IBOutlet weak var lblAddress: UILabel!
+    @IBOutlet weak var lblBidder: UILabel!
+    @IBOutlet weak var lblDonetion: UILabel!
+    @IBOutlet weak var btnCancel: UIButton!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

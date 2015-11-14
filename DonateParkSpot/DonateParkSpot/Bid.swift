@@ -15,5 +15,7 @@ class Bid {
     var value : Double?
     var UserId : String = ""
     var bidId  :String = "" //Will use for updating (Accept/  reject bid)
-    var StatusId : Int = 1
+    var StatusId : Int = 1   //  Status by Seller
+    var CancelByBidder : Bool = false // Indicate if cancel by Buyer  
+    
 }
