@@ -27,19 +27,24 @@ class MyBidTableViewController: UITableViewController {
         var query: PFQuery = PFQuery()
         query = PFQuery(className: "Bid")
         query.whereKey("UserId", equalTo:"pravangsu@gmail.com")
+        query.includeKey("Spot")
         
         query.findObjectsInBackgroundWithBlock {
             (objects:[PFObject]?, error:NSError?) -> Void in
             if error == nil {
                 for object in objects! {
+                     let bi: Bid = Bid()
                     
-                    let bi: Bid = Bid()
-                    let timestamp = object["Timestamp"] as! NSDate
-                    let value = object["Value"] as! Double
-                    let userId = object["UserId"] as! String
-                    bi.value = value
-                    bi.timestamp = timestamp
-                   bi.UserId = userId
+                    /*if let pointer = object["spot"] as? PFObject {
+                        bi.Address = pointer["AddressText"] as! String!
+                    }*/
+                    bi.value =  object["Value"] as! Double
+                    bi.timestamp = object["Timestamp"] as! NSDate
+                    bi.UserId = object["UserId"] as! String
+                    if(object["CancelByBidder"] != nil)
+                    {
+                        bi.CancelByBidder = object["CancelByBidder"] as! Bool
+                    }
                     bi.bidId = object.objectId!
                     bi.StatusId = object["StatusId"] as! Int
                     self.datas.insert(bi, atIndex: index)
@@ -94,6 +99,7 @@ class MyBidTableViewController: UITableViewController {
         
         objCell.lblDonetion.text = String(bid.value!)
         objCell.lblBidder.text = bid.UserId
+        objCell.lblAddress.text = bid.Address
         let formatter = NSDateFormatter()
         formatter.dateStyle = NSDateFormatterStyle.LongStyle
         formatter.timeStyle = .MediumStyle
