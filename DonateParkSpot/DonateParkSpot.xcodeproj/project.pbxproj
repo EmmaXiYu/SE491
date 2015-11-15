@@ -47,10 +47,12 @@
 		180C3B2A1BDAA0B400E7E5F5 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 180C3B291BDAA0B400E7E5F5 /* MapViewController.swift */; };
 		18AE41611BE84EB000A4A62B /* BackTableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18AE41601BE84EB000A4A62B /* BackTableVC.swift */; };
 		18AE41671BE84FEB00A4A62B /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18AE41661BE84FEB00A4A62B /* SWRevealViewController.m */; };
-		18AE41741BEE907800A4A62B /* test.png in Resources */ = {isa = PBXBuildFile; fileRef = 18AE41731BEE907800A4A62B /* test.png */; settings = {ASSET_TAGS = (); }; };
+		18AE41741BEE907800A4A62B /* test.png in Resources */ = {isa = PBXBuildFile; fileRef = 18AE41731BEE907800A4A62B /* test.png */; };
 		B80CB65A1BE30A9600746CEB /* MySpotDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = B80CB6591BE30A9600746CEB /* MySpotDetail.swift */; };
 		B8179AFA1BE0628B00F218F1 /* MySpotTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8179AF91BE0628B00F218F1 /* MySpotTableViewController.swift */; };
 		B89892171BED996600DEF1B5 /* MySpotMultiBidTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B89892161BED996600DEF1B5 /* MySpotMultiBidTableViewCell.swift */; };
+		B8A1093F1BF6E86D003503B1 /* MyBidTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8A1093E1BF6E86D003503B1 /* MyBidTableViewController.swift */; };
+		B8A109411BF6F184003503B1 /* MyBidTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8A109401BF6F184003503B1 /* MyBidTableViewCell.swift */; };
 		B8A33A921BEAFE5F0007E77E /* MySpotMultiBidTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8A33A911BEAFE5F0007E77E /* MySpotMultiBidTableViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -124,6 +126,8 @@
 		B80CB6591BE30A9600746CEB /* MySpotDetail.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MySpotDetail.swift; sourceTree = "<group>"; };
 		B8179AF91BE0628B00F218F1 /* MySpotTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MySpotTableViewController.swift; path = ../MySpotTableViewController.swift; sourceTree = "<group>"; };
 		B89892161BED996600DEF1B5 /* MySpotMultiBidTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MySpotMultiBidTableViewCell.swift; sourceTree = "<group>"; };
+		B8A1093E1BF6E86D003503B1 /* MyBidTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyBidTableViewController.swift; sourceTree = "<group>"; };
+		B8A109401BF6F184003503B1 /* MyBidTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyBidTableViewCell.swift; sourceTree = "<group>"; };
 		B8A33A911BEAFE5F0007E77E /* MySpotMultiBidTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MySpotMultiBidTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -228,6 +232,8 @@
 				B8179AF91BE0628B00F218F1 /* MySpotTableViewController.swift */,
 				B8A33A911BEAFE5F0007E77E /* MySpotMultiBidTableViewController.swift */,
 				B89892161BED996600DEF1B5 /* MySpotMultiBidTableViewCell.swift */,
+				B8A1093E1BF6E86D003503B1 /* MyBidTableViewController.swift */,
+				B8A109401BF6F184003503B1 /* MyBidTableViewCell.swift */,
 				10B75D681BE0509D009B88DC /* Location.swift */,
 				10B75D691BE0509D009B88DC /* Spot.swift */,
 				180A147A1BDB0A37005F4221 /* Main.storyboard */,
@@ -417,11 +423,13 @@
 				B8A33A921BEAFE5F0007E77E /* MySpotMultiBidTableViewController.swift in Sources */,
 				18AE41611BE84EB000A4A62B /* BackTableVC.swift in Sources */,
 				180C3B2A1BDAA0B400E7E5F5 /* MapViewController.swift in Sources */,
+				B8A1093F1BF6E86D003503B1 /* MyBidTableViewController.swift in Sources */,
 				10B75D6A1BE0509D009B88DC /* Location.swift in Sources */,
 				180A14A51BDC1554005F4221 /* CustomerAnnotation.swift in Sources */,
 				180C3B281BDA932C00E7E5F5 /* RegisterViewController.swift in Sources */,
 				180A14A71BDC16E9005F4221 /* User.swift in Sources */,
 				180C3AFD1BD9F0F400E7E5F5 /* DonateParkSpot.xcdatamodeld in Sources */,
+				B8A109411BF6F184003503B1 /* MyBidTableViewCell.swift in Sources */,
 				10B75D6D1BE06949009B88DC /* Bid.swift in Sources */,
 				180A14AD1BDC5074005F4221 /* SpotDetailViewController.swift in Sources */,
 				B80CB65A1BE30A9600746CEB /* MySpotDetail.swift in Sources */,

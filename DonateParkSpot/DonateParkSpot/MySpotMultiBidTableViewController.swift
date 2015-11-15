@@ -88,7 +88,8 @@ class MySpotMultiBidTableViewController: UITableViewController {
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> MySpotMultiBidTableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("MyBidLabelCell", forIndexPath: indexPath) as!
 MySpotMultiBidTableViewCell
-        
+       
+        /*
         cell.bid =  datas[indexPath.row]
         //let bid: Bid = DetailSpot.Bids[indexPath.row]
          let bid: Bid = datas[indexPath.row]
@@ -146,16 +147,79 @@ MySpotMultiBidTableViewCell
         cell.btnAccept.tag = indexPath.row
         cell.btnReject.tag = indexPath.row
         return cell
+*/
+        return updateCell(cell , currentIndex : indexPath.row)
         
     }
+    func updateCell(objCell : MySpotMultiBidTableViewCell , currentIndex : Int) -> MySpotMultiBidTableViewCell
+    {
     
+        objCell.bid =  datas[currentIndex]
+        let bid: Bid = datas[currentIndex]
+
+        objCell.lblDonetion.text = String(bid.value!)
+        objCell.lblBidder.text = bid.UserId
+        let formatter = NSDateFormatter()
+        formatter.dateStyle = NSDateFormatterStyle.LongStyle
+        formatter.timeStyle = .MediumStyle
+        let dateString = formatter.stringFromDate(bid.timestamp!)
+        objCell.lblTimr.text = dateString  //String(bid.timestamp!)
+        
+     
+        if(bid.value < 0.01)
+        {
+
+            objCell.lblTimr.text = "No Bid yet"
+            objCell.lblTimr.textColor = UIColor.redColor()
+        }
+        
+        if(DetailSpot.StatusId == 2)
+        {
+            //If any bid Accepted than Spot staus also , than disable all Accept button in table
+            objCell.btnAccept.enabled = false
+        }
+       self.updateCellColor(objCell , StatusId :  bid.StatusId)
+
+        objCell.btnAccept.addTarget(self, action: "btnAccept_click:", forControlEvents: .TouchUpInside)
+        objCell.btnReject.addTarget(self, action: "btnReject_click:", forControlEvents: .TouchUpInside)
+        objCell.btnAccept.tag = currentIndex
+        objCell.btnReject.tag = currentIndex
+    
+    return objCell
+    }
+    
+    func updateCellColor(objCell : MySpotMultiBidTableViewCell , StatusId : Int)-> Void
+    {
+        if (StatusId == 2 ) //Accepted
+        {
+            objCell.btnAccept.enabled = false
+            objCell.backgroundColor = UIColor.greenColor().colorWithAlphaComponent(0.10)
+        }
+        
+        if ( StatusId == 4)  //Rejected
+        {
+            objCell.backgroundColor = UIColor.redColor().colorWithAlphaComponent(0.10)
+            objCell.btnReject.enabled = false
+        }
+    }
     func btnAccept_click(sender: UIButton!) {
        
-        let currentbid : Bid = datas[sender.tag]
-        print("btnAccept_click from main  at " + String(sender.tag) + "  value: " + String(currentbid.value))
+         let currentbid : Bid = datas[sender.tag]
+         print("btnAccept_click from main  at " + String(sender.tag) + "  value: " + String(currentbid.value))
+        if( DetailSpot.StatusId != 2)
+        {
          self.updateBid(currentbid, status :2,  sender: sender!)
          self.updateSpot(currentbid, status :2,  sender: sender!)
-        self.tableView.reloadData()
+         DetailSpot.StatusId = 2
+        currentbid.StatusId = 2
+        let cell = getCellForButton(sender)
+        self.updateCellColor(cell , StatusId :  currentbid.StatusId)
+        }
+        else
+        {
+          self.showmessage("Sorry!  You already acceped another bid")
+        }
+         //self.tableView.reloadData()
        /*
         let prefQuery = PFQuery(className: "Spot")
         prefQuery.getObjectInBackgroundWithId(DetailSpot.spotId){
@@ -180,7 +244,11 @@ MySpotMultiBidTableViewCell
         let currentbid : Bid = datas[sender.tag]
         print("btnReject_click  from main at  " + String(sender.tag) + "  value: " + String(currentbid.value))
         self.updateBid(currentbid, status :4,  sender: sender!) //rejected
-         self.tableView.reloadData()
+        currentbid.StatusId = 4
+        let cell = getCellForButton(sender)
+        self.updateCellColor(cell , StatusId :  currentbid.StatusId)
+
+         //self.tableView.reloadData()
        /*
         let prefQuery = PFQuery(className: "Spot")
         prefQuery.getObjectInBackgroundWithId(DetailSpot.spotId){
@@ -198,6 +266,14 @@ MySpotMultiBidTableViewCell
            }
         }
         */
+    }
+    func getCellForButton(sender: UIButton!)-> MySpotMultiBidTableViewCell
+    {
+        let button = sender as UIButton
+        let view = button.superview!
+        let cell = view.superview as! MySpotMultiBidTableViewCell
+        //let indexPath = tableView.indexPathForCell(cell)
+        return cell
     }
     func updateSpot(currentbid : Bid, status :Int,  sender: UIButton!)-> Void
     {
