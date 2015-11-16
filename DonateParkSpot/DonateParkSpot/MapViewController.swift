@@ -165,8 +165,7 @@ class MapViewController: UIViewController,MKMapViewDelegate,CLLocationManagerDel
                 let search = PFObject(className: "SearchHistory")
            
               
-                if ifFound == false
-                {
+                if ifFound == false{
                 search["address"] = self.address
                 search["user"] = PFUser.currentUser()
                     search.saveInBackground()}
