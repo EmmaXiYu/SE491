@@ -72,7 +72,9 @@ class MapViewController: UIViewController,MKMapViewDelegate,CLLocationManagerDel
             if error == nil {
                 for object in objects! {
                     let historyResult = object["address"] as! String
+                    if !self.history.contains(historyResult){
                     self.history.append(historyResult)
+                    }
                 }
             }
         }
@@ -149,7 +151,6 @@ class MapViewController: UIViewController,MKMapViewDelegate,CLLocationManagerDel
     func searchBarSearchButtonClicked(searchBar: UISearchBar) {
         
         searchActive = true
-//        history.append(searchBar.text!)
         searchBar.resignFirstResponder()
         address = searchBar.text!;
         let geocoder = CLGeocoder()
