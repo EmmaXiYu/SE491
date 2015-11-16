@@ -42,6 +42,8 @@ class MapViewController: UIViewController,MKMapViewDelegate,CLLocationManagerDel
     var filtered:[String] = []
     var history:[String] = [" "]
     var searchActive: Bool = false
+    var ownerName:String = ""
+    var ownerId:String = ""
     
     let locationManager=CLLocationManager()
     
@@ -128,6 +130,7 @@ class MapViewController: UIViewController,MKMapViewDelegate,CLLocationManagerDel
             
             spotView.latitudeD = latitude
             spotView.longitudeD = longitude
+       
             
             
         }
@@ -139,6 +142,8 @@ class MapViewController: UIViewController,MKMapViewDelegate,CLLocationManagerDel
             let cAnnotation: CustomerAnnotation = selectedAnnotation as! CustomerAnnotation
             let seeDetailToBuy = segue!.destinationViewController as!  BuyDetailController
             seeDetailToBuy.spot = cAnnotation.spot
+            seeDetailToBuy.ownerName = ownerName
+            seeDetailToBuy.ownerId = ownerId
           
             
         }
@@ -151,15 +156,21 @@ class MapViewController: UIViewController,MKMapViewDelegate,CLLocationManagerDel
         searchActive = true
 //        history.append(searchBar.text!)
         searchBar.resignFirstResponder()
-        address = searchBar.text!;
+        self.address = searchBar.text!;
         let geocoder = CLGeocoder()
-        geocoder.geocodeAddressString(address, completionHandler: { (placemarks, error) -> Void in
+        var ifFound  = history.contains(address)
+               geocoder.geocodeAddressString(address, completionHandler: { (placemarks, error) -> Void in
             if placemarks?.count > 0 {
                 
                 let search = PFObject(className: "SearchHistory")
+           
+              
+                if ifFound == false
+                {
                 search["address"] = self.address
                 search["user"] = PFUser.currentUser()
-                search.saveInBackground()
+                    search.saveInBackground()}
+
                 let placemark = placemarks!.first as CLPlacemark!
                 let location = placemark.location
                 let coordinate = location!.coordinate
@@ -186,6 +197,7 @@ class MapViewController: UIViewController,MKMapViewDelegate,CLLocationManagerDel
                             let pinLongtitude: CLLocationDegrees = pin.longitude
                             let address = object["AddressText"] as! String
                             let id = object.objectId
+                            self.ownerId = id!
                             let type = object["Type"] as! String
                             let rate = object["Rate"] as! Double
                             let timeLeft = object["LeftTime"] as! Int
@@ -193,6 +205,7 @@ class MapViewController: UIViewController,MKMapViewDelegate,CLLocationManagerDel
                             let legalTime = object["LegalTime"] as! String
                             let timeToLeave = object["leavingTime"] as! NSDate?
                             let ownerName = object["owner"] as! String
+                            self.ownerName=ownerName
                             let pinLocation: CLLocationCoordinate2D = CLLocationCoordinate2D(latitude: pinLatitude, longitude: pinLongtitude)
                             //spotObject.owner.username = ownerName
                             spotObject.location.latitude = pinLatitude
