@@ -10,13 +10,22 @@ import UIKit
 import Parse
 class MyBidTableViewController: UITableViewController {
 
+   
     var datas = [Bid] ()
     
+    @IBOutlet weak var Menu: UIBarButtonItem!
 
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.GetBidList()
+        Menu.target = self.revealViewController()
+        Menu.action = Selector("revealToggle:")
+        
+        self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
+        
+        
+
 
     }
     

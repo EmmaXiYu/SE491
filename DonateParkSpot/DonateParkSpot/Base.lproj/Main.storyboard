@@ -412,7 +412,7 @@
             </objects>
             <point key="canvasLocation" x="2148.5" y="-1001.5"/>
         </scene>
-        <!--Title-->
+        <!--My Bid Table View Controller-->
         <scene sceneID="AWw-4i-hMe">
             <objects>
                 <tableViewController id="5Ic-i7-UCO" customClass="MyBidTableViewController" customModule="DonateParkSpot" customModuleProvider="target" sceneMemberID="viewController">
@@ -429,6 +429,16 @@
                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                             <nil key="highlightedColor"/>
                         </label>
+                        <navigationBar key="tableFooterView" contentMode="scaleToFill" id="z2L-3l-JVp">
+                            <rect key="frame" x="0.0" y="146" width="600" height="44"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                            <animations/>
+                            <items>
+                                <navigationItem id="97V-kR-WVe">
+                                    <barButtonItem key="leftBarButtonItem" title="Menu" id="qNq-dG-rK7"/>
+                                </navigationItem>
+                            </items>
+                        </navigationBar>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="MyBidCell" rowHeight="74" id="Qrg-nQ-FoL" customClass="MyBidTableViewCell" customModule="DonateParkSpot" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="72" width="600" height="74"/>
@@ -501,13 +511,15 @@
                             <outlet property="delegate" destination="5Ic-i7-UCO" id="fLv-CZ-025"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Title" id="wvu-VX-f6d">
-                        <barButtonItem key="leftBarButtonItem" title="Menu" id="bfc-d0-VHj"/>
-                    </navigationItem>
+                    <toolbarItems/>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="Menu" destination="qNq-dG-rK7" id="ScX-DV-SUC"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OyM-tW-jOy" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1379" y="517"/>
+            <point key="canvasLocation" x="3509" y="-928"/>
         </scene>
         <!--Setting View Controller-->
         <scene sceneID="3IX-Kz-Vp3">
@@ -533,7 +545,7 @@
                                 <animations/>
                                 <items>
                                     <navigationItem id="aB2-Pd-4lO">
-                                        <barButtonItem key="leftBarButtonItem" title="Back" id="1lu-KD-duC"/>
+                                        <barButtonItem key="leftBarButtonItem" title="Menu" id="1lu-KD-duC"/>
                                     </navigationItem>
                                 </items>
                             </navigationBar>
@@ -578,7 +590,7 @@
                                 </constraints>
                                 <items>
                                     <navigationItem id="oUy-r9-VP1">
-                                        <barButtonItem key="leftBarButtonItem" title="Back" id="rf8-Xi-QEq">
+                                        <barButtonItem key="leftBarButtonItem" title="Menu" id="rf8-Xi-QEq">
                                             <connections>
                                                 <action selector="BackButtonToggled:" destination="Qax-RB-JlP" id="yyi-Qh-wLc"/>
                                             </connections>
@@ -904,7 +916,7 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="0nq-3z-iRh">
-                        <barButtonItem key="leftBarButtonItem" title="Back" id="Y55-fJ-Up8"/>
+                        <barButtonItem key="leftBarButtonItem" title="Menu" id="Y55-fJ-Up8"/>
                     </navigationItem>
                     <connections>
                         <outlet property="Menu" destination="Y55-fJ-Up8" id="aXM-Tr-pZ5"/>
@@ -1201,6 +1213,6 @@
         <segue reference="wzK-vn-gx3"/>
         <segue reference="1eS-8o-n2T"/>
         <segue reference="PBB-HY-yN3"/>
-        <segue reference="yfg-fW-Qqf"/>
+        <segue reference="3UI-kN-ZeM"/>
     </inferredMetricsTieBreakers>
 </document>
