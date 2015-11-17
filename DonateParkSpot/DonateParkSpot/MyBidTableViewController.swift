@@ -35,9 +35,9 @@ class MyBidTableViewController: UITableViewController {
                 for object in objects! {
                      let bi: Bid = Bid()
                     
-                    /*if let pointer = object["spot"] as? PFObject {
+                    if let pointer = object["Spot"] as? PFObject {
                         bi.Address = pointer["AddressText"] as! String!
-                    }*/
+                    }
                     bi.value =  object["Value"] as? Double
                     bi.timestamp = object["Timestamp"] as? NSDate
                     bi.UserId = object["UserId"] as! String
