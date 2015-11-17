@@ -24,7 +24,7 @@ class MySpotBiddingTableViewController: UITableViewController {
         
         //query.whereKey("owner", equalTo: PFObject(withoutDataWithClassName:"User", objectId:CurrentUser.currentUser.username))
         
-        
+         
         //query.whereKey("owner", equalTo:"pravangsu@gmail.com")
         query.whereKey("owner", equalTo:(currentUser?.email)!)
         
