@@ -91,10 +91,14 @@ class SpotDetailViewController: UITableViewController {
     }
     
     
+//    func prepareForSegueSpotDetailClientClicked(segue: UIStoryboardSegue, sender: AnyObject?) {
+//        if(segue.identifier=="SpotView"){
+//            _ = segue.destinationViewController as! MapViewController
+//        }
+//    }
     
     @IBAction func CancelButtonTapped(sender: AnyObject) {
-        
-        
+//        self.performSegueWithIdentifier("SpotView", sender: nil)
     }
     
     

@@ -167,34 +167,37 @@ class MapViewController: UIViewController,MKMapViewDelegate,CLLocationManagerDel
     func searchBarSearchButtonClicked(searchBar: UISearchBar) {
         
         searchActive = true
-//        history.append(searchBar.text!)
         searchBar.resignFirstResponder()
         self.address = searchBar.text!;
         let geocoder = CLGeocoder()
-        var ifFound  = history.contains(address)
+
                geocoder.geocodeAddressString(address, completionHandler: { (placemarks, error) -> Void in
             if placemarks?.count > 0 {
                 
                 let search = PFObject(className: "SearchHistory")
            
               
-                if ifFound == false{
-                search["address"] = self.address
-                search["user"] = PFUser.currentUser()
-                    search.saveInBackground()}
 
                 let placemark = placemarks!.first as CLPlacemark!
                 let location = placemark.location
+                
                 let coordinate = location!.coordinate
                 self.searchingLatitude = coordinate.latitude
                 self.searchingLongitude = coordinate.longitude
                 let center = CLLocationCoordinate2D(latitude: coordinate.latitude, longitude: coordinate.longitude)
                 
+                let ifFound  = self.history.contains(placemark.name!);
+                if ifFound == false{
+                    search["address"] = placemark.name!
+                        search["user"] = PFUser.currentUser()
+                    search.saveInBackground()
+                    self.history.append(placemark.name!)
+                }
+                
                 self.mapView.centerCoordinate = center
                 let region = MKCoordinateRegion(center: center, span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01))
                 self.mapView.setRegion(region, animated: true)
 
-                
                 let geoPoint = PFGeoPoint(latitude: coordinate.latitude ,longitude: coordinate.longitude  );
                 //let spot = PFObject(className: "Spot")
                 var query: PFQuery = PFQuery()
