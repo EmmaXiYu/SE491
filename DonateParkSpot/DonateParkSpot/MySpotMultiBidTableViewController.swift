@@ -171,6 +171,8 @@ MySpotMultiBidTableViewCell
 
             objCell.lblTimr.text = "No Bid yet"
             objCell.lblTimr.textColor = UIColor.redColor()
+            objCell.btnAccept.enabled = false
+            objCell.btnReject.enabled = false
         }
         
         if(DetailSpot.StatusId == 2)
