@@ -25,7 +25,7 @@ class MyBidTableViewController: UITableViewController {
         
         self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
         
-         
+        
 
 
     }
