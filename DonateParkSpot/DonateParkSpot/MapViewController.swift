@@ -78,6 +78,7 @@ class MapViewController: UIViewController,MKMapViewDelegate,CLLocationManagerDel
                 }
             }
         }
+        self.addPlaceHodlerText()
 
     }
     
@@ -150,7 +151,18 @@ class MapViewController: UIViewController,MKMapViewDelegate,CLLocationManagerDel
         
         
     }
+    func addPlaceHodlerText() -> Void
+    {
+        for subView in searchBar.subviews  {
+            for subsubView in subView.subviews  {
+                if let textField = subsubView as? UITextField {
+                    textField.attributedPlaceholder =  NSAttributedString(string:NSLocalizedString("type a address to search a parking spot", comment:""),
+                        attributes:[NSForegroundColorAttributeName: UIColor.orangeColor()])
+                }
+            }
+        }
     
+    }
     func searchBarSearchButtonClicked(searchBar: UISearchBar) {
         
         searchActive = true

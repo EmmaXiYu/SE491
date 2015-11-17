@@ -19,7 +19,8 @@
                         <segue destination="Huc-SV-9rF" kind="relationship" relationship="rootViewController" id="GVc-56-aAM"/>
                         <segue destination="Qax-RB-JlP" kind="custom" customClass="SWRevealViewControllerSegueSetController" id="C1D-Ut-3vJ"/>
                         <segue destination="sft-mq-qoL" kind="custom" customClass="SWRevealViewControllerSegueSetController" id="PaB-M3-fci"/>
-                        <segue destination="XKc-W6-eYY" kind="custom" customClass="SWRevealViewControllerSegueSetController" id="dhN-Ce-4Sh"/>
+                        <segue destination="Afj-wJ-jDD" kind="custom" customClass="SWRevealViewControllerSegueSetController" id="yfg-fW-Qqf"/>
+                        <segue destination="5Ic-i7-UCO" kind="custom" customClass="SWRevealViewControllerSegueSetController" id="Nfr-hf-7iG"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xm9-eu-i3X" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -411,48 +412,6 @@
             </objects>
             <point key="canvasLocation" x="2148.5" y="-1001.5"/>
         </scene>
-        <!--Title-->
-        <scene sceneID="cCQ-BS-eP0">
-            <objects>
-                <viewController id="XKc-W6-eYY" customClass="MyBidsViewController" customModule="DonateParkSpot" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="Eji-Wv-9Iq"/>
-                        <viewControllerLayoutGuide type="bottom" id="M6Q-Si-40T"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="txs-qO-PR5">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="My Bids Page" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gfx-9r-ZDl">
-                                <rect key="frame" x="135" y="107" width="104" height="21"/>
-                                <animations/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="pkv-Oh-W2Z">
-                                <rect key="frame" x="0.0" y="38" width="375" height="44"/>
-                                <animations/>
-                                <items>
-                                    <navigationItem id="DlY-nO-sUf">
-                                        <barButtonItem key="leftBarButtonItem" title="Back" id="wWk-Yg-gmb"/>
-                                    </navigationItem>
-                                </items>
-                            </navigationBar>
-                        </subviews>
-                        <animations/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                    <navigationItem key="navigationItem" title="Title" id="XA3-8X-xim"/>
-                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
-                    <connections>
-                        <outlet property="Menu" destination="wWk-Yg-gmb" id="suv-4H-zaQ"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="ucc-pu-SvH" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2840.5" y="-403.5"/>
-        </scene>
         <!--My Bid Table View Controller-->
         <scene sceneID="AWw-4i-hMe">
             <objects>
@@ -467,9 +426,19 @@
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <animations/>
                             <fontDescription key="fontDescription" type="system" pointSize="21"/>
-                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
+                        <navigationBar key="tableFooterView" contentMode="scaleToFill" id="z2L-3l-JVp">
+                            <rect key="frame" x="0.0" y="146" width="600" height="44"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                            <animations/>
+                            <items>
+                                <navigationItem id="97V-kR-WVe">
+                                    <barButtonItem key="leftBarButtonItem" title="Menu" id="qNq-dG-rK7"/>
+                                </navigationItem>
+                            </items>
+                        </navigationBar>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="MyBidCell" rowHeight="74" id="Qrg-nQ-FoL" customClass="MyBidTableViewCell" customModule="DonateParkSpot" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="72" width="600" height="74"/>
@@ -482,42 +451,42 @@
                                             <rect key="frame" x="8" y="0.0" width="80" height="21"/>
                                             <animations/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="$" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NcX-bO-tVg">
                                             <rect key="frame" x="8" y="22" width="42" height="21"/>
                                             <animations/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Seller" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Iy-YS-etm">
                                             <rect key="frame" x="8" y="44" width="60" height="21"/>
                                             <animations/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="lblAddess" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="U1n-rR-T2Y">
                                             <rect key="frame" x="109" y="0.0" width="206" height="21"/>
                                             <animations/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="lblAmount" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fJv-RT-0A3">
                                             <rect key="frame" x="109" y="22" width="206" height="21"/>
                                             <animations/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="lblSeller" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="egJ-8K-0gc">
                                             <rect key="frame" x="109" y="44" width="230" height="21"/>
                                             <animations/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nFv-jN-x3j">
@@ -542,10 +511,15 @@
                             <outlet property="delegate" destination="5Ic-i7-UCO" id="fLv-CZ-025"/>
                         </connections>
                     </tableView>
+                    <toolbarItems/>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="Menu" destination="qNq-dG-rK7" id="ScX-DV-SUC"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OyM-tW-jOy" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3919" y="-1226"/>
+            <point key="canvasLocation" x="3509" y="-928"/>
         </scene>
         <!--Setting View Controller-->
         <scene sceneID="3IX-Kz-Vp3">
@@ -571,7 +545,7 @@
                                 <animations/>
                                 <items>
                                     <navigationItem id="aB2-Pd-4lO">
-                                        <barButtonItem key="leftBarButtonItem" title="Back" id="1lu-KD-duC"/>
+                                        <barButtonItem key="leftBarButtonItem" title="Menu" id="1lu-KD-duC"/>
                                     </navigationItem>
                                 </items>
                             </navigationBar>
@@ -616,7 +590,7 @@
                                 </constraints>
                                 <items>
                                     <navigationItem id="oUy-r9-VP1">
-                                        <barButtonItem key="leftBarButtonItem" title="Back" id="rf8-Xi-QEq">
+                                        <barButtonItem key="leftBarButtonItem" title="Menu" id="rf8-Xi-QEq">
                                             <connections>
                                                 <action selector="BackButtonToggled:" destination="Qax-RB-JlP" id="yyi-Qh-wLc"/>
                                             </connections>
@@ -811,7 +785,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="MySpotLabelCell" textLabel="vHs-Nd-ouL" detailTextLabel="CQv-7t-Awb" style="IBUITableViewCellStyleSubtitle" id="lad-V4-kyQ">
-                                <rect key="frame" x="0.0" y="92" width="600" height="44"/>
+                                <rect key="frame" x="0.0" y="28" width="600" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="lad-V4-kyQ" id="yDh-N6-JSF">
                                     <rect key="frame" x="0.0" y="0.0" width="567" height="43.5"/>
@@ -849,12 +823,15 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="0nq-3z-iRh">
-                        <barButtonItem key="leftBarButtonItem" title="Back" id="Y55-fJ-Up8"/>
+                        <barButtonItem key="leftBarButtonItem" title="Menu" id="Y55-fJ-Up8"/>
                     </navigationItem>
+                    <connections>
+                        <outlet property="Menu" destination="Y55-fJ-Up8" id="aXM-Tr-pZ5"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="K5z-So-bSJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3368" y="-2145"/>
+            <point key="canvasLocation" x="3446" y="-2251"/>
         </scene>
         <!--MySpotMultiBid-->
         <scene sceneID="ElQ-RT-rO7">
@@ -867,7 +844,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" verticalCompressionResistancePriority="740" selectionStyle="default" indentationWidth="10" reuseIdentifier="MyBidLabelCell" rowHeight="101" id="0Dh-UM-aqm" customClass="MySpotMultiBidTableViewCell" customModule="DonateParkSpot" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="82" width="600" height="101"/>
+                                <rect key="frame" x="0.0" y="18" width="600" height="101"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="0Dh-UM-aqm" id="cAC-K7-qP6">
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="100.5"/>
@@ -972,72 +949,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kqz-CJ-T6a" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="4594" y="-2831"/>
-        </scene>
-        <!--MySpotDetail-->
-        <scene sceneID="yoC-5f-Ert">
-            <objects>
-                <viewController title="MySpotDetail" id="Y6J-9K-f7C" customClass="MySpotDetail" customModule="DonateParkSpot" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="l8M-v3-Vsh"/>
-                        <viewControllerLayoutGuide type="bottom" id="ElT-9f-Q8Z"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="h9B-Gp-V74">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VdA-kT-cUT">
-                                <rect key="frame" x="207" y="145" width="81" height="30"/>
-                                <animations/>
-                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
-                                <state key="normal" title="Accept"/>
-                            </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hsb-kb-gS3">
-                                <rect key="frame" x="87" y="78" width="226" height="52"/>
-                                <animations/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="lblMinPrice" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lR6-BZ-1V2">
-                                <rect key="frame" x="87" y="145" width="99" height="21"/>
-                                <animations/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Address" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qmF-mg-ChY">
-                                <rect key="frame" x="10" y="93" width="69" height="21"/>
-                                <animations/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Price" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ptc-xE-hL6">
-                                <rect key="frame" x="13" y="145" width="39" height="21"/>
-                                <animations/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FU4-Zz-6om">
-                                <rect key="frame" x="224" y="173" width="46" height="30"/>
-                                <animations/>
-                                <state key="normal" title="Reject"/>
-                            </button>
-                        </subviews>
-                        <animations/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                    <navigationItem key="navigationItem" title="Address" id="clp-Pm-WhZ"/>
-                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
-                    <connections>
-                        <outlet property="lblAddress" destination="hsb-kb-gS3" id="A9K-R1-kym"/>
-                        <outlet property="lblMinPrice" destination="lR6-BZ-1V2" id="cxb-2w-oCd"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="cJG-8F-uiN" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="3389.5" y="-1352.5"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="K3N-S1-fM3">
