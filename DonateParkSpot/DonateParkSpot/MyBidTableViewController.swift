@@ -36,7 +36,16 @@ class MyBidTableViewController: UITableViewController {
         //var bidList = [Bid]()
         var query: PFQuery = PFQuery()
         query = PFQuery(className: "Bid")
+        
         query.whereKey("UserId", equalTo:"pravangsu@gmail.com")
+        
+       /*
+        TODO: do in Next Release , Winter Quater
+        let currentUser = PFUser.currentUser()
+        query.whereKey("owner", equalTo: PFObject(withoutDataWithClassName:"User", objectId:currentUser))
+        */
+        
+        
         query.includeKey("Spot")
         
         query.findObjectsInBackgroundWithBlock {
