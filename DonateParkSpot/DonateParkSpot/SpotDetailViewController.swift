@@ -10,7 +10,7 @@ import UIKit
 import Parse
 
 
-class SpotDetailViewController: UIViewController {
+class SpotDetailViewController: UITableViewController {
     
    
     
