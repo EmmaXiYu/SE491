@@ -59,8 +59,9 @@ class MapViewController: UIViewController,MKMapViewDelegate,CLLocationManagerDel
         self.mapView.setUserTrackingMode(MKUserTrackingMode.FollowWithHeading, animated: true)
         Menu.target = self.revealViewController()
         Menu.action = Selector("revealToggle:")
-        
         self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
+        
+        
         searchBar.delegate = self
         mapView.delegate = self
         historyView.delegate = self
