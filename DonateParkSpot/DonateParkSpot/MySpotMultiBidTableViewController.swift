@@ -163,7 +163,7 @@ MySpotMultiBidTableViewCell
         formatter.dateStyle = NSDateFormatterStyle.LongStyle
         formatter.timeStyle = .MediumStyle
         let dateString = formatter.stringFromDate(bid.timestamp!)
-        objCell.lblTimr.text = dateString  //String(bid.timestamp!)
+        objCell.lblTimr.text = dateString  //String(bid.timestamp!) 
         
      
         if(bid.value < 0.01)
