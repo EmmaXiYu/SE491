@@ -17,7 +17,7 @@ class MyBidTableViewCell: UITableViewCell {
     @IBOutlet weak var btnCancel: UIButton!
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        // Initialization code 
     }
 
     override func setSelected(selected: Bool, animated: Bool) {

@@ -10,14 +10,16 @@ import UIKit
 import Parse
 
 
-class SpotDetailViewController: UIViewController {
+class SpotDetailViewController: UITableViewController {
     
    
     
+    @IBOutlet weak var rate: UITextField!
+    @IBOutlet weak var timeLeft: UITextField!
     @IBOutlet weak var timeToLeaveTextField: UITextField!
-    
-    
+    @IBOutlet weak var info: UITextField!
     @IBOutlet weak var minimumDonatePrice: UITextField!
+    @IBOutlet weak var type: UISegmentedControl!
     
     var id = String();
     var latitudeD = Double()
@@ -26,8 +28,10 @@ class SpotDetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-       
-       
+        rate.text = "0.00"
+        rate.enabled = false
+        timeLeft.text = "0"
+        timeLeft.enabled = false
     }
     
     override func didReceiveMemoryWarning() {
@@ -35,6 +39,19 @@ class SpotDetailViewController: UIViewController {
     }
 
     
+    @IBAction func changeType(sender: UISegmentedControl) {
+        if sender.selectedSegmentIndex == 0 {
+            rate.text = "0.00"
+            rate.enabled = false
+            timeLeft.text = "0"
+            timeLeft.enabled = false
+        }else{
+            rate.text = ""
+            rate.enabled = true
+            timeLeft.text = ""
+            timeLeft.enabled = true
+        }
+    }
     
     
     @IBAction func submitTapped(sender: AnyObject) {
@@ -48,16 +65,20 @@ class SpotDetailViewController: UIViewController {
         
         let testObject = PFObject(className: "Spot")
         testObject["SpotGeoPoint"] = geoPoint
-        testObject["leavingTime"] = timeToLeaveTextField.text
+        //testObject["leavingTime"] = timeToLeaveTextField.text
         testObject["minimumPrice"] = Float(minimumDonatePrice.text!)
         testObject["owner"] = PFUser.currentUser()!.username
+        testObject["rate"] = Double(rate.text!)
+        testObject["timeLeft"] = Int(timeLeft.text!)
+        testObject["info"] = info.text
+        testObject["type"] = type.selectedSegmentIndex
         
         testObject.saveInBackgroundWithBlock { (success, error) -> Void in
             
         if (error == nil)
             {
                 
-                //let annotation = CustomerAnnotation(coordinate: (self.locationManager.location?.coordinate)!)
+               // let annotation = CustomerAnnotation(coordinate: (self.locationManager.location?.coordinate)!)
                 
                // self.mapView.addAnnotation(annotation)
                 

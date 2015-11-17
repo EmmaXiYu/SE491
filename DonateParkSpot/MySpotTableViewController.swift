@@ -9,6 +9,10 @@
 import UIKit
 import Parse
 class MySpotBiddingTableViewController: UITableViewController {
+    
+    
+    @IBOutlet weak var Menu: UIBarButtonItem!
+    
  var datas = [Spot] ()
     var mySpotArray:NSMutableArray = []
     override func viewDidLoad() {
@@ -70,6 +74,14 @@ class MySpotBiddingTableViewController: UITableViewController {
                 self.tableView.reloadData()
             }
         }
+        
+        Menu.target = self.revealViewController()
+        Menu.action = Selector("revealToggle:")
+        
+        self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
+        
+        
+
         
    
     }
