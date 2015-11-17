@@ -48,7 +48,7 @@ class MyBidTableViewController: UITableViewController {
                     bi.bidId = object.objectId!
                     bi.StatusId = object["StatusId"] as! Int
                     self.datas.insert(bi, atIndex: index)
-                    index = index + 1
+                    index = index + 1 
                 }
            
                 self.tableView.reloadData()
