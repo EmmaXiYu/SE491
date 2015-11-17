@@ -13,6 +13,7 @@ class MyBidTableViewController: UITableViewController {
    
     var datas = [Bid] ()
     
+   
     @IBOutlet weak var Menu: UIBarButtonItem!
 
     

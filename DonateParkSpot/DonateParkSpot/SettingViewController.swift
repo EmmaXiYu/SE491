@@ -10,6 +10,7 @@ import UIKit
 
 class SettingViewController: UIViewController {
     
+
     @IBOutlet weak var Menu: UIBarButtonItem!
     
     override func viewDidLoad() {
