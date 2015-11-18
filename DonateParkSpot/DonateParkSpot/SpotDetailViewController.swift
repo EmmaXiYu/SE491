@@ -20,6 +20,7 @@ class SpotDetailViewController: UITableViewController {
     @IBOutlet weak var info: UITextField!
     @IBOutlet weak var minimumDonatePrice: UITextField!
     @IBOutlet weak var type: UISegmentedControl!
+    var timePickerView  : UIDatePicker = UIDatePicker()
     
     var id = String();
     var latitudeD = Double()
@@ -32,6 +33,35 @@ class SpotDetailViewController: UITableViewController {
         rate.enabled = false
         timeLeft.text = "0"
         timeLeft.enabled = false
+        
+        
+        
+        
+        let currentDate = NSDate()  //5 -  get the current date
+        timePickerView.minimumDate = currentDate  //6- set the current date/time as a minimum
+        timePickerView.date = currentDate //7
+        timePickerView.datePickerMode = UIDatePickerMode.Time
+    
+        timeToLeaveTextField.inputView = timePickerView
+        timePickerView.addTarget(self, action: Selector("handleTimePicker:"), forControlEvents: UIControlEvents.ValueChanged)
+        handleTimePicker(timePickerView)
+        
+    }
+    
+    @IBAction func userDOBSelectedAction(sender: UITextField) {
+        timeToLeaveTextField.resignFirstResponder()
+    }
+    
+    func handleTimePicker(sender: UIDatePicker) {
+        
+        
+        
+        
+        var timeFormatter = NSDateFormatter()
+        timeFormatter.timeStyle = .ShortStyle
+        timeToLeaveTextField.text = timeFormatter.stringFromDate(sender.date)
+        timeToLeaveTextField.resignFirstResponder()
+        
     }
     
     override func didReceiveMemoryWarning() {
@@ -56,23 +86,21 @@ class SpotDetailViewController: UITableViewController {
     
     @IBAction func submitTapped(sender: AnyObject) {
     
-     
-        
-        let geoPoint = PFGeoPoint(latitude: latitudeD ,longitude: longitudeD);
-        
-        
+      let geoPoint = PFGeoPoint(latitude: latitudeD ,longitude: longitudeD);
         
         
         let testObject = PFObject(className: "Spot")
         testObject["SpotGeoPoint"] = geoPoint
-        //testObject["leavingTime"] = timeToLeaveTextField.text
+     
+        testObject["leavingTime"] = timePickerView.date //timeToLeaveTextField.text
         testObject["minimumPrice"] = Float(minimumDonatePrice.text!)
         testObject["owner"] = PFUser.currentUser()!.username
-        testObject["rate"] = Double(rate.text!)
-        testObject["timeLeft"] = Int(timeLeft.text!)
+        testObject["Rate"] = Double(rate.text!)
+        testObject["LimeTime"] = Int(timeLeft.text!)
         testObject["info"] = info.text
         testObject["type"] = type.selectedSegmentIndex
-        
+        testObject["AddressText"] = info.text //TODO: Get actual address
+
         testObject.saveInBackgroundWithBlock { (success, error) -> Void in
             
         if (error == nil)
