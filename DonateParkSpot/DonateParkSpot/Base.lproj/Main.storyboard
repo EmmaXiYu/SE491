@@ -61,7 +61,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="28"/>
                                 <state key="normal" title="+"/>
                                 <connections>
-                                    <segue destination="a5t-cD-xWU" kind="show" id="h0G-qf-Mlb"/>
+                                    <segue destination="a5t-cD-xWU" kind="show" identifier="AddSpot" id="h0G-qf-Mlb"/>
                                 </connections>
                             </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="qJR-4k-aLR">

@@ -124,7 +124,7 @@ class MapViewController: UIViewController,MKMapViewDelegate,CLLocationManagerDel
     
     override func prepareForSegue(segue:(UIStoryboardSegue!), sender:AnyObject!)
     {
-        if (segue.identifier == "SpotView")
+        if (segue.identifier == "AddSpot")
         {
             
             let spotView = segue!.destinationViewController as! SpotDetailViewController
