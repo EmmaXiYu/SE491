@@ -45,9 +45,9 @@
 		180C3B261BDA923900E7E5F5 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 180C3B251BDA923900E7E5F5 /* LoginViewController.swift */; };
 		180C3B281BDA932C00E7E5F5 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 180C3B271BDA932C00E7E5F5 /* RegisterViewController.swift */; };
 		180C3B2A1BDAA0B400E7E5F5 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 180C3B291BDAA0B400E7E5F5 /* MapViewController.swift */; };
-		1815C0DB1BFA869B003D9390 /* AccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1815C0DA1BFA869B003D9390 /* AccountViewController.swift */; settings = {ASSET_TAGS = (); }; };
-		1815C0DD1BFA9356003D9390 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1815C0DC1BFA9356003D9390 /* SettingViewController.swift */; settings = {ASSET_TAGS = (); }; };
-		1815C0DF1BFA9480003D9390 /* MyBidsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1815C0DE1BFA9480003D9390 /* MyBidsViewController.swift */; settings = {ASSET_TAGS = (); }; };
+		1815C0DB1BFA869B003D9390 /* AccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1815C0DA1BFA869B003D9390 /* AccountViewController.swift */; };
+		1815C0DD1BFA9356003D9390 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1815C0DC1BFA9356003D9390 /* SettingViewController.swift */; };
+		1815C0DF1BFA9480003D9390 /* MyBidsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1815C0DE1BFA9480003D9390 /* MyBidsViewController.swift */; };
 		18AE41611BE84EB000A4A62B /* BackTableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18AE41601BE84EB000A4A62B /* BackTableVC.swift */; };
 		18AE41671BE84FEB00A4A62B /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18AE41661BE84FEB00A4A62B /* SWRevealViewController.m */; };
 		18AE41741BEE907800A4A62B /* test.png in Resources */ = {isa = PBXBuildFile; fileRef = 18AE41731BEE907800A4A62B /* test.png */; };
@@ -181,6 +181,68 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		104814051BFD62FC009476FB /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				104814081BFD653C009476FB /* CellController */,
+				18AE41601BE84EB000A4A62B /* BackTableVC.swift */,
+				B8179AF91BE0628B00F218F1 /* MySpotTableViewController.swift */,
+				B8A33A911BEAFE5F0007E77E /* MySpotMultiBidTableViewController.swift */,
+				B8A1093E1BF6E86D003503B1 /* MyBidTableViewController.swift */,
+				B80CB6591BE30A9600746CEB /* MySpotDetail.swift */,
+				180C3AF61BD9F0F400E7E5F5 /* ViewController.swift */,
+				180C3B291BDAA0B400E7E5F5 /* MapViewController.swift */,
+				180C3B251BDA923900E7E5F5 /* LoginViewController.swift */,
+				180C3B271BDA932C00E7E5F5 /* RegisterViewController.swift */,
+				180A14AC1BDC5074005F4221 /* SpotDetailViewController.swift */,
+				1815C0DA1BFA869B003D9390 /* AccountViewController.swift */,
+				10A79C941BE2D04900D26027 /* BuyDetailController.swift */,
+				1815C0DC1BFA9356003D9390 /* SettingViewController.swift */,
+				1815C0DE1BFA9480003D9390 /* MyBidsViewController.swift */,
+			);
+			name = Controller;
+			sourceTree = "<group>";
+		};
+		104814061BFD6422009476FB /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				18AE41661BE84FEB00A4A62B /* SWRevealViewController.m */,
+				18AE41641BE84FE400A4A62B /* SWRevealViewController.h */,
+				18AE41681BE8500E00A4A62B /* DonateParkSpot-Bridging-Header.h */,
+			);
+			name = Utils;
+			sourceTree = "<group>";
+		};
+		104814071BFD6443009476FB /* Support */ = {
+			isa = PBXGroup;
+			children = (
+				18AE41731BEE907800A4A62B /* test.png */,
+				180C3AF41BD9F0F400E7E5F5 /* AppDelegate.swift */,
+				180C3AFE1BD9F0F400E7E5F5 /* Assets.xcassets */,
+				180C3B031BD9F0F400E7E5F5 /* Info.plist */,
+				180C3AFB1BD9F0F400E7E5F5 /* DonateParkSpot.xcdatamodeld */,
+			);
+			name = Support;
+			sourceTree = "<group>";
+		};
+		104814081BFD653C009476FB /* CellController */ = {
+			isa = PBXGroup;
+			children = (
+				B89892161BED996600DEF1B5 /* MySpotMultiBidTableViewCell.swift */,
+				B8A109401BF6F184003503B1 /* MyBidTableViewCell.swift */,
+			);
+			name = CellController;
+			sourceTree = "<group>";
+		};
+		104814091BFD6E4E009476FB /* View */ = {
+			isa = PBXGroup;
+			children = (
+				180A147A1BDB0A37005F4221 /* Main.storyboard */,
+				180C3B001BD9F0F400E7E5F5 /* LaunchScreen.storyboard */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
 		180A148B1BDBF889005F4221 /* Framework */ = {
 			isa = PBXGroup;
 			children = (
@@ -231,38 +293,12 @@
 		180C3AF31BD9F0F400E7E5F5 /* DonateParkSpot */ = {
 			isa = PBXGroup;
 			children = (
+				104814091BFD6E4E009476FB /* View */,
+				104814071BFD6443009476FB /* Support */,
+				104814061BFD6422009476FB /* Utils */,
+				104814051BFD62FC009476FB /* Controller */,
 				18AE416B1BE8781A00A4A62B /* Model */,
-				18AE41661BE84FEB00A4A62B /* SWRevealViewController.m */,
-				18AE41641BE84FE400A4A62B /* SWRevealViewController.h */,
-				18AE41601BE84EB000A4A62B /* BackTableVC.swift */,
-				B8179AF91BE0628B00F218F1 /* MySpotTableViewController.swift */,
-				B8A33A911BEAFE5F0007E77E /* MySpotMultiBidTableViewController.swift */,
-				B89892161BED996600DEF1B5 /* MySpotMultiBidTableViewCell.swift */,
-				B8A1093E1BF6E86D003503B1 /* MyBidTableViewController.swift */,
-				B8A109401BF6F184003503B1 /* MyBidTableViewCell.swift */,
-				10B75D681BE0509D009B88DC /* Location.swift */,
-				180A147A1BDB0A37005F4221 /* Main.storyboard */,
-				18AE41731BEE907800A4A62B /* test.png */,
-				B80CB6591BE30A9600746CEB /* MySpotDetail.swift */,
-				180C3AF41BD9F0F400E7E5F5 /* AppDelegate.swift */,
-				180C3AF61BD9F0F400E7E5F5 /* ViewController.swift */,
-				180C3B291BDAA0B400E7E5F5 /* MapViewController.swift */,
-				18AE41681BE8500E00A4A62B /* DonateParkSpot-Bridging-Header.h */,
-				180C3AFE1BD9F0F400E7E5F5 /* Assets.xcassets */,
-				180C3B001BD9F0F400E7E5F5 /* LaunchScreen.storyboard */,
-				180C3B031BD9F0F400E7E5F5 /* Info.plist */,
-				180C3AFB1BD9F0F400E7E5F5 /* DonateParkSpot.xcdatamodeld */,
-				180C3B251BDA923900E7E5F5 /* LoginViewController.swift */,
-				180C3B271BDA932C00E7E5F5 /* RegisterViewController.swift */,
 				180A14A41BDC1554005F4221 /* CustomerAnnotation.swift */,
-				180A14A61BDC16E9005F4221 /* User.swift */,
-				10B75D6C1BE06949009B88DC /* Bid.swift */,
-				180A14AC1BDC5074005F4221 /* SpotDetailViewController.swift */,
-				10B75D6E1BE1932D009B88DC /* SearchHistory.swift */,
-				10A79C941BE2D04900D26027 /* BuyDetailController.swift */,
-				1815C0DA1BFA869B003D9390 /* AccountViewController.swift */,
-				1815C0DC1BFA9356003D9390 /* SettingViewController.swift */,
-				1815C0DE1BFA9480003D9390 /* MyBidsViewController.swift */,
 			);
 			path = DonateParkSpot;
 			sourceTree = "<group>";
@@ -288,7 +324,11 @@
 		18AE416B1BE8781A00A4A62B /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				10B75D681BE0509D009B88DC /* Location.swift */,
 				10B75D691BE0509D009B88DC /* Spot.swift */,
+				180A14A61BDC16E9005F4221 /* User.swift */,
+				10B75D6C1BE06949009B88DC /* Bid.swift */,
+				10B75D6E1BE1932D009B88DC /* SearchHistory.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
