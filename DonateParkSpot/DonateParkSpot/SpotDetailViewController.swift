@@ -25,9 +25,15 @@ class SpotDetailViewController: UITableViewController {
     var id = String();
     var latitudeD = Double()
     var longitudeD = Double()
+    var addressText = ""
     
     
     override func viewDidLoad() {
+        let geocoder = CLGeocoder()
+        let location = CLLocation(latitude: latitudeD, longitude: longitudeD)
+        geocoder.reverseGeocodeLocation(location, completionHandler: { (placemarks, error) -> Void in
+            self.addressText = placemarks![0].name!
+        })
         super.viewDidLoad()
         rate.text = "0.00"
         rate.enabled = false
@@ -53,10 +59,6 @@ class SpotDetailViewController: UITableViewController {
     }
     
     func handleTimePicker(sender: UIDatePicker) {
-        
-        
-        
-        
         var timeFormatter = NSDateFormatter()
         timeFormatter.timeStyle = .ShortStyle
         timeToLeaveTextField.text = timeFormatter.stringFromDate(sender.date)
@@ -95,11 +97,11 @@ class SpotDetailViewController: UITableViewController {
         testObject["leavingTime"] = timePickerView.date //timeToLeaveTextField.text
         testObject["minimumPrice"] = Float(minimumDonatePrice.text!)
         testObject["owner"] = PFUser.currentUser()!.username
-        testObject["Rate"] = Double(rate.text!)
-        testObject["LimeTime"] = Int(timeLeft.text!)
-        testObject["info"] = info.text
+        testObject["rate"] = Double(rate.text!)
+        testObject["timeLeft"] = Int(timeLeft.text!)
+        testObject["legalTime"] = info.text
         testObject["type"] = type.selectedSegmentIndex
-        testObject["AddressText"] = info.text //TODO: Get actual address
+        testObject["addressText"] = addressText
 
         testObject.saveInBackgroundWithBlock { (success, error) -> Void in
             
