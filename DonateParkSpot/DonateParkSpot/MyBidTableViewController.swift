@@ -31,7 +31,7 @@ class MyBidTableViewController: UITableViewController {
     }
     
     
-    func GetBidList()  {
+    func GetBidList()  { 
         var index = 0
         //var bidList = [Bid]()
         var query: PFQuery = PFQuery()
