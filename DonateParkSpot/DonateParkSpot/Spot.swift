@@ -12,7 +12,7 @@ import Parse
 class Spot {
     
     var location : Location = Location()
-    var type : String = ""
+    var type : Int = 0
     var rate : Double = 0.0
     var timeLeft : Int = 0
     var minDonation : Int = 0

@@ -25,7 +25,7 @@ class BuyDetailController :  UIViewController, MKMapViewDelegate {
     override func viewDidLoad() {
         if spot != nil {
             
-            type.text = spot!.type
+            type.text = String(spot!.type)
             rate.text = spot!.rate.description
             timeToLeave.text = "15:30"
             minDonation.text = "$ " + spot!.minDonation.description + ".00"
@@ -58,6 +58,7 @@ class BuyDetailController :  UIViewController, MKMapViewDelegate {
         bid["user"] = user
         bid["value"] = donation.value
         bid["spot"] = PFObject(withoutDataWithClassName: "Spot", objectId: spot?.spotId)
+        bid["UserId"] = PFUser.currentUser()  //TODO
         
         bid.saveInBackground()
 
