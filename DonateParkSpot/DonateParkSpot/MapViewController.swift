@@ -10,21 +10,13 @@ import UIKit
 import MapKit
 import CoreLocation
 import Parse
+import QuartzCore
 
 class MapViewController: UIViewController,MKMapViewDelegate,CLLocationManagerDelegate,UITableViewDataSource,UITableViewDelegate,UISearchBarDelegate{
     
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var Menu: UIBarButtonItem!
-    
-    
-    /* @IBAction func logoutButtonTapped(sender: AnyObject) {
-    
-    
-    NSUserDefaults.standardUserDefaults().setBool(false, forKey: "isUserLoggedIn")
-    
-    NSUserDefaults.standardUserDefaults().synchronize();
-    self.dismissViewControllerAnimated(true, completion: nil);
-    }*/
+
     @IBOutlet weak var mapView: MKMapView!
     
     @IBAction func DetailButtonTapped(sender: AnyObject) {
@@ -47,6 +39,9 @@ class MapViewController: UIViewController,MKMapViewDelegate,CLLocationManagerDel
     
     let locationManager=CLLocationManager()
     
+    @IBOutlet weak var addSpot: UIButton!
+    @IBOutlet weak var currentPosition: UIButton!
+    
     override func viewDidLoad() {
         
         super.viewDidLoad();
@@ -61,6 +56,15 @@ class MapViewController: UIViewController,MKMapViewDelegate,CLLocationManagerDel
         Menu.action = Selector("revealToggle:")
         self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
         
+        addSpot.layer.masksToBounds = false
+        addSpot.layer.borderColor = UIColor.whiteColor().CGColor
+        addSpot.layer.cornerRadius = 15
+        addSpot.clipsToBounds = true
+        
+        currentPosition.layer.masksToBounds = false
+        currentPosition.layer.borderColor = UIColor.whiteColor().CGColor
+        currentPosition.layer.cornerRadius = 15
+        currentPosition.clipsToBounds = true
         
         searchBar.delegate = self
         mapView.delegate = self
@@ -96,27 +100,24 @@ class MapViewController: UIViewController,MKMapViewDelegate,CLLocationManagerDel
         historyView.hidden = true
     }
     
+    @IBAction func goToCurrentPosition() {
+        if locationManager.location != nil {
+            mapView.setCenterCoordinate(locationManager.location!.coordinate, animated: true)
+        }
+    }
     
     //location delegate methods
     func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         
         
-        let location = locations.last
-        //let center=CLLocationCoordinate2D(latitude: location!.coordinate.latitude, longitude:location!.coordinate.longitude)
-        //let region=MKCoordinateRegion(center: center, span: MKCoordinateSpan(latitudeDelta: 0.004, longitudeDelta: 0.004))
-        //self.mapView.setRegion(region, animated: true)
-        //self.locationManager.stopUpdatingLocation()
         if locationManager.location != nil {
             latitude = locationManager.location!.coordinate.latitude
             longitude = locationManager.location!.coordinate.longitude
-            //mapView.camera.centerCoordinate = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
         }
     }
     
     
     override func didReceiveMemoryWarning() {
-        
-        
         super.didReceiveMemoryWarning()
     }
     
@@ -126,18 +127,12 @@ class MapViewController: UIViewController,MKMapViewDelegate,CLLocationManagerDel
     {
         if (segue.identifier == "AddSpot")
         {
-            
             let spotView = segue!.destinationViewController as! SpotDetailViewController
-            
-            
             spotView.latitudeD = latitude
             spotView.longitudeD = longitude
-       
-            
-            
-        }
+       }
         
-        if segue.identifier == "SpotDetailClientClicked"
+       if segue.identifier == "SpotDetailClientClicked"
             
         {
             var selectedAnnotation: MKAnnotation = self.mapView.selectedAnnotations[0] as MKAnnotation
@@ -146,12 +141,9 @@ class MapViewController: UIViewController,MKMapViewDelegate,CLLocationManagerDel
             seeDetailToBuy.spot = cAnnotation.spot
             seeDetailToBuy.ownerName = ownerName
             seeDetailToBuy.ownerId = ownerId
-          
-            
         }
-        
-        
     }
+   
     func addPlaceHodlerText() -> Void
     {
         for subView in searchBar.subviews  {
@@ -164,23 +156,17 @@ class MapViewController: UIViewController,MKMapViewDelegate,CLLocationManagerDel
         }
     
     }
+    
     func searchBarSearchButtonClicked(searchBar: UISearchBar) {
-        
         searchActive = true
         searchBar.resignFirstResponder()
         self.address = searchBar.text!;
         let geocoder = CLGeocoder()
-
-               geocoder.geocodeAddressString(address, completionHandler: { (placemarks, error) -> Void in
+        geocoder.geocodeAddressString(address, completionHandler: { (placemarks, error) -> Void in
             if placemarks?.count > 0 {
-                
                 let search = PFObject(className: "SearchHistory")
-           
-              
-
                 let placemark = placemarks!.first as CLPlacemark!
                 let location = placemark.location
-                
                 let coordinate = location!.coordinate
                 self.searchingLatitude = coordinate.latitude
                 self.searchingLongitude = coordinate.longitude
@@ -260,11 +246,6 @@ class MapViewController: UIViewController,MKMapViewDelegate,CLLocationManagerDel
         searchActive = false
         historyView.hidden = true
     }
-    
-    
-    
-    
-    
     
     func mapView(mapView: MKMapView, viewForAnnotation annotation: MKAnnotation
         ) -> MKAnnotationView!{
