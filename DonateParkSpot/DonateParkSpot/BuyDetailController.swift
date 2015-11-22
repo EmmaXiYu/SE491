@@ -26,10 +26,10 @@ class BuyDetailController :  UIViewController, MKMapViewDelegate {
         if spot != nil {
             
             type.text = String(spot!.type)
-            rate.text = spot!.rate.description
+            rate.text = spot!.rate!.description
             timeToLeave.text = "15:30"
-            minDonation.text = "$ " + spot!.minDonation.description + ".00"
-            donation.minimumValue = Double(spot!.minDonation)
+            minDonation.text = "$ " + spot!.minDonation!.description + ".00"
+            donation.minimumValue = Double(spot!.minDonation!)
             donation.stepValue = 1
              self.map.delegate = self
             self.locationManager.desiredAccuracy=kCLLocationAccuracyBest

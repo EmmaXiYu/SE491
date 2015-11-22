@@ -207,17 +207,17 @@ class MapViewController: UIViewController,MKMapViewDelegate,CLLocationManagerDel
                     if error == nil {
                         for object in objects! {
                             let spotObject = Spot()
-                            let pin = object["SpotGeoPoint"] as! PFGeoPoint
-                            let pinLatitude: CLLocationDegrees = pin.latitude
-                            let pinLongtitude: CLLocationDegrees = pin.longitude
-                            let address = object["addressText"] as! String
+                            let pin = object["SpotGeoPoint"] as? PFGeoPoint
+                            let pinLatitude: CLLocationDegrees = pin!.latitude
+                            let pinLongtitude: CLLocationDegrees = pin!.longitude
+                            let address = object["addressText"] as? String
                             let id = object.objectId
                             self.ownerId = id!
-                            let type = object["type"] as! Int
-                            let rate = object["rate"] as! Double
-                            let timeLeft = object["timeLeft"] as! Int
-                            let miniDonation = object["minimumPrice"] as! Int
-                            let legalTime = object["legalTime"] as! String
+                            let type = object["type"] as? Int
+                            let rate = object["rate"] as? Double
+                            let timeLeft = object["timeLeft"] as? Int
+                            let miniDonation = object["minimumPrice"] as? Int
+                            let legalTime = object["legalTime"] as? String
                             let timeToLeave = object["leavingTime"] as! NSDate?
                             let ownerName = object["owner"] as! String
                             self.ownerName=ownerName
