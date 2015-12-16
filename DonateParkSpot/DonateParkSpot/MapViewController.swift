@@ -80,6 +80,14 @@ class MapViewController: UIViewController,MKMapViewDelegate,CLLocationManagerDel
                 for object in objects! {
                     let historyResult = object["address"] as! String
                     self.history.append(historyResult)
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
                 }
             }
         }
