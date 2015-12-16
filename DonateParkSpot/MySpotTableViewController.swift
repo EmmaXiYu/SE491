@@ -20,8 +20,15 @@ class MySpotBiddingTableViewController: UITableViewController {
 
         var query: PFQuery = PFQuery()
         query = PFQuery(className: "Spot")
+         let currentUser = PFUser.currentUser()
+        
         //query.whereKey("owner", equalTo: PFObject(withoutDataWithClassName:"User", objectId:CurrentUser.currentUser.username))
-        query.whereKey("owner", equalTo:"pravangsu@gmail.com")
+        
+         
+        //query.whereKey("owner", equalTo:"pravangsu@gmail.com")
+        query.whereKey("owner", equalTo:(currentUser?.email)!)
+        
+        
         //query.whereKey("parent", equalTo:"pravangsu@gmail.com")
 
        // query.includeKey("Bid")
@@ -40,7 +47,25 @@ class MySpotBiddingTableViewController: UITableViewController {
                     let Latitude: CLLocationDegrees = sgp.latitude
                     let Longtitude: CLLocationDegrees = sgp.longitude
                     let ttl = object["leavingTime"] as! NSDate
-                    let AddressText  = object["AddressText"] as! String
+                    if object["addressText"] != nil
+                    {
+                        s.AddressText = object["addressText"] as! String
+                    }
+                    else
+                    {
+                        s.AddressText = "243 South Wabash Avenue Chicago, IL 60604"
+                        //TODO
+                    }
+                    if object["StatusId"] != nil
+                    {
+                        s.StatusId = object["StatusId"] as! Int
+                    }
+                    else
+                    {
+                       s.StatusId = 1
+                        //TODO
+                    }
+                    
                     //let BidList  = object["Bid"] as! [PFObject]?
                     
                      //let spotId  = object.objectId
@@ -61,9 +86,9 @@ class MySpotBiddingTableViewController: UITableViewController {
                     s.legalTime = dateString
                     s.location = location
                     s.minDonation = mPrice
-                    s.AddressText = AddressText
+                    //s.AddressText = AddressText
                     s.spotId = object.objectId!
-                    s.StatusId = object["StatusId"] as! Int
+                    
                     //s.Bids = self.tempGetBid(2)
                     //s.Bids = self.GetBidList(spotId!)
                     //s.Bids = self.GetBidEgar(BidList!)
@@ -165,7 +190,7 @@ class MySpotBiddingTableViewController: UITableViewController {
         //cell.textLabel?.text = String(format:"%f", S.location.longitude) + "  " +  String(format:"%f", S.location.longitude)
         cell.textLabel?.text = S.AddressText
         //cell.detailTextLabel!.text = S.legalTime + "        [" + String(S.Bids.count) + "]"
-        cell.detailTextLabel!.text = S.legalTime + "        [..More..]"
+        cell.detailTextLabel!.text = S.legalTime! + "        [..More..]"
         //var b:String = String(format:"%f", S.location.altitude)
         return cell
         

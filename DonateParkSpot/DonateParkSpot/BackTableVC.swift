@@ -7,13 +7,14 @@
 //
 
 import Foundation
+import Parse
 
 class BackTableVC: UITableViewController
 
 {
     var TableArray = [String]()
     override func viewDidLoad() {
-        TableArray = ["Account", "My Spots", "My Bids", "Settings", "Logout"]
+        TableArray = ["Map", "Account", "My Spots", "My Bids", "Settings", "Logout"]
     }
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -32,6 +33,13 @@ class BackTableVC: UITableViewController
         
         return cell
     }
+     
+     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+          if segue.identifier == "Logout" {
+               PFUser.logOut()
+               NSUserDefaults.standardUserDefaults().setBool(false, forKey: "isUserLoggedIn")
+          }
+     }
    
 
 }

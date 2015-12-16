@@ -13,6 +13,7 @@ class MyBidTableViewController: UITableViewController {
    
     var datas = [Bid] ()
     
+   
     @IBOutlet weak var Menu: UIBarButtonItem!
 
     
@@ -35,8 +36,18 @@ class MyBidTableViewController: UITableViewController {
         //var bidList = [Bid]()
         var query: PFQuery = PFQuery()
         query = PFQuery(className: "Bid")
-        query.whereKey("UserId", equalTo:"pravangsu@gmail.com")
-        query.includeKey("Spot")
+        
+        //query.whereKey("UserId", equalTo:"pravangsu@gmail.com")
+       query.whereKey("UserId", equalTo:(PFUser.currentUser()?.username)!)
+        
+       /*
+        TODO: do in Next Release , Winter Quater
+        let currentUser = PFUser.currentUser()
+        query.whereKey("owner", equalTo: PFObject(withoutDataWithClassName:"User", objectId:currentUser))
+        */
+        
+        
+        query.includeKey("spot")
         
         query.findObjectsInBackgroundWithBlock {
             (objects:[PFObject]?, error:NSError?) -> Void in
@@ -44,10 +55,14 @@ class MyBidTableViewController: UITableViewController {
                 for object in objects! {
                      let bi: Bid = Bid()
                     
-                    if let pointer = object["Spot"] as? PFObject {
-                        bi.Address = pointer["AddressText"] as! String!
+                    if let pointer = object["spot"] as? PFObject {
+                        bi.Address = pointer["addressText"] as! String!
                     }
-                    bi.value =  object["Value"] as? Double
+                    if(object["value"] != nil)
+                    {bi.value =  object["value"] as? Double}
+                    else
+                    {bi.value = 0}
+                    
                     bi.timestamp = object["Timestamp"] as? NSDate
                     bi.UserId = object["UserId"] as! String
                     if(object["CancelByBidder"] != nil)
@@ -55,7 +70,16 @@ class MyBidTableViewController: UITableViewController {
                         bi.CancelByBidder = object["CancelByBidder"] as! Bool
                     }
                     bi.bidId = object.objectId!
+                    if(object["StatusId"] != nil)
+                    {
                     bi.StatusId = object["StatusId"] as! Int
+                    }
+                    else
+                        if(object["StatusId"] != nil)
+                        {
+                            bi.StatusId = 0
+                    }
+                    
                     self.datas.insert(bi, atIndex: index)
                     index = index + 1 
                 }

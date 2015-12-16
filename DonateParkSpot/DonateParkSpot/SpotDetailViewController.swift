@@ -20,18 +20,50 @@ class SpotDetailViewController: UITableViewController {
     @IBOutlet weak var info: UITextField!
     @IBOutlet weak var minimumDonatePrice: UITextField!
     @IBOutlet weak var type: UISegmentedControl!
+    var timePickerView  : UIDatePicker = UIDatePicker()
     
     var id = String();
     var latitudeD = Double()
     var longitudeD = Double()
+    var addressText = ""
     
     
     override func viewDidLoad() {
+        let geocoder = CLGeocoder()
+        let location = CLLocation(latitude: latitudeD, longitude: longitudeD)
+        geocoder.reverseGeocodeLocation(location, completionHandler: { (placemarks, error) -> Void in
+            self.addressText = placemarks![0].name!
+        })
         super.viewDidLoad()
         rate.text = "0.00"
         rate.enabled = false
         timeLeft.text = "0"
         timeLeft.enabled = false
+        
+        
+        
+        
+        let currentDate = NSDate()  //5 -  get the current date
+        timePickerView.minimumDate = currentDate  //6- set the current date/time as a minimum
+        timePickerView.date = currentDate //7
+        timePickerView.datePickerMode = UIDatePickerMode.Time
+    
+        timeToLeaveTextField.inputView = timePickerView
+        timePickerView.addTarget(self, action: Selector("handleTimePicker:"), forControlEvents: UIControlEvents.ValueChanged)
+        handleTimePicker(timePickerView)
+        
+    }
+    
+    @IBAction func userDOBSelectedAction(sender: UITextField) {
+        timeToLeaveTextField.resignFirstResponder()
+    }
+    
+    func handleTimePicker(sender: UIDatePicker) {
+        var timeFormatter = NSDateFormatter()
+        timeFormatter.timeStyle = .ShortStyle
+        timeToLeaveTextField.text = timeFormatter.stringFromDate(sender.date)
+        timeToLeaveTextField.resignFirstResponder()
+        
     }
     
     override func didReceiveMemoryWarning() {
@@ -56,23 +88,21 @@ class SpotDetailViewController: UITableViewController {
     
     @IBAction func submitTapped(sender: AnyObject) {
     
-     
-        
-        let geoPoint = PFGeoPoint(latitude: latitudeD ,longitude: longitudeD);
-        
-        
+      let geoPoint = PFGeoPoint(latitude: latitudeD ,longitude: longitudeD);
         
         
         let testObject = PFObject(className: "Spot")
         testObject["SpotGeoPoint"] = geoPoint
-        //testObject["leavingTime"] = timeToLeaveTextField.text
+     
+        testObject["leavingTime"] = timePickerView.date //timeToLeaveTextField.text
         testObject["minimumPrice"] = Float(minimumDonatePrice.text!)
         testObject["owner"] = PFUser.currentUser()!.username
         testObject["rate"] = Double(rate.text!)
         testObject["timeLeft"] = Int(timeLeft.text!)
-        testObject["info"] = info.text
+        testObject["legalTime"] = info.text
         testObject["type"] = type.selectedSegmentIndex
-        
+        testObject["addressText"] = addressText
+
         testObject.saveInBackgroundWithBlock { (success, error) -> Void in
             
         if (error == nil)
@@ -91,10 +121,14 @@ class SpotDetailViewController: UITableViewController {
     }
     
     
+//    func prepareForSegueSpotDetailClientClicked(segue: UIStoryboardSegue, sender: AnyObject?) {
+//        if(segue.identifier=="SpotView"){
+//            _ = segue.destinationViewController as! MapViewController
+//        }
+//    }
     
     @IBAction func CancelButtonTapped(sender: AnyObject) {
-        
-        
+//        self.performSegueWithIdentifier("SpotView", sender: nil)
     }
     
     

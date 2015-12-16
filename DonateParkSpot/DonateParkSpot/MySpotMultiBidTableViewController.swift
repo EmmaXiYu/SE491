@@ -31,7 +31,8 @@ class MySpotMultiBidTableViewController: UITableViewController {
         var query: PFQuery = PFQuery()
         query = PFQuery(className: "Bid")
       //  query.whereKey("Spot", equalTo:spotid)
-        query.whereKey("Spot", equalTo: PFObject(withoutDataWithClassName:"Spot", objectId:spotid))
+        //query.whereKey("spot", equalTo: PFObject(withoutDataWithClassName:"spot", objectId:spotid))
+        query.whereKey("spot", equalTo: PFObject(withoutDataWithClassName:"Spot", objectId:spotid))
         
         query.findObjectsInBackgroundWithBlock {
             (objects:[PFObject]?, error:NSError?) -> Void in
@@ -39,14 +40,20 @@ class MySpotMultiBidTableViewController: UITableViewController {
                 for object in objects! {
                     
                     let bi: Bid = Bid()
-                    let timestamp = object["Timestamp"] as! NSDate
-                    let value = object["Value"] as! Double
+                    if(object["Timestamp"] != nil)
+                    {bi.timestamp =  object["Timestamp"] as! NSDate}
+                    else
+                    {bi.timestamp =   NSDate()}
+                    let value = object["value"] as! Double
                     let userId = object["UserId"] as! String
                     bi.value = value
-                    bi.timestamp = timestamp
+                    //bi.timestamp = timestamp
                     bi.UserId = userId
                     bi.bidId = object.objectId!
-                    bi.StatusId = object["StatusId"] as! Int
+                    if(object["StatusId"] != nil)
+                    { bi.StatusId = object["StatusId"] as! Int}
+                    else
+                    { bi.StatusId = 0}
                     self.datas.insert(bi, atIndex: index)
                     index = index + 1
                 }
@@ -163,7 +170,7 @@ MySpotMultiBidTableViewCell
         formatter.dateStyle = NSDateFormatterStyle.LongStyle
         formatter.timeStyle = .MediumStyle
         let dateString = formatter.stringFromDate(bid.timestamp!)
-        objCell.lblTimr.text = dateString  //String(bid.timestamp!)
+        objCell.lblTimr.text = dateString  //String(bid.timestamp!) 
         
      
         if(bid.value < 0.01)
@@ -171,6 +178,8 @@ MySpotMultiBidTableViewCell
 
             objCell.lblTimr.text = "No Bid yet"
             objCell.lblTimr.textColor = UIColor.redColor()
+            objCell.btnAccept.enabled = false
+            objCell.btnReject.enabled = false
         }
         
         if(DetailSpot.StatusId == 2)

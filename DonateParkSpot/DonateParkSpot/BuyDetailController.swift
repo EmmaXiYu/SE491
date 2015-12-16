@@ -25,11 +25,11 @@ class BuyDetailController :  UIViewController, MKMapViewDelegate {
     override func viewDidLoad() {
         if spot != nil {
             
-            type.text = spot!.type
-            rate.text = spot!.rate.description
+            type.text = String(spot!.type)
+            rate.text = spot!.rate!.description
             timeToLeave.text = "15:30"
-            minDonation.text = "$ " + spot!.minDonation.description + ".00"
-            donation.minimumValue = Double(spot!.minDonation)
+            minDonation.text = "$ " + spot!.minDonation!.description + ".00"
+            donation.minimumValue = Double(spot!.minDonation!)
             donation.stepValue = 1
              self.map.delegate = self
             self.locationManager.desiredAccuracy=kCLLocationAccuracyBest
@@ -58,6 +58,8 @@ class BuyDetailController :  UIViewController, MKMapViewDelegate {
         bid["user"] = user
         bid["value"] = donation.value
         bid["spot"] = PFObject(withoutDataWithClassName: "Spot", objectId: spot?.spotId)
+        bid["UserId"] = PFUser.currentUser()?.username  //TODO
+        bid["StatusId"] = 0  // put 0 by defualt
         
         bid.saveInBackground()
 
