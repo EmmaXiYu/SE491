@@ -398,6 +398,10 @@
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
+                                <animations/>
+                                <connections>
+                                    <segue destination="qFq-cV-qP8" kind="custom" customClass="SWRevealViewControllerSeguePushController" id="Tp6-l9-TTl"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
