@@ -409,7 +409,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="M9i-jw-SED" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1397.5" y="-1407.5"/>
+            <point key="canvasLocation" x="1214.5" y="-1417.5"/>
         </scene>
         <!--My Bid Table View Controller-->
         <scene sceneID="AWw-4i-hMe">
@@ -1355,5 +1355,6 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="pmS-rw-1jY"/>
+        <segue reference="Tp6-l9-TTl"/>
     </inferredMetricsTieBreakers>
 </document>

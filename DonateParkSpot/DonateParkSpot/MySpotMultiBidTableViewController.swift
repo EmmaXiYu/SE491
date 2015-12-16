@@ -31,7 +31,8 @@ class MySpotMultiBidTableViewController: UITableViewController {
         var query: PFQuery = PFQuery()
         query = PFQuery(className: "Bid")
       //  query.whereKey("Spot", equalTo:spotid)
-        query.whereKey("Spot", equalTo: PFObject(withoutDataWithClassName:"Spot", objectId:spotid))
+        //query.whereKey("spot", equalTo: PFObject(withoutDataWithClassName:"spot", objectId:spotid))
+        query.whereKey("spot", equalTo: PFObject(withoutDataWithClassName:"Spot", objectId:spotid))
         
         query.findObjectsInBackgroundWithBlock {
             (objects:[PFObject]?, error:NSError?) -> Void in
@@ -39,14 +40,20 @@ class MySpotMultiBidTableViewController: UITableViewController {
                 for object in objects! {
                     
                     let bi: Bid = Bid()
-                    let timestamp = object["Timestamp"] as! NSDate
-                    let value = object["Value"] as! Double
+                    if(object["Timestamp"] != nil)
+                    {bi.timestamp =  object["Timestamp"] as! NSDate}
+                    else
+                    {bi.timestamp =   NSDate()}
+                    let value = object["value"] as! Double
                     let userId = object["UserId"] as! String
                     bi.value = value
-                    bi.timestamp = timestamp
+                    //bi.timestamp = timestamp
                     bi.UserId = userId
                     bi.bidId = object.objectId!
-                    bi.StatusId = object["StatusId"] as! Int
+                    if(object["StatusId"] != nil)
+                    { bi.StatusId = object["StatusId"] as! Int}
+                    else
+                    { bi.StatusId = 0}
                     self.datas.insert(bi, atIndex: index)
                     index = index + 1
                 }
