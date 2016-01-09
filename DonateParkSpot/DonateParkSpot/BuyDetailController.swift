@@ -60,7 +60,7 @@ class BuyDetailController :  UIViewController, MKMapViewDelegate {
         bid["spot"] = PFObject(withoutDataWithClassName: "Spot", objectId: spot?.spotId)
         bid["UserId"] = PFUser.currentUser()?.username  //TODO
         bid["StatusId"] = 0  // put 0 by defualt
-        
+        //bid["BidTime"] = NSDate()
         bid.saveInBackground()
 
     }

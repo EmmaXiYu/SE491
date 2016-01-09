@@ -21,11 +21,20 @@ class MySpotMultiBidTableViewController: UITableViewController {
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
         GetBidList(DetailSpot.spotId)
+        var timer = NSTimer.scheduledTimerWithTimeInterval(10, target: self, selector: "update", userInfo: nil, repeats: true)
+
         // self.tableView.userInteractionEnabled = false
         
     }
-
+    func update() {
+        //update your table data here
+        self.GetBidList(DetailSpot.spotId)
+        dispatch_async(dispatch_get_main_queue()) {
+            self.tableView.reloadData()
+        }
+    }
     func GetBidList(spotid: String)  {
+         self.datas.removeAll()
         var index = 0
         //var bidList = [Bid]()
         var query: PFQuery = PFQuery()
@@ -315,6 +324,10 @@ MySpotMultiBidTableViewCell
                 print(error)
             } else if let prefObj = prefObj {
                 prefObj["StatusId"] = status
+                if(status == 2)//Accepted
+                {
+                    prefObj["BidAcceptTime"] = NSDate()
+                }
                 prefObj.saveInBackgroundWithTarget(sender, selector: nil)
                 //self.showmessage("Successfully Acceped bid")
                 

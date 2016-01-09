@@ -8,31 +8,37 @@
 
 import UIKit
 import Parse
-class MySpotBiddingTableViewController: UITableViewController {
+class MySpotBiddingTableViewController: UITableViewController  {
     
     
     @IBOutlet weak var Menu: UIBarButtonItem!
-    
- var datas = [Spot] ()
-    var mySpotArray:NSMutableArray = []
-    override func viewDidLoad() {
+     var count = 0
+     var datas = [Spot] ()
+     var mySpotArray:NSMutableArray = []
+     override func viewDidLoad() {
         super.viewDidLoad()
+        self.readDatafromServer()
+  
+        
+       // var timer = NSTimer.scheduledTimerWithTimeInterval(10, target: self, selector: "update", userInfo: nil, repeats: true)
 
+        Menu.target = self.revealViewController()
+        Menu.action = Selector("revealToggle:")
+        
+        self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
+        
+    }
+    func readDatafromServer()
+    {
+        self.datas.removeAll()
         var query: PFQuery = PFQuery()
         query = PFQuery(className: "Spot")
-         let currentUser = PFUser.currentUser()
-        
+        let currentUser = PFUser.currentUser()
         //query.whereKey("owner", equalTo: PFObject(withoutDataWithClassName:"User", objectId:CurrentUser.currentUser.username))
-        
-         
         //query.whereKey("owner", equalTo:"pravangsu@gmail.com")
         query.whereKey("owner", equalTo:(currentUser?.email)!)
-        
-        
         //query.whereKey("parent", equalTo:"pravangsu@gmail.com")
-
-       // query.includeKey("Bid")
-        
+        // query.includeKey("Bid")
         //query.includeKey("UserID") //Use this as example to get bid
         //query.whereKey("owner", equalTo: CurrentUser.currentUser.username)
         //var test = PFUser.currentUser()!.username
@@ -40,7 +46,6 @@ class MySpotBiddingTableViewController: UITableViewController {
             (objects:[PFObject]?, error:NSError?) -> Void in
             if error == nil {
                 for object in objects! {
-                    
                     let s: Spot = Spot()
                     let sgp = object["SpotGeoPoint"] as! PFGeoPoint
                     let mPrice = object["minimumPrice"] as! Int
@@ -62,53 +67,36 @@ class MySpotBiddingTableViewController: UITableViewController {
                     }
                     else
                     {
-                       s.StatusId = 1
-                        //TODO
+                        s.StatusId = 1
                     }
-                    
-                    //let BidList  = object["Bid"] as! [PFObject]?
-                    
-                     //let spotId  = object.objectId
-                    //let user = object["UserID"] as! PFObject
-                    //let email = user["email"] as! String
-                    //if(user != nil)
-                    //{}
-                    
                     let location : Location = Location()
                     location.latitude = Latitude
                     location.longitude = Longtitude
-                    
                     let formatter = NSDateFormatter()
                     formatter.dateStyle = NSDateFormatterStyle.LongStyle
                     formatter.timeStyle = .MediumStyle
-                    
                     let dateString = formatter.stringFromDate(ttl)
                     s.legalTime = dateString
                     s.location = location
                     s.minDonation = mPrice
-                    //s.AddressText = AddressText
                     s.spotId = object.objectId!
-                    
-                    //s.Bids = self.tempGetBid(2)
-                    //s.Bids = self.GetBidList(spotId!)
-                    //s.Bids = self.GetBidEgar(BidList!)
                     self.datas.insert(s, atIndex: 0)
-
                 }
-                
-                self.tableView.reloadData()
+               
             }
+             self.tableView.reloadData()
         }
-        
-        Menu.target = self.revealViewController()
-        Menu.action = Selector("revealToggle:")
-        
-        self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
-        
-        
-
-        
-   
+    
+    }
+    
+    func update() {
+        count++
+        //update your table data here
+        //tableArray.append(count)
+         self.readDatafromServer()
+        dispatch_async(dispatch_get_main_queue()) {
+           self.tableView.reloadData()
+        }
     }
 
     func GetBidEgar(spots: [PFObject]?) -> [Bid] {
