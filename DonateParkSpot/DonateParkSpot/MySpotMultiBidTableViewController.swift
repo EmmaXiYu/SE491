@@ -11,6 +11,7 @@ import Parse
 class MySpotMultiBidTableViewController: UITableViewController {
  var datas = [Bid] ()
  var DetailSpot : Spot = Spot()
+var bidNoPayAutoCancelTime : Int = 4  // Set a intitial value,
  //var currentIndex : Int =  -1
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,7 +35,9 @@ class MySpotMultiBidTableViewController: UITableViewController {
         }
     }
     func GetBidList(spotid: String)  {
-         self.datas.removeAll()
+        self.getBidNoPayAutoCancelTime()
+        
+        self.datas.removeAll()
         var index = 0
         //var bidList = [Bid]()
         var query: PFQuery = PFQuery()
@@ -63,8 +66,15 @@ class MySpotMultiBidTableViewController: UITableViewController {
                     { bi.StatusId = object["StatusId"] as! Int}
                     else
                     { bi.StatusId = 0}
+                    
+                    if(object["BidAcceptTime"] != nil)
+                    { bi.BidAcceptTime = object["BidAcceptTime"] as! NSDate}
+                    
+                    self.autoCancelNoPayBid(bi,noPayAutoCancelTime : self.bidNoPayAutoCancelTime) //cancel the bid if payment not recieved on time
+                    
                     self.datas.insert(bi, atIndex: index)
                     index = index + 1
+                    
                 }
                 if(self.datas.count == 0)
                 {
@@ -75,6 +85,54 @@ class MySpotMultiBidTableViewController: UITableViewController {
         }
         
     }
+    func autoCancelNoPayBid(bid : Bid, noPayAutoCancelTime :Int)-> Void
+    {
+        if(bid.BidAcceptTime != nil)
+        {
+            if((self.MinuteElaps(bid.BidAcceptTime!) > self.bidNoPayAutoCancelTime ) && bid.StatusId == 2)
+            {
+                // status 2 : Accepted
+                //staus 3: payment recieved
+                //status 6 : Auto Reject due to non payment in time frame
+                print("time exceed and cancel the bid")
+                self.updateBid(bid, status :6,  sender: nil) //rejected
+            }
+            
+        }
+    }
+    func MinuteElaps(bidAcceptDate : NSDate) -> Int
+    {
+        
+            let currentDate = NSDate()
+            let distanceBetweenDates = currentDate.timeIntervalSinceDate(bidAcceptDate)
+            let secondsInAnMinute = 60.0;
+            let minutesElapsed = distanceBetweenDates / secondsInAnMinute;
+            print(minutesElapsed)
+           // println(distanceBetweenDates)
+            return Int(minutesElapsed)
+        
+    }
+    
+    func getBidNoPayAutoCancelTime() -> Void
+    {
+        var query: PFQuery = PFQuery()
+        query = PFQuery(className: "APP_SETING")  // read from database
+        query.whereKey("SETING_NAME", equalTo:"BID_NO_PAY_AUTO_CANCEL_TIME")
+        query.findObjectsInBackgroundWithBlock {
+            (objects:[PFObject]?, error:NSError?) -> Void in
+            if error == nil {
+                for object in objects! {
+                    
+                    if(object["SETTING_VALUE"] != nil)
+                    {
+                        self.bidNoPayAutoCancelTime =  Int(object["SETTING_VALUE"] as! String)!
+                    }
+                    print("bidNoPayAutoCancelTime-->" + String(self.bidNoPayAutoCancelTime) )
+                }
+            }
+        }
+    }
+   
     func GetEmptyBid() -> Bid {
         
         let bid = Bid()
@@ -328,6 +386,12 @@ MySpotMultiBidTableViewCell
                 {
                     prefObj["BidAcceptTime"] = NSDate()
                 }
+                if(status == 6)//cancel for No payment
+                {
+                    prefObj["NoPaymentCancelTime"] = NSDate()
+                }
+                
+                
                 prefObj.saveInBackgroundWithTarget(sender, selector: nil)
                 //self.showmessage("Successfully Acceped bid")
                 
