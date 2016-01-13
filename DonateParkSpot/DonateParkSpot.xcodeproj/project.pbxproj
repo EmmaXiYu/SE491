@@ -53,6 +53,7 @@
 		18AE41741BEE907800A4A62B /* test.png in Resources */ = {isa = PBXBuildFile; fileRef = 18AE41731BEE907800A4A62B /* test.png */; };
 		B80CB65A1BE30A9600746CEB /* MySpotDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = B80CB6591BE30A9600746CEB /* MySpotDetail.swift */; };
 		B8179AFA1BE0628B00F218F1 /* MySpotTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8179AF91BE0628B00F218F1 /* MySpotTableViewController.swift */; };
+		B892CF201C45E09500C8E071 /* BidTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B892CF1F1C45E09500C8E071 /* BidTest.swift */; };
 		B89892171BED996600DEF1B5 /* MySpotMultiBidTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B89892161BED996600DEF1B5 /* MySpotMultiBidTableViewCell.swift */; };
 		B8A1093F1BF6E86D003503B1 /* MyBidTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8A1093E1BF6E86D003503B1 /* MyBidTableViewController.swift */; };
 		B8A109411BF6F184003503B1 /* MyBidTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8A109401BF6F184003503B1 /* MyBidTableViewCell.swift */; };
@@ -131,6 +132,7 @@
 		18AE41731BEE907800A4A62B /* test.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = test.png; sourceTree = "<group>"; };
 		B80CB6591BE30A9600746CEB /* MySpotDetail.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MySpotDetail.swift; sourceTree = "<group>"; };
 		B8179AF91BE0628B00F218F1 /* MySpotTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MySpotTableViewController.swift; path = ../MySpotTableViewController.swift; sourceTree = "<group>"; };
+		B892CF1F1C45E09500C8E071 /* BidTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BidTest.swift; sourceTree = "<group>"; };
 		B89892161BED996600DEF1B5 /* MySpotMultiBidTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MySpotMultiBidTableViewCell.swift; sourceTree = "<group>"; };
 		B8A1093E1BF6E86D003503B1 /* MyBidTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyBidTableViewController.swift; sourceTree = "<group>"; };
 		B8A109401BF6F184003503B1 /* MyBidTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyBidTableViewCell.swift; sourceTree = "<group>"; };
@@ -308,6 +310,7 @@
 			children = (
 				180C3B0C1BD9F0F400E7E5F5 /* DonateParkSpotTests.swift */,
 				180C3B0E1BD9F0F400E7E5F5 /* Info.plist */,
+				B892CF1F1C45E09500C8E071 /* BidTest.swift */,
 			);
 			path = DonateParkSpotTests;
 			sourceTree = "<group>";
@@ -498,6 +501,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				180C3B0D1BD9F0F400E7E5F5 /* DonateParkSpotTests.swift in Sources */,
+				B892CF201C45E09500C8E071 /* BidTest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -8,7 +8,7 @@
 
 import Foundation
 
-class Bid {
+public class Bid {
     
     var spot : Spot?
     var timestamp : NSDate? //Time of bidding

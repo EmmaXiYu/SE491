@@ -8,14 +8,14 @@
 
 import UIKit
 import Parse
-class MySpotBiddingTableViewController: UITableViewController  {
+public class MySpotBiddingTableViewController: UITableViewController  {
     
     
     @IBOutlet weak var Menu: UIBarButtonItem!
      var count = 0
      var datas = [Spot] ()
      var mySpotArray:NSMutableArray = []
-     override func viewDidLoad() {
+     override public func viewDidLoad() {
         super.viewDidLoad()
         self.readDatafromServer()
   
@@ -152,7 +152,7 @@ class MySpotBiddingTableViewController: UITableViewController  {
           return bidList
     }
     
-    override func didReceiveMemoryWarning() {
+    override public func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
@@ -160,16 +160,16 @@ class MySpotBiddingTableViewController: UITableViewController  {
     // MARK: - Table view data source
    
     
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    override public func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 1
     }
 
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override public func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return datas.count
     }
 
     /**/
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    override public func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         //let cell = tableView.dequeueReusableCellWithIdentifier("MyBidLabelCell", forIndexPath: indexPath)
         let cell = tableView.dequeueReusableCellWithIdentifier("MySpotLabelCell", forIndexPath: indexPath)
         //cell.textLabel?.text = data[indexPath.row]
@@ -184,11 +184,11 @@ class MySpotBiddingTableViewController: UITableViewController  {
         
     }
 
-    override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+    override public func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         return "Section \(section)"
     }
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override public func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "ToMySpotBidMulti"
         {
             if let destinationVC = segue.destinationViewController as? MySpotMultiBidTableViewController{
