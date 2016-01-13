@@ -7,6 +7,7 @@
 //
 
 import XCTest
+@testable import DonateParkSpot
 
 class BidTest: XCTestCase {
     
@@ -22,9 +23,9 @@ class BidTest: XCTestCase {
     
     func testGetBidList() {
       
-        //let bi: Bid = Bid()
+        let bi: Bid = Bid()
 
-       // var spotbid : MySpotBiddingTableViewController =  MySpotBiddingTableViewController()
+        var spotbid : MySpotBiddingTableViewController =  MySpotBiddingTableViewController()
         
     }
     
