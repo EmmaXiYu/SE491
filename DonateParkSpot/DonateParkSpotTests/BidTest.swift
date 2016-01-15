@@ -26,6 +26,8 @@ class BidTest: XCTestCase {
         let bi: Bid = Bid()
 
         var spotbid : MySpotBiddingTableViewController =  MySpotBiddingTableViewController()
+        var bids : [Bid] = spotbid.GetBid(2)
+        XCTAssertEqual(2, bids.count, "the array should have  two bids")
         
     }
     
