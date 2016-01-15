@@ -115,7 +115,7 @@ public class MySpotBiddingTableViewController: UITableViewController  {
         return bidList
     }
     
-    func GetBid(i: Int) -> [Bid] {
+    public func GetBid(i: Int) -> [Bid] {
        
         var bidList = [Bid]()
         for index in 0...i-1 {
