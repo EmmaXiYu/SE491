@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		10A79C951BE2D04900D26027 /* BuyDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10A79C941BE2D04900D26027 /* BuyDetailController.swift */; };
+		10AF43CA1C497F3100E20C1F /* UITest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10AF43C91C497F3100E20C1F /* UITest.swift */; };
 		10B75D6A1BE0509D009B88DC /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10B75D681BE0509D009B88DC /* Location.swift */; };
 		10B75D6B1BE0509D009B88DC /* Spot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10B75D691BE0509D009B88DC /* Spot.swift */; };
 		10B75D6D1BE06949009B88DC /* Bid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10B75D6C1BE06949009B88DC /* Bid.swift */; };
@@ -79,6 +80,7 @@
 
 /* Begin PBXFileReference section */
 		10A79C941BE2D04900D26027 /* BuyDetailController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BuyDetailController.swift; sourceTree = "<group>"; };
+		10AF43C91C497F3100E20C1F /* UITest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UITest.swift; path = DonateParkSpot/UITest.swift; sourceTree = SOURCE_ROOT; };
 		10B75D681BE0509D009B88DC /* Location.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
 		10B75D691BE0509D009B88DC /* Spot.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Spot.swift; sourceTree = "<group>"; };
 		10B75D6C1BE06949009B88DC /* Bid.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Bid.swift; sourceTree = "<group>"; };
@@ -320,6 +322,7 @@
 			children = (
 				180C3B171BD9F0F400E7E5F5 /* DonateParkSpotUITests.swift */,
 				180C3B191BD9F0F400E7E5F5 /* Info.plist */,
+				10AF43C91C497F3100E20C1F /* UITest.swift */,
 			);
 			path = DonateParkSpotUITests;
 			sourceTree = "<group>";
@@ -500,6 +503,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				10AF43CA1C497F3100E20C1F /* UITest.swift in Sources */,
 				180C3B0D1BD9F0F400E7E5F5 /* DonateParkSpotTests.swift in Sources */,
 				B892CF201C45E09500C8E071 /* BidTest.swift in Sources */,
 			);
