@@ -62,9 +62,26 @@ class BuyDetailController :  UIViewController, MKMapViewDelegate {
         bid["StatusId"] = 0  // put 0 by defualt
         //bid["BidTime"] = NSDate()
         bid.saveInBackground()
+        
+        updateSpot((self.spot?.spotId)!, status : 99)
 
     }
     
-    
+    func updateSpot(spotid : String, status :Int)-> Void
+    {
+        let prefQuery = PFQuery(className: "Spot")
+        prefQuery.getObjectInBackgroundWithId(spotid){
+            (prefObj: PFObject?, error: NSError?) -> Void in
+            if error != nil {
+                print(error)
+                
+            } else if let prefObj = prefObj {
+                prefObj["StatusId"] = status
+                prefObj.saveInBackgroundWithTarget(nil, selector: nil)
+            
+                
+            }
+        }
+    }
 
 }
