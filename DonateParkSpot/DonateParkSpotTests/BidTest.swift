@@ -23,12 +23,25 @@ class BidTest: XCTestCase {
     
     func testGetBidList() {
       
-        let bi: Bid = Bid()
+     
 
-        var spotbid : MySpotBiddingTableViewController =  MySpotBiddingTableViewController()
+        let spotbid : MySpotBiddingTableViewController =  MySpotBiddingTableViewController()
         var bids : [Bid] = spotbid.GetBid(2)
         XCTAssertEqual(2, bids.count, "the array should have  two bids")
         
+    }
+    
+    func testGetBidForSpot()
+    {
+        let spotbid : MySpotBiddingTableViewController =  MySpotBiddingTableViewController()
+        let bids : [Bid] = spotbid.GetBidList("TQ5GgTMQc6")
+        XCTAssertGreaterThan(bids.count, -1, "the array should greater than   minus -1")
+    }
+    func testGetBidForSpotNotNull()
+    {
+        let spotbid : MySpotBiddingTableViewController =  MySpotBiddingTableViewController()
+        let bids : [Bid] = spotbid.GetBidList("TQ5GgTMQc6")
+        XCTAssertNotNil(bids, "the array should should be nil ")
     }
     
     func testPerformanceExample() {
