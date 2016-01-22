@@ -11,6 +11,8 @@ import Parse
 
 class AccountViewController: UIViewController , UIImagePickerControllerDelegate, UINavigationControllerDelegate{
     
+    var ifChoose:Bool! = false
+   
    
     @IBOutlet weak var Menu: UIBarButtonItem!
     override func viewDidLoad() {
@@ -32,7 +34,7 @@ class AccountViewController: UIViewController , UIImagePickerControllerDelegate,
     
     @IBAction func chooseAPicture(sender: AnyObject) {
         
-        
+  
         let imagePicker = UIImagePickerController()
         
         imagePicker.delegate = self
@@ -42,6 +44,7 @@ class AccountViewController: UIViewController , UIImagePickerControllerDelegate,
         imagePicker.allowsEditing = false
         
         self.presentViewController(imagePicker, animated: true, completion: nil)
+        ifChoose = true;
         
 
     }
@@ -56,5 +59,31 @@ class AccountViewController: UIViewController , UIImagePickerControllerDelegate,
     }
     
 
+    func displayMyAlertMessage(usermessage:String)
+        
+    {
+        
+        let myAlert=UIAlertController(title: "Alert", message:usermessage,
+            
+            preferredStyle: UIAlertControllerStyle.Alert);
+        
+        let okayAction=UIAlertAction(title: "Okay", style:UIAlertActionStyle.Default, handler:nil)
+        
+        myAlert.addAction(okayAction);
+        
+        self.presentViewController(myAlert, animated: true, completion: nil);}
     
-}
+    
+    @IBAction func upLoadProfile(sender: AnyObject) {
+        
+        if ifChoose == false {
+            
+            //image is not included alert user
+            
+            displayMyAlertMessage("Image not chosen");
+            
+            
+            
+        }
+    }
+    }

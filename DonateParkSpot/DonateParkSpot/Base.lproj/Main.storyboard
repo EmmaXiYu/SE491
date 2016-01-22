@@ -669,6 +669,9 @@
                                 <rect key="frame" x="206" y="213" width="150" height="30"/>
                                 <animations/>
                                 <state key="normal" title="Upload Profile Picture"/>
+                                <connections>
+                                    <action selector="upLoadProfile:" destination="Qax-RB-JlP" eventType="touchUpInside" id="Jqe-vx-Mue"/>
+                                </connections>
                             </button>
                         </subviews>
                         <animations/>
