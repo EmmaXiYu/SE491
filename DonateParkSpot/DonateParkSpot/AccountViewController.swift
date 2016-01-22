@@ -23,13 +23,26 @@ class AccountViewController: UIViewController , UIImagePickerControllerDelegate,
         Menu.action = Selector("revealToggle:")
         
         self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
-
+         accountName.text = PFUser.currentUser()!["username"] as? String
+        cellPhoneNumber.text = PFUser.currentUser()! ["PhoneNumber"] as? String
+        if let userPicture = PFUser.currentUser()?["Image"] as? PFFile {
+            userPicture.getDataInBackgroundWithBlock { (imageData: NSData?, error: NSError?) -> Void in
+                if (error == nil) {
+                    self.ImageField.image = UIImage(data:imageData!)
+                }
+            }
+        }
 }
     
     
     @IBOutlet weak var ImageField: UIImageView!
     
     
+    @IBOutlet weak var accountName: UITextField!
+    
+    @IBOutlet weak var ratingScore: UITextField!
+    
+    @IBOutlet weak var cellPhoneNumber: UITextField!
     
     
     @IBAction func chooseAPicture(sender: AnyObject) {
