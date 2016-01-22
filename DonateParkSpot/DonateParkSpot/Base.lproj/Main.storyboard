@@ -620,44 +620,52 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="test.png" translatesAutoresizingMaskIntoConstraints="NO" id="PPs-Vs-sJh">
-                                <rect key="frame" x="52" y="94" width="154" height="156"/>
+                                <rect key="frame" x="20" y="95" width="154" height="156"/>
                                 <animations/>
                             </imageView>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Account " borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="yDl-f2-WyB">
-                                <rect key="frame" x="246" y="103" width="97" height="30"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Account" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="yDl-f2-WyB">
+                                <rect key="frame" x="20" y="305" width="97" height="30"/>
                                 <animations/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Contact Information" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="dtq-4q-1DP">
-                                <rect key="frame" x="246" y="193" width="150" height="30"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Cell Phone" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="dtq-4q-1DP">
+                                <rect key="frame" x="20" y="442" width="150" height="30"/>
                                 <animations/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Rating Information" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Kva-58-LqI">
-                                <rect key="frame" x="246" y="286" width="140" height="30"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Rating Score" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Kva-58-LqI">
+                                <rect key="frame" x="20" y="372" width="140" height="30"/>
                                 <animations/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lru-Ev-8cn" colorLabel="IBBuiltInLabel-Blue">
-                                <rect key="frame" x="39" y="415" width="123" height="30"/>
+                                <rect key="frame" x="20" y="550" width="123" height="30"/>
                                 <animations/>
                                 <state key="normal" title="Change Password">
                                     <color key="titleColor" red="0.14952641725540161" green="0.65446603298187256" blue="0.93766307830810547" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <color key="titleShadowColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="raB-n2-q3n">
+                                <rect key="frame" x="205" y="550" width="163" height="30"/>
+                                <animations/>
+                                <state key="normal" title="Edit Cell Phone Number"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Z0o-hq-8Pb">
+                                <rect key="frame" x="205" y="117" width="153" height="30"/>
+                                <animations/>
+                                <state key="normal" title="Choose Profile Picture"/>
+                                <connections>
+                                    <action selector="chooseAPicture:" destination="Qax-RB-JlP" eventType="touchUpInside" id="Sff-Hn-rWV"/>
+                                </connections>
+                            </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="26E-AS-zSr">
-                                <rect key="frame" x="39" y="285" width="150" height="30"/>
+                                <rect key="frame" x="206" y="213" width="150" height="30"/>
                                 <animations/>
                                 <state key="normal" title="Upload Profile Picture"/>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="raB-n2-q3n">
-                                <rect key="frame" x="208" y="415" width="167" height="30"/>
-                                <animations/>
-                                <state key="normal" title="Edit Contact Information"/>
                             </button>
                         </subviews>
                         <animations/>
@@ -668,12 +676,13 @@
                     </navigationItem>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
+                        <outlet property="ImageField" destination="PPs-Vs-sJh" id="ZKV-Dl-aij"/>
                         <outlet property="Menu" destination="zzZ-Hk-hHr" id="wsE-dP-yle"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vaO-LW-SH2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3817.5" y="678.5"/>
+            <point key="canvasLocation" x="3917.5" y="676.5"/>
         </scene>
         <!--Spot Detail View Controller-->
         <scene sceneID="jqW-nL-Ngo">

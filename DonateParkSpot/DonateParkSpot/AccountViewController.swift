@@ -7,8 +7,9 @@
 //
 
 import UIKit
+import Parse
 
-class AccountViewController: UIViewController {
+class AccountViewController: UIViewController , UIImagePickerControllerDelegate, UINavigationControllerDelegate{
     
    
     @IBOutlet weak var Menu: UIBarButtonItem!
@@ -21,8 +22,39 @@ class AccountViewController: UIViewController {
         
         self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
 
-  
-   
-
 }
+    
+    
+    @IBOutlet weak var ImageField: UIImageView!
+    
+    
+    
+    
+    @IBAction func chooseAPicture(sender: AnyObject) {
+        
+        
+        let imagePicker = UIImagePickerController()
+        
+        imagePicker.delegate = self
+        
+        imagePicker.sourceType = UIImagePickerControllerSourceType.PhotoLibrary
+        
+        imagePicker.allowsEditing = false
+        
+        self.presentViewController(imagePicker, animated: true, completion: nil)
+        
+
+    }
+    func imagePickerController(picker: UIImagePickerController, didFinishPickingImage image: UIImage!, editingInfo: [NSObject : AnyObject]!) {
+        
+        ImageField.image = image
+        
+        self.dismissViewControllerAnimated(true, completion: nil)
+        
+        
+        
+    }
+    
+
+    
 }
