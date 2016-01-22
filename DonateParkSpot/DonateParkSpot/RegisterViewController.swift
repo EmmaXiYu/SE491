@@ -107,6 +107,9 @@ class RegisterViewController: UIViewController {
         
         
     }
+    @IBAction func back(sender: AnyObject) {
+        self.dismissViewControllerAnimated(true, completion: nil)
+    }
         
         func SignUp()
         {
