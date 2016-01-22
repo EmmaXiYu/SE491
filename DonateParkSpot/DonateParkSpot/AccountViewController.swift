@@ -85,5 +85,33 @@ class AccountViewController: UIViewController , UIImagePickerControllerDelegate,
             
             
         }
+        
+        else
+        {
+            let user = PFUser.currentUser()
+                 let imageData = UIImagePNGRepresentation(self.ImageField.image!)
+               let parseImageFile = PFFile(name: "Profile.png", data: imageData!)
+            
+            user!["Image"] = parseImageFile
+            user!.saveInBackgroundWithBlock({
+                
+                (success: Bool, error: NSError?) -> Void in
+                
+                if error == nil {
+                    self.displayMyAlertMessage("data uploaded");
+                    
+                }else {
+                    
+                    self.displayMyAlertMessage("data uploaded fail");
+                    }
+                
+            })
+            
+            
+            
+
+            
+
+        }
     }
     }
