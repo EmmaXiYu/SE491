@@ -133,8 +133,8 @@ public class MySpotBiddingTableViewController: UITableViewController  {
     }
     
     
-    //Not IN Use
-    func GetBidListxyz(spotid: String) -> [Bid] {
+    //Get a bid list for spot id Not in use
+    func GetBidList(spotid: String) -> [Bid] {
         var index = 0
          var bidList = [Bid]()
         var query: PFQuery = PFQuery()

@@ -8,7 +8,7 @@
 
 import UIKit
 import Parse
-class MySpotMultiBidTableViewController: UITableViewController {
+ class MySpotMultiBidTableViewController: UITableViewController {
  var datas = [Bid] ()
  var DetailSpot : Spot = Spot()
     var rating: Double = 0;
@@ -36,7 +36,7 @@ var bidNoPayAutoCancelTime : Int = 4  // Set a intitial value,
             self.tableView.reloadData()
         }
     }
-    func GetBidList(spotid: String)  {
+    public func GetBidList(spotid: String)  {
         self.getBidNoPayAutoCancelTime()
         
         self.datas.removeAll()
