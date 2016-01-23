@@ -46,8 +46,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             application.registerForRemoteNotificationTypes(types)
         }
         
+        NSTimer.scheduledTimerWithTimeInterval(60 * 5, target: self, selector: Selector("handleTimer:"), userInfo: nil, repeats: true)
+        
+        
         return true
     }
+    
+    func handleTimer(timer: NSTimer) {
+        
+        if(DonateSpotUserSession.IsHaveCurrentActiveBid == true)
+            {
+                let svc : SpotLocationService = SpotLocationService()
+                svc.initLocationManager()
+            }
+        print("Firing Event at \(NSDate()) with Active bid: \(DonateSpotUserSession.IsHaveCurrentActiveBid)")
+    }
+    
     
     
     func application(application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: NSData) {
