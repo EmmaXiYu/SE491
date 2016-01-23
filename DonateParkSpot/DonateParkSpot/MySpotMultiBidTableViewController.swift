@@ -11,6 +11,8 @@ import Parse
 class MySpotMultiBidTableViewController: UITableViewController {
  var datas = [Bid] ()
  var DetailSpot : Spot = Spot()
+    var rating: Double = 0;
+    var count: Int = 0;
 var bidNoPayAutoCancelTime : Int = 4  // Set a intitial value,
  //var currentIndex : Int =  -1
     override func viewDidLoad() {
@@ -42,9 +44,12 @@ var bidNoPayAutoCancelTime : Int = 4  // Set a intitial value,
         //var bidList = [Bid]()
         var query: PFQuery = PFQuery()
         query = PFQuery(className: "Bid")
+        var queryUser :PFQuery = PFQuery()
+        queryUser = PFQuery(className: "User")
       //  query.whereKey("Spot", equalTo:spotid)
         //query.whereKey("spot", equalTo: PFObject(withoutDataWithClassName:"spot", objectId:spotid))
         query.whereKey("spot", equalTo: PFObject(withoutDataWithClassName:"Spot", objectId:spotid))
+        
         
         query.findObjectsInBackgroundWithBlock {
             (objects:[PFObject]?, error:NSError?) -> Void in
@@ -409,6 +414,20 @@ MySpotMultiBidTableViewCell
             refreshAlert.addButtonWithTitle("OK")
             refreshAlert.show()
         }
+    
+    func increaseRating ( rating: Double, count: Int ) -> Double{
+        var score: Double = (0.4*rating-1)*Double(count);
+        score = score+1;
+        return (score/Double(count)+1.0)*2.5;
+    }
+    
+    func decreaseRating ( rating: Double, count: Int ) -> Double{
+        var score: Double = (0.4*rating-1)*Double(count);
+        score = score-1;
+        return (score/Double(count)+1.0)*2.5;
+    }
+    
+    
     
     /*
     @IBAction func AcceptButton_Clicked(sender: UIButton) {

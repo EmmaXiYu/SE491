@@ -38,6 +38,7 @@ class MyBidTableViewController: UITableViewController {
         query = PFQuery(className: "Bid")
         
         //query.whereKey("UserId", equalTo:"pravangsu@gmail.com")
+        //get the user id of the current user
        query.whereKey("UserId", equalTo:(PFUser.currentUser()?.username)!)
         
        /*
