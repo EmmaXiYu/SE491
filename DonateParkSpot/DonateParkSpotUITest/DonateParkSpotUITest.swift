@@ -198,20 +198,7 @@ class DonateParkSpotUITest: XCTestCase {
         
     }
  
-    func test(){
-        
-        
-        let app = XCUIApplication()
-        app.buttons["Register"].tap()
-        
-        let emailTextField = app.textFields["Email"]
-        emailTextField.tap()
-        emailTextField.typeText("dsaf;fouihsdf;")
-        app.secureTextFields["Password"].typeText("jskdb,hgflgf")
-        app.secureTextFields["Repeat Password"].typeText("kjhfvljhv")
-        
-        
-    }
+
     
     func testLogout(test: Bool){
         
