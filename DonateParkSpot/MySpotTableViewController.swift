@@ -59,7 +59,7 @@ public class MySpotBiddingTableViewController: UITableViewController  {
                     else
                     {
                         s.AddressText = "243 South Wabash Avenue Chicago, IL 60604"
-                        //TODO
+                        //TODO: For initial test only. If it is not read at the time of create Spot
                     }
                     if object["StatusId"] != nil
                     {
@@ -80,6 +80,7 @@ public class MySpotBiddingTableViewController: UITableViewController  {
                     s.location = location
                     s.minDonation = mPrice
                     s.spotId = object.objectId!
+                    // Add the spot in to the collection
                     self.datas.insert(s, atIndex: 0)
                 }
                
@@ -88,7 +89,7 @@ public class MySpotBiddingTableViewController: UITableViewController  {
         }
     
     }
-    
+    //Update the View with Data from Server
     func update() {
         count++
         //update your table data here
@@ -99,10 +100,12 @@ public class MySpotBiddingTableViewController: UITableViewController  {
         }
     }
 
-    func GetBidEgar(spots: [PFObject]?) -> [Bid] {
+    
+    //This func load take PFList of Bids and convert in to a Model Bids . Currently not in use
+    func GetBidEgar(bidsArray: [PFObject]?) -> [Bid] {
         var index = 0
         var bidList = [Bid]()
-        for object in spots! {
+        for object in bidsArray! {
             
             let bi: Bid = Bid()
             let timestamp = object["Timestamp"] as! NSDate
@@ -115,6 +118,8 @@ public class MySpotBiddingTableViewController: UITableViewController  {
         return bidList
     }
     
+    
+    ///Get in momory BID to test : currently  Not in use
     public func GetBid(i: Int) -> [Bid] {
        
         var bidList = [Bid]()
@@ -127,6 +132,8 @@ public class MySpotBiddingTableViewController: UITableViewController  {
         return bidList
     }
     
+    
+    //Get a bid list for spot id Not in use
     func GetBidList(spotid: String) -> [Bid] {
         var index = 0
          var bidList = [Bid]()

@@ -8,7 +8,7 @@
 
 import UIKit
 import Parse
-class MySpotMultiBidTableViewController: UITableViewController {
+ class MySpotMultiBidTableViewController: UITableViewController {
  var datas = [Bid] ()
  var DetailSpot : Spot = Spot()
     var rating: Double = 0;
@@ -36,7 +36,7 @@ var bidNoPayAutoCancelTime : Int = 4  // Set a intitial value,
             self.tableView.reloadData()
         }
     }
-    func GetBidList(spotid: String)  {
+    public func GetBidList(spotid: String)  {
         self.getBidNoPayAutoCancelTime()
         
         self.datas.removeAll()
@@ -48,6 +48,8 @@ var bidNoPayAutoCancelTime : Int = 4  // Set a intitial value,
         queryUser = PFQuery(className: "User")
       //  query.whereKey("Spot", equalTo:spotid)
         //query.whereKey("spot", equalTo: PFObject(withoutDataWithClassName:"spot", objectId:spotid))
+        
+        // Add a where condition , to get the spot for the login user
         query.whereKey("spot", equalTo: PFObject(withoutDataWithClassName:"Spot", objectId:spotid))
         
         
@@ -70,7 +72,10 @@ var bidNoPayAutoCancelTime : Int = 4  // Set a intitial value,
                     if(object["StatusId"] != nil)
                     { bi.StatusId = object["StatusId"] as! Int}
                     else
-                    { bi.StatusId = 0}
+                    {
+                        bi.StatusId = 0
+                       // no status found , put a default status. o Means bid is just created
+                    }
                     
                     if(object["BidAcceptTime"] != nil)
                     { bi.BidAcceptTime = object["BidAcceptTime"] as! NSDate}
@@ -105,6 +110,9 @@ var bidNoPayAutoCancelTime : Int = 4  // Set a intitial value,
             
         }
     }
+    
+    
+    // this function return number of minutes from current time
     func MinuteElaps(bidAcceptDate : NSDate) -> Int
     {
         
@@ -118,6 +126,7 @@ var bidNoPayAutoCancelTime : Int = 4  // Set a intitial value,
         
     }
     
+    // Read from configation setting database (Parse) table , the time in minutes to cancel the Bid for no payment after accepted by the Seller
     func getBidNoPayAutoCancelTime() -> Void
     {
         var query: PFQuery = PFQuery()
@@ -138,6 +147,7 @@ var bidNoPayAutoCancelTime : Int = 4  // Set a intitial value,
         }
     }
    
+    // Retun a empty Bid. This use to show a readonly message if no bid is present for the spot. This hepl to show somthing in the screen. User can not do anything on this bid. This bid not saved in data base. Just a display only place holder for show a message
     func GetEmptyBid() -> Bid {
         
         let bid = Bid()
@@ -247,7 +257,7 @@ MySpotMultiBidTableViewCell
      
         if(bid.value < 0.01)
         {
-
+            // This is the Bid created by GetEmptyBid func. User can do nothing on this . All button are disable
             objCell.lblTimr.text = "No Bid yet"
             objCell.lblTimr.textColor = UIColor.redColor()
             objCell.btnAccept.enabled = false
@@ -261,6 +271,7 @@ MySpotMultiBidTableViewCell
         }
        self.updateCellColor(objCell , StatusId :  bid.StatusId)
 
+        // Add a event hander to bid button
         objCell.btnAccept.addTarget(self, action: "btnAccept_click:", forControlEvents: .TouchUpInside)
         objCell.btnReject.addTarget(self, action: "btnReject_click:", forControlEvents: .TouchUpInside)
         objCell.btnAccept.tag = currentIndex
@@ -289,6 +300,7 @@ MySpotMultiBidTableViewCell
          print("btnAccept_click from main  at " + String(sender.tag) + "  value: " + String(currentbid.value))
         if( DetailSpot.StatusId != 2)
         {
+            // Update the bid and spot with status 2. Status 2 means accepted
          self.updateBid(currentbid, status :2,  sender: sender!)
          self.updateSpot(currentbid, status :2,  sender: sender!)
          DetailSpot.StatusId = 2
@@ -298,6 +310,7 @@ MySpotMultiBidTableViewCell
         }
         else
         {
+            // Only one bid ca be accepted per sopt
           self.showmessage("Sorry!  You already acceped another bid")
         }
          //self.tableView.reloadData()
@@ -320,12 +333,13 @@ MySpotMultiBidTableViewCell
 */
 
     }
- 
+ // Fires when reject button click on the bid
     func btnReject_click(sender: UIButton!) {
         let currentbid : Bid = datas[sender.tag]
         print("btnReject_click  from main at  " + String(sender.tag) + "  value: " + String(currentbid.value))
-        self.updateBid(currentbid, status :4,  sender: sender!) //rejected
+        self.updateBid(currentbid, status :4,  sender: sender!) // Status 4 means rejected
         currentbid.StatusId = 4
+        // get the associetd cell for the button clicked
         let cell = getCellForButton(sender)
         self.updateCellColor(cell , StatusId :  currentbid.StatusId)
 
@@ -348,6 +362,7 @@ MySpotMultiBidTableViewCell
         }
         */
     }
+    // Takes a button in a cell as parameter and return the instance of the cell, who hold this button. Retuen container cell of the button
     func getCellForButton(sender: UIButton!)-> MySpotMultiBidTableViewCell
     {
         let button = sender as UIButton
@@ -356,6 +371,9 @@ MySpotMultiBidTableViewCell
         //let indexPath = tableView.indexPathForCell(cell)
         return cell
     }
+    
+    
+    // Update the spot in Database (Parse)
     func updateSpot(currentbid : Bid, status :Int,  sender: UIButton!)-> Void
     {
         let prefQuery = PFQuery(className: "Spot")
@@ -369,6 +387,7 @@ MySpotMultiBidTableViewCell
                 prefObj["StatusId"] = status
                 if(status == 2) //Accepted
                 {
+                    // If any bid have been accpepted. Associated the Bid with the spot
                     prefObj["AcctepedBidId"] = currentbid.bidId
                 }
                 prefObj.saveInBackgroundWithTarget(sender, selector: nil)
@@ -377,6 +396,8 @@ MySpotMultiBidTableViewCell
             }
         }
     }
+    
+     // Update the Bid in Database (Parse)
     func updateBid(currentbid : Bid, status :Int,  sender: UIButton!)-> Void
     {
         let prefQuery = PFQuery(className: "Bid")
@@ -393,6 +414,7 @@ MySpotMultiBidTableViewCell
                 }
                 if(status == 6)//cancel for No payment
                 {
+                    // Store the No Payment Cancel Time for loging purpose
                     prefObj["NoPaymentCancelTime"] = NSDate()
                 }
                 
@@ -404,6 +426,8 @@ MySpotMultiBidTableViewCell
         }
     }
     
+    
+    // Shows a popup alert in the screen
         func showmessage ( msg : String) -> Void
         {
         

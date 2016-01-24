@@ -59,6 +59,8 @@
 		18AE41671BE84FEB00A4A62B /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18AE41661BE84FEB00A4A62B /* SWRevealViewController.m */; };
 		18AE41741BEE907800A4A62B /* test.png in Resources */ = {isa = PBXBuildFile; fileRef = 18AE41731BEE907800A4A62B /* test.png */; };
 		B80CB65A1BE30A9600746CEB /* MySpotDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = B80CB6591BE30A9600746CEB /* MySpotDetail.swift */; };
+		B80EB0181C5409ED00924625 /* SpotLocationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B80EB0171C5409ED00924625 /* SpotLocationService.swift */; };
+		B80EB01A1C5418DF00924625 /* SpotLocationServiceTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B80EB0191C5418DF00924625 /* SpotLocationServiceTest.swift */; };
 		B8179AFA1BE0628B00F218F1 /* MySpotTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8179AF91BE0628B00F218F1 /* MySpotTableViewController.swift */; };
 		B8493EB91C4C56AB00F9C184 /* MySpotMultiBitTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8493EB81C4C56AB00F9C184 /* MySpotMultiBitTest.swift */; };
 		B8493EBB1C4C615400F9C184 /* SpotTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8493EBA1C4C615400F9C184 /* SpotTest.swift */; };
@@ -140,6 +142,8 @@
 		18AE41681BE8500E00A4A62B /* DonateParkSpot-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "DonateParkSpot-Bridging-Header.h"; sourceTree = "<group>"; };
 		18AE41731BEE907800A4A62B /* test.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = test.png; sourceTree = "<group>"; };
 		B80CB6591BE30A9600746CEB /* MySpotDetail.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MySpotDetail.swift; sourceTree = "<group>"; };
+		B80EB0171C5409ED00924625 /* SpotLocationService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpotLocationService.swift; sourceTree = "<group>"; };
+		B80EB0191C5418DF00924625 /* SpotLocationServiceTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpotLocationServiceTest.swift; sourceTree = "<group>"; };
 		B8179AF91BE0628B00F218F1 /* MySpotTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MySpotTableViewController.swift; path = ../MySpotTableViewController.swift; sourceTree = "<group>"; };
 		B8493EB81C4C56AB00F9C184 /* MySpotMultiBitTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MySpotMultiBitTest.swift; sourceTree = "<group>"; };
 		B8493EBA1C4C615400F9C184 /* SpotTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpotTest.swift; sourceTree = "<group>"; };
@@ -229,6 +233,7 @@
 				18AE41661BE84FEB00A4A62B /* SWRevealViewController.m */,
 				18AE41641BE84FE400A4A62B /* SWRevealViewController.h */,
 				18AE41681BE8500E00A4A62B /* DonateParkSpot-Bridging-Header.h */,
+				B80EB0171C5409ED00924625 /* SpotLocationService.swift */,
 			);
 			name = Utils;
 			sourceTree = "<group>";
@@ -340,6 +345,7 @@
 				B892CF1F1C45E09500C8E071 /* BidTest.swift */,
 				B8493EB81C4C56AB00F9C184 /* MySpotMultiBitTest.swift */,
 				B8493EBA1C4C615400F9C184 /* SpotTest.swift */,
+				B80EB0191C5418DF00924625 /* SpotLocationServiceTest.swift */,
 			);
 			path = DonateParkSpotTests;
 			sourceTree = "<group>";
@@ -428,6 +434,11 @@
 					};
 					180C3AF01BD9F0F400E7E5F5 = {
 						CreatedOnToolsVersion = 7.0.1;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+						};
 					};
 					180C3B071BD9F0F400E7E5F5 = {
 						CreatedOnToolsVersion = 7.0.1;
@@ -496,6 +507,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B80EB0181C5409ED00924625 /* SpotLocationService.swift in Sources */,
 				180C3B261BDA923900E7E5F5 /* LoginViewController.swift in Sources */,
 				18AE41671BE84FEB00A4A62B /* SWRevealViewController.m in Sources */,
 				B8179AFA1BE0628B00F218F1 /* MySpotTableViewController.swift in Sources */,
@@ -529,6 +541,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				180C3B0D1BD9F0F400E7E5F5 /* DonateParkSpotTests.swift in Sources */,
+				B80EB01A1C5418DF00924625 /* SpotLocationServiceTest.swift in Sources */,
 				B8493EB91C4C56AB00F9C184 /* MySpotMultiBitTest.swift in Sources */,
 				B892CF201C45E09500C8E071 /* BidTest.swift in Sources */,
 				B8493EBB1C4C615400F9C184 /* SpotTest.swift in Sources */,
