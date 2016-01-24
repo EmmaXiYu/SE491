@@ -19,7 +19,8 @@ class DonateParkSpotUITest: XCTestCase {
         continueAfterFailure = false
         // UI tests must launch the application that they test. Doing this in setup will make sure it happens for each test method.
         XCUIApplication().launch()
-
+        
+        
         // In UI tests it’s important to set the initial state - such as interface orientation - required for your tests before they run. The setUp method is a good place to do this.
     }
     
@@ -29,6 +30,10 @@ class DonateParkSpotUITest: XCTestCase {
     }
     
     func testRoutineOne(){
+        let app = XCUIApplication()
+        if app.navigationBars["DonateParkSpot.MapView"].exists {
+            testLogout(true)
+        }
         testLogin("rafael@kloog.com.br", password: "galo13")
         testLookForSpot("Chicago")
         testBidOnSpot(true)
@@ -41,6 +46,10 @@ class DonateParkSpotUITest: XCTestCase {
     }
     
     func testRoutineTwo(){
+        let app = XCUIApplication()
+        if app.navigationBars["DonateParkSpot.MapView"].exists {
+            testLogout(true)
+        }
         let email = randomStringWithLength(4) + "@" + randomStringWithLength(4) + ".com"
         let password = randomStringWithLength(6)
         testRegister(email, password: password)
@@ -94,11 +103,13 @@ class DonateParkSpotUITest: XCTestCase {
         
     }
     
+
+    
     func testBidOnSpot(test: Bool){
         
         let app = XCUIApplication()
         XCTAssertEqual(app.navigationBars["DonateParkSpot.MapView"].exists, true)
-        app.otherElements["faelwar@gmail.com, UJr1Iay3YR"].tap()
+        app.otherElements["xiyu332012@gmail.com, lYqRItyF7B"].tap()
         app.childrenMatchingType(.Window).elementBoundByIndex(0).childrenMatchingType(.Other).element.childrenMatchingType(.Other).element.childrenMatchingType(.Other).element.childrenMatchingType(.Other).element.childrenMatchingType(.Other).element.childrenMatchingType(.Other).element.childrenMatchingType(.Other).element.childrenMatchingType(.Other).elementBoundByIndex(2).childrenMatchingType(.Other).element.childrenMatchingType(.Other).elementBoundByIndex(0).childrenMatchingType(.Other).element.childrenMatchingType(.Other).elementBoundByIndex(1).childrenMatchingType(.Other).element.childrenMatchingType(.Other).elementBoundByIndex(1).childrenMatchingType(.Other).element.childrenMatchingType(.Button).element.tap()
         
         let incrementButton = app.steppers.buttons["Increment"]
@@ -189,7 +200,7 @@ class DonateParkSpotUITest: XCTestCase {
         XCTAssertEqual(app.navigationBars["Add Spot Detail"].exists, true)
         let tablesQuery = app.tables
         tablesQuery.childrenMatchingType(.Cell).elementBoundByIndex(3).childrenMatchingType(.TextField).element.tap()
-        app.datePickers.pickerWheels["10 o'clock"].swipeUp()
+        app.datePickers.pickerWheels.elementAtIndex(0).swipeUp()
         tablesQuery.textFields["Minimum Donation"].tap()
         tablesQuery.childrenMatchingType(.Cell).elementBoundByIndex(4).childrenMatchingType(.TextField).element.typeText("5")
         app.navigationBars["Add Spot Detail"].buttons["Done"].tap()
