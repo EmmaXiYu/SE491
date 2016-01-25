@@ -12,8 +12,8 @@ import Parse
 
 class BuyDetailController :  UIViewController, MKMapViewDelegate {
     var spot : Spot?
-    var ownerName:String = ""
-    var ownerId:String = ""
+    //var ownerName:String = ""
+   //var ownerId:String = ""
     @IBOutlet weak var map: MKMapView!
     @IBOutlet weak var type: UILabel!
     @IBOutlet weak var rate: UILabel!
@@ -39,13 +39,65 @@ class BuyDetailController :  UIViewController, MKMapViewDelegate {
              let pinLocation: CLLocationCoordinate2D = CLLocationCoordinate2D(latitude: (spot?.location.latitude)!, longitude: (spot?.location.longitude)!)
           let region=MKCoordinateRegion(center: pinLocation, span: MKCoordinateSpan(latitudeDelta: 0.004, longitudeDelta: 0.004))
           self.map.setRegion(region, animated: true)
-            let annotation = CustomerAnnotation(coordinate: pinLocation,spotObject: spot!, title :ownerName,subtitle: ownerId)
+            let annotation = CustomerAnnotation(coordinate: pinLocation,spotObject: spot!, title :(spot?.ownerName)!,subtitle: (spot?.ownerID)!)
             //annotation.subtitle = "Rating bar here"
             self.map.addAnnotation(annotation)
                    }
     }
     
+    func mapView(mapView: MKMapView, viewForAnnotation annotation: MKAnnotation
+        ) -> MKAnnotationView!{
+            
+            
+            if annotation is CustomerAnnotation {
+                let pinAnnotationView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: "myPin")
+                var ownerID:String = annotation.subtitle!!
+                var name = annotation.title!
+                
+                let pic = UIImageView (image: UIImage(named: "test.png"))
+                pinAnnotationView.canShowCallout = true
+                pinAnnotationView.draggable = true
+                pinAnnotationView.canShowCallout = true
+                pinAnnotationView.animatesDrop = true
+                pinAnnotationView.pinColor = MKPinAnnotationColor.Purple
+                
+                
+                var query = PFUser.query()
+                
+                do{ var user = try query!.getObjectWithId(ownerID) as! PFUser
+                    if let userPicture = user["Image"] as? PFFile {
+                        userPicture.getDataInBackgroundWithBlock { (imageData: NSData?, error: NSError?) -> Void in
+                            if error == nil {
+                                pic.image = UIImage(data:imageData!)
+                            
+                            }
+                        }
+                    }
+                    
+                    
+                    
+                    
+                }
+                catch{
+                   //Throw an exception
+                }
+               
+                pinAnnotationView.leftCalloutAccessoryView = pic
+                pic.frame = CGRectMake(0, 0, 40, 40);
+
+                
+                
+                return pinAnnotationView
+                
+            }
+            
+            return nil
+    }
     
+
+        
+    
+
     
     @IBAction func upDown(sender: UIStepper) {
         minDonation.text = "$ " + sender.value.description

@@ -147,8 +147,8 @@ class MapViewController: UIViewController,MKMapViewDelegate,CLLocationManagerDel
             let cAnnotation: CustomerAnnotation = selectedAnnotation as! CustomerAnnotation
             let seeDetailToBuy = segue!.destinationViewController as!  BuyDetailController
             seeDetailToBuy.spot = cAnnotation.spot
-            seeDetailToBuy.ownerName = ownerName
-            seeDetailToBuy.ownerId = ownerId
+           // seeDetailToBuy.ownerName = ownerName
+            //seeDetailToBuy.ownerId = ownerId
         }
     }
    
@@ -205,8 +205,8 @@ class MapViewController: UIViewController,MKMapViewDelegate,CLLocationManagerDel
                             let pinLatitude: CLLocationDegrees = pin!.latitude
                             let pinLongtitude: CLLocationDegrees = pin!.longitude
                             let address = object["addressText"] as? String
-                            let id = object.objectId
-                            self.ownerId = id!
+                            let id = object.objectId //This is the spot id
+                            //self.ownerId = id!
                             let type = object["type"] as? Int
                             let rate = object["rate"] as? Double
                             let timeLeft = object["timeLeft"] as? Int
@@ -214,6 +214,7 @@ class MapViewController: UIViewController,MKMapViewDelegate,CLLocationManagerDel
                             let legalTime = object["legalTime"] as? String
                             let timeToLeave = object["leavingTime"] as! NSDate?
                             let ownerName = object["owner"] as! String
+                            let ownerID = object["OwnerID"] as! String
                             self.ownerName=ownerName
                             let pinLocation: CLLocationCoordinate2D = CLLocationCoordinate2D(latitude: pinLatitude, longitude: pinLongtitude)
                             //spotObject.owner.username = ownerName
@@ -227,9 +228,12 @@ class MapViewController: UIViewController,MKMapViewDelegate,CLLocationManagerDel
                             spotObject.minDonation = miniDonation
                             spotObject.legalTime = legalTime
                             spotObject.timeToLeave = timeToLeave
-                          //  spotObject.owner = owner
+                            spotObject.ownerName = ownerName
+                            spotObject.ownerID = ownerID;
+                            
+                            
                             //var subtitle = "Rating Bar Here"
-                            let annotation = CustomerAnnotation(coordinate: pinLocation,spotObject: spotObject, title :ownerName, subtitle: id!)
+                            let annotation = CustomerAnnotation(coordinate: pinLocation,spotObject: spotObject, title :ownerName, subtitle: ownerID)
                             annotation.spot = spotObject
                             //annotation.subtitle = "Rating bar here"
                             self.mapView.addAnnotation(annotation)
@@ -261,18 +265,40 @@ class MapViewController: UIViewController,MKMapViewDelegate,CLLocationManagerDel
             
             if annotation is CustomerAnnotation {
                 let pinAnnotationView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: "myPin")
+                var ownerID:String = annotation.subtitle!!
+                var name = annotation.title!
+                let pic = UIImageView (image: UIImage(named: "test.png"))
                 pinAnnotationView.canShowCallout = true
-                pinAnnotationView.draggable = true
+                pinAnnotationView.draggable = false
                 pinAnnotationView.canShowCallout = true
                 pinAnnotationView.animatesDrop = true
-                pinAnnotationView.pinColor = MKPinAnnotationColor.Purple
+               pinAnnotationView.pinColor = MKPinAnnotationColor.Purple
                 
+                
+                var query = PFUser.query() 
+                
+                do{ var user = try query!.getObjectWithId(ownerID) as! PFUser
+                    if let userPicture = user["Image"] as? PFFile {
+                        userPicture.getDataInBackgroundWithBlock { (imageData: NSData?, error: NSError?) -> Void in
+                            if error == nil {
+                                pic.image = UIImage(data:imageData!)
+                            }
+                        }
+                    }
+
+                    
+                
+                
+                }
+                catch{
+                    //Throw exception here
+                }
                 let btn = UIButton(type: .DetailDisclosure)
                 pinAnnotationView.rightCalloutAccessoryView = btn
-                let pic = UIImageView (image: UIImage(named: "test.png"))
+                pic.frame = CGRectMake(0, 0, 40, 40);
                 pinAnnotationView.leftCalloutAccessoryView = pic
-                
-                return pinAnnotationView
+                pinAnnotationView.frame = CGRectMake(0,0,500,500)
+                                return pinAnnotationView
                 
             }
             
