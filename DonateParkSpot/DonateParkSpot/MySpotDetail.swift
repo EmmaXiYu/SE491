@@ -19,10 +19,7 @@ class MySpotDetail: UIViewController {
 
         self.lblAddress.text =  String(format:"%f", DetailSpot.location.latitude) + "  " +  String(format:"%f", DetailSpot.location.longitude)
         self.lblMinPrice.text = String(DetailSpot.minDonation)
-        // Do any additional setup after loading the view.
-        
-        
-        
+              
         let geoCoder = CLGeocoder()
         let location = CLLocation(latitude: DetailSpot.location.latitude, longitude: DetailSpot.location.longitude)
         

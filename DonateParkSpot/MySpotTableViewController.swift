@@ -18,30 +18,25 @@ public class MySpotBiddingTableViewController: UITableViewController  {
      override public func viewDidLoad() {
         super.viewDidLoad()
         self.readDatafromServer()
-  
+        self.title = "My Spots"
         
-       // var timer = NSTimer.scheduledTimerWithTimeInterval(10, target: self, selector: "update", userInfo: nil, repeats: true)
-
+       
         Menu.target = self.revealViewController()
         Menu.action = Selector("revealToggle:")
         
         self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
         
     }
+    
     func readDatafromServer()
     {
         self.datas.removeAll()
         var query: PFQuery = PFQuery()
         query = PFQuery(className: "Spot")
         let currentUser = PFUser.currentUser()
-        //query.whereKey("owner", equalTo: PFObject(withoutDataWithClassName:"User", objectId:CurrentUser.currentUser.username))
-        //query.whereKey("owner", equalTo:"pravangsu@gmail.com")
+        
         query.whereKey("owner", equalTo:(currentUser?.email)!)
-        //query.whereKey("parent", equalTo:"pravangsu@gmail.com")
-        // query.includeKey("Bid")
-        //query.includeKey("UserID") //Use this as example to get bid
-        //query.whereKey("owner", equalTo: CurrentUser.currentUser.username)
-        //var test = PFUser.currentUser()!.username
+        
         query.findObjectsInBackgroundWithBlock {
             (objects:[PFObject]?, error:NSError?) -> Void in
             if error == nil {
@@ -93,8 +88,7 @@ public class MySpotBiddingTableViewController: UITableViewController  {
     func update() {
         count++
         //update your table data here
-        //tableArray.append(count)
-         self.readDatafromServer()
+        self.readDatafromServer()
         dispatch_async(dispatch_get_main_queue()) {
            self.tableView.reloadData()
         }
@@ -124,7 +118,7 @@ public class MySpotBiddingTableViewController: UITableViewController  {
        
         var bidList = [Bid]()
         for index in 0...i-1 {
-             let bi: Bid = Bid()
+            let bi: Bid = Bid()
             bi.value = 3 + Double(i)
             bi.timestamp = NSDate()
             bidList.insert(bi, atIndex: index)
@@ -136,7 +130,7 @@ public class MySpotBiddingTableViewController: UITableViewController  {
     //Get a bid list for spot id Not in use
     func GetBidList(spotid: String) -> [Bid] {
         var index = 0
-         var bidList = [Bid]()
+        var bidList = [Bid]()
         var query: PFQuery = PFQuery()
         query = PFQuery(className: "Bid")
         query.whereKey("SpotId", equalTo:spotid)
@@ -152,11 +146,11 @@ public class MySpotBiddingTableViewController: UITableViewController  {
                     bi.timestamp = timestamp
                     bidList.insert(bi, atIndex: index)
                     index = index + 1
-                    }
-              
                 }
+              
             }
-          return bidList
+        }
+        return bidList
     }
     
     override public func didReceiveMemoryWarning() {
@@ -189,10 +183,6 @@ public class MySpotBiddingTableViewController: UITableViewController  {
         //var b:String = String(format:"%f", S.location.altitude)
         return cell
         
-    }
-
-    override public func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return "Section \(section)"
     }
     
     override public func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
