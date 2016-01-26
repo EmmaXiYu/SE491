@@ -196,7 +196,7 @@ class MapViewController: UIViewController,MKMapViewDelegate,CLLocationManagerDel
                 //let spot = PFObject(className: "Spot")
                 var query: PFQuery = PFQuery()
                 query = PFQuery(className: "Spot")
-                query.whereKey("SpotGeoPoint", nearGeoPoint: geoPoint, withinMiles: 1)
+                query.whereKey("SpotGeoPoint", nearGeoPoint: geoPoint, withinMiles: 20)
                 query.findObjectsInBackgroundWithBlock {(objects:[PFObject]?, error:NSError?) -> Void in
                     if error == nil {
                         for object in objects! {
