@@ -24,7 +24,7 @@ class BuyDetailController :  UIViewController, MKMapViewDelegate {
     
     override func viewDidLoad() {
         if spot != nil {
-            self.title = ownerName + "'s Spot"
+            self.title = spot!.ownerName! + "'s Spot"
             
             if spot!.type! == 1 {
                 type.text = "Paid Spot"
