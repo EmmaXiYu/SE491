@@ -55,7 +55,7 @@
 		1815C0DB1BFA869B003D9390 /* AccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1815C0DA1BFA869B003D9390 /* AccountViewController.swift */; };
 		1815C0DD1BFA9356003D9390 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1815C0DC1BFA9356003D9390 /* SettingViewController.swift */; };
 		1815C0DF1BFA9480003D9390 /* MyBidsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1815C0DE1BFA9480003D9390 /* MyBidsViewController.swift */; };
-		1820272D1C56A30E00BEDAD1 /* RetrievePasswordController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1820272C1C56A30E00BEDAD1 /* RetrievePasswordController.swift */; settings = {ASSET_TAGS = (); }; };
+		1820272D1C56A30E00BEDAD1 /* RetrievePasswordController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1820272C1C56A30E00BEDAD1 /* RetrievePasswordController.swift */; };
 		18AE41611BE84EB000A4A62B /* BackTableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18AE41601BE84EB000A4A62B /* BackTableVC.swift */; };
 		18AE41671BE84FEB00A4A62B /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18AE41661BE84FEB00A4A62B /* SWRevealViewController.m */; };
 		18AE41741BEE907800A4A62B /* test.png in Resources */ = {isa = PBXBuildFile; fileRef = 18AE41731BEE907800A4A62B /* test.png */; };
@@ -707,7 +707,7 @@
 				);
 				INFOPLIST_FILE = DonateParkSpot/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.depaul.Emma.DonateParkSpot;
+				PRODUCT_BUNDLE_IDENTIFIER = edu.depaul.DonateParkSpot;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "DonateParkSpot/DonateParkSpot-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -725,7 +725,7 @@
 				);
 				INFOPLIST_FILE = DonateParkSpot/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.depaul.Emma.DonateParkSpot;
+				PRODUCT_BUNDLE_IDENTIFIER = edu.depaul.DonateParkSpot;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "DonateParkSpot/DonateParkSpot-Bridging-Header.h";
 			};
