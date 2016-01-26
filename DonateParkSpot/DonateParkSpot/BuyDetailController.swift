@@ -20,18 +20,27 @@ class BuyDetailController :  UIViewController, MKMapViewDelegate {
     @IBOutlet weak var timeToLeave: UILabel!
     @IBOutlet weak var minDonation: UILabel!
     @IBOutlet weak var donation: UIStepper!
-       let locationManager=CLLocationManager()
+    let locationManager=CLLocationManager()
     
     override func viewDidLoad() {
         if spot != nil {
+            self.title = ownerName + "'s Spot"
             
-            type.text = String(spot!.type)
-            rate.text = spot!.rate!.description
-            timeToLeave.text = "15:30"
-            minDonation.text = "$ " + spot!.minDonation!.description + ".00"
+            if spot!.type! == 1 {
+                type.text = "Paid Spot"
+                rate.text = "U$ " + spot!.rate!.description + "0"
+                timeToLeave.text = spot!.timeToLeave?.description
+                minDonation.text = "U$ " + spot!.minDonation!.description + ".00"
+            }else{
+                type.text = "Free Spot"
+                rate.text = "Free"
+                timeToLeave.text = "Zero Minutes"
+                minDonation.text = "U$ " + spot!.minDonation!.description + ".00"
+            }
             donation.minimumValue = Double(spot!.minDonation!)
+            donation.maximumValue = 1.79e307
             donation.stepValue = 1
-             self.map.delegate = self
+            self.map.delegate = self
             self.locationManager.desiredAccuracy=kCLLocationAccuracyBest
             self.locationManager.requestWhenInUseAuthorization()
             self.locationManager.startUpdatingLocation()
@@ -42,7 +51,7 @@ class BuyDetailController :  UIViewController, MKMapViewDelegate {
             let annotation = CustomerAnnotation(coordinate: pinLocation,spotObject: spot!, title :(spot?.ownerName)!,subtitle: (spot?.ownerID)!)
             //annotation.subtitle = "Rating bar here"
             self.map.addAnnotation(annotation)
-                   }
+        }
     }
     
     func mapView(mapView: MKMapView, viewForAnnotation annotation: MKAnnotation
@@ -100,7 +109,7 @@ class BuyDetailController :  UIViewController, MKMapViewDelegate {
 
     
     @IBAction func upDown(sender: UIStepper) {
-        minDonation.text = "$ " + sender.value.description
+        minDonation.text = "U$ " + sender.value.description + "0"
     }
     
     @IBAction func buy() {
@@ -110,12 +119,11 @@ class BuyDetailController :  UIViewController, MKMapViewDelegate {
         bid["user"] = user
         bid["value"] = donation.value
         bid["spot"] = PFObject(withoutDataWithClassName: "Spot", objectId: spot?.spotId)
-        bid["UserId"] = PFUser.currentUser()?.username  //TODO
         bid["StatusId"] = 0  // put 0 by defualt
-        //bid["BidTime"] = NSDate()
         bid.saveInBackground()
         
         updateSpot((self.spot?.spotId)!, status : 99)
+        self.dismissViewControllerAnimated(true, completion: nil)
 
     }
     
@@ -129,8 +137,7 @@ class BuyDetailController :  UIViewController, MKMapViewDelegate {
                 
             } else if let prefObj = prefObj {
                 prefObj["StatusId"] = status
-                prefObj.saveInBackgroundWithTarget(nil, selector: nil)
-            
+                prefObj.saveInBackground()
                 
             }
         }
