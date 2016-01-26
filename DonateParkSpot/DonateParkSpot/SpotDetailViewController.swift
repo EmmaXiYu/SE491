@@ -97,6 +97,7 @@ class SpotDetailViewController: UITableViewController {
         testObject["leavingTime"] = timePickerView.date //timeToLeaveTextField.text
         testObject["minimumPrice"] = Float(minimumDonatePrice.text!)
         testObject["owner"] = PFUser.currentUser()!.username
+        testObject["OwnerID"] = PFUser.currentUser()!.objectId
         testObject["rate"] = Double(rate.text!)
         testObject["timeLeft"] = Int(timeLeft.text!)
         testObject["legalTime"] = info.text

@@ -55,6 +55,7 @@
 		1815C0DB1BFA869B003D9390 /* AccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1815C0DA1BFA869B003D9390 /* AccountViewController.swift */; };
 		1815C0DD1BFA9356003D9390 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1815C0DC1BFA9356003D9390 /* SettingViewController.swift */; };
 		1815C0DF1BFA9480003D9390 /* MyBidsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1815C0DE1BFA9480003D9390 /* MyBidsViewController.swift */; };
+		1820272D1C56A30E00BEDAD1 /* RetrievePasswordController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1820272C1C56A30E00BEDAD1 /* RetrievePasswordController.swift */; };
 		18AE41611BE84EB000A4A62B /* BackTableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18AE41601BE84EB000A4A62B /* BackTableVC.swift */; };
 		18AE41671BE84FEB00A4A62B /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18AE41661BE84FEB00A4A62B /* SWRevealViewController.m */; };
 		18AE41741BEE907800A4A62B /* test.png in Resources */ = {isa = PBXBuildFile; fileRef = 18AE41731BEE907800A4A62B /* test.png */; };
@@ -136,6 +137,7 @@
 		1815C0DA1BFA869B003D9390 /* AccountViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountViewController.swift; sourceTree = "<group>"; };
 		1815C0DC1BFA9356003D9390 /* SettingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
 		1815C0DE1BFA9480003D9390 /* MyBidsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyBidsViewController.swift; sourceTree = "<group>"; };
+		1820272C1C56A30E00BEDAD1 /* RetrievePasswordController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RetrievePasswordController.swift; sourceTree = "<group>"; };
 		18AE41601BE84EB000A4A62B /* BackTableVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 5; lastKnownFileType = sourcecode.swift; path = BackTableVC.swift; sourceTree = "<group>"; tabWidth = 5; usesTabs = 0; };
 		18AE41641BE84FE400A4A62B /* SWRevealViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SWRevealViewController.h; sourceTree = "<group>"; };
 		18AE41661BE84FEB00A4A62B /* SWRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWRevealViewController.m; sourceTree = "<group>"; };
@@ -223,6 +225,7 @@
 				10A79C941BE2D04900D26027 /* BuyDetailController.swift */,
 				1815C0DC1BFA9356003D9390 /* SettingViewController.swift */,
 				1815C0DE1BFA9480003D9390 /* MyBidsViewController.swift */,
+				1820272C1C56A30E00BEDAD1 /* RetrievePasswordController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -516,6 +519,7 @@
 				18AE41611BE84EB000A4A62B /* BackTableVC.swift in Sources */,
 				180C3B2A1BDAA0B400E7E5F5 /* MapViewController.swift in Sources */,
 				B8A1093F1BF6E86D003503B1 /* MyBidTableViewController.swift in Sources */,
+				1820272D1C56A30E00BEDAD1 /* RetrievePasswordController.swift in Sources */,
 				10B75D6A1BE0509D009B88DC /* Location.swift in Sources */,
 				180A14A51BDC1554005F4221 /* CustomerAnnotation.swift in Sources */,
 				180C3B281BDA932C00E7E5F5 /* RegisterViewController.swift in Sources */,
@@ -703,7 +707,7 @@
 				);
 				INFOPLIST_FILE = DonateParkSpot/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.depaul.Emma.DonateParkSpot;
+				PRODUCT_BUNDLE_IDENTIFIER = edu.depaul.DonateParkSpot;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "DonateParkSpot/DonateParkSpot-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -721,7 +725,7 @@
 				);
 				INFOPLIST_FILE = DonateParkSpot/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.depaul.Emma.DonateParkSpot;
+				PRODUCT_BUNDLE_IDENTIFIER = edu.depaul.DonateParkSpot;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "DonateParkSpot/DonateParkSpot-Bridging-Header.h";
 			};

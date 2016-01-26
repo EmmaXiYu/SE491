@@ -83,7 +83,7 @@ class RegisterViewController: UIViewController {
         
         
         //confirm regisration
-        var myAlert=UIAlertController(title: "Alert", message:"Registration is successful.",
+        var myAlert=UIAlertController(title: "Alert", message:"Registration is successful. Please check email to verify your account.",
             preferredStyle: UIAlertControllerStyle.Alert);
         let okayAction=UIAlertAction(title: "Okay", style:UIAlertActionStyle.Default)
             {
@@ -117,7 +117,7 @@ class RegisterViewController: UIViewController {
             //Store in parse
             var user = PFUser()
             user.username =  userEmailTextField.text;
-            user.email =  userEmailTextField.text;
+            user.email =  userEmailTextField.text!.lowercaseString;
             user.password = userPasswordTextField.text;
             
             

@@ -14,6 +14,17 @@ class AccountViewController: UIViewController , UIImagePickerControllerDelegate,
     var ifChoose:Bool! = false
    
    
+    @IBAction func resetPassword(sender: AnyObject) {
+        
+         let user = PFUser.currentUser()
+        var emailAddress : String = (user?.email)!
+        do {try  PFUser.requestPasswordResetForEmail(emailAddress)}
+        catch
+        {
+        //Throw exception}
+        }
+        
+    }
     @IBOutlet weak var Menu: UIBarButtonItem!
     override func viewDidLoad() {
         
@@ -127,4 +138,32 @@ class AccountViewController: UIViewController , UIImagePickerControllerDelegate,
 
         }
     }
+    
+    
+    @IBAction func EditCellPhoneNumber(sender: AnyObject) {
+        
+        let user = PFUser.currentUser()
+        
+        user!["PhoneNumber"] = cellPhoneNumber.text
+        user!.saveInBackgroundWithBlock({
+            
+            (success: Bool, error: NSError?) -> Void in
+            
+            if error == nil {
+             self.displayMyAlertMessage("Updated sucessfully.")
+                self.viewDidLoad()
+                
+            }else {
+                
+                self.displayMyAlertMessage("data uploaded fail");
+            }
+            
+        })
+
+      
+       
+        
+    }
+    
+    
     }

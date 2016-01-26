@@ -10,6 +10,11 @@ import UIKit
 
 class SettingViewController: UIViewController {
     
+    @IBOutlet weak var searchRadium: UITextField!
+    
+    
+    @IBAction func upDown(sender: UIStepper) {
+    }
 
     @IBOutlet weak var Menu: UIBarButtonItem!
     

@@ -35,7 +35,7 @@ class LoginViewController: UIViewController {
     func Login()
     {
         let user = PFUser()
-        user.username = userEmailTextField.text!
+        user.username = userEmailTextField.text!.lowercaseString
         user.password = userPasswordTextField.text!
         PFUser.logInWithUsernameInBackground(userEmailTextField.text!, password: userPasswordTextField.text!, block:  {
             (username : PFUser?, Error : NSError?) -> Void in
@@ -44,13 +44,21 @@ class LoginViewController: UIViewController {
             if Error == nil{
                                  
                 
-                
+               /* let loginUser = PFUser.currentUser()
+                var ifemailVerified = loginUser?["emailVerified"] as! Bool
+                if ifemailVerified == true
+                {*/
+                    
                 NSUserDefaults.standardUserDefaults().setBool(true, forKey: "isUserLoggedIn")
                 NSUserDefaults.standardUserDefaults().setObject(user.username, forKey: "username")
                 NSUserDefaults.standardUserDefaults().synchronize();
                 self.dismissViewControllerAnimated(true, completion: nil);
-
-            }
+                }
+               /* else
+                {
+                    self.displayMyAlertMessage("Please verify the link we send to you" );
+                }}*/
+        
             
             
             else

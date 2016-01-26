@@ -135,8 +135,8 @@ class MapViewController: UIViewController,MKMapViewDelegate,CLLocationManagerDel
             let cAnnotation: CustomerAnnotation = selectedAnnotation as! CustomerAnnotation
             let seeDetailToBuy = segue!.destinationViewController as!  BuyDetailController
             seeDetailToBuy.spot = cAnnotation.spot
-            seeDetailToBuy.ownerName = ownerName
-            seeDetailToBuy.ownerId = ownerId
+           // seeDetailToBuy.ownerName = ownerName
+            //seeDetailToBuy.ownerId = ownerId
         }
     }
    
@@ -253,18 +253,40 @@ class MapViewController: UIViewController,MKMapViewDelegate,CLLocationManagerDel
             
             if annotation is CustomerAnnotation {
                 let pinAnnotationView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: "myPin")
+                var ownerID:String = annotation.subtitle!!
+                var name = annotation.title!
+                let pic = UIImageView (image: UIImage(named: "test.png"))
                 pinAnnotationView.canShowCallout = true
-                pinAnnotationView.draggable = true
+                pinAnnotationView.draggable = false
                 pinAnnotationView.canShowCallout = true
                 pinAnnotationView.animatesDrop = true
-                pinAnnotationView.pinColor = MKPinAnnotationColor.Purple
+               pinAnnotationView.pinColor = MKPinAnnotationColor.Purple
                 
+                
+                var query = PFUser.query() 
+                
+                do{ var user = try query!.getObjectWithId(ownerID) as! PFUser
+                    if let userPicture = user["Image"] as? PFFile {
+                        userPicture.getDataInBackgroundWithBlock { (imageData: NSData?, error: NSError?) -> Void in
+                            if error == nil {
+                                pic.image = UIImage(data:imageData!)
+                            }
+                        }
+                    }
+
+                    
+                
+                
+                }
+                catch{
+                    //Throw exception here
+                }
                 let btn = UIButton(type: .DetailDisclosure)
                 pinAnnotationView.rightCalloutAccessoryView = btn
-                let pic = UIImageView (image: UIImage(named: "test.png"))
+                pic.frame = CGRectMake(0, 0, 40, 40);
                 pinAnnotationView.leftCalloutAccessoryView = pic
-                
-                return pinAnnotationView
+                pinAnnotationView.frame = CGRectMake(0,0,500,500)
+                                return pinAnnotationView
                 
             }
             

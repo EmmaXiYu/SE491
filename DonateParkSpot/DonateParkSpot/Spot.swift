@@ -18,10 +18,13 @@ class Spot {
     var minDonation : Int? = 0
     var legalTime : String? = ""
     var timeToLeave : NSDate?
-    var owner : PFUser? = PFUser()
+   // var owner : PFUser? = PFUser()
+    var ownerName : String? = ""
+    var ownerID : String? = ""
     var AddressText: String? = ""
     var StatusId : Int? = -1 // 1: Active and open for bid; 2 : bid Accepted; 3: Donetion Recieved and closed 4: Rejected
     var AcctepedBidId : String? = ""
+    
     
    // var Bids : [Bid] = [Bid]()//Emma think spots should not have bids, each bid should has a spot. Each bid
     //in database should have a pointer, points to a perticular spot. What do u guys think?
@@ -37,8 +40,10 @@ class Spot {
         result["minDonation"] = minDonation
         result["legalTime"] = legalTime
         result["timeToLeave"] = timeToLeave
-        result["owner"] = owner
+        result["owner"] = ownerName
+        result["OwnerID"] = ownerID
         result.objectId = spotId
+        
         
         return result
     }
