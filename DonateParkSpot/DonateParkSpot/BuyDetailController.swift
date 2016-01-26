@@ -62,6 +62,20 @@ class BuyDetailController :  UIViewController, MKMapViewDelegate {
     @IBAction func buy() {
         let user = PFUser.currentUser()
         
+        let query = PFQuery.init(className: "Bid")
+        query.whereKey("user", equalTo: user!)
+        query.whereKey("spot", equalTo: spot!.toPFObject())
+        do{
+            let results = try query.findObjects()
+            if results.count > 0 {
+                let alert = UIAlertView.init(title: "Bid already made", message: "You cannot bid twice on a Spot", delegate: nil, cancelButtonTitle: "OK")
+                alert.show()
+                return
+            }
+        }catch{
+            
+        }
+        
         let bid = PFObject(className: "Bid")
         bid["user"] = user
         bid["value"] = donation.value

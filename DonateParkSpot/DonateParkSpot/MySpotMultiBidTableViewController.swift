@@ -8,16 +8,16 @@
 
 import UIKit
 import Parse
- class MySpotMultiBidTableViewController: UITableViewController {
- var datas = [Bid] ()
- var DetailSpot : Spot = Spot()
+class MySpotMultiBidTableViewController: UITableViewController {
+    var datas = [Bid] ()
+    var DetailSpot : Spot = Spot()
     var rating: Double = 0;
     var count: Int = 0;
-var bidNoPayAutoCancelTime : Int = 4  // Set a intitial value,
- //var currentIndex : Int =  -1
+    var bidNoPayAutoCancelTime : Int = 4  // Set a intitial value,
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-       
+        self.title = "Bids"
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -48,7 +48,7 @@ var bidNoPayAutoCancelTime : Int = 4  // Set a intitial value,
         queryUser = PFQuery(className: "User")
       //  query.whereKey("Spot", equalTo:spotid)
         //query.whereKey("spot", equalTo: PFObject(withoutDataWithClassName:"spot", objectId:spotid))
-        
+        query.includeKey("user")
         // Add a where condition , to get the spot for the login user
         query.whereKey("spot", equalTo: PFObject(withoutDataWithClassName:"Spot", objectId:spotid))
         
@@ -59,26 +59,28 @@ var bidNoPayAutoCancelTime : Int = 4  // Set a intitial value,
                 for object in objects! {
                     
                     let bi: Bid = Bid()
-                    if(object["Timestamp"] != nil)
-                    {bi.timestamp =  object["Timestamp"] as! NSDate}
-                    else
-                    {bi.timestamp =   NSDate()}
+                    if(object["Timestamp"] != nil){
+                        bi.timestamp =  object["Timestamp"] as! NSDate
+                    } else {
+                        bi.timestamp =   NSDate()
+                    }
                     let value = object["value"] as! Double
-                    let userId = object["UserId"] as! String
+                    let userId = object["user"] as! PFUser
                     bi.value = value
-                    //bi.timestamp = timestamp
-                    bi.UserId = userId
+                    
+                    bi.UserId = userId.username!
                     bi.bidId = object.objectId!
-                    if(object["StatusId"] != nil)
-                    { bi.StatusId = object["StatusId"] as! Int}
-                    else
-                    {
+                    if(object["StatusId"] != nil){
+                        bi.StatusId = object["StatusId"] as! Int
+                    } else {
                         bi.StatusId = 0
                        // no status found , put a default status. o Means bid is just created
                     }
                     
                     if(object["BidAcceptTime"] != nil)
-                    { bi.BidAcceptTime = object["BidAcceptTime"] as! NSDate}
+                    {
+                        bi.BidAcceptTime = object["BidAcceptTime"] as! NSDate
+                    }
                     
                     self.autoCancelNoPayBid(bi,noPayAutoCancelTime : self.bidNoPayAutoCancelTime) //cancel the bid if payment not recieved on time
                     
@@ -175,8 +177,7 @@ var bidNoPayAutoCancelTime : Int = 4  // Set a intitial value,
 
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> MySpotMultiBidTableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("MyBidLabelCell", forIndexPath: indexPath) as!
-MySpotMultiBidTableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier("MyBidLabelCell", forIndexPath: indexPath) as! MySpotMultiBidTableViewCell
        
         /*
         cell.bid =  datas[indexPath.row]
@@ -249,8 +250,8 @@ MySpotMultiBidTableViewCell
         objCell.lblDonetion.text = String(bid.value!)
         objCell.lblBidder.text = bid.UserId
         let formatter = NSDateFormatter()
-        formatter.dateStyle = NSDateFormatterStyle.LongStyle
-        formatter.timeStyle = .MediumStyle
+        formatter.dateStyle = NSDateFormatterStyle.NoStyle
+        formatter.timeStyle = .ShortStyle
         let dateString = formatter.stringFromDate(bid.timestamp!)
         objCell.lblTimr.text = dateString  //String(bid.timestamp!) 
         
@@ -269,7 +270,7 @@ MySpotMultiBidTableViewCell
             //If any bid Accepted than Spot staus also , than disable all Accept button in table
             objCell.btnAccept.enabled = false
         }
-       self.updateCellColor(objCell , StatusId :  bid.StatusId)
+        self.updateCellColor(objCell , StatusId :  bid.StatusId)
 
         // Add a event hander to bid button
         objCell.btnAccept.addTarget(self, action: "btnAccept_click:", forControlEvents: .TouchUpInside)
