@@ -71,7 +71,9 @@ class SpotLocationService: NSObject,CLLocationManagerDelegate{
                             DonateSpotUserSession.IsHaveCurrentActiveBid = true
                             DonateSpotUserSession.ActiveBid = bi
                             print("returning true from IsHaveCurrentActiveBid")
-
+                           
+                            self.initLocationManager()
+                           
                         }
                         else
                         {
@@ -111,11 +113,15 @@ class SpotLocationService: NSObject,CLLocationManagerDelegate{
         if(DonateSpotUserSession.isLocationManagerIntited == false)
         {
             self.locationManager.delegate = self
-            self.locationManager.desiredAccuracy=kCLLocationAccuracyBest
+            
             //self.locationManager.requestWhenInUseAuthorization()
-            self.locationManager.startUpdatingLocation()
-            self.locationManager.startMonitoringSignificantLocationChanges()
+            self.locationManager.distanceFilter = kCLDistanceFilterNone
+            self.locationManager.desiredAccuracy=kCLLocationAccuracyBest
             self.locationManager.requestAlwaysAuthorization()
+           
+            self.locationManager.startMonitoringSignificantLocationChanges()
+           self.locationManager.startUpdatingLocation()
+            
             DonateSpotUserSession.isLocationManagerIntited = true
             print("Started location Tracking")
         }

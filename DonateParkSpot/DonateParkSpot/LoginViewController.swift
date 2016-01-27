@@ -57,7 +57,7 @@ class LoginViewController: UIViewController {
                 
                 let svc : SpotLocationService = SpotLocationService()
                 svc.IsUserHaveActivePaidBid()
-                
+               
                 }
                /* else
                 {
