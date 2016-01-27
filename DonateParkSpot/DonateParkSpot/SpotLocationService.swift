@@ -13,13 +13,14 @@ class DonateSpotUserSession
 {
  static var IsHaveCurrentActiveBid = false
  static var ActiveBid : Bid? = nil
+ static var isLocationManagerIntited = false;
 }
 
 class SpotLocationService: NSObject,CLLocationManagerDelegate{
     var latitude = Double ()
     var longitude = Double ()
     let locationManager=CLLocationManager()
-    var isLocationManagerIntited = false;
+    //var isLocationManagerIntited = false;
     /*
     SUMMARY :Background Location tracking
     
@@ -43,42 +44,42 @@ class SpotLocationService: NSObject,CLLocationManagerDelegate{
         return EarlierFromNow!
     }
     
-    func IsUserHaveActivePaidBid() -> Bool
+    func IsUserHaveActivePaidBid() -> Void
     {
         if(PFUser.currentUser() != nil)
         {
             var bi: Bid? = nil
             let EarlierFromNow =  self.getTimeForHourEarlierFromNow(12)
+            // Get the time 12 hours from now
             let currentUser = PFUser.currentUser()
             let query = PFQuery(className:"Bid") // table name is score
             query.whereKey("PaymentMakeTime", greaterThanOrEqualTo: EarlierFromNow)
             query.whereKey("StatusId", equalTo: 3) //StatusId 3 Means Donetion Recieved and closed
             // We will track location after the payment recieved only
-            query.whereKey("owner", equalTo:(currentUser?.email)!)
-     
+            query.whereKey("UserId", equalTo:(currentUser?.email)!)
+            print("Searing Bid with Status 3,PaymentMakeTime after: \(EarlierFromNow) ][for user: \(currentUser?.email)!)]")
             query.findObjectsInBackgroundWithBlock {
                 (objects:[PFObject]?, error:NSError?) -> Void in
                     if error == nil {
+                        if(objects?.count>0)
+                        {
                         for object in objects! {
                             bi = self.getBidFormPfObject(object)
+                            
+                        }
+                            print("Found Active bid to location Track.[bid_id: \(bi?.bidId) ][for user: \(bi?.UserId)]")
+                            DonateSpotUserSession.IsHaveCurrentActiveBid = true
+                            DonateSpotUserSession.ActiveBid = bi
+                            print("returning true from IsHaveCurrentActiveBid")
+
+                        }
+                        else
+                        {
+                            print("NO Active bid to location Track. [for user: \(currentUser?.email!)]")
                         }
                 }
             }
         
-            if bi == nil
-            {
-                return false
-            }
-            else
-            {
-                DonateSpotUserSession.IsHaveCurrentActiveBid = true
-                DonateSpotUserSession.ActiveBid = bi
-                return true
-            }
-        }
-        else
-        {
-            return false
         }
     }
     
@@ -107,13 +108,16 @@ class SpotLocationService: NSObject,CLLocationManagerDelegate{
     
     func initLocationManager() {
         // This func will call at regular interval. Need to init the locationManager only once
-        if(isLocationManagerIntited == false)
+        if(DonateSpotUserSession.isLocationManagerIntited == false)
         {
             self.locationManager.delegate = self
             self.locationManager.desiredAccuracy=kCLLocationAccuracyBest
-            self.locationManager.requestWhenInUseAuthorization()
+            //self.locationManager.requestWhenInUseAuthorization()
             self.locationManager.startUpdatingLocation()
-            self.isLocationManagerIntited = true
+            self.locationManager.startMonitoringSignificantLocationChanges()
+            self.locationManager.requestAlwaysAuthorization()
+            DonateSpotUserSession.isLocationManagerIntited = true
+            print("Started location Tracking")
         }
     }
     

@@ -120,6 +120,7 @@ class BuyDetailController :  UIViewController, MKMapViewDelegate {
         bid["value"] = donation.value
         bid["spot"] = PFObject(withoutDataWithClassName: "Spot", objectId: spot?.spotId)
         bid["StatusId"] = 0  // put 0 by defualt
+        bid["UserId"] = user?.email
         bid.saveInBackground()
         
         updateSpot((self.spot?.spotId)!, status : 99)
