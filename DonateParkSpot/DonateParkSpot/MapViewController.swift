@@ -81,13 +81,6 @@ class MapViewController: UIViewController,MKMapViewDelegate,CLLocationManagerDel
                     let historyResult = object["address"] as! String
                     self.history.append(historyResult)
                     
-                    
-                    
-                    
-                    
-                    
-                    
-                    
                 }
             }
         }
@@ -116,20 +109,15 @@ class MapViewController: UIViewController,MKMapViewDelegate,CLLocationManagerDel
     
     //location delegate methods
     func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        
-        
         if locationManager.location != nil {
             latitude = locationManager.location!.coordinate.latitude
             longitude = locationManager.location!.coordinate.longitude
         }
     }
     
-    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
-    
-    
     
     override func prepareForSegue(segue:(UIStoryboardSegue!), sender:AnyObject!)
     {
@@ -200,43 +188,43 @@ class MapViewController: UIViewController,MKMapViewDelegate,CLLocationManagerDel
                 query.findObjectsInBackgroundWithBlock {(objects:[PFObject]?, error:NSError?) -> Void in
                     if error == nil {
                         for object in objects! {
-                            let spotObject = Spot()
-                            let pin = object["SpotGeoPoint"] as? PFGeoPoint
-                            let pinLatitude: CLLocationDegrees = pin!.latitude
-                            let pinLongtitude: CLLocationDegrees = pin!.longitude
-                            let address = object["addressText"] as? String
-                            let id = object.objectId //This is the spot id
-                            //self.ownerId = id!
-                            let type = object["type"] as? Int
-                            let rate = object["rate"] as? Double
-                            let timeLeft = object["timeLeft"] as? Int
-                            let miniDonation = object["minimumPrice"] as? Int
-                            let legalTime = object["legalTime"] as? String
                             let timeToLeave = object["leavingTime"] as! NSDate?
-                            let ownerName = object["owner"] as! String
-                            let ownerID = object["OwnerID"] as! String
-                            self.ownerName=ownerName
-                            let pinLocation: CLLocationCoordinate2D = CLLocationCoordinate2D(latitude: pinLatitude, longitude: pinLongtitude)
-                            //spotObject.owner.username = ownerName
-                            spotObject.location.latitude = pinLatitude
-                            spotObject.location.longitude = pinLongtitude
-                            spotObject.AddressText = address
-                            spotObject.spotId = id!
-                            spotObject.type = type
-                            spotObject.rate = rate
-                            spotObject.timeLeft = timeLeft
-                            spotObject.minDonation = miniDonation
-                            spotObject.legalTime = legalTime
-                            spotObject.timeToLeave = timeToLeave
-                            spotObject.ownerName = ownerName
-                            spotObject.ownerID = ownerID;
-                            
-                            
-                            //var subtitle = "Rating Bar Here"
-                            let annotation = CustomerAnnotation(coordinate: pinLocation,spotObject: spotObject, title :ownerName, subtitle: ownerID)
-                            annotation.spot = spotObject
-                            //annotation.subtitle = "Rating bar here"
-                            self.mapView.addAnnotation(annotation)
+                            if timeToLeave?.compare(NSDate()) == NSComparisonResult.OrderedDescending {
+                                
+                                let spotObject = Spot()
+                                let pin = object["SpotGeoPoint"] as? PFGeoPoint
+                                let pinLatitude: CLLocationDegrees = pin!.latitude
+                                let pinLongtitude: CLLocationDegrees = pin!.longitude
+                                let address = object["addressText"] as? String
+                                let id = object.objectId
+                                self.ownerId = id!
+                                let type = object["type"] as? Int
+                                let rate = object["rate"] as? Double
+                                let timeLeft = object["timeLeft"] as? Int
+                                let miniDonation = object["minimumPrice"] as? Int
+                                let legalTime = object["legalTime"] as? String
+                                let timeToLeave = object["leavingTime"] as! NSDate?
+                                let ownerName = object["owner"] as! String
+                                self.ownerName=ownerName
+                                let pinLocation: CLLocationCoordinate2D = CLLocationCoordinate2D(latitude: pinLatitude, longitude: pinLongtitude)
+                                //spotObject.owner.username = ownerName
+                                spotObject.location.latitude = pinLatitude
+                                spotObject.location.longitude = pinLongtitude
+                                spotObject.AddressText = address
+                                spotObject.spotId = id!
+                                spotObject.type = type
+                                spotObject.rate = rate
+                                spotObject.timeLeft = timeLeft
+                                spotObject.minDonation = miniDonation
+                                spotObject.legalTime = legalTime
+                                spotObject.timeToLeave = timeToLeave
+                                //  spotObject.owner = owner
+                                //var subtitle = "Rating Bar Here"
+                                let annotation = CustomerAnnotation(coordinate: pinLocation,spotObject: spotObject, title :ownerName, subtitle: id!)
+                                annotation.spot = spotObject
+                                //annotation.subtitle = "Rating bar here"
+                                self.mapView.addAnnotation(annotation)
+                            }
                         }
                     }
                     

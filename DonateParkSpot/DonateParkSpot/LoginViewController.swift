@@ -53,6 +53,11 @@ class LoginViewController: UIViewController {
                 NSUserDefaults.standardUserDefaults().setObject(user.username, forKey: "username")
                 NSUserDefaults.standardUserDefaults().synchronize();
                 self.dismissViewControllerAnimated(true, completion: nil);
+                
+                
+                let svc : SpotLocationService = SpotLocationService()
+                svc.IsUserHaveActivePaidBid()
+               
                 }
                /* else
                 {
