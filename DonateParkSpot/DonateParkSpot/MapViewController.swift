@@ -12,7 +12,7 @@ import CoreLocation
 import Parse
 import QuartzCore
 
-class MapViewController: UIViewController,MKMapViewDelegate,CLLocationManagerDelegate,UITableViewDataSource,UITableViewDelegate,UISearchBarDelegate{
+class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate, UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate{
     
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var Menu: UIBarButtonItem!
@@ -42,10 +42,12 @@ class MapViewController: UIViewController,MKMapViewDelegate,CLLocationManagerDel
     @IBOutlet weak var addSpot: UIButton!
     @IBOutlet weak var currentPosition: UIButton!
     
+    var spots = [Spot]()
+    
     override func viewDidLoad() {
         
         super.viewDidLoad();
-        
+        self.title = "Parking Spots"
         self.locationManager.delegate=self
         self.locationManager.desiredAccuracy=kCLLocationAccuracyBest
         self.locationManager.requestWhenInUseAuthorization()
@@ -104,6 +106,7 @@ class MapViewController: UIViewController,MKMapViewDelegate,CLLocationManagerDel
     @IBAction func goToCurrentPosition() {
         if locationManager.location != nil {
             mapView.setCenterCoordinate(locationManager.location!.coordinate, animated: true)
+            mapView.userTrackingMode = .FollowWithHeading
         }
     }
     
@@ -181,7 +184,6 @@ class MapViewController: UIViewController,MKMapViewDelegate,CLLocationManagerDel
                 self.mapView.setRegion(region, animated: true)
 
                 let geoPoint = PFGeoPoint(latitude: coordinate.latitude ,longitude: coordinate.longitude  );
-                //let spot = PFObject(className: "Spot")
                 var query: PFQuery = PFQuery()
                 query = PFQuery(className: "Spot")
                 query.whereKey("SpotGeoPoint", nearGeoPoint: geoPoint, withinMiles: 20)
@@ -237,6 +239,59 @@ class MapViewController: UIViewController,MKMapViewDelegate,CLLocationManagerDel
                 historyView.hidden = true
         
         
+    }
+    
+    func searchForNewSpots(){
+        let coordinate = mapView.centerCoordinate
+        let geoPoint = PFGeoPoint(latitude: coordinate.latitude ,longitude: coordinate.longitude  );
+        var query: PFQuery = PFQuery()
+        query = PFQuery(className: "Spot")
+        query.whereKey("SpotGeoPoint", nearGeoPoint: geoPoint, withinMiles: 20)
+        query.findObjectsInBackgroundWithBlock {(objects:[PFObject]?, error:NSError?) -> Void in
+            if error == nil {
+                for object in objects! {
+                    let timeToLeave = object["leavingTime"] as! NSDate?
+                    if timeToLeave?.compare(NSDate()) == NSComparisonResult.OrderedDescending {
+                        
+                        let spotObject = Spot()
+                        let pin = object["SpotGeoPoint"] as? PFGeoPoint
+                        spotObject.location.latitude = pin!.latitude
+                        spotObject.location.longitude = pin!.longitude
+                        spotObject.AddressText = object["addressText"] as? String
+                        spotObject.spotId = object.objectId!
+                        self.ownerId = object.objectId!
+                        spotObject.type = object["type"] as? Int
+                        spotObject.rate = object["rate"] as? Double
+                        spotObject.timeLeft = object["timeLeft"] as? Int
+                        spotObject.minDonation = object["minimumPrice"] as? Int
+                        spotObject.legalTime = object["legalTime"] as? String
+                        spotObject.timeToLeave = object["leavingTime"] as! NSDate?
+                        
+                        self.addNewSpot(spotObject)
+                    }
+                }
+            }
+            
+        }
+    }
+    
+    func addNewSpot(spot: Spot){
+        for s in spots {
+            if s.location.latitude == spot.location.latitude && spot.location.longitude == s.location.longitude {
+                return
+            }
+        }
+        spots.append(spot)
+        let pinLocation: CLLocationCoordinate2D = CLLocationCoordinate2D(latitude: spot.location.latitude, longitude: spot.location.longitude)
+        
+        let annotation = CustomerAnnotation(coordinate: pinLocation,spotObject: spot, title :ownerName, subtitle: spot.spotId)
+        annotation.spot = spot
+        //annotation.subtitle = "Rating bar here"
+        self.mapView.addAnnotation(annotation)
+    }
+    
+    func mapView(mapView: MKMapView, regionWillChangeAnimated animated: Bool) {
+        searchForNewSpots()
     }
     
     func searchBarCancelButtonClicked(searchBar: UISearchBar)
