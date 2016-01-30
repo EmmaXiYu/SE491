@@ -58,6 +58,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             {
                 let svc : SpotLocationService = SpotLocationService()
                 svc.initLocationManager()
+                svc.Getlocation();
             }
         print("Firing Event at \(NSDate()) with Active bid: \(DonateSpotUserSession.IsHaveCurrentActiveBid)")
     }
