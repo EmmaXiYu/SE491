@@ -57,7 +57,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         if(DonateSpotUserSession.IsHaveCurrentActiveBid == true)
             {
                 let svc : SpotLocationService = SpotLocationService()
-                svc.initLocationManager()
+                svc.initLocationManager() // It fires only , if not already init
                 svc.Getlocation();
             }
         print("Firing Event at \(NSDate()) with Active bid: \(DonateSpotUserSession.IsHaveCurrentActiveBid)")
