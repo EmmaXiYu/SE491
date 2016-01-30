@@ -12,7 +12,8 @@ class MyBidTableViewController: UITableViewController {
 
    
     var datas = [Bid] ()
-    
+    var ratingScore = [String:Double]()
+    var ratingCount = [String:Int]()
    
     @IBOutlet weak var Menu: UIBarButtonItem!
 
@@ -20,16 +21,40 @@ class MyBidTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.GetBidList()
+        self.getRating()
         Menu.target = self.revealViewController()
         Menu.action = Selector("revealToggle:")
         
         self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
         
-        
 
 
     }
     
+    func getRating(){
+        var query: PFQuery = PFQuery()
+        query = PFQuery(className: "Rating")
+        query.findObjectsInBackgroundWithBlock{(objects:[PFObject]?,error:NSError?) -> Void in
+            if error == nil{
+                for object in objects!{
+                    let name = object["userName"] as! String
+                    let score = object["score"] as! Int
+                    if(self.ratingScore[name] != nil){
+                        self.ratingScore[name] = self.ratingScore[name]!+Double(score)
+                        self.ratingCount[name] = self.ratingCount[name]!+1
+                    }
+                    else{
+                        self.ratingScore[name] = Double(score)
+                        self.ratingCount[name] = 0
+                    }
+                }
+                for name in self.ratingScore.keys{
+                    self.ratingScore[name] = self.formulateScore(self.ratingScore[name]!,count: self.ratingCount[name]!)
+                }
+                
+            }
+        }
+    }
     
     func GetBidList()  {
         var index = 0
@@ -211,5 +236,34 @@ class MyBidTableViewController: UITableViewController {
         refreshAlert.addButtonWithTitle("OK")
         refreshAlert.show()
     }
+    
+    func updateRating(username:String, score: Int,statusId:Int)->Void{
+        let update = PFObject(className: "Rating")
+        update["name"] = username
+        update["socre"] = score
+        update["statusId"] = statusId
+        update.saveInBackgroundWithBlock{
+            (success:Bool,error:NSError?) -> Void in
+            if(success){
+                }
+            }
+    }
+    
+    func formulateScore(rating:Double,count:Int) ->Double{
+        return (rating/Double(count)+1.0)*2.5;
+    }
+    
+    func increaseRating ( rating: Double, count: Int ) -> Double{
+        var score: Double = (0.4*rating-1)*Double(count);
+        score = score+1;
+        return (score/Double(count)+1.0)*2.5;
+    }
+    
+    func decreaseRating ( rating: Double, count: Int ) -> Double{
+        var score: Double = (0.4*rating-1)*Double(count);
+        score = score-1;
+        return (score/Double(count)+1.0)*2.5;
+    }
+
 
 }

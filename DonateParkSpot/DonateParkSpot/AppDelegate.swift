@@ -46,7 +46,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             application.registerForRemoteNotificationTypes(types)
         }
         
-        NSTimer.scheduledTimerWithTimeInterval(60 * 5, target: self, selector: Selector("handleTimer:"), userInfo: nil, repeats: true)
+        NSTimer.scheduledTimerWithTimeInterval(60 * 1, target: self, selector: Selector("handleTimer:"), userInfo: nil, repeats: true)
         
         
         return true
