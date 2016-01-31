@@ -251,6 +251,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
             if error == nil {
                 for object in objects! {
                     let timeToLeave = object["leavingTime"] as! NSDate?
+                    
                     if timeToLeave?.compare(NSDate()) == NSComparisonResult.OrderedDescending {
                         
                         let spotObject = Spot()
@@ -266,7 +267,6 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
                         spotObject.minDonation = object["minimumPrice"] as? Int
                         spotObject.legalTime = object["legalTime"] as? String
                         spotObject.timeToLeave = object["leavingTime"] as! NSDate?
-                        
                         self.addNewSpot(spotObject)
                     }
                 }
