@@ -185,12 +185,32 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
                 self.mapView.setRegion(region, animated: true)
                 
                 var radium = PFUser.currentUser()!["SearchRadium"] as? String
-                var radiumDouble = Double (radium!)
+                var radiumDouble : Double
+                if radium == nil
+                {
+                    radiumDouble = 1
+                    
+                    let user = PFUser.currentUser()
+                    
+                    user!["SearchRadium"] = 1
+                    user!.saveInBackgroundWithBlock({
+                        
+                        (success: Bool, error: NSError?) -> Void in
+                        
+                    })
+                    
+
+                    
+                    
+                    }
+                else {
+                    radiumDouble = Double (radium!)!
+                }
               
                 let geoPoint = PFGeoPoint(latitude: coordinate.latitude ,longitude: coordinate.longitude  );
                 var query: PFQuery = PFQuery()
                 query = PFQuery(className: "Spot")
-                query.whereKey("SpotGeoPoint", nearGeoPoint: geoPoint, withinMiles: radiumDouble!)
+                query.whereKey("SpotGeoPoint", nearGeoPoint: geoPoint, withinMiles: radiumDouble)
                 query.findObjectsInBackgroundWithBlock {(objects:[PFObject]?, error:NSError?) -> Void in
                     if error == nil {
                         for object in objects! {
@@ -255,6 +275,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
             if error == nil {
                 for object in objects! {
                     let timeToLeave = object["leavingTime"] as! NSDate?
+                    
                     if timeToLeave?.compare(NSDate()) == NSComparisonResult.OrderedDescending {
                         
                         let spotObject = Spot()
@@ -270,7 +291,6 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
                         spotObject.minDonation = object["minimumPrice"] as? Int
                         spotObject.legalTime = object["legalTime"] as? String
                         spotObject.timeToLeave = object["leavingTime"] as! NSDate?
-                        
                         self.addNewSpot(spotObject)
                     }
                 }
