@@ -119,6 +119,7 @@ class RegisterViewController: UIViewController {
             user.username =  userEmailTextField.text;
             user.email =  userEmailTextField.text!.lowercaseString;
             user.password = userPasswordTextField.text;
+            user["SearchRadium"] = 1;
             
             
             user.signUpInBackgroundWithBlock { (success: Bool, error: NSError?) -> Void in
