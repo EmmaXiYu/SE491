@@ -119,7 +119,7 @@ class SpotLocationService: NSObject,CLLocationManagerDelegate{
             self.locationManager.desiredAccuracy=kCLLocationAccuracyBest
             self.locationManager.requestAlwaysAuthorization()
            
-            self.locationManager.startMonitoringSignificantLocationChanges()
+           // self.locationManager.startMonitoringSignificantLocationChanges()
            self.locationManager.startUpdatingLocation()
             
             DonateSpotUserSession.isLocationManagerIntited = true
@@ -143,11 +143,22 @@ class SpotLocationService: NSObject,CLLocationManagerDelegate{
         }
     }
    
+    
+     func Getlocation() -> Void{
+        if locationManager.location != nil {
+            latitude = locationManager.location!.coordinate.latitude
+            longitude = locationManager.location!.coordinate.longitude
+            print("latitude\(latitude) longitude \(longitude)")
+            // TODO : Save to server
+            //self.sendBackgroundLocationToServer(locations[0]);
+        }
+    }
+
     @objc func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         if locationManager.location != nil {
             latitude = locationManager.location!.coordinate.latitude
             longitude = locationManager.location!.coordinate.longitude
-            print("longitude\(longitude) longitude \(longitude)")
+            print("latitude\(latitude) longitude \(longitude)")
             // TODO : Save to server
             //self.sendBackgroundLocationToServer(locations[0]);
         }

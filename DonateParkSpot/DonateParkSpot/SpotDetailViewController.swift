@@ -41,10 +41,8 @@ class SpotDetailViewController: UITableViewController {
         timeLeft.enabled = false
         
         
-        
-        
         let currentDate = NSDate()  //5 -  get the current date
-        timePickerView.minimumDate = currentDate  //6- set the current date/time as a minimum
+        //timePickerView.minimumDate = currentDate  //6- set the current date/time as a minimum
         timePickerView.date = currentDate //7
         timePickerView.datePickerMode = UIDatePickerMode.Time
     
@@ -93,8 +91,11 @@ class SpotDetailViewController: UITableViewController {
         
         let testObject = PFObject(className: "Spot")
         testObject["SpotGeoPoint"] = geoPoint
-     
-        testObject["leavingTime"] = timePickerView.date //timeToLeaveTextField.text
+        if timePickerView.date.compare(NSDate()) == NSComparisonResult.OrderedAscending{
+            testObject["leavingTime"] = timePickerView.date.dateByAddingTimeInterval(86400)
+        } else {
+            testObject["leavingTime"] = timePickerView.date
+        }
         testObject["minimumPrice"] = Float(minimumDonatePrice.text!)
         testObject["owner"] = PFUser.currentUser()!.username
         testObject["OwnerID"] = PFUser.currentUser()!.objectId

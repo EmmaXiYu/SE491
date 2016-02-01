@@ -54,7 +54,7 @@ class LoginViewController: UIViewController {
                 NSUserDefaults.standardUserDefaults().synchronize();
                 self.dismissViewControllerAnimated(true, completion: nil);
                 
-                
+                 DonateSpotUserSession.isLocationManagerIntited = false
                 let svc : SpotLocationService = SpotLocationService()
                 svc.IsUserHaveActivePaidBid()
                
