@@ -86,7 +86,7 @@ class AccountViewController: UIViewController , UIImagePickerControllerDelegate,
                     sum = sum+score
                     count = count+1
                 }
-                self.rate = self.formulateScore(Double(sum), count: count)
+                self.ratingScore.text = String(self.formulateScore(Double(sum), count: count))
             }
         }
         
