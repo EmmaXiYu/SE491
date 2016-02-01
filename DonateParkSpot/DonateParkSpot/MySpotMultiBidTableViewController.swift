@@ -20,6 +20,7 @@ var bidNoPayAutoCancelTime : Int = 4  // Set a intitial value,
  //var currentIndex : Int =  -1
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.getRating()
         self.title = "Bids"
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
