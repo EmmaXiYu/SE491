@@ -20,8 +20,8 @@ class MyBidTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.GetBidList()
         self.getRating()
+        self.GetBidList()
         Menu.target = self.revealViewController()
         Menu.action = Selector("revealToggle:")
         
