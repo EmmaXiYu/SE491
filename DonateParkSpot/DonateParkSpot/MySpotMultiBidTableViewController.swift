@@ -474,20 +474,14 @@ var bidNoPayAutoCancelTime : Int = 4  // Set a intitial value,
             refreshAlert.show()
         }
     
-    func increaseRating ( rating: Double, count: Int ) -> Double{
-        var score: Double = (0.4*rating-1)*Double(count);
-        score = score+1;
-        return (score/Double(count)+1.0)*2.5;
-    }
-    
-    func decreaseRating ( rating: Double, count: Int ) -> Double{
-        var score: Double = (0.4*rating-1)*Double(count);
-        score = score-1;
-        return (score/Double(count)+1.0)*2.5;
-    }
     
     func formulateScore(rating:Double,count:Int) ->Double{
-        return (rating/Double(count)+1.0)*2.5;
+        if count == 0{
+            return 0;
+        }
+        else{
+            return (rating/Double(count)+1.0)*2.5;
+        }
     }
     
     func updateRating(username:String, score: Int,statusId:Int)->Void{
