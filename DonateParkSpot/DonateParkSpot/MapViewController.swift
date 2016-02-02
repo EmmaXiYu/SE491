@@ -190,6 +190,18 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
                 {
                     radiumDouble = 1
                     
+                    let user = PFUser.currentUser()
+                    
+                    user!["SearchRadium"] = 1
+                    user!.saveInBackgroundWithBlock({
+                        
+                        (success: Bool, error: NSError?) -> Void in
+                        
+                    })
+                    
+
+                    
+                    
                     }
                 else {
                     radiumDouble = Double (radium!)!
