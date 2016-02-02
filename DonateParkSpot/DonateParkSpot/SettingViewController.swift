@@ -32,12 +32,16 @@ class SettingViewController: UIViewController {
         Menu.action = Selector("revealToggle:")
         
         self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
+           }
+
+    override func viewDidAppear(animated: Bool) {
         
+        super.viewDidAppear(animated)
         Stepper.wraps = true
         Stepper.autorepeat = true
         Stepper.maximumValue = 100
-      
-               var radiumUser = PFUser.currentUser()!["SearchRadium"] as? String
+        
+        var radiumUser = PFUser.currentUser()!["SearchRadium"] as? String
         if radiumUser == nil
         {
             Stepper.value = 1
@@ -46,8 +50,8 @@ class SettingViewController: UIViewController {
         else{
             Stepper.value = Double(radiumUser!)!
             RadiumLable.text = radiumUser}
+ 
     }
-
   
     
  

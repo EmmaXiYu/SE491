@@ -57,6 +57,19 @@ class LoginViewController: UIViewController {
                  DonateSpotUserSession.isLocationManagerIntited = false
                 let svc : SpotLocationService = SpotLocationService()
                 svc.IsUserHaveActivePaidBid()
+               let loginUser = PFUser.currentUser()
+                var searcgRadium = loginUser?["SearchRadium"] as? String
+                if searcgRadium == nil{
+                    loginUser!["SearchRadium"] = "1"
+                loginUser!.saveInBackgroundWithBlock({
+                
+                (success: Bool, error: NSError?) -> Void in
+                
+                
+                })}
+
+                
+
                
                 }
                /* else

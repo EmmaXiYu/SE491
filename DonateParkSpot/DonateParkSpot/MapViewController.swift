@@ -192,7 +192,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
                     
                     let user = PFUser.currentUser()
                     
-                    user!["SearchRadium"] = 1
+                    user!["SearchRadium"] = "1"
                     user!.saveInBackgroundWithBlock({
                         
                         (success: Bool, error: NSError?) -> Void in
