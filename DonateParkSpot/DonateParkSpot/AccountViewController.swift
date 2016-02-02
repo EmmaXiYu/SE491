@@ -12,7 +12,7 @@ import Parse
 class AccountViewController: UIViewController , UIImagePickerControllerDelegate, UINavigationControllerDelegate{
     
     var ifChoose:Bool! = false
-   
+    var rate : Double = 0
    
     @IBAction func resetPassword(sender: AnyObject) {
         
@@ -29,7 +29,7 @@ class AccountViewController: UIViewController , UIImagePickerControllerDelegate,
     override func viewDidLoad() {
         
         super.viewDidLoad();
-        
+        self.getRating()
                 Menu.target = self.revealViewController()
         Menu.action = Selector("revealToggle:")
         
@@ -71,6 +71,28 @@ class AccountViewController: UIViewController , UIImagePickerControllerDelegate,
         ifChoose = true;
         
 
+    }
+    
+    func getRating(){
+        var sum:Int = 0
+        var count:Int = 0
+        var query: PFQuery = PFQuery()
+        query = PFQuery(className: "Rating")
+        query.whereKey("userName", equalTo: (PFUser.currentUser()?.username)!)
+        query.findObjectsInBackgroundWithBlock{(objects:[PFObject]?,error:NSError?) -> Void in
+            if error == nil{
+                for object in objects!{
+                    let score = object["score"] as? Int
+                    if score != nil{
+                    sum = sum+score!
+                    count = count+1
+                    }
+                }
+                
+                self.ratingScore.text = String(self.formulateScore(Double(sum), count: count))
+            }
+        }
+        
     }
     func imagePickerController(picker: UIImagePickerController, didFinishPickingImage image: UIImage!, editingInfo: [NSObject : AnyObject]!) {
         
@@ -136,6 +158,15 @@ class AccountViewController: UIViewController , UIImagePickerControllerDelegate,
 
             
 
+        }
+    }
+    
+    func formulateScore(rating:Double,count:Int) ->Double{
+        if count == 0{
+            return 0;
+        }
+        else{
+            return (rating/Double(count)+1.0)*2.5;
         }
     }
     

@@ -20,8 +20,8 @@ class MyBidTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.GetBidList()
         self.getRating()
+        self.GetBidList()
         Menu.target = self.revealViewController()
         Menu.action = Selector("revealToggle:")
         
@@ -248,11 +248,14 @@ class MyBidTableViewController: UITableViewController {
                 }
             }
     }
-    
     func formulateScore(rating:Double,count:Int) ->Double{
-        return (rating/Double(count)+1.0)*2.5;
+        if count == 0{
+            return 0;
+        }
+        else{
+            return (rating/Double(count)+1.0)*2.5;
+        }
     }
-    
     func increaseRating ( rating: Double, count: Int ) -> Double{
         var score: Double = (0.4*rating-1)*Double(count);
         score = score+1;

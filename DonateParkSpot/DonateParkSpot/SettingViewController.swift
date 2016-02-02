@@ -11,11 +11,17 @@ import Parse
 
 class SettingViewController: UIViewController {
   
-    
+  
     @IBOutlet weak var Stepper: UIStepper!
+
     var radium : Int = 0
     
+
+ 
+ 
     @IBOutlet weak var RadiumLable: UILabel!
+
+   
        @IBOutlet weak var Menu: UIBarButtonItem!
     
     override func viewDidLoad() {
@@ -26,28 +32,36 @@ class SettingViewController: UIViewController {
         Menu.action = Selector("revealToggle:")
         
         self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
+           }
+
+    override func viewDidAppear(animated: Bool) {
         
+        super.viewDidAppear(animated)
         Stepper.wraps = true
         Stepper.autorepeat = true
         Stepper.maximumValue = 100
-      
-               var radium = PFUser.currentUser()!["SearchRadium"] as? String
-          Stepper.value = Double(radium!)!
-        RadiumLable.text = radium
+        
+        var radiumUser = PFUser.currentUser()!["SearchRadium"] as? String
+        if radiumUser == nil
+        {
+            Stepper.value = 1
+            RadiumLable.text = "1"
+        }
+        else{
+            Stepper.value = Double(radiumUser!)!
+            RadiumLable.text = radiumUser}
+ 
     }
-
-    @IBAction func StepperValueChanged(sender: UIStepper) {
+  
+    
+ 
+    
+    @IBAction func StepperChangeValue(sender: UIStepper) {
         
-   
-        
-         RadiumLable.text = Int(sender.value).description
+        RadiumLable.text = Int(sender.value).description
     }
     
-    
-    @IBAction func updateSetting(sender: AnyObject) {
-        
-        
-        
+    @IBAction func UpdateSettings(sender: AnyObject) {
         let user = PFUser.currentUser()
         
         user!["SearchRadium"] = RadiumLable.text
@@ -61,15 +75,11 @@ class SettingViewController: UIViewController {
                 
             }else {
                 
-                self.displayMyAlertMessage("Data update failed");
+                self.displayMyAlertMessage("data uploaded fail");
             }
             
         })
-        
-
     }
-    
-    
     
     func displayMyAlertMessage(usermessage:String)
         
