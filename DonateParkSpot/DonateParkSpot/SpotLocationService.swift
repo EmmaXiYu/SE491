@@ -57,6 +57,7 @@ class SpotLocationService: NSObject,CLLocationManagerDelegate{
             query.whereKey("StatusId", equalTo: 3) //StatusId 3 Means Donetion Recieved and closed
             // We will track location after the payment recieved only
             query.whereKey("UserId", equalTo:(currentUser?.email)!)
+            query.includeKey("spot")
             print("Searing Bid with Status 3,PaymentMakeTime after: \(EarlierFromNow) ][for user: \(currentUser?.email)!)]")
             query.findObjectsInBackgroundWithBlock {
                 (objects:[PFObject]?, error:NSError?) -> Void in
@@ -105,6 +106,13 @@ class SpotLocationService: NSObject,CLLocationManagerDelegate{
             bi.StatusId = 0
             // no status found , put a default status. o Means bid is just created
         }
+        
+            
+        if let pointer = pfbid["spot"] as? PFObject {
+            bi.spot = getSpotFormPfObject( pointer)
+        }
+       
+
         return bi
     }
     
@@ -149,6 +157,7 @@ class SpotLocationService: NSObject,CLLocationManagerDelegate{
             latitude = locationManager.location!.coordinate.latitude
             longitude = locationManager.location!.coordinate.longitude
             print("latitude\(latitude) longitude \(longitude)")
+            
             // TODO : Save to server
             //self.sendBackgroundLocationToServer(locations[0]);
         }
@@ -159,9 +168,51 @@ class SpotLocationService: NSObject,CLLocationManagerDelegate{
             latitude = locationManager.location!.coordinate.latitude
             longitude = locationManager.location!.coordinate.longitude
             print("latitude\(latitude) longitude \(longitude)")
+            
+            if(DonateSpotUserSession.ActiveBid != nil)
+            {
+                let spot = DonateSpotUserSession.ActiveBid?.spot
+           
+                let SpotLocation = CLLocation(latitude: (spot?.location.latitude)!, longitude: (spot?.location.longitude)!)
+                var distanceBetween: CLLocationDistance = locationManager.location!.distanceFromLocation( SpotLocation)
+                print("distanceBetween\(distanceBetween) ")
+            }
             // TODO : Save to server
             //self.sendBackgroundLocationToServer(locations[0]);
         }
+    }
+    
+    func getSpotFormPfObject( object: PFObject) -> Spot
+    {
+    
+        let s: Spot = Spot()
+        let location : Location = Location()
+        let sgp = object["SpotGeoPoint"] as! PFGeoPoint
+        location.latitude =  sgp.latitude
+        location.longitude = sgp.longitude
+        
+        s.minDonation  = object["minimumPrice"] as? Int
+    
+        let ttl = object["leavingTime"] as! NSDate
+        if object["addressText"] != nil
+        {
+            s.AddressText = object["addressText"] as! String
+        }
+        
+        if object["StatusId"] != nil
+        {
+            s.StatusId = object["StatusId"] as! Int
+        }
+        let formatter = NSDateFormatter()
+        formatter.dateStyle = NSDateFormatterStyle.LongStyle
+        formatter.timeStyle = .MediumStyle
+        let dateString = formatter.stringFromDate(ttl)
+        s.legalTime = dateString
+        s.location = location
+     
+        s.spotId = object.objectId!
+        return s
+
     }
     
 }

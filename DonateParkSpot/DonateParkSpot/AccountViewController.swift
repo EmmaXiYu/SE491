@@ -82,11 +82,14 @@ class AccountViewController: UIViewController , UIImagePickerControllerDelegate,
         query.findObjectsInBackgroundWithBlock{(objects:[PFObject]?,error:NSError?) -> Void in
             if error == nil{
                 for object in objects!{
-                    let score = object["score"] as! Int
-                    sum = sum+score
+                    let score = object["score"] as? Int
+                    if score != nil{
+                    sum = sum+score!
                     count = count+1
+                    }
                 }
-                self.rate = self.formulateScore(Double(sum), count: count)
+                
+                self.ratingScore.text = String(self.formulateScore(Double(sum), count: count))
             }
         }
         
@@ -159,7 +162,12 @@ class AccountViewController: UIViewController , UIImagePickerControllerDelegate,
     }
     
     func formulateScore(rating:Double,count:Int) ->Double{
-        return (rating/Double(count)+1.0)*2.5;
+        if count == 0{
+            return 0;
+        }
+        else{
+            return (rating/Double(count)+1.0)*2.5;
+        }
     }
     
     

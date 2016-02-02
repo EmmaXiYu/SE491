@@ -103,6 +103,7 @@ var bidNoPayAutoCancelTime : Int = 4  // Set a intitial value,
                     
                     bi.UserId = userId.username!
                     bi.bidId = object.objectId!
+                    bi.rating = self.ratingScore[bi.UserId]!
                     if(object["StatusId"] != nil){
                         bi.StatusId = object["StatusId"] as! Int
                     } else {
