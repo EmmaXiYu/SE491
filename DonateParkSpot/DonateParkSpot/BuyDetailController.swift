@@ -24,7 +24,7 @@ class BuyDetailController :  UIViewController, MKMapViewDelegate {
     
     override func viewDidLoad() {
         if spot != nil {
-            self.title = spot!.ownerName! + "'s Spot"
+            self.title = spot!.owner!.email! + "'s Spot"
             
             if spot!.type! == 1 {
                 type.text = "Paid Spot"
@@ -48,7 +48,7 @@ class BuyDetailController :  UIViewController, MKMapViewDelegate {
              let pinLocation: CLLocationCoordinate2D = CLLocationCoordinate2D(latitude: (spot?.location.latitude)!, longitude: (spot?.location.longitude)!)
           let region=MKCoordinateRegion(center: pinLocation, span: MKCoordinateSpan(latitudeDelta: 0.004, longitudeDelta: 0.004))
           self.map.setRegion(region, animated: true)
-            let annotation = CustomerAnnotation(coordinate: pinLocation,spotObject: spot!, title :(spot?.ownerName)!,subtitle: (spot?.ownerID)!)
+            let annotation = CustomerAnnotation(coordinate: pinLocation,spotObject: spot!, title :(spot!.owner!.email!),subtitle: (spot!.owner?.email)!)
             //annotation.subtitle = "Rating bar here"
             self.map.addAnnotation(annotation)
         }

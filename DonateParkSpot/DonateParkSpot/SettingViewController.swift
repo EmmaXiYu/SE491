@@ -32,7 +32,9 @@ class SettingViewController: UIViewController {
         Menu.action = Selector("revealToggle:")
         
         self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
-           }
+        
+        self.title = "Settings"
+    }
 
     override func viewDidAppear(animated: Bool) {
         

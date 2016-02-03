@@ -18,9 +18,7 @@ class Spot {
     var minDonation : Int? = 0
     var legalTime : String? = ""
     var timeToLeave : NSDate?
-   // var owner : PFUser? = PFUser()
-    var ownerName : String? = ""
-    var ownerID : String? = ""
+    var owner : PFUser? = PFUser()
     var AddressText: String? = ""
     var StatusId : Int? = -1 // 1: Active and open for bid; 2 : bid Accepted; 3: Donetion Recieved and closed 4: Rejected
     var AcctepedBidId : String? = ""
@@ -40,8 +38,7 @@ class Spot {
         result["minDonation"] = minDonation
         result["legalTime"] = legalTime
         result["timeToLeave"] = timeToLeave
-        result["owner"] = ownerName
-        result["OwnerID"] = ownerID
+        result["owner"] = owner
         result.objectId = spotId
         
         
