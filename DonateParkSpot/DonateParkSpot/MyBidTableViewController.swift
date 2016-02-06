@@ -31,29 +31,84 @@ class MyBidTableViewController: UITableViewController {
 
     }
     
+    
     func getRating(){
-        var query: PFQuery = PFQuery()
-        query = PFQuery(className: "Rating")
-        query.findObjectsInBackgroundWithBlock{(objects:[PFObject]?,error:NSError?) -> Void in
-            if error == nil{
+        var users = [String]()
+        var query:PFQuery = PFQuery()
+        query = PFQuery(className: "Bid")
+        query.whereKey("UserId", equalTo:(PFUser.currentUser()?.username)!)
+        query.selectKeys(["UserId"])
+        query.findObjectsInBackgroundWithBlock{
+            (objects:[PFObject]?, error:NSError?) -> Void in
+            if error == nil {
                 for object in objects!{
-                    let name = object["userName"] as! String
-                    let score = object["score"] as! Int
-                    if(self.ratingScore[name] != nil){
-                        self.ratingScore[name] = self.ratingScore[name]!+Double(score)
-                        self.ratingCount[name] = self.ratingCount[name]!+1
-                    }
-                    else{
-                        self.ratingScore[name] = Double(score)
-                        self.ratingCount[name] = 0
+                let name = object["userName"] as! String
+                users.append(name)
+                if(self.ratingScore[name] == nil){
+                    self.ratingScore[name] = 0
+                    self.ratingCount[name] = 0
                     }
                 }
-                for name in self.ratingScore.keys{
-                    self.ratingScore[name] = self.formulateScore(self.ratingScore[name]!,count: self.ratingCount[name]!)
-                }
-                
             }
         }
+        getBuyerRating(users)
+        getSellerRating(users)
+        for name in self.ratingScore.keys{
+            self.ratingScore[name] = self.formulateScore(self.ratingScore[name]!,count: self.ratingCount[name]!)
+        }
+    }
+    
+    func getBuyerRating(buyers:[String])-> Void{
+        var query:PFQuery = PFQuery()
+        query = PFQuery(className: "Bid")
+        query.whereKey("UserId", containedIn:buyers)
+        query.selectKeys(["StatusId","UserId"])
+        query.findObjectsInBackgroundWithBlock{
+            (objects:[PFObject]?, error:NSError?) -> Void in
+            if error == nil {
+                for object in objects!{
+                    let buyerName = object["UserId"] as! String
+                    let statusId = object["StatusId"] as! Int
+                    if(statusId == 3){
+                        self.ratingScore[buyerName] = self.ratingScore[buyerName]!+1.0
+                        self.ratingCount[buyerName] = self.ratingCount[buyerName]!+1
+                    }
+                    else if(statusId == 6){
+                        self.ratingScore[buyerName] = self.ratingScore[buyerName]!-1.0
+                        self.ratingCount[buyerName] = self.ratingCount[buyerName]!+1
+                    }
+                }
+            }
+        }
+    }
+    
+    func getSellerRating(sellers:[String]) -> Void{
+        var query:PFQuery = PFQuery()
+        query = PFQuery(className: "Bid")
+        query.whereKey("user", containedIn:sellers)
+        query.selectKeys(["StatusId","user"])
+        query.findObjectsInBackgroundWithBlock{
+            (objects:[PFObject]?, error:NSError?) -> Void in
+            if error == nil {
+                for object in objects!{
+                    var sellerName:String = ""
+                    if let pointer = object["user"] as? PFObject{
+                        sellerName = pointer["username"] as! String!
+                    }
+                    let statusId = object["StatusId"] as! Int
+                    if(statusId == 3){
+                        self.ratingScore[sellerName] = self.ratingScore[sellerName]!+1.0
+                        self.ratingCount[sellerName] = self.ratingCount[sellerName]!+1
+                    }
+                    else if(statusId == 7){
+                        self.ratingScore[sellerName] = self.ratingScore[sellerName]!-1.0
+                        self.ratingCount[sellerName] = self.ratingCount[sellerName]!+1
+                    }
+                }
+            }
+        }
+
+
     }
     
     func GetBidList()  {
@@ -65,6 +120,7 @@ class MyBidTableViewController: UITableViewController {
         //query.whereKey("UserId", equalTo:"pravangsu@gmail.com")
         //get the user id of the current user
        query.whereKey("UserId", equalTo:(PFUser.currentUser()?.username)!)
+
         
        /*
         TODO: do in Next Release , Winter Quater
@@ -105,7 +161,7 @@ class MyBidTableViewController: UITableViewController {
                         {
                             bi.StatusId = 0
                     }
-                    
+                    bi.rating = self.ratingScore[bi.UserId]!
                     self.datas.insert(bi, atIndex: index)
                     index = index + 1 
                 }
