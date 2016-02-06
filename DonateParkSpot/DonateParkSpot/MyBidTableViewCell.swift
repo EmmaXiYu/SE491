@@ -15,6 +15,7 @@ class MyBidTableViewCell: UITableViewCell {
     @IBOutlet weak var lblBidder: UILabel!
     @IBOutlet weak var lblDonetion: UILabel!
     @IBOutlet weak var btnCancel: UIButton!
+    @IBOutlet weak var lblRating: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code 
