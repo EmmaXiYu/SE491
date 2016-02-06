@@ -33,7 +33,13 @@ public class MySpotBiddingTableViewController: UITableViewController  {
         query = PFQuery(className: "Spot")
         let currentUser = PFUser.currentUser()
         
-        query.whereKey("owner", equalTo:(currentUser?.email)!)
+       query.whereKey("owner", equalTo:(currentUser)!)
+       // query.whereKey("owner.email", equalTo:(currentUser?.email)!)
+       
+       // var innerQuery: PFQuery = PFQuery()
+        //innerQuery = PFQuery(className: "User")
+        //innerQuery.whereKey("email",equalTo:(currentUser?.email)!)
+        //query.whereKey("owner", equalTo:(innerQuery))
         
         query.findObjectsInBackgroundWithBlock {
             (objects:[PFObject]?, error:NSError?) -> Void in

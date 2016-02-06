@@ -163,7 +163,16 @@ class MyBidTableViewController: UITableViewController {
                         {
                             bi.StatusId = 0
                     }
-                    bi.rating = self.ratingScore[bi.UserId]!
+                    
+                    /*PB02062016 Start*/
+                    let keyExists = self.ratingScore[bi.UserId] != nil
+                    if(keyExists)
+                    {
+                         bi.rating = self.ratingScore[bi.UserId]!
+                    }
+                    //bi.rating = self.ratingScore[bi.UserId]!
+                    /*PB02062016 End*/
+                    
                     self.datas.insert(bi, atIndex: index)
                     index = index + 1 
                 }

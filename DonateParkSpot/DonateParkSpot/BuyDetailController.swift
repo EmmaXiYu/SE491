@@ -108,6 +108,8 @@ class BuyDetailController :  UIViewController, MKMapViewDelegate {
     }
     
     @IBAction func buy() {
+        if(IsValidBuyer() == true)
+        {
         let user = PFUser.currentUser()
         
         let query = PFQuery.init(className: "Bid")
@@ -134,9 +136,32 @@ class BuyDetailController :  UIViewController, MKMapViewDelegate {
         
         updateSpot((self.spot?.spotId)!, status : 99)
         self.dismissViewControllerAnimated(true, completion: nil)
+            }
 
     }
     
+    func IsValidBuyer()->Bool
+
+    {
+        var IsValid = true
+        var msg = ""
+        if(spot?.owner?.email == PFUser.currentUser()?.email)
+        {
+            IsValid = false
+            msg = "You can not Bid your Own Spot"  + "\r\n"
+            
+        }
+        if(msg.characters.count > 0)
+        {
+            let alertController = UIAlertController(title: "Validation Error", message: msg, preferredStyle: .Alert)
+            let OKAction = UIAlertAction(title: "OK", style: .Default) { (action:UIAlertAction!) in
+            }
+            alertController.addAction(OKAction)
+            self.presentViewController(alertController, animated: true, completion:nil)
+        }
+        return IsValid
+    }
+
     func updateSpot(spotid : String, status :Int)-> Void
     {
         let prefQuery = PFQuery(className: "Spot")
