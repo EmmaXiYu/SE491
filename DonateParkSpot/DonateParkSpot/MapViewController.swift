@@ -238,6 +238,8 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
                                 let annotation = CustomerAnnotation(coordinate: pinLocation,spotObject: spotObject, title :spotObject.owner!.email!, subtitle: spotObject.owner!.objectId!)
                                 annotation.spot = spotObject
                                 //annotation.subtitle = "Rating bar here"
+                                let allAnnotations = self.mapView.annotations
+                                self.mapView.removeAnnotations(allAnnotations)
                                 self.mapView.addAnnotation(annotation)
                             }
                         }
@@ -256,10 +258,34 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
     
     func searchForNewSpots(){
         let coordinate = mapView.centerCoordinate
+        var radium = PFUser.currentUser()!["SearchRadium"] as? String
+        var radiumDouble : Double
+        if radium == nil
+        {
+            radiumDouble = 1
+            
+            let user = PFUser.currentUser()
+            
+            user!["SearchRadium"] = "1"
+            user!.saveInBackgroundWithBlock({
+                
+                (success: Bool, error: NSError?) -> Void in
+                
+            })
+            
+            
+            
+            
+        }
+        else {
+            radiumDouble = Double (radium!)!
+        }
+        
+
         let geoPoint = PFGeoPoint(latitude: coordinate.latitude ,longitude: coordinate.longitude  );
         var query: PFQuery = PFQuery()
         query = PFQuery(className: "Spot")
-        query.whereKey("SpotGeoPoint", nearGeoPoint: geoPoint, withinMiles: 20)
+        query.whereKey("SpotGeoPoint", nearGeoPoint: geoPoint, withinMiles: radiumDouble)
         query.includeKey("owner")
         query.findObjectsInBackgroundWithBlock {(objects:[PFObject]?, error:NSError?) -> Void in
             if error == nil {
