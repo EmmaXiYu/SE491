@@ -159,6 +159,7 @@ class MyBidTableViewController: UITableViewController {
         objCell.lblDonetion.text = String(bid.value!)
         objCell.lblBidder.text = bid.UserId
         objCell.lblAddress.text = bid.Address
+        objCell.lblRating.text = String(bid.rating)
         let formatter = NSDateFormatter()
         formatter.dateStyle = NSDateFormatterStyle.LongStyle
         formatter.timeStyle = .MediumStyle
