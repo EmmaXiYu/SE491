@@ -34,8 +34,8 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
     var filtered:[String] = []
     var history:[String] = [" "]
     var searchActive: Bool = false
-    var ownerName:String = ""
-    var ownerId:String = ""
+    //var ownerName:String = ""
+    //var ownerId:String = ""
     
     let locationManager=CLLocationManager()
     
@@ -192,7 +192,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
                     
                     let user = PFUser.currentUser()
                     
-                    user!["SearchRadium"] = 1
+                    user!["SearchRadium"] = "1"
                     user!.saveInBackgroundWithBlock({
                         
                         (success: Bool, error: NSError?) -> Void in
@@ -211,6 +211,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
                 var query: PFQuery = PFQuery()
                 query = PFQuery(className: "Spot")
                 query.whereKey("SpotGeoPoint", nearGeoPoint: geoPoint, withinMiles: radiumDouble)
+                query.includeKey("owner")
                 query.findObjectsInBackgroundWithBlock {(objects:[PFObject]?, error:NSError?) -> Void in
                     if error == nil {
                         for object in objects! {
@@ -222,8 +223,8 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
                                 let pinLatitude: CLLocationDegrees = pin!.latitude
                                 let pinLongtitude: CLLocationDegrees = pin!.longitude
                                 let address = object["addressText"] as? String
-                                let id = object.objectId
-                                self.ownerId = id!
+                                let id = object.objectId // spot id
+                              //  self.ownerId = id!
                                 let type = object["type"] as? Int
                                 let rate = object["rate"] as? Double
                                 let timeLeft = object["timeLeft"] as? Int
@@ -231,7 +232,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
                                 let legalTime = object["legalTime"] as? String
                                 let timeToLeave = object["leavingTime"] as! NSDate?
                                 let ownerName = object["owner"] as! String
-                                self.ownerName=ownerName
+                                //self.ownerName=ownerName
                                 let pinLocation: CLLocationCoordinate2D = CLLocationCoordinate2D(latitude: pinLatitude, longitude: pinLongtitude)
                                 //spotObject.owner.username = ownerName
                                 spotObject.location.latitude = pinLatitude
@@ -246,7 +247,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
                                 spotObject.timeToLeave = timeToLeave
                                 //  spotObject.owner = owner
                                 //var subtitle = "Rating Bar Here"
-                                let annotation = CustomerAnnotation(coordinate: pinLocation,spotObject: spotObject, title :ownerName, subtitle: id!)
+                                let annotation = CustomerAnnotation(coordinate: pinLocation,spotObject: spotObject, title :ownerName.email!, subtitle: id!)
                                 annotation.spot = spotObject
                                 //annotation.subtitle = "Rating bar here"
                                 self.mapView.addAnnotation(annotation)
@@ -271,6 +272,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         var query: PFQuery = PFQuery()
         query = PFQuery(className: "Spot")
         query.whereKey("SpotGeoPoint", nearGeoPoint: geoPoint, withinMiles: 20)
+        query.includeKey("owner")
         query.findObjectsInBackgroundWithBlock {(objects:[PFObject]?, error:NSError?) -> Void in
             if error == nil {
                 for object in objects! {
@@ -284,14 +286,14 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
                         spotObject.location.longitude = pin!.longitude
                         spotObject.AddressText = object["addressText"] as? String
                         spotObject.spotId = object.objectId!
-                        self.ownerId = object.objectId!
+                       // self.ownerId = object.objectId!
                         spotObject.type = object["type"] as? Int
                         spotObject.rate = object["rate"] as? Double
                         spotObject.timeLeft = object["timeLeft"] as? Int
                         spotObject.minDonation = object["minimumPrice"] as? Int
                         spotObject.legalTime = object["legalTime"] as? String
                         spotObject.timeToLeave = object["leavingTime"] as! NSDate?
-                        spotObject.ownerName = object["owner"] as? String
+                        spotObject.owner = object["owner"] as? PFUser
                         self.addNewSpot(spotObject)
                     }
                 }
@@ -309,7 +311,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         spots.append(spot)
         let pinLocation: CLLocationCoordinate2D = CLLocationCoordinate2D(latitude: spot.location.latitude, longitude: spot.location.longitude)
         
-        let annotation = CustomerAnnotation(coordinate: pinLocation,spotObject: spot, title :spot.ownerName!, subtitle: spot.spotId)
+        let annotation = CustomerAnnotation(coordinate: pinLocation,spotObject: spot, title :spot.owner!.email!, subtitle: spot.spotId)
         annotation.spot = spot
         //annotation.subtitle = "Rating bar here"
         self.mapView.addAnnotation(annotation)
@@ -335,6 +337,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
                 let pinAnnotationView = MKPinAnnotationView(annotation: a, reuseIdentifier: "myPin")
                 let ownerID:String = a.subtitle!
                 let name = a.title!
+               // let spot = spot
                 let pic = UIImageView (image: UIImage(named: "test.png"))
                 pinAnnotationView.canShowCallout = true
                 pinAnnotationView.draggable = false

@@ -97,8 +97,7 @@ class SpotDetailViewController: UITableViewController {
             testObject["leavingTime"] = timePickerView.date
         }
         testObject["minimumPrice"] = Float(minimumDonatePrice.text!)
-        testObject["owner"] = PFUser.currentUser()!.username
-        testObject["OwnerID"] = PFUser.currentUser()!.objectId
+        testObject["owner"] = PFUser.currentUser()
         testObject["rate"] = Double(rate.text!)
         testObject["timeLeft"] = Int(timeLeft.text!)
         testObject["legalTime"] = info.text
@@ -107,18 +106,12 @@ class SpotDetailViewController: UITableViewController {
 
         testObject.saveInBackgroundWithBlock { (success, error) -> Void in
             
-        if (error == nil)
-            {
-                
-               // let annotation = CustomerAnnotation(coordinate: (self.locationManager.location?.coordinate)!)
-                
-               // self.mapView.addAnnotation(annotation)
-                
-                
+            if (error == nil){
+                self.dismissViewControllerAnimated(true, completion: nil);
+
+            }else{
             }
         }
-
-        self.dismissViewControllerAnimated(true, completion: nil);
     
     }
     
