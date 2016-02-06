@@ -247,7 +247,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
                                 spotObject.timeToLeave = timeToLeave
                                 //  spotObject.owner = owner
                                 //var subtitle = "Rating Bar Here"
-                                let annotation = CustomerAnnotation(coordinate: pinLocation,spotObject: spotObject, title :ownerName.email!, subtitle: id!)
+                                let annotation = CustomerAnnotation(coordinate: pinLocation,spotObject: spotObject, title :ownerName, subtitle: id!)
                                 annotation.spot = spotObject
                                 //annotation.subtitle = "Rating bar here"
                                 self.mapView.addAnnotation(annotation)
