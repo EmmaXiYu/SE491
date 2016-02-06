@@ -224,32 +224,20 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
                                 let pin = object["SpotGeoPoint"] as? PFGeoPoint
                                 let pinLatitude: CLLocationDegrees = pin!.latitude
                                 let pinLongtitude: CLLocationDegrees = pin!.longitude
-                                let address = object["addressText"] as? String
-                                let id = object.objectId // spot id
-                              //  self.ownerId = id!
-                                let type = object["type"] as? Int
-                                let rate = object["rate"] as? Double
-                                let timeLeft = object["timeLeft"] as? Int
-                                let miniDonation = object["minimumPrice"] as? Int
-                                let legalTime = object["legalTime"] as? String
-                                let timeToLeave = object["leavingTime"] as! NSDate?
-                                let ownerName = object["owner"] as! String
-                                //self.ownerName=ownerName
-                                let pinLocation: CLLocationCoordinate2D = CLLocationCoordinate2D(latitude: pinLatitude, longitude: pinLongtitude)
-                                //spotObject.owner.username = ownerName
-                                spotObject.location.latitude = pinLatitude
-                                spotObject.location.longitude = pinLongtitude
-                                spotObject.AddressText = address
-                                spotObject.spotId = id!
-                                spotObject.type = type
-                                spotObject.rate = rate
-                                spotObject.timeLeft = timeLeft
-                                spotObject.minDonation = miniDonation
-                                spotObject.legalTime = legalTime
-                                spotObject.timeToLeave = timeToLeave
-                                //  spotObject.owner = owner
-                                //var subtitle = "Rating Bar Here"
-                                let annotation = CustomerAnnotation(coordinate: pinLocation,spotObject: spotObject, title :ownerName.email!, subtitle: id!)
+                                 let pinLocation: CLLocationCoordinate2D = CLLocationCoordinate2D(latitude: pinLatitude, longitude: pinLongtitude)
+                                spotObject.location.latitude = pin!.latitude
+                                spotObject.location.longitude = pin!.longitude
+                                spotObject.AddressText = object["addressText"] as? String
+                                spotObject.spotId = object.objectId!
+                                // self.ownerId = object.objectId!
+                                spotObject.type = object["type"] as? Int
+                                spotObject.rate = object["rate"] as? Double
+                                spotObject.timeLeft = object["timeLeft"] as? Int
+                                spotObject.minDonation = object["minimumPrice"] as? Int
+                                spotObject.legalTime = object["legalTime"] as? String
+                                spotObject.timeToLeave = object["leavingTime"] as! NSDate?
+                                spotObject.owner = object["owner"] as? PFUser
+                                let annotation = CustomerAnnotation(coordinate: pinLocation,spotObject: spotObject, title :spotObject.owner!.email!, subtitle: spotObject.owner!.objectId!)
                                 annotation.spot = spotObject
                                 //annotation.subtitle = "Rating bar here"
                                 self.mapView.addAnnotation(annotation)
@@ -313,7 +301,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         spots.append(spot)
         let pinLocation: CLLocationCoordinate2D = CLLocationCoordinate2D(latitude: spot.location.latitude, longitude: spot.location.longitude)
         
-        let annotation = CustomerAnnotation(coordinate: pinLocation,spotObject: spot, title :spot.owner!.email!, subtitle: spot.spotId)
+        let annotation = CustomerAnnotation(coordinate: pinLocation,spotObject: spot, title :spot.owner!.email!, subtitle: spot.owner!.objectId!)
         annotation.spot = spot
         //annotation.subtitle = "Rating bar here"
         self.mapView.addAnnotation(annotation)
@@ -337,9 +325,9 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
             
             if let a = annotation as? CustomerAnnotation {
                 let pinAnnotationView = MKPinAnnotationView(annotation: a, reuseIdentifier: "myPin")
-                let ownerID:String = a.subtitle!
+                //let ownerID:String = a.subtitle!
                 let name = a.title!
-               // let spot = spot
+              let ownerID:String = (a.spot.owner?.objectId)!
                 let pic = UIImageView (image: UIImage(named: "test.png"))
                 pinAnnotationView.canShowCallout = true
                 pinAnnotationView.draggable = false
