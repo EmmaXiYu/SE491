@@ -85,7 +85,9 @@ class MyBidTableViewController: UITableViewController {
     func getSellerRating(sellers:[String]) -> Void{
         var query:PFQuery = PFQuery()
         query = PFQuery(className: "Bid")
-        query.whereKey("user", containedIn:sellers)
+        let innerQuery = PFQuery(className: "User")
+        innerQuery.whereKey("username", containedIn:sellers)
+        query.whereKey("user", matchesQuery:innerQuery)
         query.selectKeys(["StatusId","user"])
         query.findObjectsInBackgroundWithBlock{
             (objects:[PFObject]?, error:NSError?) -> Void in
