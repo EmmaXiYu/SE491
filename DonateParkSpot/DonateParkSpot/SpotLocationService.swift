@@ -157,7 +157,25 @@ class SpotLocationService: NSObject,CLLocationManagerDelegate{
             latitude = locationManager.location!.coordinate.latitude
             longitude = locationManager.location!.coordinate.longitude
             print("latitude\(latitude) longitude \(longitude)")
-            
+            if(DonateSpotUserSession.ActiveBid != nil)
+            {
+                let spot = DonateSpotUserSession.ActiveBid?.spot
+                
+                let SpotLocation = CLLocation(latitude: (spot?.location.latitude)!, longitude: (spot?.location.longitude)!)
+                let distanceBetweenMeter: CLLocationDistance = locationManager.location!.distanceFromLocation( SpotLocation)
+                
+                if(distanceBetweenMeter > 1000)
+                {
+                    // Show in Mile
+                     print("\(distanceBetweenMeter/1609.34) Mile Away")
+                    
+                }
+                else if (distanceBetweenMeter > 0 && distanceBetweenMeter < 1000)
+                {
+                    // Show in meter
+                    print("\(distanceBetweenMeter) Meter Away")
+                }
+            }
             // TODO : Save to server
             //self.sendBackgroundLocationToServer(locations[0]);
         }
@@ -168,13 +186,13 @@ class SpotLocationService: NSObject,CLLocationManagerDelegate{
             latitude = locationManager.location!.coordinate.latitude
             longitude = locationManager.location!.coordinate.longitude
             print("latitude\(latitude) longitude \(longitude)")
-            
+            /*NOT WORKING*/
             if(DonateSpotUserSession.ActiveBid != nil)
             {
                 let spot = DonateSpotUserSession.ActiveBid?.spot
            
                 let SpotLocation = CLLocation(latitude: (spot?.location.latitude)!, longitude: (spot?.location.longitude)!)
-                var distanceBetween: CLLocationDistance = locationManager.location!.distanceFromLocation( SpotLocation)
+                let distanceBetween: CLLocationDistance = locationManager.location!.distanceFromLocation( SpotLocation)
                 print("distanceBetween\(distanceBetween) ")
             }
             // TODO : Save to server

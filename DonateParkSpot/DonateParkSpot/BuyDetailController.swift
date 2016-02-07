@@ -135,6 +135,26 @@ class BuyDetailController :  UIViewController, MKMapViewDelegate {
         bid.saveInBackground()
         
         updateSpot((self.spot?.spotId)!, status : 99)
+            
+        
+              let pushQuery = PFInstallation.query()
+            pushQuery!.whereKey("SpotOwner", equalTo: spot!.toPFObject()["owner"] as! PFUser)
+            
+            let data = [
+                "alert" : "Your spot got a bid." ,
+                "badge" : "Increment",
+                "sound" : "iphonenoti_cRjTITC7.mp3",
+               
+           
+                
+            ]
+            // Send push notification to query
+            let push = PFPush()
+            push.setQuery(pushQuery) // Set our Installation query
+            push.setData(data)
+            push.sendPushInBackground()
+
+            
         self.dismissViewControllerAnimated(true, completion: nil)
             }
 
