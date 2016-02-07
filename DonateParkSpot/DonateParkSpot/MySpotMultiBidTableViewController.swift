@@ -16,8 +16,8 @@ class MySpotMultiBidTableViewController: UITableViewController {
     var ratingScore = [String:Double]()
     var ratingCount = [String:Int]()
     
-var bidNoPayAutoCancelTime : Int = 4  // Set a intitial value,
- //var currentIndex : Int =  -1
+    var bidNoPayAutoCancelTime : Int = 4  // Set a intitial value,
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.getRating()
@@ -33,6 +33,7 @@ var bidNoPayAutoCancelTime : Int = 4  // Set a intitial value,
         // self.tableView.userInteractionEnabled = false
         
     }
+    
     func update() {
         //update your table data here
         self.GetBidList(DetailSpot.spotId)
@@ -77,10 +78,6 @@ var bidNoPayAutoCancelTime : Int = 4  // Set a intitial value,
         //var bidList = [Bid]()
         var query: PFQuery = PFQuery()
         query = PFQuery(className: "Bid")
-        var queryUser :PFQuery = PFQuery()
-        queryUser = PFQuery(className: "User")
-      //  query.whereKey("Spot", equalTo:spotid)
-        //query.whereKey("spot", equalTo: PFObject(withoutDataWithClassName:"spot", objectId:spotid))
         query.includeKey("user")
         // Add a where condition , to get the spot for the login user
         query.whereKey("spot", equalTo: PFObject(withoutDataWithClassName:"Spot", objectId:spotid))
@@ -103,7 +100,7 @@ var bidNoPayAutoCancelTime : Int = 4  // Set a intitial value,
                     
                     bi.UserId = userId.username!
                     bi.bidId = object.objectId!
-                    bi.rating = self.ratingScore[bi.UserId]!
+                    //bi.rating = self.ratingScore[bi.UserId]!
                     if(object["StatusId"] != nil){
                         bi.StatusId = object["StatusId"] as! Int
                     } else {
