@@ -59,6 +59,7 @@
 		18AE41611BE84EB000A4A62B /* BackTableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18AE41601BE84EB000A4A62B /* BackTableVC.swift */; };
 		18AE41671BE84FEB00A4A62B /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18AE41661BE84FEB00A4A62B /* SWRevealViewController.m */; };
 		18AE41741BEE907800A4A62B /* test.png in Resources */ = {isa = PBXBuildFile; fileRef = 18AE41731BEE907800A4A62B /* test.png */; };
+		18C2399E1C66E28D00B66259 /* iphonenoti_cRjTITC7.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 18C2399D1C66E28D00B66259 /* iphonenoti_cRjTITC7.mp3 */; };
 		B80CB65A1BE30A9600746CEB /* MySpotDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = B80CB6591BE30A9600746CEB /* MySpotDetail.swift */; };
 		B80EB0181C5409ED00924625 /* SpotLocationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B80EB0171C5409ED00924625 /* SpotLocationService.swift */; };
 		B80EB01A1C5418DF00924625 /* SpotLocationServiceTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B80EB0191C5418DF00924625 /* SpotLocationServiceTest.swift */; };
@@ -143,6 +144,7 @@
 		18AE41661BE84FEB00A4A62B /* SWRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWRevealViewController.m; sourceTree = "<group>"; };
 		18AE41681BE8500E00A4A62B /* DonateParkSpot-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "DonateParkSpot-Bridging-Header.h"; sourceTree = "<group>"; };
 		18AE41731BEE907800A4A62B /* test.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = test.png; sourceTree = "<group>"; };
+		18C2399D1C66E28D00B66259 /* iphonenoti_cRjTITC7.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = iphonenoti_cRjTITC7.mp3; sourceTree = "<group>"; };
 		B80CB6591BE30A9600746CEB /* MySpotDetail.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MySpotDetail.swift; sourceTree = "<group>"; };
 		B80EB0171C5409ED00924625 /* SpotLocationService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpotLocationService.swift; sourceTree = "<group>"; };
 		B80EB0191C5418DF00924625 /* SpotLocationServiceTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpotLocationServiceTest.swift; sourceTree = "<group>"; };
@@ -244,6 +246,7 @@
 		104814071BFD6443009476FB /* Support */ = {
 			isa = PBXGroup;
 			children = (
+				18C2399D1C66E28D00B66259 /* iphonenoti_cRjTITC7.mp3 */,
 				18AE41731BEE907800A4A62B /* test.png */,
 				180C3AF41BD9F0F400E7E5F5 /* AppDelegate.swift */,
 				180C3AFE1BD9F0F400E7E5F5 /* Assets.xcassets */,
@@ -484,6 +487,7 @@
 			files = (
 				180A147C1BDB0A37005F4221 /* Main.storyboard in Resources */,
 				180C3B021BD9F0F400E7E5F5 /* LaunchScreen.storyboard in Resources */,
+				18C2399E1C66E28D00B66259 /* iphonenoti_cRjTITC7.mp3 in Resources */,
 				180C3AFF1BD9F0F400E7E5F5 /* Assets.xcassets in Resources */,
 				18AE41741BEE907800A4A62B /* test.png in Resources */,
 			);
