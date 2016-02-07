@@ -34,8 +34,10 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
     var filtered:[String] = []
     var history:[String] = [" "]
     var searchActive: Bool = false
-    var ownerName:String = ""
-    var ownerId:String = ""
+    var ratingScore = [String:Double]()
+    var ratingCount = [String:Int]()
+    //var ownerName:String = ""
+    //var ownerId:String = ""
     
     let locationManager=CLLocationManager()
     
@@ -222,33 +224,24 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
                                 let pin = object["SpotGeoPoint"] as? PFGeoPoint
                                 let pinLatitude: CLLocationDegrees = pin!.latitude
                                 let pinLongtitude: CLLocationDegrees = pin!.longitude
-                                let address = object["addressText"] as? String
-                                let id = object.objectId
-                                self.ownerId = id!
-                                let type = object["type"] as? Int
-                                let rate = object["rate"] as? Double
-                                let timeLeft = object["timeLeft"] as? Int
-                                let miniDonation = object["minimumPrice"] as? Int
-                                let legalTime = object["legalTime"] as? String
-                                let timeToLeave = object["leavingTime"] as! NSDate?
-                                let ownerName = object["owner"] as! PFUser
-                                let pinLocation: CLLocationCoordinate2D = CLLocationCoordinate2D(latitude: pinLatitude, longitude: pinLongtitude)
-                                //spotObject.owner.username = ownerName
-                                spotObject.location.latitude = pinLatitude
-                                spotObject.location.longitude = pinLongtitude
-                                spotObject.AddressText = address
-                                spotObject.spotId = id!
-                                spotObject.type = type
-                                spotObject.rate = rate
-                                spotObject.timeLeft = timeLeft
-                                spotObject.minDonation = miniDonation
-                                spotObject.legalTime = legalTime
-                                spotObject.timeToLeave = timeToLeave
-                                //  spotObject.owner = owner
-                                //var subtitle = "Rating Bar Here"
-                                let annotation = CustomerAnnotation(coordinate: pinLocation,spotObject: spotObject, title :ownerName.email!, subtitle: id!)
+                                 let pinLocation: CLLocationCoordinate2D = CLLocationCoordinate2D(latitude: pinLatitude, longitude: pinLongtitude)
+                                spotObject.location.latitude = pin!.latitude
+                                spotObject.location.longitude = pin!.longitude
+                                spotObject.AddressText = object["addressText"] as? String
+                                spotObject.spotId = object.objectId!
+                                // self.ownerId = object.objectId!
+                                spotObject.type = object["type"] as? Int
+                                spotObject.rate = object["rate"] as? Double
+                                spotObject.timeLeft = object["timeLeft"] as? Int
+                                spotObject.minDonation = object["minimumPrice"] as? Int
+                                spotObject.legalTime = object["legalTime"] as? String
+                                spotObject.timeToLeave = object["leavingTime"] as! NSDate?
+                                spotObject.owner = object["owner"] as? PFUser
+                                let annotation = CustomerAnnotation(coordinate: pinLocation,spotObject: spotObject, title :spotObject.owner!.email!, subtitle: spotObject.owner!.objectId!)
                                 annotation.spot = spotObject
                                 //annotation.subtitle = "Rating bar here"
+                                let allAnnotations = self.mapView.annotations
+                                self.mapView.removeAnnotations(allAnnotations)
                                 self.mapView.addAnnotation(annotation)
                             }
                         }
@@ -267,10 +260,34 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
     
     func searchForNewSpots(){
         let coordinate = mapView.centerCoordinate
+        var radium = PFUser.currentUser()!["SearchRadium"] as? String
+        var radiumDouble : Double
+        if radium == nil
+        {
+            radiumDouble = 1
+            
+            let user = PFUser.currentUser()
+            
+            user!["SearchRadium"] = "1"
+            user!.saveInBackgroundWithBlock({
+                
+                (success: Bool, error: NSError?) -> Void in
+                
+            })
+            
+            
+            
+            
+        }
+        else {
+            radiumDouble = Double (radium!)!
+        }
+        
+
         let geoPoint = PFGeoPoint(latitude: coordinate.latitude ,longitude: coordinate.longitude  );
         var query: PFQuery = PFQuery()
         query = PFQuery(className: "Spot")
-        query.whereKey("SpotGeoPoint", nearGeoPoint: geoPoint, withinMiles: 20)
+        query.whereKey("SpotGeoPoint", nearGeoPoint: geoPoint, withinMiles: radiumDouble)
         query.includeKey("owner")
         query.findObjectsInBackgroundWithBlock {(objects:[PFObject]?, error:NSError?) -> Void in
             if error == nil {
@@ -285,7 +302,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
                         spotObject.location.longitude = pin!.longitude
                         spotObject.AddressText = object["addressText"] as? String
                         spotObject.spotId = object.objectId!
-                        self.ownerId = object.objectId!
+                       // self.ownerId = object.objectId!
                         spotObject.type = object["type"] as? Int
                         spotObject.rate = object["rate"] as? Double
                         spotObject.timeLeft = object["timeLeft"] as? Int
@@ -310,7 +327,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         spots.append(spot)
         let pinLocation: CLLocationCoordinate2D = CLLocationCoordinate2D(latitude: spot.location.latitude, longitude: spot.location.longitude)
         
-        let annotation = CustomerAnnotation(coordinate: pinLocation,spotObject: spot, title :spot.owner!.email!, subtitle: spot.spotId)
+        let annotation = CustomerAnnotation(coordinate: pinLocation,spotObject: spot, title :spot.owner!.email!, subtitle: spot.owner!.objectId!)
         annotation.spot = spot
         //annotation.subtitle = "Rating bar here"
         self.mapView.addAnnotation(annotation)
@@ -334,8 +351,9 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
             
             if let a = annotation as? CustomerAnnotation {
                 let pinAnnotationView = MKPinAnnotationView(annotation: a, reuseIdentifier: "myPin")
-                let ownerID:String = a.subtitle!
+                //let ownerID:String = a.subtitle!
                 let name = a.title!
+              let ownerID:String = (a.spot.owner?.objectId)!
                 let pic = UIImageView (image: UIImage(named: "test.png"))
                 pinAnnotationView.canShowCallout = true
                 pinAnnotationView.draggable = false
@@ -431,6 +449,97 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         searchBar.text = (currentCell?.textLabel?.text!)!
     }
     
+    func getRating(){
+        var users = [String]()
+        var query:PFQuery = PFQuery()
+        query = PFQuery(className: "Bid")
+        query.whereKey("UserId", equalTo:(PFUser.currentUser()?.username)!)
+        query.selectKeys(["UserId"])
+        query.findObjectsInBackgroundWithBlock{
+            (objects:[PFObject]?, error:NSError?) -> Void in
+            if error == nil {
+                for object in objects!{
+                    let name = object["userName"] as! String
+                    users.append(name)
+                    if(self.ratingScore[name] == nil){
+                        self.ratingScore[name] = 0
+                        self.ratingCount[name] = 0
+                    }
+                }
+            }
+        }
+        getBuyerRating(users)
+        getSellerRating(users)
+        for name in self.ratingScore.keys{
+            self.ratingScore[name] = self.formulateScore(self.ratingScore[name]!,count: self.ratingCount[name]!)
+        }
+    }
+    
+    func getBuyerRating(buyers:[String])-> Void{
+        var query:PFQuery = PFQuery()
+        query = PFQuery(className: "Bid")
+        query.whereKey("UserId", containedIn:buyers)
+        query.selectKeys(["StatusId","UserId"])
+        query.findObjectsInBackgroundWithBlock{
+            (objects:[PFObject]?, error:NSError?) -> Void in
+            if error == nil {
+                for object in objects!{
+                    let buyerName = object["UserId"] as! String
+                    let statusId = object["StatusId"] as! Int
+                    if(statusId == 3){
+                        self.ratingScore[buyerName] = self.ratingScore[buyerName]!+1.0
+                        self.ratingCount[buyerName] = self.ratingCount[buyerName]!+1
+                    }
+                    else if(statusId == 6){
+                        self.ratingScore[buyerName] = self.ratingScore[buyerName]!-1.0
+                        self.ratingCount[buyerName] = self.ratingCount[buyerName]!+1
+                    }
+                }
+            }
+        }
+    }
+    
+    func getSellerRating(sellers:[String]) -> Void{
+        var query:PFQuery = PFQuery()
+        query = PFQuery(className: "Bid")
+        let innerQuery = PFQuery(className: "User")
+        innerQuery.whereKey("username", containedIn:sellers)
+        query.whereKey("user", matchesQuery:innerQuery)
+        query.selectKeys(["StatusId","user"])
+        query.findObjectsInBackgroundWithBlock{
+            (objects:[PFObject]?, error:NSError?) -> Void in
+            if error == nil {
+                for object in objects!{
+                    var sellerName:String = ""
+                    if let pointer = object["user"] as? PFObject{
+                        sellerName = pointer["username"] as! String!
+                    }
+                    let statusId = object["StatusId"] as! Int
+                    if(statusId == 3){
+                        self.ratingScore[sellerName] = self.ratingScore[sellerName]!+1.0
+                        self.ratingCount[sellerName] = self.ratingCount[sellerName]!+1
+                    }
+                    else if(statusId == 7){
+                        self.ratingScore[sellerName] = self.ratingScore[sellerName]!-1.0
+                        self.ratingCount[sellerName] = self.ratingCount[sellerName]!+1
+                    }
+                }
+            }
+        }
+        
+        
+    }
+    
+    func formulateScore(rating:Double,count:Int) ->Double{
+        if count == 0{
+            return 0;
+        }
+        else{
+            return (rating/Double(count)+1.0)*2.5;
+        }
+    }
+    
+
     
 }
 

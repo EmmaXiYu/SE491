@@ -13,6 +13,7 @@ class AccountViewController: UIViewController , UIImagePickerControllerDelegate,
     
     var ifChoose:Bool = false
     var rate : Double = 0
+    var count:Int = 0
     @IBOutlet weak var ratingScore: UILabel!
    
     @IBAction func save(sender: UIBarButtonItem) {
@@ -112,27 +113,65 @@ class AccountViewController: UIViewController , UIImagePickerControllerDelegate,
 
     }
     
+    
     func getRating(){
-        var sum:Int = 0
-        var count:Int = 0
-        var query: PFQuery = PFQuery()
-        query = PFQuery(className: "Rating")
-        query.whereKey("userName", equalTo: (PFUser.currentUser()?.username)!)
-        query.findObjectsInBackgroundWithBlock{(objects:[PFObject]?,error:NSError?) -> Void in
-            if error == nil{
+        let users = (PFUser.currentUser()?.username)!
+        getBuyerRating(users)
+        getSellerRating(users)
+        self.ratingScore.text = String(self.formulateScore(rate,count: count))
+    }
+    
+    func getBuyerRating(buyers:String)-> Void{
+        var query:PFQuery = PFQuery()
+        query = PFQuery(className: "Bid")
+        query.whereKey("UserId", equalTo: buyers)
+        query.selectKeys(["StatusId"])
+        query.findObjectsInBackgroundWithBlock{
+            (objects:[PFObject]?, error:NSError?) -> Void in
+            if error == nil {
                 for object in objects!{
-                    let score = object["score"] as? Int
-                    if score != nil{
-                    sum = sum+score!
-                    count = count+1
+                    let statusId = object["StatusId"] as! Int
+                    if(statusId == 3){
+                        self.rate = self.rate+1.0
+                        self.count = self.count+1
+                    }
+                    else if(statusId == 6){
+                        self.rate = self.rate-1.0
+                        self.count = self.count+1
                     }
                 }
-                
-                self.ratingScore.text = String(self.formulateScore(Double(sum), count: count))
+            }
+        }
+    }
+    
+    func getSellerRating(sellers:String) -> Void{
+        var query:PFQuery = PFQuery()
+        query = PFQuery(className: "Bid")
+        let innerQuery = PFQuery(className: "User")
+        innerQuery.whereKey("username",equalTo:sellers)
+        query.whereKey("user",matchesQuery:innerQuery)
+        query.selectKeys(["StatusId","user"])
+        query.findObjectsInBackgroundWithBlock{
+            (objects:[PFObject]?, error:NSError?) -> Void in
+            if error == nil {
+                for object in objects!{
+                    let statusId = object["StatusId"] as! Int
+                    if(statusId == 3){
+                        self.rate = self.rate+1.0
+                        self.count = self.count+1
+                    }
+                    else if(statusId == 7){
+                        self.rate = self.rate-1.0
+                        self.count = self.count+1
+                    }
+                }
             }
         }
         
+        
     }
+    
+    
     func imagePickerController(picker: UIImagePickerController, didFinishPickingImage image: UIImage!, editingInfo: [NSObject : AnyObject]!) {
         
         ImageField.image = image

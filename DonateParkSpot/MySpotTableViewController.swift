@@ -19,8 +19,6 @@ public class MySpotBiddingTableViewController: UITableViewController  {
         super.viewDidLoad()
         self.readDatafromServer()
         self.title = "My Spots"
-        
-       
         Menu.target = self.revealViewController()
         Menu.action = Selector("revealToggle:")
         
