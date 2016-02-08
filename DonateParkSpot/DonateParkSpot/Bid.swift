@@ -21,6 +21,7 @@ public class Bid {
     var bidAcceptTime: NSDate? // Time of Accept bid by seller.  This will use be count to time if buyer make a payment with in specified time or not
     var noPaymentCancelTime: NSDate?
     var paymentMakeTime: NSDate?
+    var createAt: NSDate?
     
     init?(object: PFObject?){
         if object == nil {
@@ -35,6 +36,8 @@ public class Bid {
         bidder = object?["user"] as? PFUser
         value = object?["value"] as? Double
         bidId = object?.objectId
+        createAt = object?.createdAt
+        
     }
     
     init(){

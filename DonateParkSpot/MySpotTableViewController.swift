@@ -34,7 +34,7 @@ public class MySpotBiddingTableViewController: UITableViewController  {
         let currentUser = PFUser.currentUser()
         query.includeKey("owner")
         query.whereKey("owner", equalTo:currentUser!)
-        
+        query.orderByDescending("leavingTime")
         query.findObjectsInBackgroundWithBlock {
             (objects:[PFObject]?, error:NSError?) -> Void in
             if error == nil {
@@ -98,6 +98,7 @@ public class MySpotBiddingTableViewController: UITableViewController  {
         var query: PFQuery = PFQuery()
         query = PFQuery(className: "Bid")
         query.whereKey("SpotId", equalTo:spotid)
+        
         query.findObjectsInBackgroundWithBlock {
             (objects:[PFObject]?, error:NSError?) -> Void in
             if error == nil {
