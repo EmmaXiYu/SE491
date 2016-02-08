@@ -227,7 +227,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
                                  let pinLocation: CLLocationCoordinate2D = CLLocationCoordinate2D(latitude: pinLatitude, longitude: pinLongtitude)
                                 spotObject.location.latitude = pin!.latitude
                                 spotObject.location.longitude = pin!.longitude
-                                spotObject.AddressText = object["addressText"] as? String
+                                spotObject.addressText = object["addressText"] as? String
                                 spotObject.spotId = object.objectId!
                                 // self.ownerId = object.objectId!
                                 spotObject.type = object["type"] as? Int
@@ -237,7 +237,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
                                 spotObject.legalTime = object["legalTime"] as? String
                                 spotObject.timeToLeave = object["leavingTime"] as! NSDate?
                                 spotObject.owner = object["owner"] as? PFUser
-                                let annotation = CustomerAnnotation(coordinate: pinLocation,spotObject: spotObject, title :spotObject.owner!.email!, subtitle: spotObject.owner!.objectId!)
+                                let annotation = CustomerAnnotation(coordinate: pinLocation,spotObject: spotObject, title :spotObject.owner!.email!, subtitle: spotObject.owner!.getRatingAsSeller().description)
                                 annotation.spot = spotObject
                                 //annotation.subtitle = "Rating bar here"
                                 let allAnnotations = self.mapView.annotations
@@ -300,9 +300,8 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
                         let pin = object["SpotGeoPoint"] as? PFGeoPoint
                         spotObject.location.latitude = pin!.latitude
                         spotObject.location.longitude = pin!.longitude
-                        spotObject.AddressText = object["addressText"] as? String
+                        spotObject.addressText = object["addressText"] as? String
                         spotObject.spotId = object.objectId!
-                       // self.ownerId = object.objectId!
                         spotObject.type = object["type"] as? Int
                         spotObject.rate = object["rate"] as? Double
                         spotObject.timeLeft = object["timeLeft"] as? Int
@@ -325,9 +324,9 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
             }
         }
         spots.append(spot)
-        let pinLocation: CLLocationCoordinate2D = CLLocationCoordinate2D(latitude: spot.location.latitude, longitude: spot.location.longitude)
+        let pinLocation: CLLocationCoordinate2D = CLLocationCoordinate2D(latitude: spot.location.latitude!, longitude: spot.location.longitude!)
         
-        let annotation = CustomerAnnotation(coordinate: pinLocation,spotObject: spot, title :spot.owner!.email!, subtitle: spot.owner!.objectId!)
+        let annotation = CustomerAnnotation(coordinate: pinLocation,spotObject: spot, title :spot.owner!.email!, subtitle: spot.owner!.getRatingAsSeller().description)
         annotation.spot = spot
         //annotation.subtitle = "Rating bar here"
         self.mapView.addAnnotation(annotation)

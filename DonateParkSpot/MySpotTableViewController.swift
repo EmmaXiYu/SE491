@@ -47,20 +47,20 @@ public class MySpotBiddingTableViewController: UITableViewController  {
                     let ttl = object["leavingTime"] as! NSDate
                     if object["addressText"] != nil
                     {
-                        s.AddressText = object["addressText"] as! String
+                        s.addressText = object["addressText"] as! String
                     }
                     else
                     {
-                        s.AddressText = "243 South Wabash Avenue Chicago, IL 60604"
+                        s.addressText = "243 South Wabash Avenue Chicago, IL 60604"
                         //TODO: For initial test only. If it is not read at the time of create Spot
                     }
                     if object["StatusId"] != nil
                     {
-                        s.StatusId = object["StatusId"] as! Int
+                        s.statusId = object["StatusId"] as! Int
                     }
                     else
                     {
-                        s.StatusId = 1
+                        s.statusId = 1
                     }
                     let location : Location = Location()
                     location.latitude = Latitude
@@ -103,7 +103,7 @@ public class MySpotBiddingTableViewController: UITableViewController  {
             let timestamp = object["Timestamp"] as! NSDate
             let value = object["Value"] as! Double
             bi.value = value
-            bi.timestamp = timestamp
+            //bi.timestamp = timestamp
             bidList.insert(bi, atIndex: index)
             index = index + 1
         }
@@ -118,7 +118,7 @@ public class MySpotBiddingTableViewController: UITableViewController  {
         for index in 0...i-1 {
             let bi: Bid = Bid()
             bi.value = 3 + Double(i)
-            bi.timestamp = NSDate()
+            //bi.timestamp = NSDate()
             bidList.insert(bi, atIndex: index)
         }
         return bidList
@@ -141,7 +141,7 @@ public class MySpotBiddingTableViewController: UITableViewController  {
                     let timestamp = object["Timestamp"] as! NSDate
                     let value = object["Value"] as! Double
                     bi.value = value
-                    bi.timestamp = timestamp
+                    //bi.timestamp = timestamp
                     bidList.insert(bi, atIndex: index)
                     index = index + 1
                 }
@@ -175,7 +175,7 @@ public class MySpotBiddingTableViewController: UITableViewController  {
         let S: Spot = datas[indexPath.row]
         //cell.textLabel?.text = S.legalTime + "  " +  String(format:"%f", S.location.altitude)
         //cell.textLabel?.text = String(format:"%f", S.location.longitude) + "  " +  String(format:"%f", S.location.longitude)
-        cell.textLabel?.text = S.AddressText
+        cell.textLabel?.text = S.addressText
         //cell.detailTextLabel!.text = S.legalTime + "        [" + String(S.Bids.count) + "]"
         cell.detailTextLabel!.text = S.legalTime! + "        [..More..]"
         //var b:String = String(format:"%f", S.location.altitude)
@@ -189,7 +189,7 @@ public class MySpotBiddingTableViewController: UITableViewController  {
             if let destinationVC = segue.destinationViewController as? MySpotMultiBidTableViewController{
                 
                 if let blogIndex = tableView.indexPathForSelectedRow?.row {
-                    destinationVC.DetailSpot = datas[blogIndex]
+                    destinationVC.spot = datas[blogIndex]
                 }
                 
             }

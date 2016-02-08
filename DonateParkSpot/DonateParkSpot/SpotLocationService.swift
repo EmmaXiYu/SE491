@@ -65,10 +65,9 @@ class SpotLocationService: NSObject,CLLocationManagerDelegate{
                         if(objects?.count>0)
                         {
                         for object in objects! {
-                            bi = self.getBidFormPfObject(object)
+                            bi = Bid(object: object)
                             
                         }
-                            print("Found Active bid to location Track.[bid_id: \(bi?.bidId) ][for user: \(bi?.UserId)]")
                             DonateSpotUserSession.IsHaveCurrentActiveBid = true
                             DonateSpotUserSession.ActiveBid = bi
                             print("returning true from IsHaveCurrentActiveBid")
@@ -86,35 +85,7 @@ class SpotLocationService: NSObject,CLLocationManagerDelegate{
         }
     }
     
-    func getBidFormPfObject( pfbid: PFObject) -> Bid
-    {
-        let bi: Bid = Bid()
-        if(pfbid["Timestamp"] != nil)
-        {bi.timestamp =  pfbid["Timestamp"] as? NSDate}
-        else
-        {bi.timestamp =   NSDate()}
-        let value = pfbid["value"] as! Double
-        let userId = pfbid["UserId"] as! String
-        bi.value = value
-        //bi.timestamp = timestamp
-        bi.UserId = userId
-        bi.bidId = pfbid.objectId!
-        if(pfbid["StatusId"] != nil)
-        { bi.StatusId = pfbid["StatusId"] as! Int}
-        else
-        {
-            bi.StatusId = 0
-            // no status found , put a default status. o Means bid is just created
-        }
-        
-            
-        if let pointer = pfbid["spot"] as? PFObject {
-            bi.spot = getSpotFormPfObject( pointer)
-        }
-       
-
-        return bi
-    }
+    
     
     func initLocationManager() {
         // This func will call at regular interval. Need to init the locationManager only once
@@ -200,37 +171,5 @@ class SpotLocationService: NSObject,CLLocationManagerDelegate{
         }
     }
     
-    func getSpotFormPfObject( object: PFObject) -> Spot
-    {
-    
-        let s: Spot = Spot()
-        let location : Location = Location()
-        let sgp = object["SpotGeoPoint"] as! PFGeoPoint
-        location.latitude =  sgp.latitude
-        location.longitude = sgp.longitude
-        
-        s.minDonation  = object["minimumPrice"] as? Int
-    
-        let ttl = object["leavingTime"] as! NSDate
-        if object["addressText"] != nil
-        {
-            s.AddressText = object["addressText"] as! String
-        }
-        
-        if object["StatusId"] != nil
-        {
-            s.StatusId = object["StatusId"] as! Int
-        }
-        let formatter = NSDateFormatter()
-        formatter.dateStyle = NSDateFormatterStyle.LongStyle
-        formatter.timeStyle = .MediumStyle
-        let dateString = formatter.stringFromDate(ttl)
-        s.legalTime = dateString
-        s.location = location
-     
-        s.spotId = object.objectId!
-        return s
-
-    }
     
 }

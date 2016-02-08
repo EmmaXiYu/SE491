@@ -114,8 +114,6 @@ class MyBidTableViewController: UITableViewController {
     }
     
     func GetBidList()  {
-        var index = 0
-        //var bidList = [Bid]()
         var query: PFQuery = PFQuery()
         query = PFQuery(className: "Bid")
         
@@ -137,44 +135,8 @@ class MyBidTableViewController: UITableViewController {
             (objects:[PFObject]?, error:NSError?) -> Void in
             if error == nil {
                 for object in objects! {
-                     let bi: Bid = Bid()
-                    
-                    if let pointer = object["spot"] as? PFObject {
-                        bi.Address = pointer["addressText"] as! String!
-                    }
-                    if(object["value"] != nil)
-                    {bi.value =  object["value"] as? Double}
-                    else
-                    {bi.value = 0}
-                    
-                    bi.timestamp = object["Timestamp"] as? NSDate
-                    bi.UserId = object["UserId"] as! String
-                    if(object["CancelByBidder"] != nil)
-                    {
-                        bi.CancelByBidder = object["CancelByBidder"] as! Bool
-                    }
-                    bi.bidId = object.objectId!
-                    if(object["StatusId"] != nil)
-                    {
-                    bi.StatusId = object["StatusId"] as! Int
-                    }
-                    else
-                        if(object["StatusId"] != nil)
-                        {
-                            bi.StatusId = 0
-                    }
-                    
-                    /*PB02062016 Start*/
-                    let keyExists = self.ratingScore[bi.UserId] != nil
-                    if(keyExists)
-                    {
-                         bi.rating = self.ratingScore[bi.UserId]!
-                    }
-                    //bi.rating = self.ratingScore[bi.UserId]!
-                    /*PB02062016 End*/
-                    
-                    self.datas.insert(bi, atIndex: index)
-                    index = index + 1 
+                    let bi = Bid(object: object)
+                    self.datas.append(bi)
                 }
            
                 self.tableView.reloadData()
@@ -224,8 +186,8 @@ class MyBidTableViewController: UITableViewController {
         let bid: Bid = datas[currentIndex]
         
         objCell.lblDonetion.text = String(bid.value!)
-        objCell.lblBidder.text = bid.UserId
-        objCell.lblAddress.text = bid.Address
+        objCell.lblBidder.text = bid.bidder?.objectId
+        objCell.lblAddress.text = bid.address
         //objCell.lblRating.text = String(bid.rating) //PB02062016
         let formatter = NSDateFormatter()
         formatter.dateStyle = NSDateFormatterStyle.LongStyle
@@ -233,7 +195,7 @@ class MyBidTableViewController: UITableViewController {
        // let dateString = formatter.stringFromDate(bid.timestamp!)
 
         
-        self.updateCellColor(objCell , CancelByBidder :  bid.CancelByBidder)
+        self.updateCellColor(objCell , CancelByBidder :  bid.cancelByBidder!)
         
     
        objCell.btnCancel.addTarget(self, action: "btnCancel_click:", forControlEvents: .TouchUpInside)
@@ -255,12 +217,12 @@ class MyBidTableViewController: UITableViewController {
         
         let currentbid : Bid = datas[sender.tag]
         print("btnCancel_click from main  at " + String(sender.tag) + "  value: " + String(currentbid.value))
-        if( currentbid.CancelByBidder  == false)
+        if( currentbid.cancelByBidder  == false)
         {
             self.updateBid(currentbid, status :2,  sender: sender!)
-            currentbid.CancelByBidder = true
+            currentbid.cancelByBidder = true
             let cell = getCellForButton(sender)
-            self.updateCellColor(cell , CancelByBidder :  currentbid.CancelByBidder)
+            self.updateCellColor(cell , CancelByBidder :  currentbid.cancelByBidder!)
         }
         else
         {
@@ -271,7 +233,7 @@ class MyBidTableViewController: UITableViewController {
     func updateBid(currentbid : Bid, status :Int,  sender: UIButton!)-> Void
     {
         let prefQuery = PFQuery(className: "Bid")
-        prefQuery.getObjectInBackgroundWithId(currentbid.bidId){
+        prefQuery.getObjectInBackgroundWithId(currentbid.bidId!){
             (prefObj: PFObject?, error: NSError?) -> Void in
             if error != nil {
                 self.showmessage("Error on Cancel bid")

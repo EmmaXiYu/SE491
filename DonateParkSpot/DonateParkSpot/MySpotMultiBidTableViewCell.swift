@@ -10,43 +10,17 @@ import UIKit
 
 class MySpotMultiBidTableViewCell: UITableViewCell {
     var bid : Bid = Bid()
-
-
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
-    }
-
-    override func setSelected(selected: Bool, animated: Bool) {
-               
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
-    }
-
-   /*
     
-    func btnAccept_click(sender: UIButton!) {
-        print("tapped button 1")
-        var s = bid.value
-         s = s! + 2
+    @IBOutlet weak var donation: UILabel!
+    @IBOutlet weak var time: UILabel!
+    @IBOutlet weak var bidder: UILabel!
+    @IBOutlet weak var rating: UILabel!
+    @IBOutlet weak var accept: UIButton!
+    @IBOutlet weak var reject: UIButton!
+    
+    @IBAction func acceptBid(sender: AnyObject) {
     }
     
-    @IBAction func Reject_Clicked(sender: AnyObject) {
-        print("tapped button 12")
-      var s = bid.value
-        s = s! + 2
-        
+    @IBAction func rejectBid(sender: AnyObject) {
     }
-    */
-    @IBOutlet weak var lblTimr: UILabel!
-    
-    @IBOutlet weak var lblDonetion: UILabel!
-    
-    @IBOutlet weak var lblBidder: UILabel!
-    
-    @IBOutlet weak var btnAccept: UIButton!
-    
-    @IBOutlet weak var btnReject: UIButton!
-    
 }

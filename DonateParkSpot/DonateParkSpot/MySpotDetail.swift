@@ -17,11 +17,11 @@ class MySpotDetail: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.lblAddress.text =  String(format:"%f", DetailSpot.location.latitude) + "  " +  String(format:"%f", DetailSpot.location.longitude)
+        self.lblAddress.text =  String(format:"%f", DetailSpot.location.latitude!) + "  " +  String(format:"%f", DetailSpot.location.longitude!)
         self.lblMinPrice.text = String(DetailSpot.minDonation)
               
         let geoCoder = CLGeocoder()
-        let location = CLLocation(latitude: DetailSpot.location.latitude, longitude: DetailSpot.location.longitude)
+        let location = CLLocation(latitude: DetailSpot.location.latitude!, longitude: DetailSpot.location.longitude!)
         
         geoCoder.reverseGeocodeLocation(location, completionHandler: { (placemarks, error) -> Void in
             let placeArray = placemarks! as? [CLPlacemark]
