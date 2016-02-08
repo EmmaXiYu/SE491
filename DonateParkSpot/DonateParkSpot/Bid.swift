@@ -22,9 +22,9 @@ public class Bid {
     var noPaymentCancelTime: NSDate?
     var paymentMakeTime: NSDate?
     
-    init(object: PFObject?){
+    init?(object: PFObject?){
         if object == nil {
-            return
+            return nil
         }
         bidAcceptTime = object?["BidAcceptTime"] as? NSDate
         cancelByBidder = object?["CancelByBidder"] as? Bool
@@ -44,12 +44,12 @@ public class Bid {
     func toPFObjet() -> PFObject{
         let aux = PFObject(className: "Bid")
         aux.objectId = bidId
-        aux["BidAcceptTime"] = bidAcceptTime
-        aux["CancelByBidder"] = cancelByBidder
-        aux["NoPaymentCancelTime"] = noPaymentCancelTime
-        aux["PaymentMakeTime"] = paymentMakeTime
+        aux["BidAcceptTime"] = bidAcceptTime == nil ? NSNull() : bidAcceptTime
+        aux["CancelByBidder"] = cancelByBidder == nil ? NSNull() : cancelByBidder
+        aux["NoPaymentCancelTime"] = noPaymentCancelTime  == nil ? NSNull() : noPaymentCancelTime
+        aux["PaymentMakeTime"] = paymentMakeTime  == nil ? NSNull() : paymentMakeTime
         aux["StatusId"] = statusId
-        aux["spot"] = spot?.toPFObject()
+        aux["spot"] = spot == nil ? NSNull() : spot?.toPFObject()
         aux["user"] = bidder
         aux["value"] = value
         return aux

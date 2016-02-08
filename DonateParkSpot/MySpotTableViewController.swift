@@ -32,49 +32,15 @@ public class MySpotBiddingTableViewController: UITableViewController  {
         var query: PFQuery = PFQuery()
         query = PFQuery(className: "Spot")
         let currentUser = PFUser.currentUser()
-        
+        query.includeKey("owner")
         query.whereKey("owner", equalTo:currentUser!)
         
         query.findObjectsInBackgroundWithBlock {
             (objects:[PFObject]?, error:NSError?) -> Void in
             if error == nil {
                 for object in objects! {
-                    let s: Spot = Spot()
-                    let sgp = object["SpotGeoPoint"] as! PFGeoPoint
-                    let mPrice = object["minimumPrice"] as! Int
-                    let Latitude: CLLocationDegrees = sgp.latitude
-                    let Longtitude: CLLocationDegrees = sgp.longitude
-                    let ttl = object["leavingTime"] as! NSDate
-                    if object["addressText"] != nil
-                    {
-                        s.addressText = object["addressText"] as! String
-                    }
-                    else
-                    {
-                        s.addressText = "243 South Wabash Avenue Chicago, IL 60604"
-                        //TODO: For initial test only. If it is not read at the time of create Spot
-                    }
-                    if object["StatusId"] != nil
-                    {
-                        s.statusId = object["StatusId"] as! Int
-                    }
-                    else
-                    {
-                        s.statusId = 1
-                    }
-                    let location : Location = Location()
-                    location.latitude = Latitude
-                    location.longitude = Longtitude
-                    let formatter = NSDateFormatter()
-                    formatter.dateStyle = NSDateFormatterStyle.LongStyle
-                    formatter.timeStyle = .MediumStyle
-                    let dateString = formatter.stringFromDate(ttl)
-                    s.legalTime = dateString
-                    s.location = location
-                    s.minDonation = mPrice
-                    s.spotId = object.objectId!
-                    // Add the spot in to the collection
-                    self.datas.insert(s, atIndex: 0)
+                    let s = Spot(object: object)
+                    self.datas.append(s!)
                 }
                
             }
@@ -177,7 +143,7 @@ public class MySpotBiddingTableViewController: UITableViewController  {
         //cell.textLabel?.text = String(format:"%f", S.location.longitude) + "  " +  String(format:"%f", S.location.longitude)
         cell.textLabel?.text = S.addressText
         //cell.detailTextLabel!.text = S.legalTime + "        [" + String(S.Bids.count) + "]"
-        cell.detailTextLabel!.text = S.legalTime! + "        [..More..]"
+        cell.detailTextLabel!.text = (S.timeToLeave?.description)! + "        [..More..]"
         //var b:String = String(format:"%f", S.location.altitude)
         return cell
         

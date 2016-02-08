@@ -227,14 +227,14 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
                                  let pinLocation: CLLocationCoordinate2D = CLLocationCoordinate2D(latitude: pinLatitude, longitude: pinLongtitude)
                                 spotObject.location.latitude = pin!.latitude
                                 spotObject.location.longitude = pin!.longitude
-                                spotObject.addressText = object["addressText"] as? String
+                                spotObject.addressText = object["addressText"] as! String
                                 spotObject.spotId = object.objectId!
                                 // self.ownerId = object.objectId!
-                                spotObject.type = object["type"] as? Int
-                                spotObject.rate = object["rate"] as? Double
-                                spotObject.timeLeft = object["timeLeft"] as? Int
-                                spotObject.minDonation = object["minimumPrice"] as? Int
-                                spotObject.legalTime = object["legalTime"] as? String
+                                spotObject.type = object["type"] as! Int
+                                spotObject.rate = object["rate"] as! Double
+                                spotObject.timeLeft = object["timeLeft"] as! Int
+                                spotObject.minDonation = object["minimumPrice"] as! Int
+                                spotObject.legalTime = object["legalTime"] as! String
                                 spotObject.timeToLeave = object["leavingTime"] as! NSDate?
                                 spotObject.owner = object["owner"] as? PFUser
                                 let annotation = CustomerAnnotation(coordinate: pinLocation,spotObject: spotObject, title :spotObject.owner!.email!, subtitle: spotObject.owner!.getRatingAsSeller().description)
@@ -300,14 +300,14 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
                         let pin = object["SpotGeoPoint"] as? PFGeoPoint
                         spotObject.location.latitude = pin!.latitude
                         spotObject.location.longitude = pin!.longitude
-                        spotObject.addressText = object["addressText"] as? String
+                        spotObject.addressText = object["addressText"] as! String
                         spotObject.spotId = object.objectId!
-                        spotObject.type = object["type"] as? Int
-                        spotObject.rate = object["rate"] as? Double
-                        spotObject.timeLeft = object["timeLeft"] as? Int
-                        spotObject.minDonation = object["minimumPrice"] as? Int
-                        spotObject.legalTime = object["legalTime"] as? String
-                        spotObject.timeToLeave = object["leavingTime"] as! NSDate?
+                        spotObject.type = object["type"] as! Int
+                        spotObject.rate = object["rate"] as! Double
+                        spotObject.timeLeft = object["timeLeft"] as! Int
+                        spotObject.minDonation = object["minimumPrice"] as! Int
+                        spotObject.legalTime = object["legalTime"] as! String
+                        spotObject.timeToLeave = object["leavingTime"] as? NSDate
                         spotObject.owner = object["owner"] as? PFUser
                         self.addNewSpot(spotObject)
                     }

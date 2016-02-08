@@ -136,7 +136,7 @@ class MyBidTableViewController: UITableViewController {
             if error == nil {
                 for object in objects! {
                     let bi = Bid(object: object)
-                    self.datas.append(bi)
+                    self.datas.append(bi!)
                 }
            
                 self.tableView.reloadData()

@@ -26,18 +26,18 @@ class BuyDetailController :  UIViewController, MKMapViewDelegate {
         if spot != nil {
             self.title = spot!.owner!.email! + "'s Spot"
             
-            if spot!.type! == 1 {
+            if spot!.type == 1 {
                 type.text = "Paid Spot"
-                rate.text = "U$ " + spot!.rate!.description + "0"
+                rate.text = "U$ " + spot!.rate.description + "0"
                 timeToLeave.text = spot!.timeToLeave?.description
-                minDonation.text = "U$ " + spot!.minDonation!.description + ".00"
+                minDonation.text = "U$ " + spot!.minDonation.description + ".00"
             }else{
                 type.text = "Free Spot"
                 rate.text = "Free"
                 timeToLeave.text = "Zero Minutes"
-                minDonation.text = "U$ " + spot!.minDonation!.description + ".00"
+                minDonation.text = "U$ " + spot!.minDonation.description + ".00"
             }
-            donation.minimumValue = Double(spot!.minDonation!)
+            donation.minimumValue = Double(spot!.minDonation)
             donation.maximumValue = 1.79e307
             donation.stepValue = 1
             self.map.delegate = self

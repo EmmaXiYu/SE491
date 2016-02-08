@@ -32,6 +32,7 @@ class MySpotMultiBidTableViewController: UITableViewController {
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> MySpotMultiBidTableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("MyBidLabelCell", forIndexPath: indexPath) as! MySpotMultiBidTableViewCell
         let aux = bids[indexPath.row]
+        cell.bid = aux
         cell.donation.text = aux.value?.description
         cell.bidder.text = aux.bidder!.username
         cell.rating.text = aux.bidder?.getRatingAsBuyer().description
@@ -39,6 +40,7 @@ class MySpotMultiBidTableViewController: UITableViewController {
             cell.accept.enabled = false
             cell.reject.enabled = false
         }
+        cell.table = self
         return cell
     }
     
@@ -56,7 +58,7 @@ class MySpotMultiBidTableViewController: UITableViewController {
                     self.bids.removeAll()
                     for object in objects {
                         let aux = Bid(object: object)
-                        self.bids.append(aux)
+                        self.bids.append(aux!)
                     }
                     dispatch_async(dispatch_get_main_queue(), {
                         self.tableView.reloadData()
@@ -68,6 +70,5 @@ class MySpotMultiBidTableViewController: UITableViewController {
             }
         }
     }
-    
     
 }
