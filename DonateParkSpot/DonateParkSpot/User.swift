@@ -49,7 +49,7 @@ extension PFUser {
         for object in results {
             if object["StatusId"] as? Int == 3 {
                 sum3++
-            }else if object["StatusId"] as? Int == 6 {
+            }else if object["StatusId"] as? Int == 7 {
                 sum6++
             }
         }
