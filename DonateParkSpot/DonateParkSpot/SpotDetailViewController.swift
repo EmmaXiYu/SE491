@@ -96,7 +96,11 @@ class SpotDetailViewController: UITableViewController {
         } else {
             testObject["leavingTime"] = timePickerView.date
         }
-        testObject["minimumPrice"] = Float(minimumDonatePrice.text!)
+        var minimumPrice: Float = 0
+        if(minimumDonatePrice.text != ""){
+            minimumPrice = Float(minimumDonatePrice.text!)!
+        }
+        testObject["minimumPrice"] = minimumPrice
         testObject["owner"] = PFUser.currentUser()
         testObject["rate"] = Double(rate.text!)
         testObject["timeLeft"] = Int(timeLeft.text!)

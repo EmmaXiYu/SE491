@@ -45,15 +45,15 @@ extension PFUser {
         if results.count == 0 {
             return 0.0
         }
-        var sum3 = 0.0, sum6 = 0.0;
+        var sum3 = 0.0, sum7 = 0.0;
         for object in results {
             if object["StatusId"] as? Int == 3 {
                 sum3++
-            }else if object["StatusId"] as? Int == 6 {
-                sum6++
+            }else if object["StatusId"] as? Int == 7 {
+                sum7++
             }
         }
         
-        return (sum3 - sum6)/Double(results.count)
+        return (sum3 - sum7)/Double(results.count)
     }
 }
