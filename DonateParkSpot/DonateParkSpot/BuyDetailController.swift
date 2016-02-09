@@ -61,8 +61,11 @@ class BuyDetailController :  UIViewController, MKMapViewDelegate {
             if let a = annotation as? CustomerAnnotation {
                 let pinAnnotationView = MKPinAnnotationView(annotation: a, reuseIdentifier: "myPin")
                 //let ownerID:String = a.subtitle!
+                let spot = a.spot
+                let ownerScore = a.spot.owner?.getRatingAsSeller()
                 let name = a.title!
                 let ownerID:String = (a.spot.owner?.objectId)!
+                a.subtitle = String(ownerScore!)
                 let pic = UIImageView (image: UIImage(named: "test.png"))
                 pinAnnotationView.canShowCallout = true
                 pinAnnotationView.draggable = false

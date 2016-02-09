@@ -55,7 +55,14 @@ class Spot {
         minDonation = object?["minimumPrice"] as! Int
         timeToLeave = object?["leavingTime"] as? NSDate
         owner = object?["owner"] as? PFUser
+        if(object?["StatusId"] != nil)
+        {
         statusId = object?["StatusId"] as! Int
+        }
+        else
+        {
+        statusId = 1
+        }
         addressText = object?["addressText"] as! String
         legalTime = object?["legalTime"] as! String
         spotId = (object?.objectId)!
