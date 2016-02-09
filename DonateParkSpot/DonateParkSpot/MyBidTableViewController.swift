@@ -9,14 +9,14 @@
 import UIKit
 import Parse
 class MyBidTableViewController: UITableViewController {
-
-   
+    
+    
     var datas = [Bid] ()
     var ratingScore = [String:Double]()
     var ratingCount = [String:Int]()
-   
+    
     @IBOutlet weak var Menu: UIBarButtonItem!
-
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,8 +27,8 @@ class MyBidTableViewController: UITableViewController {
         
         self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
         
-
-
+        
+        
     }
     
     
@@ -42,11 +42,11 @@ class MyBidTableViewController: UITableViewController {
             (objects:[PFObject]?, error:NSError?) -> Void in
             if error == nil {
                 for object in objects!{
-                let name = object["userName"] as! String
-                users.append(name)
-                if(self.ratingScore[name] == nil){
-                    self.ratingScore[name] = 0
-                    self.ratingCount[name] = 0
+                    let name = object["userName"] as! String
+                    users.append(name)
+                    if(self.ratingScore[name] == nil){
+                        self.ratingScore[name] = 0
+                        self.ratingCount[name] = 0
                     }
                 }
             }
@@ -109,8 +109,8 @@ class MyBidTableViewController: UITableViewController {
                 }
             }
         }
-
-
+        
+        
     }
     
     func GetBidList()  {
@@ -119,10 +119,10 @@ class MyBidTableViewController: UITableViewController {
         
         //query.whereKey("UserId", equalTo:"pravangsu@gmail.com")
         //get the user id of the current user
-       query.whereKey("UserId", equalTo:(PFUser.currentUser()?.username)!)
-
+        query.whereKey("UserId", equalTo:(PFUser.currentUser()?.username)!)
         
-       /*
+        
+        /*
         TODO: do in Next Release , Winter Quater
         let currentUser = PFUser.currentUser()
         query.whereKey("owner", equalTo: PFObject(withoutDataWithClassName:"User", objectId:currentUser))
@@ -138,7 +138,7 @@ class MyBidTableViewController: UITableViewController {
                     let bi = Bid(object: object)
                     self.datas.append(bi!)
                 }
-           
+                
                 self.tableView.reloadData()
             }
         }
@@ -148,37 +148,37 @@ class MyBidTableViewController: UITableViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
+    
     // MARK: - Table view data source
-
+    
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
         return 1
     }
-
+    
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-          return datas.count
+        return datas.count
     }
-
+    
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("MyBidCell", forIndexPath: indexPath) as!
         MyBidTableViewCell
         
         return updateCell(cell , currentIndex : indexPath.row)
-
+        
     }
     
-
+    
     /*
     // Override to support conditional editing of the table view.
     override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
+    // Return false if you do not want the specified item to be editable.
+    return true
     }
     */
-
+    
     func updateCell(objCell : MyBidTableViewCell , currentIndex : Int) -> MyBidTableViewCell
     {
         
@@ -192,14 +192,17 @@ class MyBidTableViewController: UITableViewController {
         let formatter = NSDateFormatter()
         formatter.dateStyle = NSDateFormatterStyle.LongStyle
         formatter.timeStyle = .MediumStyle
-       // let dateString = formatter.stringFromDate(bid.timestamp!)
-
+        // let dateString = formatter.stringFromDate(bid.timestamp!)
+        if(bid.cancelByBidder == nil)
+        {
+            bid.cancelByBidder = false
+        }
         
         self.updateCellColor(objCell , CancelByBidder :  bid.cancelByBidder!)
         
-    
-       objCell.btnCancel.addTarget(self, action: "btnCancel_click:", forControlEvents: .TouchUpInside)
-       objCell.btnCancel.tag = currentIndex
+        
+        objCell.btnCancel.addTarget(self, action: "btnCancel_click:", forControlEvents: .TouchUpInside)
+        objCell.btnCancel.tag = currentIndex
         
         return objCell
     }
@@ -211,7 +214,7 @@ class MyBidTableViewController: UITableViewController {
             objCell.btnCancel.enabled = false
             objCell.backgroundColor = UIColor.redColor().colorWithAlphaComponent(0.10)
         }
-     
+        
     }
     func btnCancel_click(sender: UIButton!) {
         
@@ -246,7 +249,7 @@ class MyBidTableViewController: UITableViewController {
             }
         }
     }
-
+    
     
     func getCellForButton(sender: UIButton!)-> MyBidTableViewCell
     {
@@ -275,8 +278,8 @@ class MyBidTableViewController: UITableViewController {
         update.saveInBackgroundWithBlock{
             (success:Bool,error:NSError?) -> Void in
             if(success){
-                }
             }
+        }
     }
     func formulateScore(rating:Double,count:Int) ->Double{
         if count == 0{
@@ -297,6 +300,6 @@ class MyBidTableViewController: UITableViewController {
         score = score-1;
         return (score/Double(count)+1.0)*2.5;
     }
-
-
+    
+    
 }
