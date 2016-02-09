@@ -221,6 +221,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
                             if timeToLeave?.compare(NSDate()) == NSComparisonResult.OrderedDescending {
                                 
                                 let spotObject = Spot()
+                                
                                 let pin = object["SpotGeoPoint"] as? PFGeoPoint
                                 let pinLatitude: CLLocationDegrees = pin!.latitude
                                 let pinLongtitude: CLLocationDegrees = pin!.longitude
