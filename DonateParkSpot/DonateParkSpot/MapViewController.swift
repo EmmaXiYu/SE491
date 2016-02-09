@@ -261,7 +261,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
     
     func searchForNewSpots(){
         let coordinate = mapView.centerCoordinate
-        var radium = PFUser.currentUser()!["SearchRadium"] as? String
+        var radium = PFUser.currentUser()?["SearchRadium"] as? String
         var radiumDouble : Double
         if radium == nil
         {

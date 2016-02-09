@@ -36,7 +36,7 @@ class Spot {
         result["timeLeft"] = timeLeft
         result["minimumPrice"] = minDonation
         result["leavingTime"] = timeToLeave == nil ? NSNull() : timeToLeave
-        result["owner"] = owner
+        result["owner"] = owner == nil ? NSNull() : owner
         result["StatusId"] = statusId
         result["addressText"] = addressText
         result["legalTime"] = legalTime

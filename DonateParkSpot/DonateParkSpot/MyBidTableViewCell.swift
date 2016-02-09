@@ -9,22 +9,38 @@
 import UIKit
 
 class MyBidTableViewCell: UITableViewCell {
-   var bid : Bid = Bid()
+    var bid : Bid = Bid()
+    var table : MyBidTableViewController?
     
     @IBOutlet weak var lblAddress: UILabel!
-    @IBOutlet weak var lblBidder: UILabel!
     @IBOutlet weak var lblDonetion: UILabel!
     @IBOutlet weak var btnCancel: UIButton!
-    @IBOutlet weak var lblRating: UILabel!
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code 
+
+    @IBAction func cancel(sender: AnyObject) {
+        bid.statusId = 4
+        bid.cancelByBidder = true
+        let obj = bid.toPFObjet()
+        obj.saveInBackgroundWithBlock{
+            (success: Bool, error: NSError?) -> Void in
+            if (success) {
+                dispatch_async(dispatch_get_main_queue(), {
+                    let alert = UIAlertView()
+                    alert.title = "Success!"
+                    alert.message = "Bid Canceled!"
+                    alert.addButtonWithTitle("OK")
+                    alert.show()
+                    self.table?.GetBidList()
+                })
+            } else {
+                dispatch_async(dispatch_get_main_queue(), {
+                    let alert = UIAlertView()
+                    alert.title = "Error!"
+                    alert.message = "Something went wrong!"
+                    alert.addButtonWithTitle("OK")
+                    alert.show()
+                    self.table?.GetBidList()
+                })
+            }
+        }
     }
-
-    override func setSelected(selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
-    }
-
 }
