@@ -102,8 +102,16 @@ class SpotDetailViewController: UITableViewController {
         }
         testObject["minimumPrice"] = minimumPrice
         testObject["owner"] = PFUser.currentUser()
-        testObject["rate"] = Double(rate.text!)
-        testObject["timeLeft"] = Int(timeLeft.text!)
+        var rateValue:Double = 0
+        if(rate.text != "" ){
+            rateValue = Double(rate.text!)!
+        }
+        testObject["rate"] = rateValue
+        var timeLeftValue:Double = 0
+        if(timeLeft.text != "" ){
+            timeLeftValue = Double(timeLeft.text!)!
+        }
+        testObject["timeLeft"] = timeLeftValue
         testObject["legalTime"] = info.text
         testObject["type"] = type.selectedSegmentIndex
         testObject["addressText"] = addressText
