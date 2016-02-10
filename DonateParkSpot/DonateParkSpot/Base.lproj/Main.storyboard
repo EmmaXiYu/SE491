@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9532" systemVersion="15A284" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="wLP-zy-ghc">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9532" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="wLP-zy-ghc">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
@@ -418,7 +418,7 @@
             </objects>
             <point key="canvasLocation" x="1214.5" y="-1417.5"/>
         </scene>
-        <!--My Bid Table View Controller-->
+        <!--My Bids-->
         <scene sceneID="AWw-4i-hMe">
             <objects>
                 <tableViewController id="5Ic-i7-UCO" customClass="MyBidTableViewController" customModule="DonateParkSpot" customModuleProvider="target" sceneMemberID="viewController">
@@ -426,67 +426,65 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <label key="tableHeaderView" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="My Bids" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="EyR-rq-3qq">
-                            <rect key="frame" x="0.0" y="64" width="600" height="44"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="21"/>
-                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                            <nil key="highlightedColor"/>
-                        </label>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="MyBidCell" rowHeight="74" id="Qrg-nQ-FoL" customClass="MyBidTableViewCell" customModule="DonateParkSpot" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="136" width="600" height="74"/>
+                                <rect key="frame" x="0.0" y="92" width="600" height="74"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Qrg-nQ-FoL" id="CLP-lu-M5Q">
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="73"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Address" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="A5D-kf-eIe">
-                                            <rect key="frame" x="8" y="0.0" width="80" height="21"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NcX-bO-tVg">
+                                            <rect key="frame" x="8" y="22" width="11" height="21"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="$" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NcX-bO-tVg">
-                                            <rect key="frame" x="8" y="22" width="42" height="21"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="lblAddess" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="U1n-rR-T2Y">
+                                            <rect key="frame" x="79" y="0.0" width="75" height="21"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Seller" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Iy-YS-etm">
-                                            <rect key="frame" x="8" y="44" width="60" height="21"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="lblAmount" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fJv-RT-0A3">
+                                            <rect key="frame" x="79" y="22" width="78" height="21"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="lblAddess" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="U1n-rR-T2Y">
-                                            <rect key="frame" x="109" y="0.0" width="206" height="21"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="lblAmount" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fJv-RT-0A3">
-                                            <rect key="frame" x="109" y="22" width="206" height="21"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="lblSeller" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="egJ-8K-0gc">
-                                            <rect key="frame" x="109" y="44" width="230" height="21"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nFv-jN-x3j">
-                                            <rect key="frame" x="339" y="0.0" width="58" height="30"/>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nFv-jN-x3j">
+                                            <rect key="frame" x="8" y="51" width="584" height="14"/>
                                             <state key="normal" title="Cancel"/>
+                                            <connections>
+                                                <action selector="cancel:" destination="Qrg-nQ-FoL" eventType="touchUpInside" id="qmK-lA-7FW"/>
+                                            </connections>
                                         </button>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Address" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="A5D-kf-eIe">
+                                            <rect key="frame" x="8" y="0.0" width="63" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
                                     </subviews>
+                                    <constraints>
+                                        <constraint firstAttribute="bottomMargin" secondItem="nFv-jN-x3j" secondAttribute="bottom" id="4PV-zE-rOR"/>
+                                        <constraint firstItem="fJv-RT-0A3" firstAttribute="leading" secondItem="U1n-rR-T2Y" secondAttribute="leading" id="5Pa-HA-g4H"/>
+                                        <constraint firstAttribute="leadingMargin" secondItem="nFv-jN-x3j" secondAttribute="leading" id="8Bp-li-Rhh"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="nFv-jN-x3j" secondAttribute="trailing" id="Fkq-DT-vuU"/>
+                                        <constraint firstItem="U1n-rR-T2Y" firstAttribute="leading" secondItem="A5D-kf-eIe" secondAttribute="trailing" constant="8" id="Icf-I5-9Nd"/>
+                                        <constraint firstAttribute="leadingMargin" secondItem="NcX-bO-tVg" secondAttribute="leading" id="SO7-pE-VNR"/>
+                                        <constraint firstItem="nFv-jN-x3j" firstAttribute="top" secondItem="NcX-bO-tVg" secondAttribute="bottom" constant="8" id="ccV-DB-Tyf"/>
+                                        <constraint firstItem="fJv-RT-0A3" firstAttribute="top" secondItem="U1n-rR-T2Y" secondAttribute="bottom" constant="1" id="hzG-ml-tVr"/>
+                                        <constraint firstItem="NcX-bO-tVg" firstAttribute="top" secondItem="A5D-kf-eIe" secondAttribute="bottom" constant="1" id="mbC-wU-7sy"/>
+                                        <constraint firstItem="A5D-kf-eIe" firstAttribute="top" secondItem="CLP-lu-M5Q" secondAttribute="topMargin" constant="-8" id="n8H-KQ-5Lw"/>
+                                        <constraint firstItem="U1n-rR-T2Y" firstAttribute="top" secondItem="CLP-lu-M5Q" secondAttribute="topMargin" constant="-8" id="ru7-mM-zTG"/>
+                                        <constraint firstItem="nFv-jN-x3j" firstAttribute="top" secondItem="fJv-RT-0A3" secondAttribute="bottom" constant="8" id="w71-vP-RVC"/>
+                                        <constraint firstAttribute="leadingMargin" secondItem="A5D-kf-eIe" secondAttribute="leading" id="za0-Or-ySn"/>
+                                    </constraints>
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="btnCancel" destination="nFv-jN-x3j" id="Wpz-Hw-Z91"/>
                                     <outlet property="lblAddress" destination="U1n-rR-T2Y" id="kDm-lJ-SSi"/>
-                                    <outlet property="lblBidder" destination="egJ-8K-0gc" id="lQS-Lb-dnV"/>
                                     <outlet property="lblDonetion" destination="fJv-RT-0A3" id="TQF-PQ-2od"/>
                                 </connections>
                             </tableViewCell>
@@ -497,7 +495,7 @@
                         </connections>
                     </tableView>
                     <toolbarItems/>
-                    <navigationItem key="navigationItem" id="rc6-6C-dlv">
+                    <navigationItem key="navigationItem" title="My Bids" id="rc6-6C-dlv">
                         <barButtonItem key="leftBarButtonItem" title="Menu" id="ECM-oO-mTj"/>
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
