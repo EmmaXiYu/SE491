@@ -117,9 +117,9 @@ class SpotDetailNextViewController: UIViewController {
                 print(error)
             }
         }
-    //let installation = PFInstallation.currentInstallation()
-    //    installation["SpotOwner"] = spotObject["owner"] as! PFUser
-    //    installation.saveInBackground()
+    let installation = PFInstallation.currentInstallation()
+       installation["SpotOwner"] = spotObject.owner
+       installation.saveInBackground()
     }
     /*
     testObject.saveInBackgroundWithBlock { (success, error) -> Void in

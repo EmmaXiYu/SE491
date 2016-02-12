@@ -135,6 +135,7 @@ class BuyDetailController :  UIViewController, MKMapViewDelegate {
         bid["spot"] = PFObject(withoutDataWithClassName: "Spot", objectId: spot?.spotId)
         bid["StatusId"] = 0  // put 0 by defualt
         bid["UserId"] = user?.email
+        bid["CancelByBidder"] = false 
         bid.saveInBackground()
         
         updateSpot((self.spot?.spotId)!, status : 99)
@@ -156,6 +157,10 @@ class BuyDetailController :  UIViewController, MKMapViewDelegate {
             push.setQuery(pushQuery) // Set our Installation query
             push.setData(data)
             push.sendPushInBackground()
+            
+            let installation = PFInstallation.currentInstallation()
+            installation["SpotBidder"] = bid["user"] as! PFUser
+            installation.saveInBackground()
 
             
         self.dismissViewControllerAnimated(true, completion: nil)
