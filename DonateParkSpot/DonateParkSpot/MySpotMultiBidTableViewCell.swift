@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Parse
 
 class MySpotMultiBidTableViewCell: UITableViewCell {
     var bid : Bid = Bid()
@@ -25,6 +26,7 @@ class MySpotMultiBidTableViewCell: UITableViewCell {
         let object = bid.toPFObjet()
         object.saveInBackgroundWithBlock{ (success: Bool, error: NSError?) -> Void in
             if (success) {
+                
                 dispatch_async(dispatch_get_main_queue(), {
                     let alert = UIAlertView()
                     alert.title = "Success!"
@@ -33,7 +35,25 @@ class MySpotMultiBidTableViewCell: UITableViewCell {
                     alert.show()
                     self.table?.getBids()
                 })
-            } else {
+                
+                let pushQuery = PFInstallation.query()
+                pushQuery!.whereKey("SpotBidder", equalTo: object["user"] as! PFUser)
+                let ifCancelledByBidder = object["CancelByBidder"] as! Bool
+                if ifCancelledByBidder  != true {
+                    let data = [
+                        "alert" : "You bid is accepted. Go and pay for it." ,
+                        "badge" : "Increment",
+                        "sound" : "iphonenoti_cRjTITC7.mp3",]
+                    // Send push notification to query
+                    let push = PFPush()
+                    push.setQuery(pushQuery) // Set our Installation query
+                    push.setData(data)
+                    push.sendPushInBackground()
+                }
+            
+            
+            }
+                else {
                 dispatch_async(dispatch_get_main_queue(), {
                     let alert = UIAlertView()
                     alert.title = "Error!"

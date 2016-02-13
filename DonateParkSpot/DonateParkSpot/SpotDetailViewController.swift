@@ -10,7 +10,9 @@ import UIKit
 import Parse
 
 
-class SpotDetailViewController: UITableViewController {
+class SpotDetailViewController: UITableViewController, UIPickerViewDelegate,
+    UIPickerViewDataSource
+{
     
    
     
@@ -20,25 +22,38 @@ class SpotDetailViewController: UITableViewController {
     @IBOutlet weak var info: UITextField!
     @IBOutlet weak var minimumDonatePrice: UITextField!
     @IBOutlet weak var type: UISegmentedControl!
+    
+    
+    @IBOutlet weak var AddressTextField: UITextField!
+    
     var timePickerView  : UIDatePicker = UIDatePicker()
     
     var id = String();
     var latitudeD = Double()
     var longitudeD = Double()
     var addressText = ""
-    
-    
+    var data = ["Current Address", "Another Address"]
+    var picker = UIPickerView ()
+    var currentAddress = ""
+       let testObject = PFObject(className: "Spot")
+            var currentSpot = Spot()
     override func viewDidLoad() {
+        picker.delegate = self
+        picker.dataSource = self
+        AddressTextField.inputView = picker 
         let geocoder = CLGeocoder()
         let location = CLLocation(latitude: latitudeD, longitude: longitudeD)
         geocoder.reverseGeocodeLocation(location, completionHandler: { (placemarks, error) -> Void in
             self.addressText = placemarks![0].name!
+            
         })
         super.viewDidLoad()
         rate.text = "0.00"
         rate.enabled = false
         timeLeft.text = "0"
         timeLeft.enabled = false
+        data = ["Current Address", "Another Address"]
+        AddressTextField.text = data[0]
         
         
         let currentDate = NSDate()  //5 -  get the current date
@@ -52,6 +67,26 @@ class SpotDetailViewController: UITableViewController {
         
     }
     
+    
+   
+    func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int
+    {
+        return 1
+    }
+    
+ 
+   func pickerView(pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int
+   {
+    return data.count
+    }
+
+    func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        AddressTextField.text = data [row]
+     AddressTextField.resignFirstResponder()
+    }
+    func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+       return  data[row]
+    }
     @IBAction func userDOBSelectedAction(sender: UITextField) {
         timeToLeaveTextField.resignFirstResponder()
     }
@@ -86,62 +121,66 @@ class SpotDetailViewController: UITableViewController {
     
     @IBAction func submitTapped(sender: AnyObject) {
     
-      let geoPoint = PFGeoPoint(latitude: latitudeD ,longitude: longitudeD);
+     
+
+     
+ 
         
+      performSegueWithIdentifier("spotDetailNext", sender: self)
+        }
+    override func prepareForSegue(segue:(UIStoryboardSegue!), sender:AnyObject!)
+    {
         
-        let testObject = PFObject(className: "Spot")
-        testObject["SpotGeoPoint"] = geoPoint
+        if AddressTextField.text == "Current Address"
+            
+        {
+            let geoPoint = PFGeoPoint(latitude: latitudeD ,longitude: longitudeD);
+            let currentLocation = Location.init(object: geoPoint)
+            currentSpot.location = currentLocation
+            currentSpot.addressText = addressText
+            
+        }
         if timePickerView.date.compare(NSDate()) == NSComparisonResult.OrderedAscending{
-            testObject["leavingTime"] = timePickerView.date.dateByAddingTimeInterval(86400)
+            currentSpot.timeToLeave =  timePickerView.date.dateByAddingTimeInterval(86400)
+            
         } else {
-            testObject["leavingTime"] = timePickerView.date
+            currentSpot.timeToLeave = timePickerView.date
         }
         var minimumPrice: Float = 0
         if(minimumDonatePrice.text != ""){
             minimumPrice = Float(minimumDonatePrice.text!)!
+            currentSpot.minDonation = Int(minimumDonatePrice.text!)!
         }
-        testObject["minimumPrice"] = minimumPrice
-        testObject["owner"] = PFUser.currentUser()
+        currentSpot.minDonation = Int(minimumPrice)
+        currentSpot.owner = PFUser.currentUser()
         var rateValue:Double = 0
         if(rate.text != "" ){
             rateValue = Double(rate.text!)!
+            currentSpot.rate = Double(rate.text!)!
         }
-        testObject["rate"] = rateValue
+        currentSpot.rate = rateValue
         var timeLeftValue:Double = 0
         if(timeLeft.text != "" ){
             timeLeftValue = Double(timeLeft.text!)!
+            currentSpot.timeLeft = Int(timeLeft.text!)!
         }
-        testObject["timeLeft"] = timeLeftValue
-        testObject["legalTime"] = info.text
-        testObject["type"] = type.selectedSegmentIndex
-        testObject["addressText"] = addressText
+        currentSpot.timeLeft = Int(timeLeftValue)
+        currentSpot.legalTime = info.text!
+        currentSpot.type = type.selectedSegmentIndex
+        
 
-        testObject.saveInBackgroundWithBlock { (success, error) -> Void in
-            
-            if (error == nil){
-                self.dismissViewControllerAnimated(true, completion: nil);
-
-            }else{
-            }
+        if (segue.identifier == "spotDetailNext")
+        {
+            let spotNextView = segue!.destinationViewController as! SpotDetailNextViewController
+            spotNextView.spotObject = currentSpot
+            spotNextView.addressIndicator = AddressTextField.text!
+            spotNextView.currentAddress = addressText
         }
         
-        let installation = PFInstallation.currentInstallation()
-        installation["SpotOwner"] = testObject["owner"] as! PFUser
-        installation.saveInBackground()
-    
     }
-    
-    
-//    func prepareForSegueSpotDetailClientClicked(segue: UIStoryboardSegue, sender: AnyObject?) {
-//        if(segue.identifier=="SpotView"){
-//            _ = segue.destinationViewController as! MapViewController
-//        }
-//    }
-    
-    @IBAction func CancelButtonTapped(sender: AnyObject) {
-//        self.performSegueWithIdentifier("SpotView", sender: nil)
-    }
-    
     
 
-}
+        
+    
+    }
+    

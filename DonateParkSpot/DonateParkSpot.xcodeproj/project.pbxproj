@@ -56,6 +56,7 @@
 		1815C0DD1BFA9356003D9390 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1815C0DC1BFA9356003D9390 /* SettingViewController.swift */; };
 		1815C0DF1BFA9480003D9390 /* MyBidsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1815C0DE1BFA9480003D9390 /* MyBidsViewController.swift */; };
 		1820272D1C56A30E00BEDAD1 /* RetrievePasswordController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1820272C1C56A30E00BEDAD1 /* RetrievePasswordController.swift */; };
+		1870455E1C6BA9F200067A08 /* SpotDetailNextViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1870455D1C6BA9F200067A08 /* SpotDetailNextViewController.swift */; };
 		18AE41611BE84EB000A4A62B /* BackTableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18AE41601BE84EB000A4A62B /* BackTableVC.swift */; };
 		18AE41671BE84FEB00A4A62B /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18AE41661BE84FEB00A4A62B /* SWRevealViewController.m */; };
 		18AE41741BEE907800A4A62B /* test.png in Resources */ = {isa = PBXBuildFile; fileRef = 18AE41731BEE907800A4A62B /* test.png */; };
@@ -139,6 +140,7 @@
 		1815C0DC1BFA9356003D9390 /* SettingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
 		1815C0DE1BFA9480003D9390 /* MyBidsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyBidsViewController.swift; sourceTree = "<group>"; };
 		1820272C1C56A30E00BEDAD1 /* RetrievePasswordController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RetrievePasswordController.swift; sourceTree = "<group>"; };
+		1870455D1C6BA9F200067A08 /* SpotDetailNextViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpotDetailNextViewController.swift; sourceTree = "<group>"; };
 		18AE41601BE84EB000A4A62B /* BackTableVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 5; lastKnownFileType = sourcecode.swift; path = BackTableVC.swift; sourceTree = "<group>"; tabWidth = 5; usesTabs = 0; };
 		18AE41641BE84FE400A4A62B /* SWRevealViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SWRevealViewController.h; sourceTree = "<group>"; };
 		18AE41661BE84FEB00A4A62B /* SWRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWRevealViewController.m; sourceTree = "<group>"; };
@@ -212,6 +214,7 @@
 		104814051BFD62FC009476FB /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				1870455D1C6BA9F200067A08 /* SpotDetailNextViewController.swift */,
 				104814081BFD653C009476FB /* CellController */,
 				18AE41601BE84EB000A4A62B /* BackTableVC.swift */,
 				B8179AF91BE0628B00F218F1 /* MySpotTableViewController.swift */,
@@ -531,6 +534,7 @@
 				1815C0DD1BFA9356003D9390 /* SettingViewController.swift in Sources */,
 				180A14A71BDC16E9005F4221 /* User.swift in Sources */,
 				180C3AFD1BD9F0F400E7E5F5 /* DonateParkSpot.xcdatamodeld in Sources */,
+				1870455E1C6BA9F200067A08 /* SpotDetailNextViewController.swift in Sources */,
 				B8A109411BF6F184003503B1 /* MyBidTableViewCell.swift in Sources */,
 				10B75D6D1BE06949009B88DC /* Bid.swift in Sources */,
 				180A14AD1BDC5074005F4221 /* SpotDetailViewController.swift in Sources */,
