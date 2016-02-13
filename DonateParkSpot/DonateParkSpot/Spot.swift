@@ -57,13 +57,13 @@ class Spot {
         owner = object?["owner"] as? PFUser
         if(object?["StatusId"] != nil)
         {
-        statusId = object?["StatusId"] as! Int
+            statusId = object?["StatusId"] as! Int
         }
         else
         {
-        statusId = 1
+            statusId = 1
         }
-        addressText = object?["addressText"] as! String
+        addressText = object?["addressText"] == nil ? "" : object?["addressText"] as! String
         legalTime = object?["legalTime"] as! String
         spotId = (object?.objectId)!
     }

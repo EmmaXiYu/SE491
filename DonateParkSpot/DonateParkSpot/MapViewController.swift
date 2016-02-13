@@ -268,6 +268,10 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
             radiumDouble = 1
             
             let user = PFUser.currentUser()
+            if user == nil {
+                return
+            }
+        
             
             user!["SearchRadium"] = "1"
             user!.saveInBackgroundWithBlock({
@@ -297,20 +301,8 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
                     
                     if timeToLeave?.compare(NSDate()) == NSComparisonResult.OrderedDescending {
                         
-                        let spotObject = Spot()
-                        let pin = object["SpotGeoPoint"] as? PFGeoPoint
-                        spotObject.location.latitude = pin!.latitude
-                        spotObject.location.longitude = pin!.longitude
-                        spotObject.addressText = object["addressText"] as! String
-                        spotObject.spotId = object.objectId!
-                        spotObject.type = object["type"] as! Int
-                        spotObject.rate = object["rate"] as! Double
-                        spotObject.timeLeft = object["timeLeft"] as! Int
-                        spotObject.minDonation = object["minimumPrice"] as! Int
-                        spotObject.legalTime = object["legalTime"] as! String
-                        spotObject.timeToLeave = object["leavingTime"] as? NSDate
-                        spotObject.owner = object["owner"] as? PFUser
-                        self.addNewSpot(spotObject)
+                        let spotObject = Spot(object: object)
+                        self.addNewSpot(spotObject!)
                     }
                 }
             }
