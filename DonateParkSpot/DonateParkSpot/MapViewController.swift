@@ -220,30 +220,11 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
                             let timeToLeave = object["leavingTime"] as! NSDate?
                             if timeToLeave?.compare(NSDate()) == NSComparisonResult.OrderedDescending {
                                 
-                                let spotObject = Spot()
+                                let spotObject = Spot(object: object)
+                                if spotObject != nil {
+                                    self.addNewSpot(spotObject!)
+                                }
                                 
-                                let pin = object["SpotGeoPoint"] as? PFGeoPoint
-                                let pinLatitude: CLLocationDegrees = pin!.latitude
-                                let pinLongtitude: CLLocationDegrees = pin!.longitude
-                                 let pinLocation: CLLocationCoordinate2D = CLLocationCoordinate2D(latitude: pinLatitude, longitude: pinLongtitude)
-                                spotObject.location.latitude = pin!.latitude
-                                spotObject.location.longitude = pin!.longitude
-                                spotObject.addressText = object["addressText"] as! String
-                                spotObject.spotId = object.objectId!
-                                // self.ownerId = object.objectId!
-                                spotObject.type = object["type"] as! Int
-                                spotObject.rate = object["rate"] as! Double
-                                spotObject.timeLeft = object["timeLeft"] as! Int
-                                spotObject.minDonation = object["minimumPrice"] as! Int
-                                spotObject.legalTime = object["legalTime"] as! String
-                                spotObject.timeToLeave = object["leavingTime"] as! NSDate?
-                                spotObject.owner = object["owner"] as? PFUser
-                                let annotation = CustomerAnnotation(coordinate: pinLocation,spotObject: spotObject, title :spotObject.owner!.email!, subtitle: spotObject.owner!.getRatingAsSeller().description)
-                                annotation.spot = spotObject
-                                //annotation.subtitle = "Rating bar here"
-                                let allAnnotations = self.mapView.annotations
-                                self.mapView.removeAnnotations(allAnnotations)
-                                self.mapView.addAnnotation(annotation)
                             }
                         }
                     }
