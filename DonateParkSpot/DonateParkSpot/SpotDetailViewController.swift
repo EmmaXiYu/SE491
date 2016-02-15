@@ -35,8 +35,9 @@ class SpotDetailViewController: UITableViewController, UIPickerViewDelegate,
     var data = ["Current Address", "Another Address"]
     var picker = UIPickerView ()
     var currentAddress = ""
-       let testObject = PFObject(className: "Spot")
-            var currentSpot = Spot()
+    let testObject = PFObject(className: "Spot")
+    var currentSpot = Spot()
+    
     override func viewDidLoad() {
         picker.delegate = self
         picker.dataSource = self
@@ -75,9 +76,9 @@ class SpotDetailViewController: UITableViewController, UIPickerViewDelegate,
     }
     
  
-   func pickerView(pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int
-   {
-    return data.count
+    func pickerView(pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int
+    {
+        return data.count
     }
 
     func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {

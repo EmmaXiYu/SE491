@@ -1360,18 +1360,37 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Address" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="siB-vH-VC8">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Address" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="siB-vH-VC8">
                                                     <rect key="frame" x="18" y="11" width="63" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="10"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Aq8-ri-chm">
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Aq8-ri-chm">
                                                     <rect key="frame" x="128" y="5" width="239" height="30"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits"/>
                                                 </textField>
                                             </subviews>
+                                            <constraints>
+                                                <constraint firstItem="Aq8-ri-chm" firstAttribute="top" secondItem="GLy-4M-T4R" secondAttribute="topMargin" constant="-3" id="GnM-nB-lt0"/>
+                                                <constraint firstItem="Aq8-ri-chm" firstAttribute="centerY" secondItem="siB-vH-VC8" secondAttribute="centerY" id="IWV-QN-ZRB"/>
+                                                <constraint firstItem="Aq8-ri-chm" firstAttribute="leading" secondItem="siB-vH-VC8" secondAttribute="trailing" constant="47" id="ZaE-42-3BN"/>
+                                                <constraint firstItem="siB-vH-VC8" firstAttribute="top" secondItem="GLy-4M-T4R" secondAttribute="topMargin" constant="3" id="ZaT-Yd-msX"/>
+                                                <constraint firstItem="siB-vH-VC8" firstAttribute="centerY" secondItem="GLy-4M-T4R" secondAttribute="centerY" id="d3W-T7-EAE"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="siB-vH-VC8" secondAttribute="bottom" constant="3.5" id="hkE-wh-ZLF"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="Aq8-ri-chm" secondAttribute="bottom" constant="0.5" id="jQs-Ko-9oM"/>
+                                                <constraint firstItem="siB-vH-VC8" firstAttribute="leading" secondItem="GLy-4M-T4R" secondAttribute="leadingMargin" constant="10" id="qda-fS-mIa"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="Aq8-ri-chm" secondAttribute="trailing" id="tC9-m1-PVX"/>
+                                            </constraints>
+                                            <variation key="default">
+                                                <mask key="constraints">
+                                                    <exclude reference="ZaT-Yd-msX"/>
+                                                    <exclude reference="hkE-wh-ZLF"/>
+                                                    <exclude reference="GnM-nB-lt0"/>
+                                                    <exclude reference="jQs-Ko-9oM"/>
+                                                </mask>
+                                            </variation>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                 </cells>
