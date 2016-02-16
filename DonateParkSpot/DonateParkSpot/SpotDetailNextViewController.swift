@@ -63,10 +63,12 @@ class SpotDetailNextViewController: UIViewController {
                     self.spotObject.location = Location.init(object: geoPoint)
                     self.spotObject.addressText = self.anotherAddress.text!
                     self.spotObject.toPFObject().saveInBackground()
+                    self.navigationController?.popToRootViewControllerAnimated(true)
                 }
             })
         }else{
             self.spotObject.toPFObject().saveInBackground()
+            self.navigationController?.popToRootViewControllerAnimated(true)
         }
         let installation = PFInstallation.currentInstallation()
         installation["SpotOwner"] = spotObject.owner

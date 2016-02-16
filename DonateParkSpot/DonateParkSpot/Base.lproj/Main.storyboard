@@ -1353,46 +1353,6 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="ZW1-k7-Go0">
-                                        <rect key="frame" x="0.0" y="328" width="375" height="44"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ZW1-k7-Go0" id="GLy-4M-T4R">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Address" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="siB-vH-VC8">
-                                                    <rect key="frame" x="18" y="11" width="63" height="21"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="10"/>
-                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Aq8-ri-chm">
-                                                    <rect key="frame" x="128" y="5" width="239" height="30"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <textInputTraits key="textInputTraits"/>
-                                                </textField>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstItem="Aq8-ri-chm" firstAttribute="top" secondItem="GLy-4M-T4R" secondAttribute="topMargin" constant="-3" id="GnM-nB-lt0"/>
-                                                <constraint firstItem="Aq8-ri-chm" firstAttribute="centerY" secondItem="siB-vH-VC8" secondAttribute="centerY" id="IWV-QN-ZRB"/>
-                                                <constraint firstItem="Aq8-ri-chm" firstAttribute="leading" secondItem="siB-vH-VC8" secondAttribute="trailing" constant="47" id="ZaE-42-3BN"/>
-                                                <constraint firstItem="siB-vH-VC8" firstAttribute="top" secondItem="GLy-4M-T4R" secondAttribute="topMargin" constant="3" id="ZaT-Yd-msX"/>
-                                                <constraint firstItem="siB-vH-VC8" firstAttribute="centerY" secondItem="GLy-4M-T4R" secondAttribute="centerY" id="d3W-T7-EAE"/>
-                                                <constraint firstAttribute="bottomMargin" secondItem="siB-vH-VC8" secondAttribute="bottom" constant="3.5" id="hkE-wh-ZLF"/>
-                                                <constraint firstAttribute="bottomMargin" secondItem="Aq8-ri-chm" secondAttribute="bottom" constant="0.5" id="jQs-Ko-9oM"/>
-                                                <constraint firstItem="siB-vH-VC8" firstAttribute="leading" secondItem="GLy-4M-T4R" secondAttribute="leadingMargin" constant="10" id="qda-fS-mIa"/>
-                                                <constraint firstAttribute="trailingMargin" secondItem="Aq8-ri-chm" secondAttribute="trailing" id="tC9-m1-PVX"/>
-                                            </constraints>
-                                            <variation key="default">
-                                                <mask key="constraints">
-                                                    <exclude reference="ZaT-Yd-msX"/>
-                                                    <exclude reference="hkE-wh-ZLF"/>
-                                                    <exclude reference="GnM-nB-lt0"/>
-                                                    <exclude reference="jQs-Ko-9oM"/>
-                                                </mask>
-                                            </variation>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
                                 </cells>
                             </tableViewSection>
                         </sections>
@@ -1406,12 +1366,10 @@
                         <barButtonItem key="rightBarButtonItem" systemItem="done" id="3Lh-rR-jIz">
                             <connections>
                                 <action selector="submitTapped:" destination="a5t-cD-xWU" id="NeA-7M-J2E"/>
-                                <segue destination="0Qn-rK-WNE" kind="show" identifier="spotDetailNext" id="aDG-b3-Xhz"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="AddressTextField" destination="Aq8-ri-chm" id="Y1l-7d-Qgc"/>
                         <outlet property="info" destination="iSK-EW-YuO" id="Yez-wz-MY4"/>
                         <outlet property="minimumDonatePrice" destination="YXQ-0m-cA9" id="53e-mY-H2a"/>
                         <outlet property="rate" destination="9Cp-IA-2G4" id="z9n-WV-4tr"/>
@@ -1423,75 +1381,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QPJ-6b-Ag0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-1651.5" y="472.5"/>
-        </scene>
-        <!--Add Spot-->
-        <scene sceneID="69k-ni-hol">
-            <objects>
-                <viewController id="0Qn-rK-WNE" customClass="SpotDetailNextViewController" customModule="DonateParkSpot" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="t5h-GG-HF3"/>
-                        <viewControllerLayoutGuide type="bottom" id="AIk-B6-c89"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="mhq-WP-QPD">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Please Enter Your Spot Address" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oBk-zT-em8">
-                                <rect key="frame" x="80" y="204" width="242" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="KUy-Q9-ROj">
-                                <rect key="frame" x="56" y="341" width="291" height="30"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Current Address" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="i9W-zl-UHD">
-                                <rect key="frame" x="80" y="272" width="248" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="oBk-zT-em8" firstAttribute="centerX" secondItem="mhq-WP-QPD" secondAttribute="centerX" id="EJe-SC-ICp"/>
-                            <constraint firstItem="i9W-zl-UHD" firstAttribute="top" secondItem="oBk-zT-em8" secondAttribute="bottom" constant="47" id="HP4-CV-UMP"/>
-                            <constraint firstItem="i9W-zl-UHD" firstAttribute="top" secondItem="oBk-zT-em8" secondAttribute="bottom" constant="59" id="aQx-8e-Srn"/>
-                            <constraint firstItem="KUy-Q9-ROj" firstAttribute="leading" secondItem="mhq-WP-QPD" secondAttribute="leadingMargin" constant="36" id="fIA-bp-Xs4"/>
-                            <constraint firstItem="i9W-zl-UHD" firstAttribute="centerX" secondItem="mhq-WP-QPD" secondAttribute="centerX" id="i5N-s3-J8J"/>
-                            <constraint firstItem="KUy-Q9-ROj" firstAttribute="top" secondItem="i9W-zl-UHD" secondAttribute="bottom" constant="48" id="i8e-lT-KR4"/>
-                            <constraint firstItem="oBk-zT-em8" firstAttribute="top" secondItem="mhq-WP-QPD" secondAttribute="top" constant="204" id="v4t-n4-CDu"/>
-                            <constraint firstItem="KUy-Q9-ROj" firstAttribute="top" secondItem="i9W-zl-UHD" secondAttribute="bottom" constant="36" id="w9w-45-gTJ"/>
-                            <constraint firstItem="KUy-Q9-ROj" firstAttribute="centerX" secondItem="mhq-WP-QPD" secondAttribute="centerX" id="yx9-X8-D6T"/>
-                        </constraints>
-                        <variation key="default">
-                            <mask key="constraints">
-                                <exclude reference="aQx-8e-Srn"/>
-                                <exclude reference="i8e-lT-KR4"/>
-                            </mask>
-                        </variation>
-                    </view>
-                    <toolbarItems/>
-                    <navigationItem key="navigationItem" title="Add Spot" id="RtK-Ot-F5F">
-                        <barButtonItem key="rightBarButtonItem" title="Done" id="6hk-hX-5T0">
-                            <connections>
-                                <action selector="SubmitTapped:" destination="0Qn-rK-WNE" id="lml-Aa-B4W"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
-                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
-                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
-                    <connections>
-                        <outlet property="CurrentAddressTextField" destination="i9W-zl-UHD" id="cAG-SL-Sni"/>
-                        <outlet property="anotherAddress" destination="KUy-Q9-ROj" id="YDa-DP-CYs"/>
-                        <outlet property="instructionTextField" destination="oBk-zT-em8" id="K95-HT-3uB"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Xtm-OS-LWF" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-1202" y="654"/>
         </scene>
         <!--Buy Detail Controller-->
         <scene sceneID="K9T-ty-K2a">
