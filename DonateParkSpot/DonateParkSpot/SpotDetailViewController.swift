@@ -36,7 +36,8 @@ class SpotDetailViewController: UITableViewController, UIPickerViewDelegate,
     var picker = UIPickerView ()
     var currentAddress = ""
     let testObject = PFObject(className: "Spot")
-    var currentSpot = Spot()
+    var timeToLeave : NSDate?
+    //var currentSpot = Spot()
     
     override func viewDidLoad() {
         picker.delegate = self
@@ -129,6 +130,9 @@ class SpotDetailViewController: UITableViewController, UIPickerViewDelegate,
         
       performSegueWithIdentifier("spotDetailNext", sender: self)
         }
+    
+    
+    
     override func prepareForSegue(segue:(UIStoryboardSegue!), sender:AnyObject!)
     {
         
@@ -137,45 +141,55 @@ class SpotDetailViewController: UITableViewController, UIPickerViewDelegate,
         {
             let geoPoint = PFGeoPoint(latitude: latitudeD ,longitude: longitudeD);
             let currentLocation = Location.init(object: geoPoint)
-            currentSpot.location = currentLocation
-            currentSpot.addressText = addressText
+            
+          
             
         }
         if timePickerView.date.compare(NSDate()) == NSComparisonResult.OrderedAscending{
-            currentSpot.timeToLeave =  timePickerView.date.dateByAddingTimeInterval(86400)
+          self.timeToLeave =  timePickerView.date.dateByAddingTimeInterval(86400)
             
         } else {
-            currentSpot.timeToLeave = timePickerView.date
+            self.timeToLeave = timePickerView.date
         }
         var minimumPrice: Float = 0
         if(minimumDonatePrice.text != ""){
             minimumPrice = Float(minimumDonatePrice.text!)!
-            currentSpot.minDonation = Int(minimumDonatePrice.text!)!
+           
         }
-        currentSpot.minDonation = Int(minimumPrice)
-        currentSpot.owner = PFUser.currentUser()
+  
         var rateValue:Double = 0
         if(rate.text != "" ){
             rateValue = Double(rate.text!)!
-            currentSpot.rate = Double(rate.text!)!
+           
         }
-        currentSpot.rate = rateValue
+   
         var timeLeftValue:Double = 0
         if(timeLeft.text != "" ){
             timeLeftValue = Double(timeLeft.text!)!
-            currentSpot.timeLeft = Int(timeLeft.text!)!
+         
         }
-        currentSpot.timeLeft = Int(timeLeftValue)
-        currentSpot.legalTime = info.text!
-        currentSpot.type = type.selectedSegmentIndex
+   
+      
         
 
         if (segue.identifier == "spotDetailNext")
         {
             let spotNextView = segue!.destinationViewController as! SpotDetailNextViewController
-            spotNextView.spotObject = currentSpot
             spotNextView.addressIndicator = AddressTextField.text!
-            spotNextView.currentAddress = addressText
+            spotNextView.currentAddress = self.addressText
+            let geoPoint = PFGeoPoint(latitude: latitudeD ,longitude: longitudeD);
+            let currentLocation = Location.init(object: geoPoint)
+            spotNextView.location = currentLocation
+            spotNextView.type = self.type.selectedSegmentIndex
+            spotNextView.rate = rateValue
+            spotNextView.timeLeft = timeLeftValue
+            spotNextView.minDonation = Double(minimumPrice)
+            spotNextView.legalTime = self.info.text!
+            spotNextView.owner = PFUser.currentUser()
+            spotNextView.statusId = 1
+            spotNextView.timeToLeave = self.timeToLeave
+            
+
         }
         
     }
