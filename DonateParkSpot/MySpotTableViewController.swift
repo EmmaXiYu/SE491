@@ -136,16 +136,17 @@ public class MySpotBiddingTableViewController: UITableViewController  {
 
     /**/
     override public func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        //let cell = tableView.dequeueReusableCellWithIdentifier("MyBidLabelCell", forIndexPath: indexPath)
-        let cell = tableView.dequeueReusableCellWithIdentifier("MySpotLabelCell", forIndexPath: indexPath)
-        //cell.textLabel?.text = data[indexPath.row]
-        let S: Spot = datas[indexPath.row]
-        //cell.textLabel?.text = S.legalTime + "  " +  String(format:"%f", S.location.altitude)
-        //cell.textLabel?.text = String(format:"%f", S.location.longitude) + "  " +  String(format:"%f", S.location.longitude)
-        cell.textLabel?.text = S.addressText
-        //cell.detailTextLabel!.text = S.legalTime + "        [" + String(S.Bids.count) + "]"
-        cell.detailTextLabel!.text = (S.timeToLeave?.description)! + "        [..More..]"
-        //var b:String = String(format:"%f", S.location.altitude)
+        let cell = tableView.dequeueReusableCellWithIdentifier("MySpotLabelCell", forIndexPath: indexPath) as! SpotCellController
+        let s = datas[indexPath.row]
+        cell.spot = s
+        cell.address.text = s.addressText
+        cell.time.text = (s.timeToLeave!.description)
+        if s.statusId == 4 {
+            cell.backgroundColor = UIColor.lightGrayColor()
+            cell.cancelButton.enabled = false
+            cell.selectionStyle = .None
+            cell.userInteractionEnabled = false
+        }
         return cell
         
     }
