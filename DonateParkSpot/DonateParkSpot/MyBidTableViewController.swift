@@ -90,5 +90,12 @@ class MyBidTableViewController: UITableViewController {
         
     }
     
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "payment" {
+            let button = sender as? UIButton
+            let cell = button!.superview as! MyBidTableViewCell
+            let bid = cell.bid
+        }
+    }
     
 }
