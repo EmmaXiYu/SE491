@@ -39,8 +39,10 @@ class MyBidTableViewCell: UITableViewCell {
             (success: Bool, error: NSError?) -> Void in
             if (success) {
                 
+                /*Pravangsu 02202016 Start*/
                 self.updateSpot(spot,status : 1)
                 // The bid is cancelld by bidder. Now should be open for Biding again
+                /*Pravangsu 02202016 End*/
                 
                 dispatch_async(dispatch_get_main_queue(), {
                     let alert = UIAlertView()
