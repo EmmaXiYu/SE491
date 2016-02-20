@@ -18,6 +18,16 @@ class MyBidTableViewCell: UITableViewCell {
     @IBOutlet weak var lblDonetion: UILabel!
     @IBOutlet weak var btnCancel: UIButton!
 
+    
+    func updateSpot(prefObjSpot : PFObject, status : Int)-> Void
+    {
+      
+                prefObjSpot["StatusId"] = status
+                prefObjSpot.saveInBackground()
+    }
+    
+    
+    
     @IBAction func cancel(sender: AnyObject) {
         var bidOriginalStatus = bid.statusId
         bid.statusId = 4
@@ -29,8 +39,8 @@ class MyBidTableViewCell: UITableViewCell {
             (success: Bool, error: NSError?) -> Void in
             if (success) {
                 
-                
-                
+                self.updateSpot(spot,status : 1)
+                // The bid is cancelld by bidder. Now should be open for Biding again
                 
                 dispatch_async(dispatch_get_main_queue(), {
                     let alert = UIAlertView()

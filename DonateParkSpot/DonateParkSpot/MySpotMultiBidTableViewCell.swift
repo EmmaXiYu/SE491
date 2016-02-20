@@ -27,6 +27,15 @@ class MySpotMultiBidTableViewCell: UITableViewCell {
         object.saveInBackgroundWithBlock{ (success: Bool, error: NSError?) -> Void in
             if (success) {
                 
+                
+                /*Pravangsu 02202016 Start*/
+                //Need to update the spot status as bid accepted . So that once the bid is accepted , action can be taken based on that.
+                // For example, not show accepted bid in the map
+                 let spot = object["spot"] as! PFObject
+                 self.updateSpot(spot,status : 2)
+                // The bid is accepted . Update the spot status 
+                  /*Pravangsu 02202016 End*/
+                
                 dispatch_async(dispatch_get_main_queue(), {
                     let alert = UIAlertView()
                     alert.title = "Success!"
@@ -66,6 +75,13 @@ class MySpotMultiBidTableViewCell: UITableViewCell {
         }
     }
     
+    func updateSpot(prefObjSpot : PFObject, status : Int)-> Void
+    {
+        
+        prefObjSpot["StatusId"] = status
+        prefObjSpot.saveInBackground()
+    }
+    
     @IBAction func rejectBid(sender: AnyObject) {
         bid.statusId = 4
         let object = bid.toPFObjet()
@@ -91,4 +107,6 @@ class MySpotMultiBidTableViewCell: UITableViewCell {
             }
         }
     }
+    
+    
 }
