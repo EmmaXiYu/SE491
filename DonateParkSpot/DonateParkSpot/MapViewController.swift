@@ -223,7 +223,8 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
                                 let spotObject = Spot(object: object)
                                 if spotObject != nil {
                                      /*Pravangsu 02202016 Start*/
-                                    if(spotObject?.statusId != 2 && spotObject?.statusId != 5)
+                                    if(spotObject?.statusId != 2 && spotObject?.statusId != 5 && spotObject?.statusId != 4)
+
                                     {
                                         // If the any Bid for the Sopt is Accepted or the Spot is Cancelled do not show it on the map
                                         self.addNewSpot(spotObject!)
@@ -290,9 +291,9 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
                         
                         let spotObject = Spot(object: object)
                         /*Pravangsu 02202016 Start*/
-                        if(spotObject?.statusId != 2 && spotObject?.statusId != 5)
+                        if(spotObject?.statusId != 2 && spotObject?.statusId != 5 && spotObject?.statusId != 4)
                         {
-                            // If the any Bid for the Sopt is Accepted or the Spot is Cancelled do not show it on the map
+                            // If the any Bid for the Sopt is Accepted or the Spot is Cancelled/Rejeted Status do not show it on the map
                             self.addNewSpot(spotObject!)
                         }
                         /*Pravangsu 02202016 End*/
