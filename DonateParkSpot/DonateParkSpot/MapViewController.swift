@@ -264,7 +264,14 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
                     if timeToLeave?.compare(NSDate()) == NSComparisonResult.OrderedDescending {
                         
                         let spotObject = Spot(object: object)
-                        self.addNewSpot(spotObject!)
+                        /*Pravangsu 02202016 Start*/
+                        if(spotObject?.statusId != 2 && spotObject?.statusId != 5 && spotObject?.statusId != 4)
+                        {
+                            // If the any Bid for the Sopt is Accepted or the Spot is Cancelled/Rejeted Status do not show it on the map
+                            self.addNewSpot(spotObject!)
+                        }
+                        /*Pravangsu 02202016 End*/
+                       
                     }
                 }
             }

@@ -18,6 +18,16 @@ class MyBidTableViewCell: UITableViewCell {
     @IBOutlet weak var lblDonetion: UILabel!
     @IBOutlet weak var btnCancel: UIButton!
 
+    
+    func updateSpot(prefObjSpot : PFObject, status : Int)-> Void
+    {
+      
+                prefObjSpot["StatusId"] = status
+                prefObjSpot.saveInBackground()
+    }
+    
+    
+    
     @IBAction func cancel(sender: AnyObject) {
         var bidOriginalStatus = bid.statusId
         bid.statusId = 4
