@@ -186,7 +186,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
                 let region = MKCoordinateRegion(center: center, span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01))
                 self.mapView.setRegion(region, animated: true)
                 
-                var radium = PFUser.currentUser()!["SearchRadium"] as? String
+                let radium = PFUser.currentUser()!["SearchRadium"] as? String
                 var radiumDouble : Double
                 if radium == nil
                 {
@@ -210,26 +210,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
                 }
               
                 let geoPoint = PFGeoPoint(latitude: coordinate.latitude ,longitude: coordinate.longitude  );
-                var query: PFQuery = PFQuery()
-                query = PFQuery(className: "Spot")
-                query.whereKey("SpotGeoPoint", nearGeoPoint: geoPoint, withinMiles: radiumDouble)
-                query.includeKey("owner")
-                query.findObjectsInBackgroundWithBlock {(objects:[PFObject]?, error:NSError?) -> Void in
-                    if error == nil {
-                        for object in objects! {
-                            let timeToLeave = object["leavingTime"] as! NSDate?
-                            if timeToLeave?.compare(NSDate()) == NSComparisonResult.OrderedDescending {
-                                
-                                let spotObject = Spot(object: object)
-                                if spotObject != nil {
-                                    self.addNewSpot(spotObject!)
-                                }
-                                
-                            }
-                        }
-                    }
-                    
-                }
+                self.searchForNewSpots(geoPoint)
             }
             
             
@@ -240,9 +221,8 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         
     }
     
-    func searchForNewSpots(){
-        let coordinate = mapView.centerCoordinate
-        var radium = PFUser.currentUser()?["SearchRadium"] as? String
+    func searchForNewSpots(coordinate: PFGeoPoint){
+        let radium = PFUser.currentUser()?["SearchRadium"] as? String
         var radiumDouble : Double
         if radium == nil
         {
@@ -274,6 +254,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         var query: PFQuery = PFQuery()
         query = PFQuery(className: "Spot")
         query.whereKey("SpotGeoPoint", nearGeoPoint: geoPoint, withinMiles: radiumDouble)
+        query.whereKey("StatusId", equalTo: 1)
         query.includeKey("owner")
         query.findObjectsInBackgroundWithBlock {(objects:[PFObject]?, error:NSError?) -> Void in
             if error == nil {
@@ -307,7 +288,8 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
     }
     
     func mapView(mapView: MKMapView, regionWillChangeAnimated animated: Bool) {
-        searchForNewSpots()
+        let geoPoint = PFGeoPoint(latitude: mapView.centerCoordinate.latitude, longitude: mapView.centerCoordinate.longitude)
+        searchForNewSpots(geoPoint)
     }
     
     func searchBarCancelButtonClicked(searchBar: UISearchBar)
@@ -324,20 +306,19 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
             
             if let a = annotation as? CustomerAnnotation {
                 let pinAnnotationView = MKPinAnnotationView(annotation: a, reuseIdentifier: "myPin")
-                //let ownerID:String = a.subtitle!
-                let name = a.title!
-              let ownerID:String = (a.spot.owner?.objectId)!
+                let ownerID:String = (a.spot.owner?.objectId)!
                 let pic = UIImageView (image: UIImage(named: "test.png"))
                 pinAnnotationView.canShowCallout = true
                 pinAnnotationView.draggable = false
                 pinAnnotationView.canShowCallout = true
                 pinAnnotationView.animatesDrop = true
-                pinAnnotationView.pinColor = MKPinAnnotationColor.Purple
+                pinAnnotationView.pinTintColor = UIColor.greenColor()
                 
                 
                 let query = PFUser.query()
                 
-                do{ let user = try query!.getObjectWithId(ownerID) as! PFUser
+                do{
+                    let user = try query!.getObjectWithId(ownerID) as! PFUser
                     if let userPicture = user["Image"] as? PFFile {
                         userPicture.getDataInBackgroundWithBlock { (imageData: NSData?, error: NSError?) -> Void in
                             if error == nil {

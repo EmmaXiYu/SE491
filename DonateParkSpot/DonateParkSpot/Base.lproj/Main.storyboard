@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9532" systemVersion="15A284" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="wLP-zy-ghc">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9532" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="wLP-zy-ghc">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
@@ -60,7 +60,7 @@
                                     <constraint firstAttribute="height" constant="30" id="q0L-Li-dJy"/>
                                 </constraints>
                                 <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <state key="normal" image="ic_my_location"/>
+                                <state key="normal" image="current"/>
                                 <connections>
                                     <action selector="goToCurrentPosition" destination="Huc-SV-9rF" eventType="touchUpInside" id="NEp-wX-w3P"/>
                                 </connections>
@@ -858,7 +858,7 @@
             </objects>
             <point key="canvasLocation" x="1390.5" y="-2408.5"/>
         </scene>
-        <!--Retrieve Password Controller-->
+        <!--Reset Password-->
         <scene sceneID="9BX-D7-WOZ">
             <objects>
                 <viewController id="wiw-hb-WpE" customClass="RetrievePasswordController" customModule="DonateParkSpot" customModuleProvider="target" sceneMemberID="viewController">
@@ -870,18 +870,13 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Please tell us your registed email:" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="HMs-xF-urc">
-                                <rect key="frame" x="31" y="99" width="237" height="30"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="8lV-Wk-8XM">
+                                <rect key="frame" x="20" y="49" width="280" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="8lV-Wk-8XM">
-                                <rect key="frame" x="31" y="171" width="237" height="30"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sFs-bx-eKx">
-                                <rect key="frame" x="90" y="256" width="119" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sFs-bx-eKx">
+                                <rect key="frame" x="101" y="87" width="119" height="30"/>
                                 <state key="normal" title="Retrieve Pasword"/>
                                 <connections>
                                     <action selector="RetrievePassword:" destination="wiw-hb-WpE" eventType="touchUpInside" id="haC-V0-XXk"/>
@@ -892,9 +887,35 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="E-mail" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SN1-29-VGT">
+                                <rect key="frame" x="20" y="20" width="280" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lyc-zM-RQG">
+                                <rect key="frame" x="143" y="125" width="34" height="30"/>
+                                <state key="normal" title="Back"/>
+                                <connections>
+                                    <action selector="back:" destination="wiw-hb-WpE" eventType="touchUpInside" id="WvR-YC-0QA"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="leadingMargin" secondItem="8lV-Wk-8XM" secondAttribute="leading" id="1fH-bP-jHw"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="8lV-Wk-8XM" secondAttribute="trailing" id="FRh-N9-zRz"/>
+                            <constraint firstItem="lyc-zM-RQG" firstAttribute="centerX" secondItem="pp0-Ed-BOi" secondAttribute="centerX" id="QUj-ZS-kpA"/>
+                            <constraint firstItem="sFs-bx-eKx" firstAttribute="centerX" secondItem="pp0-Ed-BOi" secondAttribute="centerX" id="Qar-ux-EVg"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="SN1-29-VGT" secondAttribute="trailing" id="d7e-8O-DqT"/>
+                            <constraint firstAttribute="leadingMargin" secondItem="SN1-29-VGT" secondAttribute="leading" id="eHo-eq-Zpx"/>
+                            <constraint firstItem="SN1-29-VGT" firstAttribute="top" secondItem="tIQ-ft-VrD" secondAttribute="bottom" id="eSx-yE-IkD"/>
+                            <constraint firstItem="8lV-Wk-8XM" firstAttribute="top" secondItem="SN1-29-VGT" secondAttribute="bottom" constant="8" id="fCu-aI-N8q"/>
+                            <constraint firstItem="lyc-zM-RQG" firstAttribute="top" secondItem="sFs-bx-eKx" secondAttribute="bottom" constant="8" id="sY2-WF-55x"/>
+                            <constraint firstItem="sFs-bx-eKx" firstAttribute="top" secondItem="8lV-Wk-8XM" secondAttribute="bottom" constant="8" id="u0w-xp-hJ9"/>
+                        </constraints>
                     </view>
+                    <navigationItem key="navigationItem" title="Reset Password" id="pb5-X4-zaC"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
                     <connections>
                         <outlet property="EmailText" destination="8lV-Wk-8XM" id="fJq-9l-1nK"/>
@@ -903,7 +924,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="r7o-yz-HkE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1705" y="-3073"/>
+            <point key="canvasLocation" x="1938" y="-3122"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="BA5-0m-g00">
@@ -1715,7 +1736,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="ic_my_location" width="24" height="24"/>
+        <image name="current" width="171" height="171"/>
         <image name="test" width="154" height="154"/>
     </resources>
     <inferredMetricsTieBreakers>

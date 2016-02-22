@@ -28,10 +28,6 @@ class MyBidTableViewCell: UITableViewCell {
         obj.saveInBackgroundWithBlock{
             (success: Bool, error: NSError?) -> Void in
             if (success) {
-                
-                
-                
-                
                 dispatch_async(dispatch_get_main_queue(), {
                     let alert = UIAlertView()
                     alert.title = "Success!"
