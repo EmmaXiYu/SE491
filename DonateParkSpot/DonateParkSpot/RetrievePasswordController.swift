@@ -49,11 +49,15 @@ class RetrievePasswordController: UIViewController {
         
         myAlert.addAction(okayAction);
         
-        self.presentViewController(myAlert, animated: true, completion: nil);}
+        self.presentViewController(myAlert, animated: true, completion: nil);
+    }
 
     override func viewDidLoad() {
         
         super.viewDidLoad()
         
+    }
+    @IBAction func back(sender: AnyObject) {
+        self.dismissViewControllerAnimated(true, completion: nil)
     }
 }

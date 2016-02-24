@@ -75,6 +75,12 @@ class MyBidTableViewController: UITableViewController {
         let formatter = NSDateFormatter()
         formatter.dateStyle = NSDateFormatterStyle.LongStyle
         formatter.timeStyle = .MediumStyle
+        
+        //cell.btnCancel.layer.borderWidth = 1
+        //cell.btnReOpen.layer.borderWidth = 1
+        //cell.btnCancel.layer.borderColor = UIColor.blueColor().CGColor
+        //cell.btnReOpen.layer.borderColor = UIColor.blueColor().CGColor
+
         if(bid.cancelByBidder == nil)
         {
             bid.cancelByBidder = false
@@ -84,11 +90,27 @@ class MyBidTableViewController: UITableViewController {
         {
             cell.btnCancel.enabled = false
             cell.backgroundColor = UIColor.redColor().colorWithAlphaComponent(0.10)
+            cell.btnReOpen.hidden = false
         }
+        else
+        {
+            cell.btnReOpen.hidden = true
+            cell.btnCancel.enabled = true
+            cell.backgroundColor = UIColor.whiteColor().colorWithAlphaComponent(1)
+            //cell.btnCancel.enabled = false
+        }
+        
         
         return cell
         
     }
     
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "payment" {
+            let button = sender as? UIButton
+            let cell = button!.superview as! MyBidTableViewCell
+            let bid = cell.bid
+        }
+    }
     
 }
