@@ -19,6 +19,7 @@ public class Bid {
     var cancelByBidder : Bool? = false // Indicate if cancel by Buyer
     var address :String = ""  // only Client. This will not save in databse. Will be use to Display in my bid page
     var bidAcceptTime: NSDate? // Time of Accept bid by seller.  This will use be count to time if buyer make a payment with in specified time or not
+    var timeFrame:String?
     var noPaymentCancelTime: NSDate?
     var paymentMakeTime: NSDate?
     var createAt: NSDate?
