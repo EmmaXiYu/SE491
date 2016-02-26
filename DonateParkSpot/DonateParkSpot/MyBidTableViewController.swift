@@ -99,6 +99,14 @@ class MyBidTableViewController: UITableViewController {
             cell.backgroundColor = UIColor.whiteColor().colorWithAlphaComponent(1)
             //cell.btnCancel.enabled = false
         }
+        if (bid.statusId == 5 ) //cancel by Spot  owner
+        {
+            cell.btnCancel.enabled = false
+            cell.backgroundColor = UIColor.redColor().colorWithAlphaComponent(0.10)
+            cell.btnReOpen.hidden = true
+            cell.lblAddress.text = cell.lblAddress.text! + "[Cancel By Spot owner]"
+        }
+       
         
         
         return cell

@@ -138,7 +138,7 @@ class BuyDetailController :  UIViewController, MKMapViewDelegate {
         bid["CancelByBidder"] = false 
         bid.saveInBackground()
         
-        updateSpot((self.spot?.spotId)!, status : 99)
+        updateSpot((self.spot?.spotId)!, status : 1)
             
         
               let pushQuery = PFInstallation.query()
