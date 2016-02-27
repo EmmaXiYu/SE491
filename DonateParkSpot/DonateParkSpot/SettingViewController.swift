@@ -16,8 +16,10 @@ class SettingViewController: UIViewController {
 
     var radium : Int = 0
     
-
- 
+    
+    @IBOutlet weak var TimeFrameLabel: UILabel!
+    
+    @IBOutlet weak var TimeFrameStepper: UIStepper!
  
     @IBOutlet weak var RadiumLable: UILabel!
 
@@ -42,8 +44,15 @@ class SettingViewController: UIViewController {
         Stepper.wraps = true
         Stepper.autorepeat = true
         Stepper.maximumValue = 100
+        TimeFrameStepper.wraps = true
+        TimeFrameStepper.autorepeat = true
+        TimeFrameStepper.maximumValue = 100
+        TimeFrameStepper.minimumValue = 0
         
         var radiumUser = PFUser.currentUser()!["SearchRadium"] as? String
+        var timeFrameUser =  PFUser.currentUser()!["TimeFrame"] as?
+            String
+        
         if radiumUser == nil
         {
             Stepper.value = 1
@@ -52,7 +61,15 @@ class SettingViewController: UIViewController {
         else{
             Stepper.value = Double(radiumUser!)!
             RadiumLable.text = radiumUser}
- 
+        
+        if timeFrameUser == nil
+        {
+            TimeFrameStepper.value = 1
+            TimeFrameLabel.text = "1"
+        }
+        else{
+            TimeFrameStepper.value = Double(radiumUser!)!
+            TimeFrameLabel.text = radiumUser}
     }
   
     
@@ -63,10 +80,16 @@ class SettingViewController: UIViewController {
         RadiumLable.text = Int(sender.value).description
     }
     
+    @IBAction func TImeFrameStepperChangeValue(sender: UIStepper) {
+        TimeFrameLabel.text = Int(sender.value).description
+    }
+    
+    
     @IBAction func UpdateSettings(sender: AnyObject) {
         let user = PFUser.currentUser()
         
         user!["SearchRadium"] = RadiumLable.text
+        user!["TimeFrame"] = TimeFrameLabel.text
         user!.saveInBackgroundWithBlock({
             
             (success: Bool, error: NSError?) -> Void in
