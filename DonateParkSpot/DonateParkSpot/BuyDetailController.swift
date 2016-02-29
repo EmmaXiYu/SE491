@@ -166,7 +166,7 @@ class BuyDetailController :  UIViewController, MKMapViewDelegate {
         self.dismissViewControllerAnimated(true, completion: nil)
             }
 
-    }
+    } 
     
     func IsValidBuyer()->Bool
 

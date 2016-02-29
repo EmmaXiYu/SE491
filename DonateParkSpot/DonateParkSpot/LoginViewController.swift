@@ -69,7 +69,9 @@ class LoginViewController: UIViewController {
                 })}
 
                 
-
+                let installation = PFInstallation.currentInstallation()
+                installation["user"] = PFUser.currentUser()
+                installation.saveInBackground()
                
                 }
                /* else
