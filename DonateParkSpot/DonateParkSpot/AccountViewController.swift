@@ -77,8 +77,7 @@ class AccountViewController: UIViewController , UIImagePickerControllerDelegate,
         self.getRating()
                 Menu.target = self.revealViewController()
         Menu.action = Selector("revealToggle:")
-        self.ImageField.image = UIImage(named: "test.png")
-
+        
         self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
         accountName.text = PFUser.currentUser()!["username"] as? String
         cellPhoneNumber.text = PFUser.currentUser()! ["PhoneNumber"] as? String

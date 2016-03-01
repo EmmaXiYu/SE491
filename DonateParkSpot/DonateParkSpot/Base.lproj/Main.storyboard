@@ -546,60 +546,73 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Set Search Radium:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5pA-cv-Zx0">
-                                <rect key="frame" x="16" y="72" width="150" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Set Search Radium:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5pA-cv-Zx0">
+                                <rect key="frame" x="16" y="28" width="150" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Miles" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XhN-U8-eT8">
-                                <rect key="frame" x="66" y="101" width="40" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Miles" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XhN-U8-eT8">
+                                <rect key="frame" x="66" y="56" width="40" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EdP-QW-cqZ">
-                                <rect key="frame" x="16" y="101" width="42" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EdP-QW-cqZ">
+                                <rect key="frame" x="16" y="56" width="42" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="PUI-VV-dKe">
-                                <rect key="frame" x="265" y="97" width="94" height="29"/>
+                            <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="PUI-VV-dKe">
+                                <rect key="frame" x="269" y="52" width="94" height="29"/>
                                 <connections>
                                     <action selector="StepperChangeValue:" destination="sft-mq-qoL" eventType="valueChanged" id="7J2-yT-kXk"/>
                                 </connections>
                             </stepper>
-                            <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="4ud-Op-JUv">
-                                <rect key="frame" x="265" y="168" width="94" height="29"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hUx-6e-ETM">
+                                <rect key="frame" x="12" y="93" width="42" height="20.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Minute" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="s3u-LL-DSB">
+                                <rect key="frame" x="62" y="93" width="52.5" height="20.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="751" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="4ud-Op-JUv">
+                                <rect key="frame" x="269" y="89" width="94" height="29"/>
                                 <connections>
                                     <action selector="TImeFrameStepperChangeValue:" destination="sft-mq-qoL" eventType="valueChanged" id="GeF-Jj-uzh"/>
                                 </connections>
                             </stepper>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hUx-6e-ETM">
-                                <rect key="frame" x="16" y="176" width="42" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Minute" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="s3u-LL-DSB">
-                                <rect key="frame" x="66" y="176" width="53" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="4ud-Op-JUv" firstAttribute="top" secondItem="PUI-VV-dKe" secondAttribute="bottom" constant="8" id="ImZ-bw-0vx"/>
                             <constraint firstItem="5pA-cv-Zx0" firstAttribute="top" secondItem="0Tp-xB-apt" secondAttribute="bottom" constant="8" id="Iuh-hR-oot"/>
+                            <constraint firstItem="s3u-LL-DSB" firstAttribute="leading" secondItem="hUx-6e-ETM" secondAttribute="trailing" constant="8" id="JHp-bg-qpm"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="4ud-Op-JUv" secondAttribute="trailing" constant="-4" id="Mdq-m8-zpB"/>
                             <constraint firstItem="EdP-QW-cqZ" firstAttribute="top" secondItem="5pA-cv-Zx0" secondAttribute="bottom" constant="8" id="OfZ-OR-mUK"/>
+                            <constraint firstItem="4ud-Op-JUv" firstAttribute="centerY" secondItem="s3u-LL-DSB" secondAttribute="centerY" id="YED-A6-eiG"/>
                             <constraint firstItem="XhN-U8-eT8" firstAttribute="top" secondItem="5pA-cv-Zx0" secondAttribute="bottom" constant="8" id="aFZ-sq-xuA"/>
+                            <constraint firstItem="4ud-Op-JUv" firstAttribute="trailing" secondItem="PUI-VV-dKe" secondAttribute="trailing" id="eju-ks-hZn"/>
+                            <constraint firstItem="s3u-LL-DSB" firstAttribute="centerY" secondItem="hUx-6e-ETM" secondAttribute="centerY" id="fdB-YJ-KSI"/>
+                            <constraint firstItem="4ud-Op-JUv" firstAttribute="leading" secondItem="PUI-VV-dKe" secondAttribute="leading" id="jZ9-IU-nTl"/>
+                            <constraint firstItem="hUx-6e-ETM" firstAttribute="leading" secondItem="bXn-bH-XZc" secondAttribute="leadingMargin" constant="-4" id="lSn-K0-D9y"/>
                             <constraint firstItem="PUI-VV-dKe" firstAttribute="centerY" secondItem="XhN-U8-eT8" secondAttribute="centerY" id="oY7-cn-OB2"/>
                             <constraint firstAttribute="leadingMargin" secondItem="5pA-cv-Zx0" secondAttribute="leading" id="r1q-na-5Sy"/>
                             <constraint firstItem="XhN-U8-eT8" firstAttribute="leading" secondItem="EdP-QW-cqZ" secondAttribute="trailing" constant="8" id="twb-fr-oL2"/>
                             <constraint firstAttribute="trailingMargin" secondItem="PUI-VV-dKe" secondAttribute="trailing" id="ube-cD-ov3"/>
                             <constraint firstAttribute="leadingMargin" secondItem="EdP-QW-cqZ" secondAttribute="leading" id="vgc-4d-fpy"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="eju-ks-hZn"/>
+                            </mask>
+                        </variation>
                     </view>
                     <navigationItem key="navigationItem" id="bJG-UT-1gp">
                         <barButtonItem key="leftBarButtonItem" title="Menu" id="EPc-Px-Fma"/>
