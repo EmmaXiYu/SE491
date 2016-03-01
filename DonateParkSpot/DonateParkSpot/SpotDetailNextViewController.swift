@@ -12,9 +12,19 @@ import Parse
 
 class SpotDetailNextViewController: UIViewController {
     
-    var spotObject = Spot()
     var addressIndicator = String ()
     var currentAddress = String()
+    var location : Location = Location()
+    var type : Int = 0
+    var rate : Double = 0.0
+    var timeLeft : Double = 0
+    var minDonation : Double = 0
+    var legalTime : String = ""
+    var timeToLeave : NSDate?
+    var owner : PFUser?
+    var addressText: String = ""
+    var statusId : Int = -1 // 1: Active and open for bid; 2 : bid Accepted; 3: Donetion Recieved and closed 4: Rejected
+    var spotObject = PFObject(className:"Spot")
     
     @IBOutlet weak var instructionTextField: UILabel!
     
@@ -32,6 +42,8 @@ class SpotDetailNextViewController: UIViewController {
             anotherAddress.hidden = true
             CurrentAddressTextField.text = currentAddress
             instructionTextField.text = "Please check your current address:"
+            spotObject["SpotGeoPoint"] = PFGeoPoint(latitude: location.latitude!, longitude: location.longitude!)
+            spotObject["addressText"] = currentAddress
           
             
         }
@@ -40,11 +52,23 @@ class SpotDetailNextViewController: UIViewController {
         {
             CurrentAddressTextField.hidden = true
             instructionTextField.text = "Please Enter Your Spot Address:"
+                        anotherAddress.hidden = false
             
             
         }
-    
-    
+        spotObject["type"] = type
+        spotObject["rate"] = rate
+        spotObject["timeLeft"] = timeLeft
+        spotObject["minimumPrice"] = minDonation
+        spotObject["leavingTime"] = timeToLeave == nil ? NSNull() : timeToLeave
+        spotObject["owner"] = owner == nil ? NSNull() : owner
+        spotObject["StatusId"] = statusId
+        spotObject["legalTime"] = legalTime
+ 
+        
+        
+        
+
     }
     
     @IBAction func SubmitTapped(sender: AnyObject) {
@@ -71,8 +95,9 @@ class SpotDetailNextViewController: UIViewController {
             self.navigationController?.popToRootViewControllerAnimated(true)
         }
         let installation = PFInstallation.currentInstallation()
-        installation["SpotOwner"] = spotObject.owner
+        installation["SpotOwner"] = owner
         installation.saveInBackground()
+        self.dismissViewControllerAnimated(true, completion: nil);
     }
 
 

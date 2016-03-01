@@ -138,7 +138,7 @@ class BuyDetailController :  UIViewController, MKMapViewDelegate {
         bid["CancelByBidder"] = false 
         bid.saveInBackground()
         
-        updateSpot((self.spot?.spotId)!, status : 99)
+        updateSpot((self.spot?.spotId)!, status : 1)
             
         
               let pushQuery = PFInstallation.query()
@@ -166,7 +166,7 @@ class BuyDetailController :  UIViewController, MKMapViewDelegate {
         self.dismissViewControllerAnimated(true, completion: nil)
             }
 
-    }
+    } 
     
     func IsValidBuyer()->Bool
 

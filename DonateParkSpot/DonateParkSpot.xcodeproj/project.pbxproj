@@ -20,6 +20,7 @@
 		10B75D6B1BE0509D009B88DC /* Spot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10B75D691BE0509D009B88DC /* Spot.swift */; };
 		10B75D6D1BE06949009B88DC /* Bid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10B75D6C1BE06949009B88DC /* Bid.swift */; };
 		10B75D6F1BE1932D009B88DC /* SearchHistory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10B75D6E1BE1932D009B88DC /* SearchHistory.swift */; };
+		10B776CB1C7545E9004145E7 /* SpotCellController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10B776CA1C7545E9004145E7 /* SpotCellController.swift */; };
 		180A147C1BDB0A37005F4221 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 180A147A1BDB0A37005F4221 /* Main.storyboard */; };
 		180A14841BDBF883005F4221 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 180A147D1BDBF883005F4221 /* Bolts.framework */; };
 		180A14851BDBF883005F4221 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 180A147E1BDBF883005F4221 /* Parse.framework */; };
@@ -100,6 +101,7 @@
 		10B75D691BE0509D009B88DC /* Spot.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Spot.swift; sourceTree = "<group>"; };
 		10B75D6C1BE06949009B88DC /* Bid.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Bid.swift; sourceTree = "<group>"; };
 		10B75D6E1BE1932D009B88DC /* SearchHistory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchHistory.swift; sourceTree = "<group>"; };
+		10B776CA1C7545E9004145E7 /* SpotCellController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpotCellController.swift; sourceTree = "<group>"; };
 		180A147B1BDB0A37005F4221 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		180A147D1BDBF883005F4221 /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Bolts.framework; path = DonateParkSpot/Bolts.framework; sourceTree = "<group>"; };
 		180A147E1BDBF883005F4221 /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Parse.framework; path = DonateParkSpot/Parse.framework; sourceTree = "<group>"; };
@@ -218,8 +220,8 @@
 				104814081BFD653C009476FB /* CellController */,
 				18AE41601BE84EB000A4A62B /* BackTableVC.swift */,
 				B8179AF91BE0628B00F218F1 /* MySpotTableViewController.swift */,
-				B8A33A911BEAFE5F0007E77E /* MySpotMultiBidTableViewController.swift */,
 				B8A1093E1BF6E86D003503B1 /* MyBidTableViewController.swift */,
+				B8A33A911BEAFE5F0007E77E /* MySpotMultiBidTableViewController.swift */,
 				B80CB6591BE30A9600746CEB /* MySpotDetail.swift */,
 				180C3AF61BD9F0F400E7E5F5 /* ViewController.swift */,
 				180C3B291BDAA0B400E7E5F5 /* MapViewController.swift */,
@@ -264,6 +266,7 @@
 			children = (
 				B89892161BED996600DEF1B5 /* MySpotMultiBidTableViewCell.swift */,
 				B8A109401BF6F184003503B1 /* MyBidTableViewCell.swift */,
+				10B776CA1C7545E9004145E7 /* SpotCellController.swift */,
 			);
 			name = CellController;
 			sourceTree = "<group>";
@@ -535,6 +538,7 @@
 				180A14A71BDC16E9005F4221 /* User.swift in Sources */,
 				180C3AFD1BD9F0F400E7E5F5 /* DonateParkSpot.xcdatamodeld in Sources */,
 				1870455E1C6BA9F200067A08 /* SpotDetailNextViewController.swift in Sources */,
+				10B776CB1C7545E9004145E7 /* SpotCellController.swift in Sources */,
 				B8A109411BF6F184003503B1 /* MyBidTableViewCell.swift in Sources */,
 				10B75D6D1BE06949009B88DC /* Bid.swift in Sources */,
 				180A14AD1BDC5074005F4221 /* SpotDetailViewController.swift in Sources */,

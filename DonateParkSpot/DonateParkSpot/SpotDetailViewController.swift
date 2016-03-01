@@ -36,7 +36,8 @@ class SpotDetailViewController: UITableViewController, UIPickerViewDelegate,
     var picker = UIPickerView ()
     var currentAddress = ""
     let testObject = PFObject(className: "Spot")
-    var currentSpot = Spot()
+    var timeToLeave : NSDate?
+    //var currentSpot = Spot()
     
     override func viewDidLoad() {
         let geocoder = CLGeocoder()
