@@ -83,7 +83,7 @@ class MySpotMultiBidTableViewCell: UITableViewCell {
     }
     
     @IBAction func rejectBid(sender: AnyObject) {
-        bid.statusId = 4
+        bid.statusId = 5
         let object = bid.toPFObjet()
         object.saveInBackgroundWithBlock{ (success: Bool, error: NSError?) -> Void in
             if (success) {
