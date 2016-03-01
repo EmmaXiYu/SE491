@@ -141,7 +141,7 @@ class BuyDetailController :  UIViewController, MKMapViewDelegate {
         updateSpot((self.spot?.spotId)!, status : 1)
             
         
-              let pushQuery = PFInstallation.query()
+             /* let pushQuery = PFInstallation.query()
             pushQuery!.whereKey("SpotOwner", equalTo: spot!.toPFObject()["owner"] as! PFUser)
             
             let data = [
@@ -153,14 +153,14 @@ class BuyDetailController :  UIViewController, MKMapViewDelegate {
                 
             ]
             // Send push notification to query
-            let push = PFPush()
-            push.setQuery(pushQuery) // Set our Installation query
-            push.setData(data)
-            push.sendPushInBackground()
+           // let push = PFPush()
+            //push.setQuery(pushQuery) // Set our Installation query
+            //push.setData(data)
+            //push.sendPushInBackground()*/
             
-            let installation = PFInstallation.currentInstallation()
-            installation["SpotBidder"] = bid["user"] as! PFUser
-            installation.saveInBackground()
+           // let installation = PFInstallation.currentInstallation()
+           // installation["SpotBidder"] = bid["user"] as! PFUser
+           // installation.saveInBackground()
 
             
         self.dismissViewControllerAnimated(true, completion: nil)

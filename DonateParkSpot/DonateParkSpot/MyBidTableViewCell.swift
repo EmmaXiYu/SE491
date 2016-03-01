@@ -72,6 +72,7 @@ class MyBidTableViewCell: UITableViewCell {
                     alert.show()
                     self.table?.GetBidList()
                 })
+                /*
                 let pushQuery = PFInstallation.query()
                 pushQuery!.whereKey("SpotOwner", equalTo: spot["owner"] as! PFUser)
                 if bidOriginalStatus == 2{
@@ -83,7 +84,7 @@ class MyBidTableViewCell: UITableViewCell {
                     let push = PFPush()
                     push.setQuery(pushQuery) // Set our Installation query
                     push.setData(data)
-                    push.sendPushInBackground()}
+                    push.sendPushInBackground()}*/
                 
                 /*
                 if bidOriginalStatus == 4{
