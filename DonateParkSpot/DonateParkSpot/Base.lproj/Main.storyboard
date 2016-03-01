@@ -470,6 +470,13 @@
                                                 <action selector="cancel:" destination="Qrg-nQ-FoL" eventType="touchUpInside" id="qmK-lA-7FW"/>
                                             </connections>
                                         </button>
+                                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PVt-aE-dEO">
+                                            <rect key="frame" x="188" y="43" width="30" height="30"/>
+                                            <state key="normal" title="Pay"/>
+                                            <connections>
+                                                <action selector="payment:" destination="Qrg-nQ-FoL" eventType="touchUpInside" id="HP3-dC-B6s"/>
+                                            </connections>
+                                        </button>
                                     </subviews>
                                     <constraints>
                                         <constraint firstItem="fJv-RT-0A3" firstAttribute="leading" secondItem="U1n-rR-T2Y" secondAttribute="leading" id="5Pa-HA-g4H"/>
@@ -512,11 +519,38 @@
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="Menu" destination="ECM-oO-mTj" id="n1P-0Q-Jkw"/>
+                        <segue destination="NdO-dl-G9a" kind="show" identifier="payment" id="N7i-vL-A1C"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OyM-tW-jOy" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3654" y="-1003"/>
+            <point key="canvasLocation" x="3805" y="-1030"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="JE8-VK-jQr">
+            <objects>
+                <viewController id="NdO-dl-G9a" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="x72-T3-jft"/>
+                        <viewControllerLayoutGuide type="bottom" id="X1B-s1-ew5"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="eKN-BO-191">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Payment" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gGJ-9j-raq">
+                                <rect key="frame" x="188" y="163" width="67" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="xRl-cL-4Tl" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4338" y="-1003"/>
         </scene>
         <!--Setting View Controller-->
         <scene sceneID="3IX-Kz-Vp3">

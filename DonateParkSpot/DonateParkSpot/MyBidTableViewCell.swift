@@ -54,6 +54,12 @@ class MyBidTableViewCell: UITableViewCell {
     
     
     
+    @IBAction func payment(sender: AnyObject) {
+        
+        
+        self.table?.performSegueWithIdentifier("payment", sender: sender)
+        
+    }
     @IBAction func cancel(sender: AnyObject) {
         let bidOriginalStatus = bid.statusId
         bid.statusId = 4

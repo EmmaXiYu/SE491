@@ -112,7 +112,7 @@ class MyBidTableViewController: UITableViewController {
         return cell
         
     }
-    
+    /*
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "payment" {
             let button = sender as? UIButton
@@ -120,5 +120,5 @@ class MyBidTableViewController: UITableViewController {
             let bid = cell.bid
         }
     }
-    
+    */
 }
