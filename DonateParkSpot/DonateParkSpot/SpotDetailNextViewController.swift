@@ -84,15 +84,20 @@ class SpotDetailNextViewController: UIViewController {
                     let latitudeD = coordinate.latitude
                     let longitudeD = coordinate.longitude
                     let geoPoint = PFGeoPoint(latitude: latitudeD ,longitude: longitudeD);
-                    self.spotObject.location = Location.init(object: geoPoint)
-                    self.spotObject.addressText = self.anotherAddress.text!
-                    self.spotObject.toPFObject().saveInBackground()
-                    self.navigationController?.popToRootViewControllerAnimated(true)
+                    self.spotObject["SpotGeoPoint"] = geoPoint
+                    self.spotObject["addressText"] = self.anotherAddress.text!
+                    self.spotObject.saveInBackground()
                 }
             })
         }else{
             self.spotObject.toPFObject().saveInBackground()
             self.navigationController?.popToRootViewControllerAnimated(true)
+        }
+        
+        
+        else{
+            
+             self.spotObject.saveInBackground()
         }
         let installation = PFInstallation.currentInstallation()
         installation["SpotOwner"] = owner

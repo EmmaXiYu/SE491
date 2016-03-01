@@ -122,41 +122,68 @@ class SpotDetailViewController: UITableViewController, UIPickerViewDelegate,
     
         let geoPoint = PFGeoPoint(latitude: latitudeD ,longitude: longitudeD);
         
+      performSegueWithIdentifier("spotDetailNext", sender: self)
+        }
+    
+    
+    
+    override func prepareForSegue(segue:(UIStoryboardSegue!), sender:AnyObject!)
+    {
         
-        let testObject = PFObject(className: "Spot")
-        testObject["SpotGeoPoint"] = geoPoint
+        if AddressTextField.text == "Current Address"
+            
+        {
+            let geoPoint = PFGeoPoint(latitude: latitudeD ,longitude: longitudeD);
+            let currentLocation = Location.init(object: geoPoint)
+            
+          
+            
+        }
         if timePickerView.date.compare(NSDate()) == NSComparisonResult.OrderedAscending{
-            testObject["leavingTime"] = timePickerView.date.dateByAddingTimeInterval(86400)
+          self.timeToLeave =  timePickerView.date.dateByAddingTimeInterval(86400)
+            
         } else {
-            testObject["leavingTime"] = timePickerView.date
+            self.timeToLeave = timePickerView.date
         }
         var minimumPrice: Float = 0
         if(minimumDonatePrice.text != ""){
             minimumPrice = Float(minimumDonatePrice.text!)!
+           
         }
-        testObject["minimumPrice"] = minimumPrice
-        testObject["owner"] = PFUser.currentUser()
+  
         var rateValue:Double = 0
         if(rate.text != "" ){
             rateValue = Double(rate.text!)!
+           
         }
-        testObject["rate"] = rateValue
+   
         var timeLeftValue:Double = 0
         if(timeLeft.text != "" ){
             timeLeftValue = Double(timeLeft.text!)!
+         
         }
-        testObject["timeLeft"] = timeLeftValue
-        testObject["legalTime"] = info.text
-        testObject["type"] = type.selectedSegmentIndex
-        testObject["addressText"] = addressText
+   
+      
         
-        testObject.saveInBackgroundWithBlock { (success, error) -> Void in
+
+        if (segue.identifier == "spotDetailNext")
+        {
+            let spotNextView = segue!.destinationViewController as! SpotDetailNextViewController
+            spotNextView.addressIndicator = AddressTextField.text!
+            spotNextView.currentAddress = self.addressText
+            let geoPoint = PFGeoPoint(latitude: latitudeD ,longitude: longitudeD);
+            let currentLocation = Location.init(object: geoPoint)
+            spotNextView.location = currentLocation
+            spotNextView.type = self.type.selectedSegmentIndex
+            spotNextView.rate = rateValue
+            spotNextView.timeLeft = timeLeftValue
+            spotNextView.minDonation = Double(minimumPrice)
+            spotNextView.legalTime = self.info.text!
+            spotNextView.owner = PFUser.currentUser()
+            spotNextView.statusId = 1
+            spotNextView.timeToLeave = self.timeToLeave
             
-            if (error == nil){
-                self.dismissViewControllerAnimated(true, completion: nil);
-                
-            }else{
-            }
+
         }
         
         let installation = PFInstallation.currentInstallation()
