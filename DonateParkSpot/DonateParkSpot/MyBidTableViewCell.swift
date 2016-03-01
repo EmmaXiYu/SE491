@@ -27,21 +27,6 @@ class MyBidTableViewCell: UITableViewCell {
         prefObjSpot.saveInBackground()
     }
     
-    /*
-    @IBAction func btnReOpenClicked(sender: UIButton) {
-        bid.statusId = 1
-        bid.cancelByBidder = false
-        let obj = bid.toPFObjet()
-        obj.saveInBackgroundWithBlock{
-            (success: Bool, error: NSError?) -> Void in
-            if (success) {
-                self.showmessage("Bid Reopened",msg : "Your Bid opend again.")
-                self.table?.GetBidList()
-            }
-        }
-    }
-    */
-    
     func showmessage(title : String, msg : String) ->Void
     {
         let alertController = UIAlertController(title: "Validation Error", message: msg, preferredStyle: .Alert)
