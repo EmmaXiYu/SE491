@@ -129,14 +129,13 @@ class BuyDetailController :  UIViewController, MKMapViewDelegate {
             
         }
         
-        let bid = PFObject(className: "Bid")
-        bid["user"] = user
-        bid["value"] = donation.value
-        bid["spot"] = PFObject(withoutDataWithClassName: "Spot", objectId: spot?.spotId)
-        bid["StatusId"] = 0  // put 0 by defualt
-        bid["UserId"] = user?.email
-        bid["CancelByBidder"] = false 
-        bid.saveInBackground()
+        let bid = Bid()
+        bid.bidder = user
+        bid.value = donation.value
+        bid.spot = spot
+        bid.statusId = 0  // put 0 by defualt
+        bid.cancelByBidder = false
+        bid.toPFObjet().saveInBackground()
         
         updateSpot((self.spot?.spotId)!, status : 1)
             
@@ -159,7 +158,7 @@ class BuyDetailController :  UIViewController, MKMapViewDelegate {
             push.sendPushInBackground()
             
             let installation = PFInstallation.currentInstallation()
-            installation["SpotBidder"] = bid["user"] as! PFUser
+            installation["SpotBidder"] = bid.bidder
             installation.saveInBackground()
 
             

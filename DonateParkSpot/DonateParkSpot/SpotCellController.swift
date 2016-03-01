@@ -20,7 +20,6 @@ class SpotCellController : UITableViewCell {
     @IBAction func cancel(sender: UIButton) {
         spot?.statusId = 4;
         spot?.toPFObject().saveInBackground()
-        updateAllBid()
         self.backgroundColor = UIColor.lightGrayColor()
         cancelButton.enabled = false
         self.selectionStyle = .None
@@ -28,24 +27,4 @@ class SpotCellController : UITableViewCell {
     }
     
     
-    func updateAllBid(){
-        let query = PFQuery(className: "Bid")
-        query.includeKey("user")
-        query.includeKey("spot")
-        query.whereKey("spot", equalTo: spot!.toPFObject())
-        query.findObjectsInBackgroundWithBlock {
-            (objects: [PFObject]?, error: NSError?) -> Void in
-            
-            if error == nil {
-                if let objects = objects {
-                    
-                    for object in objects {
-                        object["StatusId"] = 5
-                        object.saveInBackground()
-                    }
-                    
-                }
-            }
-        }
-    }
 }
