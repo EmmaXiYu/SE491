@@ -118,10 +118,11 @@ class BuyDetailController :  UIViewController, MKMapViewDelegate {
         let query = PFQuery.init(className: "Bid")
         query.whereKey("user", equalTo: user!)
         query.whereKey("spot", equalTo: spot!.toPFObject())
+        query.whereKey("StatusId", notEqualTo: 4) // 4 is cancel by bid owner
         do{
             let results = try query.findObjects()
             if results.count > 0 {
-                let alert = UIAlertView.init(title: "Bid already made", message: "You cannot bid twice on a Spot", delegate: nil, cancelButtonTitle: "OK")
+                let alert = UIAlertView.init(title: "Bid already made", message: "You cannot bid twice on a Spot. You can cancel your current Bid and bid again for this Spot", delegate: nil, cancelButtonTitle: "OK")
                 alert.show()
                 return
             }

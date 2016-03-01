@@ -18,7 +18,7 @@ class MyBidTableViewCell: UITableViewCell {
     @IBOutlet weak var lblDonetion: UILabel!
     @IBOutlet weak var btnCancel: UIButton!
     
-    @IBOutlet weak var btnReOpen: UIButton!
+  //  @IBOutlet weak var btnReOpen: UIButton!
     
     func updateSpot(prefObjSpot : PFObject, status : Int)-> Void
     {
@@ -27,7 +27,7 @@ class MyBidTableViewCell: UITableViewCell {
         prefObjSpot.saveInBackground()
     }
     
-    
+    /*
     @IBAction func btnReOpenClicked(sender: UIButton) {
         bid.statusId = 1
         bid.cancelByBidder = false
@@ -40,7 +40,7 @@ class MyBidTableViewCell: UITableViewCell {
             }
         }
     }
-    
+    */
     
     func showmessage(title : String, msg : String) ->Void
     {

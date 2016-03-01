@@ -40,9 +40,6 @@ class SpotDetailViewController: UITableViewController, UIPickerViewDelegate,
     //var currentSpot = Spot()
     
     override func viewDidLoad() {
-        picker.delegate = self
-        picker.dataSource = self
-        AddressTextField.inputView = picker 
         let geocoder = CLGeocoder()
         let location = CLLocation(latitude: latitudeD, longitude: longitudeD)
         geocoder.reverseGeocodeLocation(location, completionHandler: { (placemarks, error) -> Void in
@@ -55,7 +52,7 @@ class SpotDetailViewController: UITableViewController, UIPickerViewDelegate,
         timeLeft.text = "0"
         timeLeft.enabled = false
         data = ["Current Address", "Another Address"]
-        AddressTextField.text = data[0]
+
         
         
         let currentDate = NSDate()  //5 -  get the current date
@@ -123,10 +120,7 @@ class SpotDetailViewController: UITableViewController, UIPickerViewDelegate,
     
     @IBAction func submitTapped(sender: AnyObject) {
     
-     
-
-     
- 
+        let geoPoint = PFGeoPoint(latitude: latitudeD ,longitude: longitudeD);
         
       performSegueWithIdentifier("spotDetailNext", sender: self)
         }
@@ -192,10 +186,9 @@ class SpotDetailViewController: UITableViewController, UIPickerViewDelegate,
 
         }
         
+        let installation = PFInstallation.currentInstallation()
+        installation["SpotOwner"] = testObject["owner"] as! PFUser
+        installation.saveInBackground()
+    
     }
-    
-
-        
-    
-    }
-    
+}
