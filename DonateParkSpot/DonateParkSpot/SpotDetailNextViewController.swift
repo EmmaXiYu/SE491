@@ -89,9 +89,6 @@ class SpotDetailNextViewController: UIViewController {
                     self.spotObject.saveInBackground()
                 }
             })
-        }else{
-            self.spotObject.toPFObject().saveInBackground()
-            self.navigationController?.popToRootViewControllerAnimated(true)
         }
         
         
