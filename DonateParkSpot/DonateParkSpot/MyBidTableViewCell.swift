@@ -18,7 +18,7 @@ class MyBidTableViewCell: UITableViewCell {
     @IBOutlet weak var lblDonetion: UILabel!
     @IBOutlet weak var btnCancel: UIButton!
     
-    @IBOutlet weak var btnReOpen: UIButton!
+  //  @IBOutlet weak var btnReOpen: UIButton!
     
     func updateSpot(prefObjSpot : PFObject, status : Int)-> Void
     {
@@ -26,21 +26,6 @@ class MyBidTableViewCell: UITableViewCell {
         prefObjSpot["StatusId"] = status
         prefObjSpot.saveInBackground()
     }
-    
-    
-    @IBAction func btnReOpenClicked(sender: UIButton) {
-        bid.statusId = 1
-        bid.cancelByBidder = false
-        let obj = bid.toPFObjet()
-        obj.saveInBackgroundWithBlock{
-            (success: Bool, error: NSError?) -> Void in
-            if (success) {
-                self.showmessage("Bid Reopened",msg : "Your Bid opend again.")
-                self.table?.GetBidList()
-            }
-        }
-    }
-    
     
     func showmessage(title : String, msg : String) ->Void
     {
@@ -54,6 +39,12 @@ class MyBidTableViewCell: UITableViewCell {
     
     
     
+    @IBAction func payment(sender: AnyObject) {
+        
+        
+        self.table?.performSegueWithIdentifier("payment", sender: sender)
+        
+    }
     @IBAction func cancel(sender: AnyObject) {
         let bidOriginalStatus = bid.statusId
         bid.statusId = 4
@@ -72,6 +63,7 @@ class MyBidTableViewCell: UITableViewCell {
                     alert.show()
                     self.table?.GetBidList()
                 })
+                /*
                 let pushQuery = PFInstallation.query()
                 pushQuery!.whereKey("SpotOwner", equalTo: spot["owner"] as! PFUser)
                 if bidOriginalStatus == 2{
@@ -83,7 +75,7 @@ class MyBidTableViewCell: UITableViewCell {
                     let push = PFPush()
                     push.setQuery(pushQuery) // Set our Installation query
                     push.setData(data)
-                    push.sendPushInBackground()}
+                    push.sendPushInBackground()}*/
                 
                 /*
                 if bidOriginalStatus == 4{

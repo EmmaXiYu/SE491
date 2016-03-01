@@ -90,11 +90,11 @@ class MyBidTableViewController: UITableViewController {
         {
             cell.btnCancel.enabled = false
             cell.backgroundColor = UIColor.redColor().colorWithAlphaComponent(0.10)
-            cell.btnReOpen.hidden = false
+           // cell.btnReOpen.hidden = false
         }
         else
         {
-            cell.btnReOpen.hidden = true
+            //cell.btnReOpen.hidden = true
             cell.btnCancel.enabled = true
             cell.backgroundColor = UIColor.whiteColor().colorWithAlphaComponent(1)
             //cell.btnCancel.enabled = false
@@ -103,7 +103,7 @@ class MyBidTableViewController: UITableViewController {
         {
             cell.btnCancel.enabled = false
             cell.backgroundColor = UIColor.redColor().colorWithAlphaComponent(0.10)
-            cell.btnReOpen.hidden = true
+           // cell.btnReOpen.hidden = true
             cell.lblAddress.text = cell.lblAddress.text! + "[Cancel By Spot owner]"
         }
        
@@ -112,7 +112,7 @@ class MyBidTableViewController: UITableViewController {
         return cell
         
     }
-    
+    /*
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "payment" {
             let button = sender as? UIButton
@@ -120,5 +120,5 @@ class MyBidTableViewController: UITableViewController {
             let bid = cell.bid
         }
     }
-    
+    */
 }

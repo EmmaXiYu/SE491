@@ -45,7 +45,7 @@ class MySpotMultiBidTableViewCell: UITableViewCell {
                     self.table?.getBids()
                 })
                 
-                let pushQuery = PFInstallation.query()
+                /*let pushQuery = PFInstallation.query()
                 pushQuery!.whereKey("SpotBidder", equalTo: object["user"] as! PFUser)
                 let ifCancelledByBidder = object["CancelByBidder"] as! Bool
                 if ifCancelledByBidder  != true {
@@ -54,11 +54,11 @@ class MySpotMultiBidTableViewCell: UITableViewCell {
                         "badge" : "Increment",
                         "sound" : "iphonenoti_cRjTITC7.mp3",]
                     // Send push notification to query
-                    let push = PFPush()
-                    push.setQuery(pushQuery) // Set our Installation query
-                    push.setData(data)
-                    push.sendPushInBackground()
-                }
+                   // let push = PFPush()
+                  //  push.setQuery(pushQuery) // Set our Installation query
+                   // push.setData(data)
+                   // push.sendPushInBackground()
+                }*/
             
             
             }
@@ -83,7 +83,7 @@ class MySpotMultiBidTableViewCell: UITableViewCell {
     }
     
     @IBAction func rejectBid(sender: AnyObject) {
-        bid.statusId = 4
+        bid.statusId = 5
         let object = bid.toPFObjet()
         object.saveInBackgroundWithBlock{ (success: Bool, error: NSError?) -> Void in
             if (success) {

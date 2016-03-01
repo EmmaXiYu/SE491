@@ -118,10 +118,11 @@ class BuyDetailController :  UIViewController, MKMapViewDelegate {
         let query = PFQuery.init(className: "Bid")
         query.whereKey("user", equalTo: user!)
         query.whereKey("spot", equalTo: spot!.toPFObject())
+        query.whereKey("StatusId", notEqualTo: 4) // 4 is cancel by bid owner
         do{
             let results = try query.findObjects()
             if results.count > 0 {
-                let alert = UIAlertView.init(title: "Bid already made", message: "You cannot bid twice on a Spot", delegate: nil, cancelButtonTitle: "OK")
+                let alert = UIAlertView.init(title: "Bid already made", message: "You cannot bid twice on a Spot. You can cancel your current Bid and bid again for this Spot", delegate: nil, cancelButtonTitle: "OK")
                 alert.show()
                 return
             }
@@ -140,7 +141,7 @@ class BuyDetailController :  UIViewController, MKMapViewDelegate {
         updateSpot((self.spot?.spotId)!, status : 1)
             
         
-              let pushQuery = PFInstallation.query()
+             /* let pushQuery = PFInstallation.query()
             pushQuery!.whereKey("SpotOwner", equalTo: spot!.toPFObject()["owner"] as! PFUser)
             
             let data = [
@@ -152,10 +153,10 @@ class BuyDetailController :  UIViewController, MKMapViewDelegate {
                 
             ]
             // Send push notification to query
-            let push = PFPush()
-            push.setQuery(pushQuery) // Set our Installation query
-            push.setData(data)
-            push.sendPushInBackground()
+           // let push = PFPush()
+            //push.setQuery(pushQuery) // Set our Installation query
+            //push.setData(data)
+            //push.sendPushInBackground()*/
             
             let installation = PFInstallation.currentInstallation()
             installation["SpotBidder"] = bid.bidder
@@ -165,7 +166,7 @@ class BuyDetailController :  UIViewController, MKMapViewDelegate {
         self.dismissViewControllerAnimated(true, completion: nil)
             }
 
-    }
+    } 
     
     func IsValidBuyer()->Bool
 
