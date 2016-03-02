@@ -186,9 +186,9 @@ class SpotDetailViewController: UITableViewController, UIPickerViewDelegate,
 
         }
         
-        let installation = PFInstallation.currentInstallation()
-        installation["SpotOwner"] = testObject["owner"] as! PFUser
-        installation.saveInBackground()
+        //let installation = PFInstallation.currentInstallation()
+        //installation["SpotOwner"] = testObject["owner"] as! PFUser
+        //installation.saveInBackground()
     
     }
 }
