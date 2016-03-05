@@ -14,7 +14,7 @@ public class Bid {
     var spot : Spot?
     var value : Double?
     var bidder : PFUser?
-    var bidId  :String? = "" //Will use for updating (Accept/  reject bid)
+    var bidId  :String?
     private var status : Int = 0
     var statusId : Int? {
         get {
@@ -57,7 +57,9 @@ public class Bid {
     
     func toPFObjet() -> PFObject{
         let aux = PFObject(className: "Bid")
-        aux.objectId = bidId
+        if bidId != nil {
+            aux.objectId = bidId
+        }
         aux["BidAcceptTime"] = bidAcceptTime == nil ? NSNull() : bidAcceptTime
         aux["CancelByBidder"] = cancelByBidder == nil ? NSNull() : cancelByBidder
         aux["NoPaymentCancelTime"] = noPaymentCancelTime  == nil ? NSNull() : noPaymentCancelTime

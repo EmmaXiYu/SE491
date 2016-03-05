@@ -136,7 +136,14 @@ class BuyDetailController :  UIViewController, MKMapViewDelegate {
         bid.spot = spot
         bid.statusId = 0  // put 0 by defualt
         bid.cancelByBidder = false
-        bid.toPFObjet().saveInBackground()
+        bid.toPFObjet().saveInBackgroundWithBlock{
+            (success: Bool, error: NSError?) -> Void in
+            if(success){
+                print(success)
+            }else{
+                print(error)
+            }
+        }
         
         updateSpot((self.spot?.spotId)!, status : 1)
             
@@ -163,7 +170,7 @@ class BuyDetailController :  UIViewController, MKMapViewDelegate {
             //installation.saveInBackground()
 
             
-        self.dismissViewControllerAnimated(true, completion: nil)
+            self.dismissViewControllerAnimated(true, completion: nil)
             }
 
     } 
