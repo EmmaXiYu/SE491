@@ -11,7 +11,7 @@ import Parse
 
 
 class SpotDetailViewController: UITableViewController, UIPickerViewDelegate,
-    UIPickerViewDataSource
+    UIPickerViewDataSource, UITextFieldDelegate
 {
     
    
@@ -52,6 +52,12 @@ class SpotDetailViewController: UITableViewController, UIPickerViewDelegate,
         timeLeft.text = "0"
         timeLeft.enabled = false
         data = ["Current Address", "Another Address"]
+        picker.dataSource = self
+        picker.delegate = self
+        
+        
+        AddressTextField.inputView = picker
+        AddressTextField.text = data[0]
 
         
         

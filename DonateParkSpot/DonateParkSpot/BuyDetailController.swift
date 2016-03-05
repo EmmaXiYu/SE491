@@ -158,9 +158,9 @@ class BuyDetailController :  UIViewController, MKMapViewDelegate {
             //push.setData(data)
             //push.sendPushInBackground()*/
             
-            let installation = PFInstallation.currentInstallation()
-            installation["SpotBidder"] = bid.bidder
-            installation.saveInBackground()
+           // let installation = PFInstallation.currentInstallation()
+            //installation["SpotBidder"] = bid.bidder
+            //installation.saveInBackground()
 
             
         self.dismissViewControllerAnimated(true, completion: nil)

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9532" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="wLP-zy-ghc">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9532" systemVersion="15A284" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="wLP-zy-ghc">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
@@ -1719,18 +1719,18 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ecF-fA-YAS">
-                                                    <rect key="frame" x="105" y="7" width="487" height="30"/>
+                                                    <rect key="frame" x="128" y="7" width="464" height="30"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits"/>
                                                 </textField>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="8LI-3N-K7p" firstAttribute="centerY" secondItem="VS2-W0-rt0" secondAttribute="centerY" id="0FR-OB-b3D"/>
+                                                <constraint firstItem="ecF-fA-YAS" firstAttribute="leading" secondItem="VS2-W0-rt0" secondAttribute="leadingMargin" constant="120" id="CkM-es-GoA"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="ecF-fA-YAS" secondAttribute="trailing" id="FBb-wS-P3g"/>
                                                 <constraint firstItem="ecF-fA-YAS" firstAttribute="centerY" secondItem="8LI-3N-K7p" secondAttribute="centerY" id="GND-W8-q2Y"/>
                                                 <constraint firstItem="8LI-3N-K7p" firstAttribute="top" secondItem="VS2-W0-rt0" secondAttribute="topMargin" constant="3" id="J0q-9Y-PRe"/>
                                                 <constraint firstAttribute="bottomMargin" secondItem="ecF-fA-YAS" secondAttribute="bottom" constant="0.5" id="RIT-0C-fCP"/>
-                                                <constraint firstItem="ecF-fA-YAS" firstAttribute="leading" secondItem="8LI-3N-K7p" secondAttribute="trailing" constant="47" id="Yx0-63-2an"/>
                                                 <constraint firstItem="8LI-3N-K7p" firstAttribute="leading" secondItem="VS2-W0-rt0" secondAttribute="leadingMargin" constant="10" id="b42-jX-Ntk"/>
                                                 <constraint firstAttribute="bottomMargin" secondItem="8LI-3N-K7p" secondAttribute="bottom" constant="3.5" id="kaN-ut-g9f"/>
                                                 <constraint firstItem="ecF-fA-YAS" firstAttribute="top" secondItem="VS2-W0-rt0" secondAttribute="topMargin" constant="-3" id="wNw-RO-SCf"/>
@@ -1776,7 +1776,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JHJ-dj-HrS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1651.5" y="472.5"/>
+            <point key="canvasLocation" x="-1576" y="103"/>
         </scene>
         <!--Add Spot-->
         <scene sceneID="Yii-gJ-G1J">
