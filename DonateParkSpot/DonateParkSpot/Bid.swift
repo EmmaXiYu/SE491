@@ -10,18 +10,19 @@ import Foundation
 import Parse 
 
 public class Bid {
-    private var oldStatus: Int?
+    private var oldStatus: Int? = 0
     var spot : Spot?
     var value : Double?
     var bidder : PFUser?
     var bidId  :String? = "" //Will use for updating (Accept/  reject bid)
+    private var status : Int = 0
     var statusId : Int? {
         get {
-            return self.statusId
+            return status
         }
         set(newStatus){
-            self.oldStatus = self.statusId
-            self.statusId = newStatus
+            self.oldStatus = self.status
+            self.status = newStatus!
         }
     }
     var cancelByBidder : Bool? = false // Indicate if cancel by Buyer
