@@ -47,7 +47,12 @@ class MyBidTableViewCell: UITableViewCell {
     }
     @IBAction func cancel(sender: AnyObject) {
         let bidOriginalStatus = bid.statusId
-        bid.statusId = 4
+        if(bidOriginalStatus == 2)
+        {
+            bid.statusId = 4
+        }
+        else {bid.statusId = 14}
+        //bid.statusId = 4
         bid.cancelByBidder = true
         
         let obj = bid.toPFObjet()

@@ -57,6 +57,7 @@
 		1815C0DD1BFA9356003D9390 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1815C0DC1BFA9356003D9390 /* SettingViewController.swift */; };
 		1815C0DF1BFA9480003D9390 /* MyBidsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1815C0DE1BFA9480003D9390 /* MyBidsViewController.swift */; };
 		1820272D1C56A30E00BEDAD1 /* RetrievePasswordController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1820272C1C56A30E00BEDAD1 /* RetrievePasswordController.swift */; };
+		186325941C8BAE9200EB8FC9 /* PaymentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 186325931C8BAE9100EB8FC9 /* PaymentViewController.swift */; };
 		1870455E1C6BA9F200067A08 /* SpotDetailNextViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1870455D1C6BA9F200067A08 /* SpotDetailNextViewController.swift */; };
 		18AE41611BE84EB000A4A62B /* BackTableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18AE41601BE84EB000A4A62B /* BackTableVC.swift */; };
 		18AE41671BE84FEB00A4A62B /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18AE41661BE84FEB00A4A62B /* SWRevealViewController.m */; };
@@ -142,6 +143,7 @@
 		1815C0DC1BFA9356003D9390 /* SettingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
 		1815C0DE1BFA9480003D9390 /* MyBidsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyBidsViewController.swift; sourceTree = "<group>"; };
 		1820272C1C56A30E00BEDAD1 /* RetrievePasswordController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RetrievePasswordController.swift; sourceTree = "<group>"; };
+		186325931C8BAE9100EB8FC9 /* PaymentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaymentViewController.swift; sourceTree = "<group>"; };
 		1870455D1C6BA9F200067A08 /* SpotDetailNextViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpotDetailNextViewController.swift; sourceTree = "<group>"; };
 		18AE41601BE84EB000A4A62B /* BackTableVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 5; lastKnownFileType = sourcecode.swift; path = BackTableVC.swift; sourceTree = "<group>"; tabWidth = 5; usesTabs = 0; };
 		18AE41641BE84FE400A4A62B /* SWRevealViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SWRevealViewController.h; sourceTree = "<group>"; };
@@ -233,6 +235,7 @@
 				1815C0DC1BFA9356003D9390 /* SettingViewController.swift */,
 				1815C0DE1BFA9480003D9390 /* MyBidsViewController.swift */,
 				1820272C1C56A30E00BEDAD1 /* RetrievePasswordController.swift */,
+				186325931C8BAE9100EB8FC9 /* PaymentViewController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -528,6 +531,7 @@
 				B89892171BED996600DEF1B5 /* MySpotMultiBidTableViewCell.swift in Sources */,
 				B8A33A921BEAFE5F0007E77E /* MySpotMultiBidTableViewController.swift in Sources */,
 				18AE41611BE84EB000A4A62B /* BackTableVC.swift in Sources */,
+				186325941C8BAE9200EB8FC9 /* PaymentViewController.swift in Sources */,
 				180C3B2A1BDAA0B400E7E5F5 /* MapViewController.swift in Sources */,
 				B8A1093F1BF6E86D003503B1 /* MyBidTableViewController.swift in Sources */,
 				1820272D1C56A30E00BEDAD1 /* RetrievePasswordController.swift in Sources */,
