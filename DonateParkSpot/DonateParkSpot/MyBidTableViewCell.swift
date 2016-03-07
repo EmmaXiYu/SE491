@@ -39,12 +39,32 @@ class MyBidTableViewCell: UITableViewCell {
     
     
     
+    @IBOutlet weak var paymentButton: UIButton!
     @IBAction func payment(sender: AnyObject) {
         
         
         self.table?.performSegueWithIdentifier("payment", sender: sender)
         
     }
+   func prepareForSegue(segue:(UIStoryboardSegue!), sender:AnyObject!)
+    {
+        
+        
+        
+        if (segue.identifier == "payment")
+        {
+            let paymentView = segue!.destinationViewController as! PaymentViewController
+            paymentView.spotID = (self.bid.spot?.spotId)!
+            
+            
+        }
+        
+        //let installation = PFInstallation.currentInstallation()
+        //installation["SpotOwner"] = testObject["owner"] as! PFUser
+        //installation.saveInBackground()
+        
+    }
+
     @IBAction func cancel(sender: AnyObject) {
         let bidOriginalStatus = bid.statusId
          bid.statusId = 4

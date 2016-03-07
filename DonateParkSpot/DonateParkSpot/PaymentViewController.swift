@@ -10,4 +10,12 @@ import UIKit
 
 class PaymentViewController: UITableViewController {
 
+    var spotID = String()
+    
+    
+    @IBOutlet weak var paymentDone: UIBarButtonItem!
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+    }
 }

@@ -81,6 +81,11 @@ class MyBidTableViewController: UITableViewController {
         //cell.btnCancel.layer.borderColor = UIColor.blueColor().CGColor
         //cell.btnReOpen.layer.borderColor = UIColor.blueColor().CGColor
 
+        if(bid.statusId != 2 )
+        {
+            
+            cell.paymentButton.hidden = true
+        }
         if(bid.cancelByBidder == nil)
         {
             bid.cancelByBidder = false
@@ -89,6 +94,7 @@ class MyBidTableViewController: UITableViewController {
         if (bid.cancelByBidder == true ) //cancel by buyer or bidder
         {
             cell.btnCancel.enabled = false
+            cell.paymentButton.enabled = false
             cell.backgroundColor = UIColor.redColor().colorWithAlphaComponent(0.10)
            // cell.btnReOpen.hidden = false
         }
