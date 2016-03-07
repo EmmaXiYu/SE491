@@ -56,15 +56,19 @@ class MySpotMultiBidTableViewController: UITableViewController {
             cell.bidder.text = aux.bidder!.username
             cell.rating.text = aux.bidder?.getRatingAsBuyer().description
             cell.time.text = aux.createAt?.description
-            if aux.statusId != 0 {
+            if aux.statusId != 1 {
                 cell.accept.enabled = false
                 cell.reject.enabled = false
             }
             
-            if aux.statusId == 2 || aux.statusId == 3 {
+            if aux.statusId == 2{
                 cell.backgroundColor = UIColor.greenColor()
-            }else if aux.statusId == 4 || aux.statusId == 5 {
+            }else if aux.statusId == 5 {
                 cell.backgroundColor = UIColor.redColor()
+            }else if aux.statusId == 4 {
+                cell.backgroundColor = UIColor.grayColor()
+            }else if aux.statusId == 3 {
+                cell.backgroundColor = UIColor.blueColor()
             }
             cell.table = self
             return cell

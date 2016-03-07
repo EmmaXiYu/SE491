@@ -111,67 +111,42 @@ class BuyDetailController :  UIViewController, MKMapViewDelegate {
     }
     
     @IBAction func buy() {
-        if(IsValidBuyer() == true)
-        {
-        let user = PFUser.currentUser()
+        if(IsValidBuyer() == true){
+            let user = PFUser.currentUser()
         
-        let query = PFQuery.init(className: "Bid")
-        query.whereKey("user", equalTo: user!)
-        query.whereKey("spot", equalTo: spot!.toPFObject())
-        query.whereKey("StatusId", notEqualTo: 4) // 4 is cancel by bid owner
-        do{
-            let results = try query.findObjects()
-            if results.count > 0 {
-                let alert = UIAlertView.init(title: "Bid already made", message: "You cannot bid twice on a Spot. You can cancel your current Bid and bid again for this Spot", delegate: nil, cancelButtonTitle: "OK")
-                alert.show()
-                return
+            let query = PFQuery.init(className: "Bid")
+            query.whereKey("user", equalTo: user!)
+            query.whereKey("spot", equalTo: spot!.toPFObject())
+            query.whereKey("StatusId", notEqualTo: 4) // 4 is cancel by bid owner
+            do{
+                let results = try query.findObjects()
+                if results.count > 0 {
+                    let alert = UIAlertView.init(title: "Bid already made", message: "You cannot bid twice on a Spot. You can cancel your current Bid and bid again for this Spot", delegate: nil, cancelButtonTitle: "OK")
+                    alert.show()
+                    return
+                }
+            }catch{
+            
             }
-        }catch{
-            
-        }
         
-        let bid = Bid()
-        bid.bidder = user
-        bid.value = donation.value
-        bid.spot = spot
-        bid.statusId = 0  // put 0 by defualt
-        bid.cancelByBidder = false
-        bid.toPFObjet().saveInBackgroundWithBlock{
-            (success: Bool, error: NSError?) -> Void in
-            if(success){
-                print(success)
-            }else{
-                print(error)
+            let bid = Bid()
+            bid.bidder = user
+            bid.value = donation.value
+            bid.spot = spot
+            bid.statusId = 1
+            bid.cancelByBidder = false
+            bid.toPFObjet().saveInBackgroundWithBlock{
+                (success: Bool, error: NSError?) -> Void in
+                if(success){
+                    print(success)
+                }else{
+                    print(error)
+                }
             }
-        }
         
-        updateSpot((self.spot?.spotId)!, status : 1)
-            
-        
-             /* let pushQuery = PFInstallation.query()
-            pushQuery!.whereKey("SpotOwner", equalTo: spot!.toPFObject()["owner"] as! PFUser)
-            
-            let data = [
-                "alert" : "Your spot got a bid." ,
-                "badge" : "Increment",
-                "sound" : "iphonenoti_cRjTITC7.mp3",
-               
-           
-                
-            ]
-            // Send push notification to query
-           // let push = PFPush()
-            //push.setQuery(pushQuery) // Set our Installation query
-            //push.setData(data)
-            //push.sendPushInBackground()*/
-            
-           // let installation = PFInstallation.currentInstallation()
-            //installation["SpotBidder"] = bid.bidder
-            //installation.saveInBackground()
-
-            
+            updateSpot((self.spot?.spotId)!, status : 1)
             self.dismissViewControllerAnimated(true, completion: nil)
-            }
+        }
 
     } 
     
