@@ -51,7 +51,7 @@ class MyBidTableViewCell: UITableViewCell {
         {
             bid.statusId = 4
         }
-        else {bid.statusId = 14}
+        else {bid.statusId = 14}/////////?
         //bid.statusId = 4
         bid.cancelByBidder = true
         
