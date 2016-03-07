@@ -719,12 +719,18 @@
                     <navigationItem key="navigationItem" title="Payment" id="GWy-3k-1j8">
                         <barButtonItem key="rightBarButtonItem" title="Done" id="Xxs-en-eWu">
                             <connections>
-                                <segue destination="ci3-hA-gjF" kind="showDetail" identifier="showingAddress" id="8nj-jS-Rve"/>
+                                <action selector="payment:" destination="I3i-6A-cSC" id="8Ah-ha-80m"/>
+                                <segue destination="ci3-hA-gjF" kind="presentation" identifier="showingAddress" id="8nj-jS-Rve"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
+                        <outlet property="billingAdress" destination="n09-XM-Ve9" id="Vqu-Qp-Xfy"/>
+                        <outlet property="cardNumber" destination="eok-bL-jw1" id="bPd-kI-1DM"/>
+                        <outlet property="cvv" destination="r8J-25-uKi" id="YLS-c1-mqk"/>
+                        <outlet property="expiration" destination="SeG-fj-oy4" id="dqv-cN-8tE"/>
+                        <outlet property="ownerName" destination="QqY-gk-Uhd" id="iJG-oO-Uy8"/>
                         <outlet property="paymentDone" destination="Xxs-en-eWu" id="OeM-eM-h4g"/>
                     </connections>
                 </tableViewController>
@@ -732,7 +738,7 @@
             </objects>
             <point key="canvasLocation" x="3805" y="-1071"/>
         </scene>
-        <!--View Controller-->
+        <!--Show Spot Address-->
         <scene sceneID="dBu-Mo-sUd">
             <objects>
                 <viewController id="ci3-hA-gjF" sceneMemberID="viewController">
@@ -745,6 +751,9 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <navigationItem key="navigationItem" title="Show Spot Address" id="oLY-41-Q9s">
+                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="DN7-m3-2F0"/>
+                    </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wcF-2Q-Ktb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
