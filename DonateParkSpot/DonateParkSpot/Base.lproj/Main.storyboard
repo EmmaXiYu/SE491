@@ -720,7 +720,7 @@
                         <barButtonItem key="rightBarButtonItem" title="Done" id="Xxs-en-eWu">
                             <connections>
                                 <action selector="payment:" destination="I3i-6A-cSC" id="8Ah-ha-80m"/>
-                                <segue destination="ci3-hA-gjF" kind="presentation" identifier="showingAddress" id="8nj-jS-Rve"/>
+                                <segue destination="ci3-hA-gjF" kind="show" identifier="showingAddress" id="8nj-jS-Rve"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -749,7 +749,29 @@
                     <view key="view" contentMode="scaleToFill" id="fLt-6k-pWV">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ben-QR-N80">
+                                <rect key="frame" x="35" y="252" width="369" height="21"/>
+                                <string key="text">     243 South Wabash Avenue, Chicago, IL 6060
+</string>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Your spot address is:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gHA-Xe-Z3C">
+                                <rect key="frame" x="168" y="147" width="160" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Ben-QR-N80" firstAttribute="top" secondItem="gHA-Xe-Z3C" secondAttribute="bottom" constant="84" id="BnO-mq-r1G"/>
+                            <constraint firstItem="gHA-Xe-Z3C" firstAttribute="top" secondItem="hc8-to-TaW" secondAttribute="bottom" constant="127" id="Dnx-Yv-wru"/>
+                            <constraint firstItem="Ben-QR-N80" firstAttribute="centerX" secondItem="fLt-6k-pWV" secondAttribute="centerX" id="PxQ-kg-v6f"/>
+                            <constraint firstItem="gHA-Xe-Z3C" firstAttribute="centerX" secondItem="fLt-6k-pWV" secondAttribute="centerX" id="fdY-rp-Ibe"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Show Spot Address" id="oLY-41-Q9s">
                         <barButtonItem key="rightBarButtonItem" systemItem="done" id="DN7-m3-2F0"/>
@@ -1983,6 +2005,6 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="pmS-rw-1jY"/>
-        <segue reference="Tp6-l9-TTl"/>
+        <segue reference="NLC-Cl-CDa"/>
     </inferredMetricsTieBreakers>
 </document>
