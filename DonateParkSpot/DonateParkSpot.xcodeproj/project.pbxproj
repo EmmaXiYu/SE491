@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		107623D61C8F590D00313C94 /* PaidViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 107623D51C8F590D00313C94 /* PaidViewController.swift */; };
 		10A79C951BE2D04900D26027 /* BuyDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10A79C941BE2D04900D26027 /* BuyDetailController.swift */; };
 		10AF43F01C498A7C00E20C1F /* DonateParkSpotUITest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10AF43EF1C498A7C00E20C1F /* DonateParkSpotUITest.swift */; };
 		10AF44081C49B68200E20C1F /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 180A147D1BDBF883005F4221 /* Bolts.framework */; settings = {ATTRIBUTES = (Required, ); }; };
@@ -94,6 +95,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		107623D51C8F590D00313C94 /* PaidViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaidViewController.swift; sourceTree = "<group>"; };
 		10A79C941BE2D04900D26027 /* BuyDetailController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BuyDetailController.swift; sourceTree = "<group>"; };
 		10AF43ED1C498A7C00E20C1F /* DonateParkSpotUITest.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DonateParkSpotUITest.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		10AF43EF1C498A7C00E20C1F /* DonateParkSpotUITest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DonateParkSpotUITest.swift; sourceTree = "<group>"; };
@@ -236,6 +238,7 @@
 				1815C0DE1BFA9480003D9390 /* MyBidsViewController.swift */,
 				1820272C1C56A30E00BEDAD1 /* RetrievePasswordController.swift */,
 				186325931C8BAE9100EB8FC9 /* PaymentViewController.swift */,
+				107623D51C8F590D00313C94 /* PaidViewController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -554,6 +557,7 @@
 				1815C0DF1BFA9480003D9390 /* MyBidsViewController.swift in Sources */,
 				180C3AF71BD9F0F400E7E5F5 /* ViewController.swift in Sources */,
 				180C3AF51BD9F0F400E7E5F5 /* AppDelegate.swift in Sources */,
+				107623D61C8F590D00313C94 /* PaidViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
