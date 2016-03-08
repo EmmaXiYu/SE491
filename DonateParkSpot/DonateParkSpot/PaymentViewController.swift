@@ -8,7 +8,8 @@
 
 import UIKit
 
-class PaymentViewController: UITableViewController {
+class PaymentViewController: UITableViewController,UIPickerViewDelegate,
+UIPickerViewDataSource, UITextFieldDelegate{
 
     var spotID = String()
     
@@ -20,11 +21,42 @@ class PaymentViewController: UITableViewController {
     @IBOutlet weak var billingAdress: UITextField!
     @IBOutlet weak var paymentDone: UIBarButtonItem!
     
+    @IBOutlet weak var charityOrganization: UITextField!
+    
+    var data = ["A Child's Wish Association of America", "AARP Foundation", "Accion International",
+        "Accuracy in Media","Action Against Hunger-USA"]
+    var picker = UIPickerView ()
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        charityOrganization.text = data[0]
+        charityOrganization.inputView = picker
+        picker.dataSource = self
+        picker.delegate = self
+        
     }
+    
+    func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int
+    {
+        return 1
+    }
+    
+    
+    func pickerView(pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int
+    {
+        return data.count
+    }
+    
+    func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        charityOrganization.text = data [row]
+        charityOrganization.resignFirstResponder()
+    }
+    func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        return  data[row]
+    }
+
     
     @IBAction func payment(sender: AnyObject) {
         
