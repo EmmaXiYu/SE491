@@ -134,7 +134,6 @@ class BuyDetailController :  UIViewController, MKMapViewDelegate {
             bid.value = donation.value
             bid.spot = spot
             bid.statusId = 1
-            bid.cancelByBidder = false
             bid.toPFObjet().saveInBackgroundWithBlock{
                 (success: Bool, error: NSError?) -> Void in
                 if(success){

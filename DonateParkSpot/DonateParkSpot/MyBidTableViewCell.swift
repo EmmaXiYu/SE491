@@ -66,19 +66,10 @@ class MyBidTableViewCell: UITableViewCell {
     }
 
     @IBAction func cancel(sender: AnyObject) {
-        let bidOriginalStatus = bid.statusId
-         bid.statusId = 4
-        /*
-        if(bidOriginalStatus == 2)
-        {
-            bid.statusId = 4
-        }
-        else {bid.statusId = 14}/////////?
-        //bid.statusId = 4*/
-        bid.cancelByBidder = true
+        bid.statusId = 4
+        
         
         let obj = bid.toPFObjet()
-        let spot = obj["spot"] as! PFObject
         obj.saveInBackgroundWithBlock{
             (success: Bool, error: NSError?) -> Void in
             if (success) {
@@ -90,49 +81,6 @@ class MyBidTableViewCell: UITableViewCell {
                     alert.show()
                     self.table?.GetBidList()
                 })
-                /*
-                let pushQuery = PFInstallation.query()
-                pushQuery!.whereKey("SpotOwner", equalTo: spot["owner"] as! PFUser)
-                if bidOriginalStatus == 2{
-                    let data = [
-                        "alert" : "One accepted bid cancelled. Please choose other bid." ,
-                        "badge" : "Increment",
-                        "sound" : "iphonenoti_cRjTITC7.mp3",]
-                    // Send push notification to query
-                    let push = PFPush()
-                    push.setQuery(pushQuery) // Set our Installation query
-                    push.setData(data)
-                    push.sendPushInBackground()}*/
-                
-                /*
-                if bidOriginalStatus == 4{
-                let data = [
-                "alert" : "One rejected bid cancelled." ,
-                "badge" : "Increment",
-                "sound" : "iphonenoti_cRjTITC7.mp3",]
-                // Send push notification to query
-                let push = PFPush()
-                push.setQuery(pushQuery) // Set our Installation query
-                push.setData(data)
-                push.sendPushInBackground()}
-                
-                if bidOriginalStatus == 0{
-                let data = [
-                "alert" : "One bid cancelled." ,
-                "badge" : "Increment",
-                "sound" : "iphonenoti_cRjTITC7.mp3",]
-                // Send push notification to query
-                let push = PFPush()
-                push.setQuery(pushQuery) // Set our Installation query
-                push.setData(data)
-                push.sendPushInBackground()}
-                */
-                
-                
-                
-                
-                
-                
             } else {
                 dispatch_async(dispatch_get_main_queue(), {
                     let alert = UIAlertView()
