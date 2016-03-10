@@ -11,7 +11,7 @@ import UIKit
 class PaymentViewController: UITableViewController,UIPickerViewDelegate,
 UIPickerViewDataSource, UITextFieldDelegate{
 
-    var spotID = String()
+    var spot : Spot?
     
     
     @IBOutlet weak var cardNumber: UITextField!
@@ -78,6 +78,13 @@ UIPickerViewDataSource, UITextFieldDelegate{
         self.presentViewController(myAlert, animated: true, completion: nil);
         
         
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "paid" {
+            let controller = segue.destinationViewController as! PaidViewController
+            controller.spot = spot
+        }
     }
 
     

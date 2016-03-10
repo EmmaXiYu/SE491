@@ -76,11 +76,6 @@ class MyBidTableViewController: UITableViewController {
         formatter.dateStyle = NSDateFormatterStyle.LongStyle
         formatter.timeStyle = .MediumStyle
         
-        //cell.btnCancel.layer.borderWidth = 1
-        //cell.btnReOpen.layer.borderWidth = 1
-        //cell.btnCancel.layer.borderColor = UIColor.blueColor().CGColor
-        //cell.btnReOpen.layer.borderColor = UIColor.blueColor().CGColor
-
         if(bid.statusId != 2 )
         {
             
@@ -100,5 +95,17 @@ class MyBidTableViewController: UITableViewController {
         
         return cell
         
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "payment" {
+            let controller = segue.destinationViewController as? PaymentViewController
+            let cell = sender!.superview!!.superview! as! MyBidTableViewCell
+            controller?.spot = cell.bid.spot
+            cell.bid.statusId = 3
+            cell.bid.toPFObjet().saveInBackground()
+            cell.bid.spot!.statusId = 3
+            cell.bid.spot!.toPFObject().saveInBackground()
+        }
     }
 }

@@ -46,7 +46,8 @@ class MyBidTableViewCell: UITableViewCell {
         self.table?.performSegueWithIdentifier("payment", sender: sender)
         
     }
-   func prepareForSegue(segue:(UIStoryboardSegue!), sender:AnyObject!)
+    
+    func prepareForSegue(segue:(UIStoryboardSegue!), sender:AnyObject!)
     {
         
         
@@ -54,7 +55,7 @@ class MyBidTableViewCell: UITableViewCell {
         if (segue.identifier == "payment")
         {
             let paymentView = segue!.destinationViewController as! PaymentViewController
-            paymentView.spotID = (self.bid.spot?.spotId)!
+            paymentView.spot = self.bid.spot
             
             
         }
