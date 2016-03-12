@@ -82,11 +82,11 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
                 
                 let installation = PFInstallation.currentInstallation()
                 installation["user"] = PFUser.currentUser()
-                installation.saveInBackground()}
-               /* if installation.badge != 0 {
+                installation.saveInBackground()
+               if installation.badge != 0 {
                     installation.badge = 0
                     installation.saveEventually()
-                }*/
+                }}
                
                // }
                /* else
