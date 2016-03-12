@@ -82,9 +82,13 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
                 
                 let installation = PFInstallation.currentInstallation()
                 installation["user"] = PFUser.currentUser()
-                installation.saveInBackground()
+                installation.saveInBackground()}
+               /* if installation.badge != 0 {
+                    installation.badge = 0
+                    installation.saveEventually()
+                }*/
                
-                }
+               // }
                /* else
                 {
                     self.displayMyAlertMessage("Please verify the link we send to you" );

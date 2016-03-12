@@ -25,11 +25,15 @@ class MyBidTableViewController: UITableViewController {
         Menu.action = Selector("revealToggle:")
         
         self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
+         NSNotificationCenter.defaultCenter().addObserver(self, selector: "loadList:",name:"load", object: nil)
         
         
         
     }
-    
+    func loadList(notification: NSNotification){
+        //load data here
+        self.tableView.reloadData()
+    }
     func GetBidList()  {
         var query: PFQuery = PFQuery()
         query = PFQuery(className: "Bid")
@@ -88,7 +92,16 @@ class MyBidTableViewController: UITableViewController {
         if (bid.statusId == 4 ) 
         {
             cell.btnCancel.enabled = false
+            cell.btnCancel.hidden = false
             cell.backgroundColor = UIColor.redColor().colorWithAlphaComponent(0.10)
+        }
+        if(bid.statusId == 3 )
+        {
+        cell.btnCancel.enabled = false
+        cell.paymentButton.enabled = false
+            cell.btnCancel.hidden = true
+            cell.paymentButton.hidden = true
+         cell.backgroundColor = UIColor.greenColor().colorWithAlphaComponent(0.10)
         }
        
         

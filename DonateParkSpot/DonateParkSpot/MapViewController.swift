@@ -288,7 +288,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         spots.append(spot)
         let pinLocation: CLLocationCoordinate2D = CLLocationCoordinate2D(latitude: spot.location.latitude!, longitude: spot.location.longitude!)
         
-        let annotation = CustomerAnnotation(coordinate: pinLocation,spotObject: spot, title :spot.owner!.email!, subtitle: spot.owner!.getRatingAsSeller().description)
+        let annotation = CustomerAnnotation(coordinate: pinLocation,spotObject: spot, title : spot.owner!.email!, subtitle: "Score: " + spot.owner!.getRatingAsSeller().description)
         annotation.spot = spot
         //annotation.subtitle = "Rating bar here"
         self.mapView.addAnnotation(annotation)

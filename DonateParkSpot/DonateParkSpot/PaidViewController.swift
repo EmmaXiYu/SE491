@@ -37,6 +37,7 @@ class PaidViewController : UIViewController {
     
     @IBAction func done(sender: AnyObject) {
         showNavigation();
+         NSNotificationCenter.defaultCenter().postNotificationName("load", object: nil)
         self.navigationController?.popToRootViewControllerAnimated(true)
     }
 }

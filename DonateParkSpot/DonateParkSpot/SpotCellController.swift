@@ -24,6 +24,8 @@ class SpotCellController : UITableViewCell {
         cancelButton.enabled = false
         self.selectionStyle = .None
         self.userInteractionEnabled = false
+        let installation = PFInstallation.currentInstallation()
+        installation.badge = installation.badge - 1
     }
     
     

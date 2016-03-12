@@ -60,6 +60,10 @@ class MySpotMultiBidTableViewCell: UITableViewCell {
                    // push.sendPushInBackground()
                 }*/
             
+                
+                let installation = PFInstallation.currentInstallation()
+                installation.badge = installation.badge - 1
+    
             
             }
                 else {
@@ -95,6 +99,9 @@ class MySpotMultiBidTableViewCell: UITableViewCell {
                     alert.show()
                     self.table?.getBids()
                 })
+                
+                let installation = PFInstallation.currentInstallation()
+                installation.badge = installation.badge - 1
             } else {
                 dispatch_async(dispatch_get_main_queue(), {
                     let alert = UIAlertView()

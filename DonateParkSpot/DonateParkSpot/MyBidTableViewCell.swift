@@ -45,6 +45,9 @@ class MyBidTableViewCell: UITableViewCell {
         
         self.table?.performSegueWithIdentifier("payment", sender: sender)
         
+        let installation = PFInstallation.currentInstallation()
+        installation.badge = installation.badge - 1
+        
     }
     
     func prepareForSegue(segue:(UIStoryboardSegue!), sender:AnyObject!)
@@ -81,6 +84,9 @@ class MyBidTableViewCell: UITableViewCell {
                     alert.addButtonWithTitle("OK")
                     alert.show()
                     self.table?.GetBidList()
+                    
+                    let installation = PFInstallation.currentInstallation()
+                    installation.badge = installation.badge - 1
                 })
             } else {
                 dispatch_async(dispatch_get_main_queue(), {
