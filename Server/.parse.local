@@ -1,0 +1,10 @@
+{
+  "applications": {
+    "DonateParkSpot": {
+      "applicationId": "hPo2gnbpxAgyw5lYj8SNkf8agA9dOKNAt1nUemV7"
+    },
+    "_default": {
+      "link": "DonateParkSpot"
+    }
+  }
+}
